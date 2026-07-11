@@ -111,7 +111,7 @@
 
     <h2 class="reveal">O contexto</h2>
     <p class="reveal">A PagLeve (fictícia) é uma fintech de meios de pagamento pra pequenos negócios digitais. Microempreendedores que vendem por redes sociais e marketplaces e usam a plataforma pra gerar cobranças, receber vendas e gerir o caixa. O crescimento é operado por uma diretoria de Revenue com cinco frentes de aquisição e engajamento: Mídia Paga, Conteúdo e SEO, Influenciadores, Indicação (member get member) e CRM.</p>
-    <p class="reveal">O funil de crescimento tem uma régua clara. Aquisição é o cadastro com a primeira cobrança gerada. Ativação é a primeira venda recebida. Cliente Qualificado, o "CQ", são duas vendas em até 7 dias, proxy de retenção futura. A north star da companhia é 1 milhão de transações por mês.</p>
+    <p class="reveal">O funil de crescimento tem uma régua clara. Aquisição é o cadastro com a primeira cobrança gerada. Ativação é a primeira venda recebida. Cliente Qualificado, o "CQ", são duas vendas em até 7 dias contados da primeira venda, proxy de retenção futura. A north star da companhia é 1 milhão de transações por mês.</p>
 
     <h3 class="reveal">A dor da C-Level</h3>
     <p class="reveal">A Diretora de Revenue começava todo dia com o mesmo ritual. Abria 6 ou mais planilhas e um dashboard de BI com páginas em manutenção pra montar, de cabeça, o diagnóstico do mês. Os sintomas se repetiam todo mês.</p>
@@ -129,7 +129,7 @@
 <pre class="reveal"><code>Planilhas Google (custos/metas)        Data Warehouse (indicadores de funil)
         │                                        │
         ▼                                        │
-  n8n — extração CRUA (5 workflows, diários)     │
+  n8n — extração CRUA (4 workflows, diários)     │
   + auditoria via Drive API (quem/quando)        │
         ▼                                        ▼
 ┌──────────────────── BigQuery ────────────────────────┐
@@ -161,6 +161,7 @@
         <tr><td>Warehouse (funil)</td><td>Tabelas de eventos e marcos por usuário</td><td>Confiável, mas desconectado do custo</td></tr>
       </table>
     </div>
+    <p class="reveal">Mídia Paga ficou de fora dessa lista de planilhas problemáticas de propósito: o custo dela já vinha direto da API do Google e do Meta Ads, automatizado, sem planilha no meio. Os 4 workflows do n8n cobrem exatamente as 4 fontes de planilha que precisavam de extração.</p>
     <p class="reveal">O diagnóstico chegou a uma conclusão simples. O problema não era fazer um dashboard bonito. Era arquitetar a ponte entre dois mundos, planilhas vivas e warehouse, sem quebrar a rotina dos times e sem herdar a fragilidade das planilhas.</p>
 
     <h2 class="reveal">Princípios de arquitetura</h2>
@@ -168,7 +169,7 @@
     <ol class="reveal">
       <li><b>Modelo híbrido.</b> Defini a planilha como fonte da verdade do gasto e da meta (é onde o financeiro concilia) e o warehouse como fonte da verdade do funil. Não brigo com isso, eu integro as duas pontas.</li>
       <li><b>Raw-first e ELT.</b> Fiz o extrator (n8n) burro de propósito. Ele fotografa as planilhas como string crua, append-only. Toda a inteligência, parse, tipo, de-para, regra de negócio, vive em SQL versionado. Se a planilha muda, ajusto um arquivo SQL e reprocesso o histórico inteiro a partir do raw. Nada se perde.</li>
-      <li><b>Zero mudança de rotina para os times.</b> Os workflows absorvem o formato existente, com descoberta dinâmica de abas por regex e fingerprint de cabeçalho. A única exigência nova foi uma miniaba de resumo pra única fonte imparseável.</li>
+      <li><b>Rotina quase intocada para os times.</b> Os workflows absorvem o formato existente, com descoberta dinâmica de abas por regex e fingerprint de cabeçalho. A exigência de rotina mais pesada foi uma miniaba de resumo pra única fonte imparseável (o CRM); as demais frentes ganharam só um contrato leve de convenções (não renomear, número como número), detalhado mais abaixo.</li>
       <li><b>Erro na origem nunca derruba o painel.</b> Montei um portão de validação com checks técnicos (fórmulas quebradas, datas implausíveis, duplicidades) e de plausibilidade (total contra célula de controle, valor diário maior que 5 vezes a mediana de 60 dias). Carga suspeita vai pra quarentena, com motivo linha a linha. O painel segue no último dado válido (LKG), com um badge transparente de "dados em validação".</li>
       <li><b>Auditoria de ponta a ponta.</b> Cada carga registra, via Drive API, quem alterou a planilha, quando e qual revisão, exposto na página de metodologia do painel. Meses fechados ficam congelados. Alteração retroativa na origem não entra sozinha, gera alerta e aguarda aprovação.</li>
       <li><b>Tudo que o front lê é gold pré-agregado.</b> Uma linha por grão, com semáforo e YoY resolvidos no SQL. O front só pinta. Latência baixa, zero lógica duplicada.</li>
@@ -195,10 +196,10 @@
       <li>Taxa de Ativação (Ativação dividido por Aquisição)</li>
       <li>Cliente Qualificado</li>
       <li>Taxa de CQ (CQ dividido por Ativação)</li>
-      <li>CAC (Investimento dividido por Ativação)</li>
+      <li>CAC-Ativação (Investimento dividido por Ativação)</li>
       <li>CAC-CQ (Investimento dividido por CQ)</li>
     </ol>
-    <p class="reveal">Com duas exceções conscientes. A frente orgânica (Conteúdo e SEO) não exibe indicadores de custo. O CRM é tratado como reativação, não compõe CAC de aquisição. É uma decisão de atribuição documentada e aplicada no modelo, não na interface.</p>
+    <p class="reveal">Com duas exceções conscientes, documentadas no modelo de dados, não escondidas na interface: a frente orgânica (Conteúdo e SEO) não exibe os itens 1, 7 e 8 (não tem investimento a comparar), e o CRM é tratado como reativação, então também fica de fora do CAC-Ativação e do CAC-CQ.</p>
 
     <h2 class="reveal">O produto: dashboard executivo</h2>
     <h3 class="reveal">Separação estratégico e tático</h3>
@@ -242,7 +243,7 @@
         <tr><td>PII nas planilhas</td><td>Extração restrita às colunas do contrato, dados pessoais não entram no raw</td></tr>
       </table>
     </div>
-    <p class="reveal">Fechei um contrato de dados de uma página por planilha com cada coordenação: 7 pedidos mínimos (não renomear abas ou colunas chave, números como número, SLA de preenchimento D-1, avisar antes de reestruturar) em troca de um incentivo concreto, a página tática da própria frente, alertas automáticos e o fim da cobrança manual de atualização.</p>
+    <p class="reveal">Fechei um contrato de dados de uma página por planilha com cada coordenação: 7 pedidos mínimos (não renomear abas, não renomear colunas chave, números como número em vez de formato local com vírgula, não misturar subtotal com detalhe na mesma coluna, cabeçalho em uma linha só, SLA de preenchimento D-1, avisar antes de reestruturar) em troca de um incentivo concreto, a página tática da própria frente, alertas automáticos e o fim da cobrança manual de atualização.</p>
 
     <h2 class="reveal">Segurança e hospedagem</h2>
     <ul class="reveal">
@@ -255,7 +256,7 @@
     <p class="reveal">Números ilustrativos, com ordens de grandeza reais.</p>
     <div class="stat-grid reveal">
       <div class="stat-card"><div class="stat-n">&lt; 5 min</div><div class="stat-l">de leitura em uma tela única (era 30 a 40 min em 6+ planilhas)</div></div>
-      <div class="stat-card"><div class="stat-n">1 régua</div><div class="stat-l">8 indicadores, 5 frentes comparáveis pela primeira vez</div></div>
+      <div class="stat-card"><div class="stat-n">1 régua</div><div class="stat-l">8 indicadores, 5 frentes comparáveis no funil pela primeira vez</div></div>
       <div class="stat-card"><div class="stat-n">~R$0-15</div><div class="stat-l">por mês de custo de infraestrutura (GitHub + Cloud Run + IAP)</div></div>
       <div class="stat-card"><div class="stat-n">100%</div><div class="stat-l">auditoria: quem alterou, quando e qual carga, sempre rastreável</div></div>
     </div>
@@ -263,7 +264,7 @@
       <table>
         <tr><th>Antes</th><th>Depois</th></tr>
         <tr><td>30 a 40 min/dia de leitura fragmentada em 6+ planilhas</td><td>Menos de 5 min em uma tela única (desktop e mobile)</td></tr>
-        <tr><td>CAC incomparável entre frentes (régua própria em cada uma)</td><td>1 régua, 8 indicadores, 5 frentes comparáveis</td></tr>
+        <tr><td>CAC incomparável entre frentes (régua própria em cada uma)</td><td>1 régua, 8 indicadores, 5 frentes comparáveis no funil (custo com as duas exceções documentadas)</td></tr>
         <tr><td>Erro de planilha contaminava o mês, sem alerta</td><td>Quarentena automática, painel sempre de pé no último dado válido</td></tr>
         <tr><td>Dado sem dono, sem trilha</td><td>Auditoria completa: quem alterou, quando, qual carga, qual revisão</td></tr>
         <tr><td>Histórico refém das planilhas</td><td>Raw imutável e snapshots, histórico preservado independente da origem</td></tr>
@@ -290,7 +291,7 @@
 
     <h2 class="reveal">Lições aprendidas</h2>
     <p class="reveal"><b>Protótipo com mock estruturado como o modelo final é o atalho mais barato que existe.</b> Consegui 5 iterações de produto antes de escrever uma linha de pipeline.</p>
-    <p class="reveal"><b>A decisão de UX mais valiosa não foi visual.</b> Foi separar o que é decisão de diretoria do que é diagnóstico de coordenação. Dashboard falha mais por hierarquia errada do que por gráfico feio.</p>
+    <p class="reveal"><b>A decisão de UX mais valiosa foi de hierarquia, não de estilo visual.</b> Separar o que é decisão de diretoria do que é diagnóstico de coordenação evitou o erro mais comum: dashboard que falha por misturar nível de decisão, não por gráfico feio.</p>
     <p class="reveal"><b>Extrator burro mais SQL inteligente vence parser esperto.</b> Planilha viva muda todo mês. SQL versionado com raw imutável absorve qualquer mudança sem perder histórico.</p>
     <p class="reveal"><b>Tom importa.</b> Trocar "pior movimento" por "ponto de observação mais referência" mudou a relação da C-Level com o painel, de fonte de ansiedade para copiloto.</p>
     <p class="reveal"><b>Governança se vende com incentivo, não com imposição.</b> Os times aceitaram o contrato de dados porque ganharam algo visível em troca.</p>

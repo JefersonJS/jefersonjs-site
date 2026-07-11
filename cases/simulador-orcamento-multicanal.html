@@ -121,9 +121,9 @@
       <table>
         <tr><th>Etapa</th><th>O que significa</th></tr>
         <tr><td>Aquisição</td><td>Primeira busca por um restaurante no app. O sinal de que a pessoa chegou.</td></tr>
-        <tr><td>Ativação</td><td>Primeiro pedido concluído. A pessoa começou a usar de verdade.</td></tr>
-        <tr><td>Entrega</td><td>Primeiro pedido entregue. O pedido chegou.</td></tr>
-        <tr><td>ICP</td><td>Dois pedidos em até sete dias. O sinal de que o cliente veio para ficar.</td></tr>
+        <tr><td>Ativação</td><td>Primeiro pedido pago no checkout. A pessoa começou a usar de verdade.</td></tr>
+        <tr><td>Entrega</td><td>Primeiro pedido entregue. Na prática, quase todo pedido pago vira entrega, cancelamento é raro. É a etapa que confirma que a operação (restaurante + entregador) funcionou.</td></tr>
+        <tr><td>ICP</td><td>Dois pedidos em até sete dias. Pedir de novo tão rápido, sem cupom de primeira compra pra puxar, é o sinal mais barato de recompra que dá pra medir cedo.</td></tr>
       </table>
     </div>
     <p class="reveal">A aquisição vem de seis frentes: mídia paga, influenciadores, indicação entre clientes (member get member), conteúdo e SEO, parcerias, e um grupo grande de clientes que chega sem canal identificado (orgânico e direto).</p>
@@ -161,10 +161,10 @@
 
     <h3 class="reveal">Passo 4: unificar seis canais numa lente única que soma o total real</h3>
     <p class="reveal">O pedido da liderança era claro. A soma dos canais tinha que fechar com o total oficial do mês. Para isso, cada cliente precisa cair em um único balde.</p>
-    <p class="reveal">Montei uma partição por canal onde cada usuário é atribuído a uma frente só. A soma das seis frentes passou a reproduzir o total oficial de ativações. Isso deu à liderança algo que ela não tinha: um total confiável, quebrado por canal, sem sobra e sem falta.</p>
+    <p class="reveal">Montei uma partição por canal onde cada cliente é atribuído a uma frente só. A soma das seis frentes passou a reproduzir o total oficial de ativações. Isso deu à liderança algo que ela não tinha: um total confiável, quebrado por canal, sem sobra e sem falta.</p>
 
     <h3 class="reveal">Passo 5: validar contra o número oficial, mês a mês</h3>
-    <p class="reveal">Não adianta construir bonito e não bater. Comparei o total do simulador com o número oficial da empresa, mês a mês. Fechou em torno de 94% a 99% no mês de referência. A pequena diferença que sobra são clientes que emitem por vias fora da atribuição de growth, como integrações e API. Deixei isso explícito na ficha técnica, porque esconder gap é pior que mostrar.</p>
+    <p class="reveal">Não adianta construir bonito e não bater. Comparei o total do simulador com o número oficial da empresa, mês a mês. Fechou em torno de 94% a 99% no mês de referência. A pequena diferença que sobra são pedidos feitos por vias fora da atribuição de growth, como parceiros com totem ou app white-label integrado via API. Deixei isso explícito na ficha técnica, porque esconder gap é pior que mostrar.</p>
 
     <h3 class="reveal">Passo 6: medir a dupla contagem entre canais</h3>
     <p class="reveal">Aqui veio o achado que mudou a conversa. A liderança suspeitava de dupla contagem e queria descontá-la do grupo orgânico. Fui atrás do dado.</p>
@@ -190,7 +190,7 @@ Plano de Revenue     ─┘        └ análise de dupla contagem</code></pre>
     <p class="reveal">Você define o investimento e o custo por cliente ativado de cada canal pago. A ferramenta calcula quantos clientes aquele investimento ativa. A partir da ativação, ela estima quantos chegaram (aquisição) e quantos viraram recorrentes (ICP), usando as taxas de conversão medidas no mês de referência.</p>
     <p class="reveal">Os canais orgânicos não têm investimento, então entram direto pelo volume de ativação.</p>
     <p class="reveal">Um detalhe que fez diferença. No estado inicial, sem ninguém mexer, a ferramenta reproduz o mês real com precisão, usando os valores medidos. Só quando alguém edita um campo é que ela recalcula. Isso evita um problema clássico de simulador, que é o número base já sair errado por arredondamento de taxa. O ponto de partida é sempre a realidade.</p>
-    <p class="reveal">A projeção não parte da ideia ingênua de que gastar mais gera vendas na mesma proporção. Na prática, o gasto sozinho explica pouco do volume. Ancorei a projeção em três coisas que se mostraram estáveis mês a mês: a participação de cada canal, o custo por cliente de cada canal, e as taxas de conversão do funil.</p>
+    <p class="reveal">A projeção não parte da ideia ingênua de que gastar mais gera pedidos na mesma proporção. Na prática, o gasto sozinho explica pouco do volume. Ancorei a projeção em três coisas que se mostraram estáveis mês a mês: a participação de cada canal, o custo por cliente de cada canal, e as taxas de conversão do funil.</p>
 
     <h2 class="reveal">Decisões difíceis (e por que tomei cada uma)</h2>
     <p class="reveal"><b>Coorte contra período.</b> Escolhi período para bater com o oficial, mesmo sabendo que coorte é melhor para custo de aquisição puro. Deixei a coorte documentada como visão secundária.</p>

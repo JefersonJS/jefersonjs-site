@@ -121,7 +121,7 @@
     <p class="reveal">Essa era a dor. Traduzir a carteira num perfil acionável.</p>
 
     <h2 class="reveal">Contexto: a Cursora</h2>
-    <p class="reveal">A Cursora é um marketplace self-service de cursos online, onde instrutores publicam e vendem seus próprios cursos. O instrutor entra pelo app (iOS ou Android) ou pela web, monta o curso, define o preço e publica pra venda. Parte dos instrutores conecta um canal de divulgação próprio via integração com plataformas de anúncio e redes sociais.</p>
+    <p class="reveal">A Cursora é um marketplace self-service de cursos online, onde instrutores publicam e vendem seus próprios cursos. O instrutor entra pelo app (iOS ou Android) ou pela web, monta o curso, define o preço e publica pra venda. Parte dos instrutores configura uma página de vendas própria, fora do checkout padrão da Cursora, integrada com ferramenta de pagamento e e-mail marketing.</p>
     <p class="reveal">O modelo de receita é simples. A Cursora ganha uma margem por venda de curso. Quanto mais o instrutor vende, mais a Cursora fatura.</p>
     <p class="reveal">O funil de referência tem alguns marcos: instalação, primeira montagem de curso, primeira venda de curso (ativação) e recorrência. Existe também um programa de indicação (member-get-member), onde clientes convidam outros clientes.</p>
     <p class="reveal">Guardando essa mecânica, dá para entender por que o melhor cliente aqui é medido por volume de vendas de curso e receita gerada. Não por número de logins ou tamanho declarado.</p>
@@ -153,20 +153,20 @@
 
     <h2 class="reveal">Arquitetura de dado</h2>
     <p class="reveal">Trabalhei sobre duas tabelas gold, cada uma com um grão claro.</p>
-    <p class="reveal">A primeira é a base transacional de pedidos. Uma linha por pedido, com identificador do cliente, data, valores cobrados, margem da plataforma, canal de venda, integração de origem e os carimbos de status (vendeu, aluno concluiu o curso, cancelou).</p>
-    <p class="reveal">A segunda é a tabela de perfil do cliente. Uma linha por cliente, já consolidada. Tem região, faixa de volume de vendas de curso, sistema operacional, integração de canal de divulgação, papel no programa de indicação, tempo de casa e uma série de marcos de venda (data da primeira venda de curso, da segunda, dias até a segunda, e assim por diante).</p>
+    <p class="reveal">A primeira é a base transacional de pedidos. Uma linha por pedido, com identificador do cliente, data, valores cobrados, margem da plataforma, canal de venda, integração de origem e os carimbos de status (vendeu, aluno acessou o curso, cancelou).</p>
+    <p class="reveal">A segunda é a tabela de perfil do cliente. Uma linha por cliente, já consolidada. Tem região, faixa de volume de vendas de curso, sistema operacional, se tem página de vendas própria configurada, papel no programa de indicação, tempo de casa e uma série de marcos de venda (data da primeira venda de curso, da segunda, dias até a segunda, e assim por diante).</p>
     <p class="reveal">Essa separação importa. A tabela de pedidos me dá volume e receita por cliente. A tabela de perfil me dá os atributos descritivos. O ICP nasce do cruzamento das duas.</p>
 
     <h2 class="reveal">Como eu fiz</h2>
 
     <h3 class="reveal">Passo 1. Definir o que é "melhor cliente"</h3>
     <p class="reveal">O método clássico de ICP foi desenhado para venda B2B com carteira e vendedor. A Cursora é self-service. Então a primeira coisa foi traduzir os conceitos.</p>
-    <p class="reveal">Onde o método fala em receita gerada pelo cliente, usei volume de vendas de curso e GMV por cliente. Onde fala em vendedor responsável, usei canal de aquisição. Onde fala em tipo de contrato, usei plataforma e integração. Onde fala em tempo de relacionamento, usei tempo de casa.</p>
+    <p class="reveal">Onde o método fala em receita gerada pelo cliente, usei volume de vendas de curso e GMV por cliente. Onde fala em vendedor responsável, usei página de vendas própria configurada. Onde fala em tipo de contrato, usei plataforma e integração. Onde fala em tempo de relacionamento, usei tempo de casa.</p>
     <p class="reveal">O melhor cliente da Cursora é quem vende muito curso, com valor e recorrência. Simples assim.</p>
 
     <h3 class="reveal">Passo 2. Validar antes de confiar</h3>
     <p class="reveal">Aqui está a parte que separa análise séria de dashboard bonito.</p>
-    <p class="reveal">Antes de rodar qualquer curva, eu precisava ter certeza de que a minha definição de "venda de curso" batia com a definição oficial da empresa. Tinha uma ambiguidade real: venda de curso (curso comprado e pago) e conclusão do curso (aluno efetivamente concluiu o curso) são eventos diferentes, e usar um no lugar do outro muda toda a análise.</p>
+    <p class="reveal">Antes de rodar qualquer curva, eu precisava ter certeza de que a minha definição de "venda de curso" batia com a definição oficial da empresa. Tinha uma ambiguidade real: venda de curso (curso comprado e pago) e acesso ao curso (aluno efetivamente entrou e assistiu à primeira aula) são eventos diferentes, e usar um no lugar do outro muda toda a análise.</p>
     <p class="reveal">Levantei uma hipótese. A métrica oficial de ativação seria a coorte de primeira venda de curso por mês. Escrevi a query, contei clientes por mês da primeira venda de curso e comparei com o dashboard de BI da liderança.</p>
     <p class="reveal">Bateu. Diferença zero em todos os meses fechados, com variação de no máximo um cliente por ruído de snapshot. O único mês com diferença maior era o mês corrente, ainda parcial.</p>
     <p class="reveal">Depois fiz o mesmo com o gate de venda na tabela de pedidos, para garantir que o carimbo que eu ia usar reproduzia exatamente a mesma primeira venda de curso. Bateu de novo.</p>
@@ -200,7 +200,7 @@
     </div>
     <div class="table-wrap reveal">
       <table>
-        <tr><th>Curva</th><th>Clientes</th><th>% Clientes</th><th>Vendas de curso</th><th>% GMV</th><th>Taxa de conclusão</th></tr>
+        <tr><th>Curva</th><th>Clientes</th><th>% Clientes</th><th>Vendas de curso</th><th>% GMV</th><th>Taxa de acesso</th></tr>
         <tr><td>A</td><td>33.600</td><td>12,0%</td><td>~3,7 mi</td><td>79,0%</td><td>94%</td></tr>
         <tr><td>B</td><td>70.000</td><td>25,0%</td><td>~0,9 mi</td><td>15,5%</td><td>92%</td></tr>
         <tr><td>C</td><td>176.400</td><td>63,0%</td><td>~0,4 mi</td><td>5,5%</td><td>90%</td></tr>
@@ -209,7 +209,7 @@
 
     <h3 class="reveal">A distância entre um Curva A e o resto é brutal</h3>
     <p class="reveal">Em seis meses, o cliente médio da Curva A vendeu cerca de 110 cursos. O da Curva B, 12. O da Curva C, 2.</p>
-    <p class="reveal">Em receita por cliente, um Curva A vale mais de cem vezes um Curva C. A qualidade acompanha o valor: a taxa de conclusão do curso sobe junto com a curva, e o ticket médio por venda também.</p>
+    <p class="reveal">Em receita por cliente, um Curva A vale mais de cem vezes um Curva C. A qualidade acompanha o valor: a taxa de acesso ao curso comprado sobe junto com a curva (aluno de instrutor Curva A entra e usa o que comprou, o que reduz risco de reembolso), e o ticket médio por venda também.</p>
 
     <h3 class="reveal">O que os Curva A têm em comum</h3>
     <p class="reveal">Ordenados por poder preditivo:</p>
@@ -217,7 +217,7 @@
       <table>
         <tr><th>Sinal</th><th>Lift</th><th>Leitura</th></tr>
         <tr><td>Porte: 30+ vendas de curso por mês</td><td>~6,2</td><td>o divisor de águas, disparado o mais forte</td></tr>
-        <tr><td>Canal de divulgação próprio ativo</td><td>~3,3</td><td>canal de divulgação conectado prevê valor</td></tr>
+        <tr><td>Página de vendas própria configurada (fora do checkout padrão da Cursora)</td><td>~3,3</td><td>instrutor que investe em infraestrutura de venda própria tende a ser o melhor cliente</td></tr>
         <tr><td>Indicação: perfil "convidante"</td><td>~1,9</td><td>quem indica, não quem foi indicado</td></tr>
         <tr><td>Velocidade: 2ª venda de curso em até 7 dias</td><td>~1,8</td><td>a régua de ativação se valida como preditora</td></tr>
         <tr><td>Tempo de casa: 1+ ano</td><td>~1,6</td><td>maturidade e lealdade</td></tr>
@@ -232,11 +232,11 @@
     <p class="reveal">O valor está nos bons clientes indicarem. Os indicados, em média, não viram bons clientes. Isso muda a leitura de qualidade do canal e virou uma pergunta aberta para o time antes de escalar aquisição por indicação.</p>
 
     <h2 class="reveal">O ICP, em uma frase</h2>
-    <p class="reveal">Instrutor com operação recorrente (30 ou mais vendas de curso por mês), que ativa rápido (segunda venda de curso em até sete dias), tende a ter canal de divulgação próprio integrado, já tem mais de um ano de casa e opera por iOS ou navegador.</p>
+    <p class="reveal">Instrutor com operação recorrente (30 ou mais vendas de curso por mês), que ativa rápido (segunda venda de curso em até sete dias), tende a ter página de vendas própria configurada, já tem mais de um ano de casa e opera por iOS ou navegador.</p>
 
     <h3 class="reveal">Os três critérios de priorização</h3>
     <p class="reveal"><b>1. Frequência e porte.</b> Faixa de vendas de curso a partir de 10 por mês, alvo 30 ou mais. Peso máximo. É o sinal mais forte de todos.</p>
-    <p class="reveal"><b>2. Canal de divulgação próprio ativo.</b> Canal de divulgação conectado. Demonstra intenção de escala.</p>
+    <p class="reveal"><b>2. Página de vendas própria configurada.</b> Checkout fora do padrão da Cursora, integrado com pagamento e e-mail marketing. Demonstra investimento em infraestrutura própria, sinal de operação séria.</p>
     <p class="reveal"><b>3. Velocidade de ativação.</b> Cruzou a marca de duas vendas de curso em sete dias. Sinal precoce e barato de observar.</p>
     <p class="reveal">Boosters secundários: tempo de casa acima de um ano, iOS ou web, e perfil convidante no programa de indicação. Anti-ICP, para despriorizar: zero a uma venda de curso, sem segunda venda em sete dias, Android puro, e menos de 90 dias com volume baixo.</p>
 
@@ -292,29 +292,29 @@ WITH venda AS (
   WHERE first_order_date BETWEEN '2026-01-01' AND '2026-06-30'
   GROUP BY mes
 ),
-conclusao AS (
-  SELECT FORMAT_DATE('%Y-%m', first_shipment_date) AS mes,
-         COUNT(DISTINCT seller_id) AS ativacao_conclusao
+acesso AS (
+  SELECT FORMAT_DATE('%Y-%m', first_access_date) AS mes,
+         COUNT(DISTINCT seller_id) AS ativacao_acesso
   FROM `analytics.dim_sellers`
-  WHERE first_shipment_date BETWEEN '2026-01-01' AND '2026-06-30'
+  WHERE first_access_date BETWEEN '2026-01-01' AND '2026-06-30'
   GROUP BY mes
 )
-SELECT COALESCE(v.mes, c.mes) AS mes, v.ativacao_venda, c.ativacao_conclusao
+SELECT COALESCE(v.mes, c.mes) AS mes, v.ativacao_venda, c.ativacao_acesso
 FROM venda v
-FULL OUTER JOIN conclusao c USING (mes)
+FULL OUTER JOIN acesso c USING (mes)
 ORDER BY mes;</code></pre>
 
     <h3 class="reveal">01. Curva ABC (base cliente + curva + perfil)</h3>
-<pre class="reveal"><code>-- Gate de venda validado: label_ready_at IS NOT NULL.
--- Conclusão do curso = completed_at IS NOT NULL (lente de qualidade: aluno concluiu o curso).
+<pre class="reveal"><code>-- Gate de venda validado: payment_confirmed_at IS NOT NULL.
+-- Acesso ao curso = completed_at IS NOT NULL (lente de qualidade: aluno acessou o curso depois de comprar).
 CREATE OR REPLACE TABLE `analytics.seller_curva_abc_2026h1` AS
 WITH pedidos AS (
   SELECT
     seller_id, order_id,
     COALESCE(revenue_charged, 0)  AS gmv_pedido,
     COALESCE(platform_fee, 0)     AS receita_plataforma,
-    (label_ready_at IS NOT NULL)  AS vendeu,
-    (completed_at   IS NOT NULL)  AS concluiu
+    (payment_confirmed_at IS NOT NULL)  AS vendeu,
+    (completed_at   IS NOT NULL)  AS acessou
   FROM `analytics.fct_orders`
   WHERE order_date BETWEEN '2026-01-01' AND '2026-06-30'
     AND seller_id IS NOT NULL
@@ -322,7 +322,7 @@ WITH pedidos AS (
 por_cliente AS (
   SELECT seller_id,
     COUNTIF(vendeu) AS vendas,
-    COUNTIF(concluiu) AS conclusoes,
+    COUNTIF(acessou) AS acessos,
     SUM(IF(vendeu, gmv_pedido, 0))        AS gmv,
     SUM(IF(vendeu, receita_plataforma, 0)) AS receita_plataforma
   FROM pedidos
@@ -344,8 +344,8 @@ classificado AS (
   FROM ranked
 )
 SELECT
-  c.seller_id, c.curva, c.vendas, c.conclusoes, c.gmv, c.receita_plataforma,
-  SAFE_DIVIDE(c.conclusoes, c.vendas) AS taxa_conclusao,
+  c.seller_id, c.curva, c.vendas, c.acessos, c.gmv, c.receita_plataforma,
+  SAFE_DIVIDE(c.acessos, c.vendas) AS taxa_acesso,
   SAFE_DIVIDE(c.gmv, c.vendas)       AS ticket_medio,
   d.state, d.volume_tier, d.platform_os, d.canal_integration,
   d.referral_role, d.seller_level, d.signup_date, d.days_to_second_order,
@@ -406,7 +406,7 @@ scored AS (
       WHEN '2-6'    THEN 5  ELSE 0 END AS pts_porte,
     CASE WHEN canal_integration IS NOT NULL
               AND LOWER(canal_integration) NOT IN ('none','')
-         THEN 25 ELSE 0 END AS pts_integracao,  -- Critério 2: canal de divulgação (0-25)
+         THEN 25 ELSE 0 END AS pts_integracao,  -- Critério 2: página de vendas própria (0-25)
     CASE WHEN days_to_second_order <= 7  THEN 25
          WHEN days_to_second_order <= 14 THEN 12
          ELSE 0 END AS pts_velocidade,          -- Critério 3: velocidade (0-25)

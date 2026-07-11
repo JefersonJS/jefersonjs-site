@@ -98,8 +98,8 @@
 
     <h2 class="reveal">O contexto</h2>
     <p class="reveal">Agenda Certa é um SaaS de agendamento e gestão pra pequenos negócios de serviço, clínicas, salões, estúdios. O negócio cadastra os serviços, define a agenda e recebe os agendamentos dos clientes finais. Quanto mais atendimentos ele conclui, mais a Agenda Certa fatura. O modelo vive de volume.</p>
-    <p class="reveal">O cliente que sustenta o negócio tem nome interno: ICP. É o negócio que realiza sete ou mais atendimentos concluídos por mês, de forma recorrente. Ele é uma fração da base. Responde pela maior parte do volume.</p>
-    <p class="reveal">Todo mês, cerca de um quarto da base de ICP deixava de bater os sete atendimentos. A liderança de Growth olhava esse número subir e tratava como churn. A resposta padrão era disparar cupom. Não movia o ponteiro.</p>
+    <p class="reveal">O cliente que sustenta o negócio tem nome interno: ICP. É o negócio que atende sete ou mais clientes distintos por mês, de forma recorrente. Ele é uma fração da base. Responde pela maior parte do volume.</p>
+    <p class="reveal">Todo mês, cerca de um quarto da base de ICP deixava de bater os sete clientes atendidos. A liderança de Growth olhava esse número subir e tratava como churn. A resposta padrão era disparar cupom. Não movia o ponteiro.</p>
 
     <h2 class="reveal">A dor da liderança</h2>
     <p class="reveal">O time gastava mais de meio milhão por mês em mídia paga sem saber, no clique, se aquele negócio viraria cliente recorrente ou faria um atendimento e sumiria. Pagava o mesmo CAC pra dois perfis opostos.</p>
@@ -118,7 +118,7 @@
     <h2 class="reveal">O diagnóstico que virou a chave</h2>
     <p class="reveal">Comecei validando a intuição da liderança. Ela estava meio errada, do jeito certo.</p>
     <p class="reveal">O churn de ICP (o cliente que zera os atendimentos) é estável e baixo. Roda perto de 4% ao mês, com pouca variação, e só tem pico sazonal previsível no começo do ano. Não é o vilão.</p>
-    <p class="reveal">O vilão é o downgrade. É o ICP que continua ativo, mas cai de sete atendimentos pra um, dois, três. Roda perto de 22% ao mês. Seis vezes o churn. Estava num platô alto, sem melhorar sozinho.</p>
+    <p class="reveal">O vilão é o downgrade. É o ICP que continua ativo, mas cai de sete clientes atendidos pra um, dois, três. Roda perto de 22% ao mês. Seis vezes o churn. Estava num platô alto, sem melhorar sozinho.</p>
     <p class="reveal">Isso muda a estratégia inteira. O churner já foi, caro e improvável de recuperar. O downgrader ainda está na sua casa, só desacelerou. Dá pra reverter, e é barato. A maior parte da perda de status vinha dele.</p>
     <p class="reveal">Traduzi o custo pra língua da liderança. O downgrade tirava algo entre 4% e 5% do volume total de atendimentos da empresa. Todo mês. Um número que ninguém tinha na ponta da língua, e que sozinho justificava o projeto.</p>
 
@@ -131,20 +131,20 @@
 
     <h2 class="reveal">Dois tipos de ICP, dois problemas distintos</h2>
     <p class="reveal">Uma sutileza que evitou muita confusão. A empresa tinha duas definições de cliente ideal que pareciam a mesma coisa.</p>
-    <p class="reveal">O ICP de retenção é quem faz sete ou mais atendimentos concluídos no mês. É medido em atendimentos concluídos. É o alvo deste projeto.</p>
+    <p class="reveal">O ICP de retenção é quem atende sete ou mais clientes distintos no mês. É medido em clientes atendidos. É o alvo deste projeto.</p>
     <p class="reveal">O ICP de ativação é o novo usuário que faz dois agendamentos em até sete dias. É medido em agendamentos, olhando o primeiro agendamento. É um problema de aquisição, com outra população e outro evento.</p>
     <p class="reveal">Misturar os dois é a receita pra um modelo que não funciona pra nenhum. Mantive separados desde o começo, e a fundação atende os dois.</p>
 
     <h2 class="reveal">O que prevê o downgrade</h2>
     <p class="reveal">Aqui está o coração do projeto. Rodei um backtest em quase um ano de meses fechados pra descobrir quais sinais separam de verdade quem cai de quem fica.</p>
     <p class="reveal">O sinal mais forte e mais acionável é o ritmo da primeira semana. O ICP que não conclui nenhum atendimento nos sete primeiros dias do mês tem perto de 47% de chance de dar downgrade. Quem conclui cinco ou mais na primeira semana tem menos de 1%. O comportamento da primeira semana entrega o futuro do mês.</p>
-    <p class="reveal">O segundo sinal é a faixa de volume do mês anterior. Quem estava no piso do ICP (sete a catorze atendimentos) cai a 38%. Quem estava no topo (trinta ou mais) cai a 2%. O risco vive na margem.</p>
+    <p class="reveal">O segundo sinal é a faixa de volume do mês anterior. Quem estava no piso do ICP (sete a catorze clientes atendidos) cai a 38%. Quem estava no topo (trinta ou mais) cai a 2%. O risco vive na margem.</p>
     <p class="reveal">Recência e clientes finais distintos reforçam. O negócio que atende muitos clientes finais diferentes quase não cai. O que concentra em poucos, cai muito.</p>
     <p class="reveal">Teve um achado estratégico sobre cupom. Quem usou cupom no mês anterior dá mais downgrade e mais churn. Confirmou a tese de que cupom não segura esse cliente. Atrai quem usa e vaza.</p>
     <p class="reveal">O interessante foi o que caiu. Dois "priors" que a empresa tinha como verdade não se sustentaram no teste. O tipo de e-mail não separava nada. O canal de aquisição não previa retenção de quem já era ICP. Depois que o cliente amadurece, o que manda é o comportamento atual dele, não de onde ele veio. Fato venceu hipótese, duas vezes.</p>
 
     <h2 class="reveal">O modelo</h2>
-    <p class="reveal">Nada de caixa-preta na primeira versão. Um score aditivo de zero a dez, transparente, que combina os sinais validados. Ritmo da semana, faixa de volume, recência, cupom, destinos.</p>
+    <p class="reveal">Nada de caixa-preta na primeira versão. Um score aditivo de zero a dez, transparente, que combina os sinais validados. Ritmo da semana, faixa de volume, recência, cupom, clientes finais distintos.</p>
     <p class="reveal">A escolha por um score simples foi consciente. Ele é explicável pra liderança e pro time de mídia. E vira o baseline honesto que um modelo de machine learning futuro vai ter que bater. Sem esse baseline, qualquer ML parece bom.</p>
     <p class="reveal">O backtest do score foi limpo. Cortando no score cinco ou mais, a lista pega cerca de 42% da base, captura perto de 86% dos downgraders e roda a 46% de precisão, contra uma base de 22%. O topo do score (oito a dez) concentra churn. O mesmo modelo ordena a severidade e já entrega o público de churn de brinde.</p>
     <div class="stat-grid reveal">
@@ -168,7 +168,7 @@
 
     <h2 class="reveal">O potencial de impacto</h2>
     <p class="reveal">Apresentei em cenários, porque o lift real só vem do holdout. Prometer número fechado antes do teste seria desonesto.</p>
-    <p class="reveal">No cenário base, uma redução de cinco pontos no downgrade do público alvo mantém algo como 535 negócios no nível ICP por mês e recupera perto de 3.750 atendimentos mensais. No otimista, quase o dobro. Isso é só a primeira versão, sobre uma fatia da perda total, com o modelo aprendendo a cada ciclo.</p>
+    <p class="reveal">No cenário base, uma redução de cinco pontos no downgrade do público alvo mantém algo como 535 negócios no nível ICP por mês e recupera perto de 3.750 clientes atendidos mensalmente. No otimista, quase o dobro. Isso é só a primeira versão, sobre uma fatia da perda total, com o modelo aprendendo a cada ciclo.</p>
     <p class="reveal">O número que prende a liderança não é a recuperação da v1. É o tamanho do problema que agora dá pra enxergar e atacar. Perto de 5% do volume da empresa estava indo embora por um evento que ninguém via chegar.</p>
 
     <h2 class="reveal">O achado bônus: aquisição</h2>
@@ -188,7 +188,7 @@
         <tr><th>Camada</th><th>Ferramentas</th></tr>
         <tr><td>Data warehouse e modelagem</td><td>Google BigQuery, SQL puro, tabelas particionadas e clusterizadas, arquitetura medallion (bronze / silver / gold), scheduled queries idempotentes com append por partição</td></tr>
         <tr><td>Métodos analíticos</td><td>Feature engineering point-in-time, backtest em meses fechados, análise de cohort, RFM, score aditivo transparente, desenho de holdout e leitura de incrementalidade (lift)</td></tr>
-        <tr><td>Fontes de comportamento e atribuição</td><td>AppsFlyer (atribuição mobile), Google Analytics 4 e Firebase (comportamento web e app), HubSpot (CRM)</td></tr>
+        <tr><td>Fontes de comportamento e atribuição</td><td>Google Analytics 4 e Firebase (comportamento web e app), HubSpot (CRM)</td></tr>
         <tr><td>Ativação de mídia e CRM</td><td>Google Ads (Customer Match, Demand Gen), Meta Ads (Custom Audiences), Google Sheets (Connected Sheets como ponte), HubSpot (listas e workflows), identificadores hasheados em SHA-256</td></tr>
         <tr><td>Comunicação executiva</td><td>Deck gerado por código com PptxGenJS, storytelling em cinco atos, QA visual automatizado</td></tr>
         <tr><td>Método de trabalho</td><td>Desenvolvimento assistido por LLM (modelo como operador de SQL e documentação), estratégia e validação de cada número por mim</td></tr>
@@ -197,7 +197,6 @@
     <div class="tags reveal">
       <span class="tag">BigQuery</span>
       <span class="tag">SQL</span>
-      <span class="tag">AppsFlyer</span>
       <span class="tag">GA4</span>
       <span class="tag">Firebase</span>
       <span class="tag">HubSpot</span>
@@ -217,8 +216,8 @@
 │   └── 04-padroes.md                 convenções e aprendizados
 ├── sql/
 │   ├── silver/
-│   │   ├── slv_postagens_uid_dia.sql
-│   │   └── slv_emissoes_uid_dia.sql
+│   │   ├── slv_atendimentos_uid_dia.sql
+│   │   └── slv_agendamentos_uid_dia.sql
 │   ├── gold/
 │   │   ├── gld_features_uid_mes.sql  feature store point-in-time
 │   │   ├── gld_labels_uid_mes.sql    desfechos por mês
