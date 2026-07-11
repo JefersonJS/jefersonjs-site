@@ -3,10 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeferson J Silva — Analytics & Attribution</title>
+  <title>Jeferson J Silva · Analytics & Attribution</title>
   <meta name="description" content="Auditoria, mensuração e atribuição. Para empresas que precisam confiar no número antes de investir mais.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jefersonjs.github.io/jefersonjs-site/">
+  <meta name="theme-color" content="#4676dc">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a70'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%234676dc' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://jefersonjs.github.io/jefersonjs-site/">
+  <meta property="og:site_name" content="Jeferson J Silva">
+  <meta property="og:title" content="Jeferson J Silva · Analytics & Attribution">
+  <meta property="og:description" content="Auditoria, mensuração e atribuição. Para empresas que precisam confiar no número antes de investir mais.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jeferson J Silva · Analytics & Attribution">
+  <meta name="twitter:description" content="Auditoria, mensuração e atribuição. Para empresas que precisam confiar no número antes de investir mais.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Jeferson J Silva - Analytics & Attribution",
+    "url": "https://jefersonjs.github.io/jefersonjs-site/",
+    "description": "Auditoria, mensuração e atribuição para empresas que precisam confiar no número antes de investir mais em marketing.",
+    "areaServed": "BR",
+    "priceRange": "$$",
+    "founder": {
+      "@type": "Person",
+      "name": "Jeferson J Silva",
+      "jobTitle": "Analytics & Attribution Specialist",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "PUCRS"
+      },
+      "knowsAbout": ["Google Analytics 4", "AppsFlyer", "Google Ads", "Meta Ads", "Atribuição de marketing", "Fraude de atribuição mobile", "Server-to-Server tracking", "Conversions API"]
+    },
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Implementação e auditoria de GA4" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Setup e auditoria AppsFlyer" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Detecção de fraude mobile" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Modelagem de atribuição customizada" } }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto tempo dura o diagnóstico gratuito?",
+        "acceptedAnswer": { "@type": "Answer", "text": "30 minutos, por videochamada, sem compromisso. Jeferson entra ao vivo nas suas plataformas e mostra os três problemas mais críticos." }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso trocar de ferramenta para trabalhar com você?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Não. O trabalho é feito em cima do que você já usa: GA4, AppsFlyer, Adjust, Firebase, GTM ou outra combinação. O objetivo é fazer a ferramenta que você já paga funcionar direito, não trocar de stack." }
+      },
+      {
+        "@type": "Question",
+        "name": "É uma agência ou um profissional independente?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Profissional independente. Sem equipe de 40 pessoas, sem intermediário. Jeferson trabalha direto com o time responsável pela conta." }
+      },
+      {
+        "@type": "Question",
+        "name": "Que tipo de problema aparece numa auditoria de atribuição?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Os três mais comuns: mais de uma plataforma atribuindo a mesma venda (ROAS inflado), 20% a 30% das instalações mobile sendo fraude disfarçada de instalação normal, e eventos configurados errado (CAPI sem deduplicação, GA4 duplicado, S2S perdendo sinal)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais plataformas e ferramentas são atendidas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GA4, AppsFlyer, Adjust, Branch, Firebase, Amplitude, Mixpanel, Google Ads, Meta Ads, GTM, BigQuery, Looker Studio, Power BI, HubSpot, Windsor, dbt, Python e SQL." }
+      }
+    ]
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -204,6 +280,13 @@
     .about-body h3:first-child { margin-top:0; }
     .about-body p { font-size:.89rem; color:var(--muted); line-height:1.8; }
 
+    /* FAQ */
+    .faq { background:var(--off); }
+    .faq-list { display:flex; flex-direction:column; gap:1.1rem; max-width:760px; }
+    .faq-item { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.5rem 1.75rem; }
+    .faq-q { font-size:.94rem; font-weight:700; margin-bottom:.5rem; }
+    .faq-a { font-size:.86rem; color:var(--muted); line-height:1.72; }
+
     /* CTA */
     .cta-sec { background:var(--gd); text-align:center; position:relative; overflow:hidden; }
     .cta-sec::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size:48px 48px; }
@@ -249,6 +332,7 @@
     <li><a href="#pilares">Serviços</a></li>
     <li><a href="#clientes">Clientes</a></li>
     <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contato" class="nav-cta">Falar com Jeferson</a></li>
   </ul>
 </nav>
@@ -484,6 +568,37 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <span class="slabel reveal">Perguntas frequentes</span>
+    <h2 class="stitle reveal">Antes de marcar a call</h2>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Quanto tempo dura o diagnóstico gratuito?</h3>
+        <p class="faq-a">30 minutos, por videochamada, sem compromisso. Entro ao vivo nas suas plataformas e mostro os três problemas mais críticos.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Preciso trocar de ferramenta pra trabalhar com você?</h3>
+        <p class="faq-a">Não. Trabalho em cima do que você já usa: GA4, AppsFlyer, Adjust, Firebase, GTM ou outra combinação. O objetivo é fazer a ferramenta que você já paga funcionar direito.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">É agência ou profissional independente?</h3>
+        <p class="faq-a">Profissional independente. Sem equipe de 40 pessoas, sem intermediário. Trabalho direto com o time responsável pela conta.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Que tipo de problema aparece numa auditoria de atribuição?</h3>
+        <p class="faq-a">Os três mais comuns: mais de uma plataforma atribuindo a mesma venda, entre 20% e 30% das instalações mobile sendo fraude disfarçada de instalação normal, e eventos configurados errado (CAPI sem deduplicação, GA4 duplicado, S2S perdendo sinal).</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Quais plataformas e ferramentas você atende?</h3>
+        <p class="faq-a">GA4, AppsFlyer, Adjust, Branch, Firebase, Amplitude, Mixpanel, Google Ads, Meta Ads, GTM, BigQuery, Looker Studio, Power BI, HubSpot, Windsor, dbt, Python e SQL.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-sec" id="contato">
   <div class="container">
@@ -514,7 +629,7 @@
 
 <footer>
   <div class="foot-logo">JJS<em>.</em></div>
-  <p>&copy; 2025 Jeferson J Silva &middot; <a href="https://jefersonjs.com.br">jefersonjs.com.br</a></p>
+  <p>&copy; 2025 Jeferson J Silva &middot; <a href="https://jefersonjs.github.io/jefersonjs-site/">jefersonjs.github.io/jefersonjs-site</a></p>
 </footer>
 
 <script>

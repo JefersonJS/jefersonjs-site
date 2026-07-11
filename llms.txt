@@ -1,0 +1,30 @@
+# Jeferson J Silva - Analytics & Attribution
+
+> Consultor independente de analytics, mensuração e atribuição para marketing digital. Audita GA4, AppsFlyer, Google Ads e Meta Ads, identifica fraude de atribuição e conserta erros de mensuração antes que virem decisão de investimento errada.
+
+## Sobre
+
+- Mais de 10 anos de experiência em analytics e growth marketing.
+- MBA em Technology for Business (AI, Data Science e Big Data) pela PUCRS.
+- Já economizou mais de R$100 mil para um único cliente identificando fraude de atribuição.
+- Atendeu 8+ empresas de fintech, varejo, startups e grandes operações (Outsmarting, Bloxs, Biz Capital, SuperFrete, Atacadão, NotAgency, Zupper, Kontrip).
+- Profissional independente: trabalha direto com o time responsável pela conta, sem agência e sem intermediário.
+
+## Serviços
+
+- Implementação e auditoria de GA4, AppsFlyer, Google Ads e Meta Ads.
+- Rastreamento server-to-server (S2S) e CAPI (Conversions API) do Meta.
+- Detecção de fraude mobile: click injection, SDK spoofing, instalações sintéticas.
+- Modelos de atribuição customizados, forecast de CAC/LTV e dashboards (Looker Studio, Power BI, BigQuery).
+- Treinamento de times para operar GA4 e AppsFlyer com autonomia.
+
+## Problemas que resolve
+
+- Mais de uma plataforma de anúncio atribuindo a mesma venda, inflando o ROAS reportado.
+- Entre 20% e 30% das instalações mobile sendo fraude disfarçada de instalação normal.
+- Eventos mal configurados (CAPI sem deduplicação, GA4 duplicado, S2S perdendo sinal).
+
+## Contato
+
+- Diagnóstico gratuito de 30 minutos por videochamada: https://wa.me/5571982210402
+- Site: https://jefersonjs.github.io/jefersonjs-site/
