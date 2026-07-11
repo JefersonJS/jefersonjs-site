@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atribuição multi-toque de CRM: de 2% a 12% de contribuição real · Jeferson J Silva</title>
+<meta name="description" content="Case de analytics: um modelo de atribuição multi-toque revelou que o CRM contribuía 6x mais que o último clique mostrava. Metodologia, arquitetura de dados e painel de decisão.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jefersonjs.github.io/jefersonjs-site/cases/atribuicao-multitoque-crm.html">
+<meta name="theme-color" content="#4676dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a70'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%234676dc' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://jefersonjs.github.io/jefersonjs-site/cases/atribuicao-multitoque-crm.html">
+<meta property="og:site_name" content="Jeferson J Silva">
+<meta property="og:title" content="Atribuição multi-toque de CRM: de 2% a 12% de contribuição real">
+<meta property="og:description" content="Um modelo de atribuição multi-toque revelou que o CRM contribuía 6x mais que o último clique mostrava. Metodologia, arquitetura de dados e painel de decisão.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Atribuição multi-toque de CRM: de 2% a 12% de contribuição real">
+<meta name="twitter:description" content="Um modelo de atribuição multi-toque revelou que o CRM contribuía 6x mais que o último clique mostrava.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cases.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Atribuição multi-toque de CRM: de 2% a 12% de contribuição real",
+  "description": "Um modelo de atribuição multi-toque revelou que o CRM contribuía 6x mais que o último clique mostrava. Metodologia, arquitetura de dados e painel de decisão.",
+  "url": "https://jefersonjs.github.io/jefersonjs-site/cases/atribuicao-multitoque-crm.html",
+  "datePublished": "2026-07-11",
+  "inLanguage": "pt-BR",
+  "author": { "@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.github.io/jefersonjs-site/" },
+  "publisher": { "@type": "Person", "name": "Jeferson J Silva" },
+  "about": ["Atribuição multi-toque", "CRM", "Analytics de marketing", "BigQuery"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.github.io/jefersonjs-site/" },
+    { "@type": "ListItem", "position": 2, "name": "Cases", "item": "https://jefersonjs.github.io/jefersonjs-site/#cases" },
+    { "@type": "ListItem", "position": 3, "name": "Atribuição multi-toque de CRM", "item": "https://jefersonjs.github.io/jefersonjs-site/cases/atribuicao-multitoque-crm.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">JJS<em>.</em></a>
+  <ul class="nav-r">
+    <li><a href="../index.html#cases">Cases</a></li>
+    <li><a href="../index.html#pilares">Serviços</a></li>
+    <li><a href="../index.html#sobre">Sobre</a></li>
+    <li><a href="../index.html#contato" class="nav-cta">Falar com Jeferson</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="crumb">
+      <a href="../index.html">Início</a><span>/</span>
+      <a href="../index.html#cases">Cases</a><span>/</span>
+      <span class="current">Atribuição multi-toque de CRM</span>
+    </div>
+
+    <div class="case-eyebrow reveal"><span class="dot"></span>Case study · Atribuição & CRM</div>
+    <h1 class="case-title reveal">O CRM que parecia valer 2% das ativações. Na real, valia 12%.</h1>
+    <p class="case-dek reveal">Um modelo de atribuição multi-toque revelou que o último clique escondia seis vezes o valor real do CRM. Do primeiro diagnóstico com a liderança até um painel de decisão rodando com dado atualizado todo dia.</p>
+    <div class="case-meta reveal">
+      <span>Logtech · self-service</span>
+      <span>Ponta a ponta, sozinho</span>
+      <span>BigQuery · Python · SQL</span>
+    </div>
+
+    <div class="case-illust reveal">
+      <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <path d="M84 40 C 210 40 250 96 350 108" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none"/>
+        <path d="M84 82 C 210 82 250 100 350 109" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none"/>
+        <path d="M84 138 C 210 138 250 122 350 111" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none"/>
+        <path d="M84 180 C 210 180 250 130 350 112" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none"/>
+        <g fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.5">
+          <circle cx="60" cy="40" r="22"/>
+          <circle cx="60" cy="82" r="22"/>
+          <circle cx="60" cy="138" r="22"/>
+          <circle cx="60" cy="180" r="22"/>
+        </g>
+        <g fill="#fff" opacity=".85">
+          <circle cx="60" cy="40" r="5"/>
+          <circle cx="60" cy="82" r="5"/>
+          <circle cx="60" cy="138" r="5"/>
+          <circle cx="60" cy="180" r="5"/>
+        </g>
+        <circle cx="376" cy="110" r="30" fill="#d98e2b"/>
+        <path d="M363 110 l8 8 16-16" stroke="#14181d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="376" y="160" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="12" font-family="Poppins,sans-serif" font-weight="600">Ativação</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container case-body">
+
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> "Fretti" é uma empresa fictícia usada pra descrever este projeto. O segmento é real e comum. Todos os números foram anonimizados e aproximados pra proteger dado de negócio. O que está aqui é a estrutura, a metodologia e o raciocínio, não dado proprietário.</div>
+
+    <h2 class="reveal">O contexto</h2>
+    <p class="reveal">Fretti é uma logtech. Uma plataforma onde pequenos e médios e-commerces e vendedores autônomos calculam frete, se cadastram e emitem etiquetas com desconto. O produto é self-serve. O usuário chega, calcula um frete, cria a conta e faz a primeira emissão. Essa primeira emissão é a ativação, o momento que importa.</p>
+    <p class="reveal">O time de CRM trabalha esse funil com quatro canais: e-mail, WhatsApp, notificação no app (push) e banner dentro do produto. O objetivo é levar o cadastro até a primeira emissão.</p>
+    <p class="reveal">O problema chegou pela dona do CRM. O indicador de contribuição do canal vinha de um relatório de último clique, tirado do Google Analytics. Esse relatório mostrava o CRM em torno de 2% das ativações. Abaixo da meta. E lateralizado, sem mexer de um mês para o outro.</p>
+    <p class="reveal">A dúvida travava qualquer decisão. O CRM tinha piorado de verdade? Ou a conta estava medindo errado? Sem responder isso, não dava para defender investimento nem saber onde apostar.</p>
+
+    <h2 class="reveal">Por que o último clique não servia</h2>
+    <p class="reveal">O modelo de último clique dá 100% do crédito para a última interação antes da conversão. Simples de calcular. Cego para o resto da jornada.</p>
+    <p class="reveal">Na prática, o cliente recebe várias mensagens antes de ativar. Um e-mail que abre a jornada, um WhatsApp no meio, um banner no app. O último clique joga tudo isso fora e credita só o último toque. Pior: o clique de WhatsApp quase nunca entrava nessa conta, por limitação de rastreamento.</p>
+    <p class="reveal">Some a isso o fato de o relatório vir de uma ferramenta amostrada, que não bate 100% com a base transacional real da empresa. O número estava subestimado por construção.</p>
+
+    <h2 class="reveal">A hipótese</h2>
+    <p class="reveal">Se a jornada é feita de vários toques, um modelo que enxerga todos eles vai revelar uma contribuição bem maior que o último clique. E vai mostrar o papel de cada canal, não só quem fechou.</p>
+    <p class="reveal">A proposta foi construir uma leitura de atribuição multi-toque em cima da base própria da empresa, em paralelo ao número oficial. Sem substituir nada. Uma segunda lente para entender o CRM.</p>
+
+    <h2 class="reveal">Meu papel</h2>
+    <p class="reveal">Toquei o projeto de ponta a ponta, sozinho na parte técnica. Discovery com a liderança, arquitetura dos dados, extração das fontes, modelagem no data warehouse, definição da metodologia de atribuição, as validações, o painel de decisão e a comunicação para a liderança.</p>
+
+    <h2 class="reveal">A metodologia</h2>
+    <p class="reveal">A ideia central é simples de explicar. Para cada ativação, olho todas as mensagens de CRM que a pessoa recebeu nos dias anteriores, dentro de uma janela. Se houve toque na janela, o CRM participou daquela ativação.</p>
+    <h3 class="reveal">A janela de atribuição</h3>
+    <p class="reveal">Fixei 7 dias como padrão. É a referência de mercado e é conservador. Fiz duas checagens antes de bater o martelo. Uma foi de mercado. A outra foi olhar o comportamento da própria base: a maior parte de quem ativa faz isso dentro de sete dias do toque. A janela batia com o dado.</p>
+    <h3 class="reveal">Costura de identidade</h3>
+    <p class="reveal">Cada toque de CRM precisa ser ligado à pessoa que ativou. O e-mail é a chave principal. Dentro do app, uso o identificador do usuário. No caso do push e do banner, que vêm do lado de analytics, resolvo a identidade por uma ponte determinística: pego o identificador mais recente associado ao dispositivo.</p>
+    <h3 class="reveal">As quatro lentes de crédito</h3>
+    <p class="reveal">O mesmo dado, olhado de quatro formas. Influência (qualquer toque na janela conta, é o teto). Último clique (100% para o último toque, é o piso e equivale ao número antigo). Primeiro clique (revela quem abre a jornada). Linear (crédito dividido igualmente). Cada lente responde uma pergunta diferente de negócio.</p>
+    <h3 class="reveal">Higiene do dado</h3>
+    <p class="reveal">Existe um e-mail que sai para quase todo mundo que se cadastra. Incluí-lo inflaria o número. Reporto a versão que exclui esse tipo de mensagem transacional, que é a leitura honesta. As duas visões ficam disponíveis, mas o número de capa é o conservador.</p>
+    <p class="reveal">Uma nota que repeti em toda apresentação: as fatias por canal não somam o total. Um cliente pode ser tocado por vários canais, então cada um conta na sua fatia. O combinado é a contagem de pessoas distintas.</p>
+
+    <h2 class="reveal">A arquitetura de dados</h2>
+    <p class="reveal">O fluxo vai das fontes até o painel, passando por camadas no data warehouse. As camadas seguem o padrão medalhão. Bronze guarda o dado cru, imutável. Silver mapeia os toques, resolve nomes de campanha e classifica objetivo. Gold tem as views de atribuição e as tabelas de reporte que o painel consome.</p>
+<pre class="reveal"><code>FONTES                         DATA WAREHOUSE (BigQuery)                 CONSUMO
+────────────────────           ──────────────────────────────           ──────────────
+HubSpot Events API   ─┐        bronze  (dados crus)                      Painel (app web)
+(e-mail, WhatsApp)    │   ─▶    silver  (toques mapeados,                 ├─ macro
+                      │                  de-para de campanha)             ├─ tático
+GA4 / Firebase       ─┤   ─▶    gold    (views de atribuição,            └─ operacional
+(push, banner)        │                  tabelas de reporte)
+                      │        ┌ reconciliação com a base                 Decks / Confluence
+Base transacional    ─┘        └ tabelas por uid e por toque
+(cálculo, cadastro,
+ emissão)</code></pre>
+    <p class="reveal">A extração roda em Python, num notebook. Puxo os toques de e-mail e WhatsApp pela API de eventos do HubSpot, dia a dia, particionando por data. O push e o banner vêm do export nativo do GA4 para o BigQuery. A base transacional (quem calculou, cadastrou e emitiu, com data e hora) é a fonte da verdade para as conversões.</p>
+
+    <h2 class="reveal">O modelo de dados</h2>
+    <p class="reveal">Cinco objetos principais sustentam o painel e a auditoria. Uma tabela de reporte diária por etapa, com o denominador do dia, os influenciados com e sem transacional, e a quebra por canal. Uma tabela de campanhas (mês, régua, canal, objetivo) para o nível operacional. Uma tabela de segmento defasado, pra mostrar onde o canal mais pesa. E duas tabelas atômicas para o drill-down e a auditoria, uma por toque e outra por usuário e etapa, sempre consistentes entre si.</p>
+
+    <h2 class="reveal">Os resultados</h2>
+    <p class="reveal">O número de capa mudou de 2% para perto de 12%. Cerca de seis vezes o que o modelo antigo mostrava. O CRM não tinha piorado. A conta é que enxergava só um pedaço da jornada.</p>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><div class="stat-n">12%</div><div class="stat-l">contribuição real do CRM (era 2% no último clique)</div></div>
+      <div class="stat-card"><div class="stat-n">6x</div><div class="stat-l">maior que o modelo antigo mostrava</div></div>
+      <div class="stat-card"><div class="stat-n">65%</div><div class="stat-l">das ativações tiveram 2 ou mais toques de CRM</div></div>
+      <div class="stat-card"><div class="stat-n">17%</div><div class="stat-l">contribuição em quem demora a ativar (vs. 1%)</div></div>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Leitura</th><th>Valor</th></tr>
+        <tr><td>Contribuição pelo último clique (modelo antigo)</td><td>~2%</td></tr>
+        <tr><td>Contribuição real, e-mail + WhatsApp</td><td>~9,7%</td></tr>
+        <tr><td>Contribuição real, quatro canais combinados</td><td>~12%</td></tr>
+        <tr><td>Múltiplo vs. modelo antigo</td><td>~6x</td></tr>
+        <tr><td>Ativações com dois ou mais toques de CRM</td><td>~65%</td></tr>
+      </table>
+    </div>
+    <p class="reveal"><i>(números representativos, anonimizados)</i></p>
+    <p class="reveal"><b>O WhatsApp fecha, o e-mail abre.</b> Nas lentes de último clique, o WhatsApp lidera. Na lente de primeiro clique, o e-mail aparece na frente. O e-mail arma a jogada e o WhatsApp finaliza. Antes do projeto se achava que o e-mail liderava sozinho, o que era um efeito de rastreamento incompleto do WhatsApp.</p>
+    <p class="reveal"><b>O push é retenção.</b> Essa foi a maior surpresa. O push aparece em torno de 0,3% na primeira ativação, mas em torno de 2% a 3% quando olho todas as compras. Nove em cada dez aberturas de push vêm de quem já é cliente, porque push exige app instalado e notificação ligada, coisa de quem já entrou.</p>
+    <p class="reveal"><b>O CRM brilha em quem demora a ativar.</b> Quem calcula e emite no mesmo dia costuma fazer sozinho, e ali o CRM pesa perto de 1%. Em quem demora entre o cálculo e a emissão, a participação sobe para perto de 17%. É exatamente aí que o CRM trabalha, recuperando quem esfriou.</p>
+    <p class="reveal"><b>O CRM faz o cliente avançar.</b> A participação cresce ao longo do funil. Pequena no primeiro cálculo, maior no cadastro, máxima na ativação.</p>
+
+    <h2 class="reveal">O rigor por trás do número</h2>
+    <p class="reveal">Um número bonito sem validação não vale nada numa mesa de liderança. Duas checagens deram a confiança para defender o resultado.</p>
+    <h3 class="reveal">Reconciliação com a base</h3>
+    <p class="reveal">Antes de qualquer conclusão, o volume de ativações do modelo tinha que bater com o relatório oficial da empresa. Bateu, no mês de referência, no número exato. Isso ancorou o resto.</p>
+    <h3 class="reveal">O double-check do push</h3>
+    <p class="reveal">Quando mostrei que o push valia só 0,3% na ativação, a liderança estranhou. Push costuma ser um canal forte. Montei um diagnóstico com seis frentes para testar se era erro ou realidade: se o push era recente demais, se estava perdendo eventos no rastreamento, se a identidade casava com a base, e a sensibilidade da janela esticando pra 30 dias. A conclusão fechou a porta para "é bug". O push tem alcance enorme, mas quase nada dele cai antes da primeira ativação, porque fala com quem já ativou. Retenção, não aquisição.</p>
+
+    <h2 class="reveal">O painel de decisão</h2>
+    <p class="reveal">O modelo virou um painel para a liderança usar sozinha, organizado em três níveis. No macro, o indicador principal contra uma meta, a variação do mês e a projeção de fechamento. No tático, a contribuição por canal ao longo do tempo e a participação por etapa do funil. No operacional, a tabela de campanhas com filtros por canal, objetivo e período. Filtros globais atravessam tudo, e a pessoa navega, acha a resposta e ainda vê uma nota fixa dizendo qual modelo de atribuição está por trás.</p>
+
+    <h2 class="reveal">Limitações, com honestidade</h2>
+    <p class="reveal">O modelo mostra participação, não causa. Saber que o CRM esteve presente antes da ativação não é o mesmo que provar que o CRM gerou a ativação. Falei isso em toda reunião, e é o que dá credibilidade ao resto. A prova de causa vem de um teste controlado, e esse é o próximo passo.</p>
+
+    <h2 class="reveal">Próximos passos</h2>
+    <p class="reveal">Primeiro, o teste controlado, para transformar "o CRM participa de 12%" em "o CRM gera X% de ativações a mais". Segundo, automatizar o pipeline, que hoje tem passos manuais. Terceiro, levar a mesma estrutura para outras partes da jornada, como retenção e recompra.</p>
+
+    <h2 class="reveal">O que este projeto entregou para o negócio</h2>
+    <p class="reveal">A liderança de CRM saiu de um número que a fazia parecer irrelevante para uma leitura que sustenta investimento. Passou a saber onde apostar cada canal, em qual etapa e para qual perfil de cliente. E ganhou uma ferramenta para acompanhar isso sozinha, todo dia, sem depender de análise manual. Do lado técnico, ficou uma estrutura de dados reaproveitável, que serve para medir outras jornadas com pouco ajuste.</p>
+
+    <h2 class="reveal">Stack de ferramentas</h2>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Camada</th><th>Ferramentas</th></tr>
+        <tr><td>Data warehouse</td><td>Google BigQuery</td></tr>
+        <tr><td>Linguagens</td><td>SQL, Python</td></tr>
+        <tr><td>Extração</td><td>Python (requests), Google Colab, HubSpot Events API, export nativo GA4 para BigQuery</td></tr>
+        <tr><td>Fontes de dado</td><td>HubSpot (e-mail, WhatsApp), GA4 / Firebase (push, banner), base transacional do produto</td></tr>
+        <tr><td>Modelagem</td><td>Arquitetura medalhão (bronze / silver / gold), views e tabelas materializadas, particionamento e clusterização</td></tr>
+        <tr><td>Identidade</td><td>Identity stitching (e-mail como pivô, ponte determinística device para user)</td></tr>
+        <tr><td>Atribuição</td><td>Multi-toque, janela de atribuição, modelos de influência, último clique, primeiro clique e linear</td></tr>
+        <tr><td>App / Dashboard</td><td>Lovable (React, Vite, Tailwind, shadcn/ui, Recharts), Windsor.ai como conector BigQuery</td></tr>
+      </table>
+    </div>
+
+    <h2 class="reveal">Estrutura do repositório</h2>
+<pre class="reveal"><code>atribuicao-multitoque-crm/
+├── README.md                        # este case
+├── docs/
+│   ├── tap-projeto.md               # termo de abertura, escopo, fases
+│   ├── contexto.md                  # problema e discovery
+│   └── metodologia.md               # janelas, lentes, identidade
+├── extracao/                        # Python (Colab)
+│   ├── extract_toques.py            # HubSpot Events API, particionado por dia
+│   ├── bridge_contatos.py           # ponte contato para e-mail
+│   └── reparo_bridge.py             # reprocesso de lotes com falha
+├── modelagem/                       # SQL (BigQuery)
+│   ├── views/
+│   ├── materializacoes/
+│   └── reporte/
+├── validacoes/
+│   ├── reconciliacao_volume.sql
+│   ├── diagnostico_push.sql          # o double-check de 6 frentes
+│   └── calibracao_janela.sql
+├── painel/                          # app web (React via Lovable)
+└── apresentacoes/                   # decks e material de liderança</code></pre>
+
+    <h2 class="reveal">Aprendizados</h2>
+    <p class="reveal">Último clique é uma armadilha confortável. Fácil de medir e péssimo para canais que atuam no meio da jornada, como o WhatsApp. Trocar de lente mudou a leitura inteira.</p>
+    <p class="reveal">Nem todo canal é de ativação. O push parecia fraco e a tentação era chamar de bug. O double-check mostrou que ele é forte, só que em outra etapa.</p>
+    <p class="reveal">Validação é o que dá voz na mesa de liderança. A reconciliação com a base e o diagnóstico do push foram o que transformaram um gráfico bonito em uma decisão de investimento. E separar participação de causa desde o começo evita promessa que o dado não sustenta.</p>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="case-cta reveal">
+      <h2>Sua atribuição também pode estar escondendo o valor real de um canal</h2>
+      <p>30 minutos, de graça. Entro nas suas plataformas e mostro onde o número está errado.</p>
+      <a href="https://wa.me/5571982210402?text=Ol%C3%A1%20Jeferson%2C%20vi%20o%20case%20de%20atribui%C3%A7%C3%A3o%20multi-toque%20e%20quero%20meu%20diagn%C3%B3stico%20gr%C3%A1tis." target="_blank" rel="noopener" class="btn-pri">Quero meu diagnóstico grátis →</a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="container">
+    <span class="slabel reveal">Outros cases</span>
+    <h2 class="stitle reveal" style="margin-bottom:1.5rem">Continue lendo</h2>
+    <div class="related-grid reveal">
+      <a class="related-card" href="signals-downgrade-preditivo.html">
+        <div class="related-eyebrow">Growth · Predição</div>
+        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
+      </a>
+      <a class="related-card" href="icp-curva-abc.html">
+        <div class="related-eyebrow">Growth · ICP</div>
+        <div class="related-t">ICP baseado em dados: da carteira ao perfil de cliente ideal</div>
+        <div class="related-d">Curva ABC e lift pra transformar carteira de clientes em critério de priorização.</div>
+      </a>
+      <a class="related-card" href="revenue-command-center.html">
+        <div class="related-eyebrow">Analytics Engineering</div>
+        <div class="related-t">Revenue Command Center: do caos de planilhas à decisão em 30 segundos</div>
+        <div class="related-d">Pipeline governado e dashboard executivo pra uma diretoria de Revenue.</div>
+      </a>
+      <a class="related-card" href="simulador-orcamento-multicanal.html">
+        <div class="related-eyebrow">Growth · Simulação</div>
+        <div class="related-t">Simulador de Orçamento Multicanal</div>
+        <div class="related-d">Uma ferramenta que recalcula aquisição por canal na hora, validada contra o oficial.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JJS<em>.</em></div>
+  <p>&copy; 2025 Jeferson J Silva &middot; <a href="../index.html">jefersonjs.github.io/jefersonjs-site</a></p>
+</footer>
+
+<script src="../assets/cases.js"></script>
+</body>
+</html>

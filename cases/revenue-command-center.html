@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Command Center: do caos de planilhas à decisão em 30 segundos · Jeferson J Silva</title>
+<meta name="description" content="Case de analytics engineering: pipeline de dados governado, dashboard executivo C-Level e contrato de dados que tirou uma diretoria de Revenue de 6+ planilhas pra uma decisão em 30 segundos.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jefersonjs.github.io/jefersonjs-site/cases/revenue-command-center.html">
+<meta name="theme-color" content="#4676dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a70'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%234676dc' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://jefersonjs.github.io/jefersonjs-site/cases/revenue-command-center.html">
+<meta property="og:site_name" content="Jeferson J Silva">
+<meta property="og:title" content="Revenue Command Center: do caos de planilhas à decisão em 30 segundos">
+<meta property="og:description" content="Pipeline de dados governado, dashboard executivo C-Level e contrato de dados que tirou uma diretoria de Revenue de 6+ planilhas pra uma decisão em 30 segundos.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Revenue Command Center: do caos de planilhas à decisão em 30 segundos">
+<meta name="twitter:description" content="Pipeline de dados governado e dashboard executivo que tirou uma diretoria de Revenue de 6+ planilhas pra uma decisão em 30 segundos.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cases.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Revenue Command Center: do caos de planilhas à decisão em 30 segundos",
+  "description": "Case de analytics engineering: pipeline de dados governado, dashboard executivo C-Level e contrato de dados que tirou uma diretoria de Revenue de 6+ planilhas pra uma decisão em 30 segundos.",
+  "url": "https://jefersonjs.github.io/jefersonjs-site/cases/revenue-command-center.html",
+  "datePublished": "2026-07-11",
+  "inLanguage": "pt-BR",
+  "author": { "@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.github.io/jefersonjs-site/" },
+  "publisher": { "@type": "Person", "name": "Jeferson J Silva" },
+  "about": ["Analytics engineering", "Data governance", "Dashboard executivo", "BigQuery"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.github.io/jefersonjs-site/" },
+    { "@type": "ListItem", "position": 2, "name": "Cases", "item": "https://jefersonjs.github.io/jefersonjs-site/#cases" },
+    { "@type": "ListItem", "position": 3, "name": "Revenue Command Center", "item": "https://jefersonjs.github.io/jefersonjs-site/cases/revenue-command-center.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">JJS<em>.</em></a>
+  <ul class="nav-r">
+    <li><a href="../index.html#cases">Cases</a></li>
+    <li><a href="../index.html#pilares">Serviços</a></li>
+    <li><a href="../index.html#sobre">Sobre</a></li>
+    <li><a href="../index.html#contato" class="nav-cta">Falar com Jeferson</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="crumb">
+      <a href="../index.html">Início</a><span>/</span>
+      <a href="../index.html#cases">Cases</a><span>/</span>
+      <span class="current">Revenue Command Center</span>
+    </div>
+
+    <div class="case-eyebrow reveal"><span class="dot"></span>Case study · Analytics Engineering</div>
+    <h1 class="case-title reveal">Uma diretoria de Revenue vivia em 6 planilhas. Hoje decide em 30 segundos.</h1>
+    <p class="case-dek reveal">Pipeline governado, dashboard executivo e um contrato de dados que transformou planilha frágil em número confiável, com auditoria de ponta a ponta.</p>
+    <div class="case-meta reveal">
+      <span>Fintech · pagamentos</span>
+      <span>Pipeline + Dashboard</span>
+      <span>BigQuery · n8n · React</span>
+    </div>
+
+    <div class="case-illust reveal">
+      <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="440" height="200" rx="12" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
+        <circle cx="28" cy="28" r="4" fill="rgba(255,255,255,.5)"/>
+        <circle cx="42" cy="28" r="4" fill="rgba(255,255,255,.5)"/>
+        <circle cx="56" cy="28" r="4" fill="rgba(255,255,255,.5)"/>
+        <line x1="10" y1="42" x2="450" y2="42" stroke="rgba(255,255,255,.2)"/>
+        <rect x="26" y="58" width="120" height="52" rx="8" fill="rgba(255,255,255,.1)"/>
+        <rect x="158" y="58" width="120" height="52" rx="8" fill="rgba(255,255,255,.1)"/>
+        <rect x="290" y="58" width="144" height="52" rx="8" fill="rgba(217,142,43,.85)"/>
+        <g fill="rgba(255,255,255,.6)">
+          <rect x="26" y="140" width="18" height="46" rx="2"/>
+          <rect x="52" y="120" width="18" height="66" rx="2"/>
+          <rect x="78" y="150" width="18" height="36" rx="2"/>
+          <rect x="104" y="105" width="18" height="81" rx="2"/>
+          <rect x="130" y="130" width="18" height="56" rx="2"/>
+          <rect x="156" y="95"  width="18" height="91" rx="2"/>
+        </g>
+        <circle cx="360" cy="150" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="10"/>
+        <circle cx="360" cy="150" r="34" fill="none" stroke="#2f9e8f" stroke-width="10" stroke-dasharray="140 214" stroke-linecap="round" transform="rotate(-90 360 150)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container case-body">
+
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> Este case descreve um projeto real. Nome da empresa, segmento, nomes de pessoas e todos os números foram ficcionalizados pra proteger informação de negócio. "PagLeve" é uma empresa fictícia. Os valores são ilustrativos e preservam só as ordens de grandeza e a natureza dos problemas resolvidos.</div>
+
+    <h2 class="reveal">O contexto</h2>
+    <p class="reveal">A PagLeve (fictícia) é uma fintech de meios de pagamento pra pequenos negócios digitais. Microempreendedores que vendem por redes sociais e marketplaces e usam a plataforma pra gerar cobranças, receber vendas e gerir o caixa. O crescimento é operado por uma diretoria de Revenue com cinco frentes de aquisição e engajamento: Mídia Paga, Conteúdo e SEO, Influenciadores, Indicação (member get member) e CRM.</p>
+    <p class="reveal">O funil de crescimento tem uma régua clara. Aquisição é o cadastro com a primeira cobrança gerada. Ativação é a primeira venda recebida. Cliente Qualificado, o "CQ", são duas vendas em até 7 dias, proxy de retenção futura. A north star da companhia é 1 milhão de transações por mês.</p>
+
+    <h3 class="reveal">A dor da C-Level</h3>
+    <p class="reveal">A Diretora de Revenue começava todo dia com o mesmo ritual. Abria 6 ou mais planilhas e um dashboard de BI com páginas em manutenção pra montar, de cabeça, o diagnóstico do mês. Os sintomas se repetiam todo mês.</p>
+    <ul class="reveal">
+      <li>Custos e metas viviam em planilhas, cada frente com um formato próprio: matriz de P&amp;L com meses em colunas, uma aba nova de pacing por mês, abas narrativas por campanha. Nenhum padrão entre elas.</li>
+      <li>Indicadores viviam no data warehouse, mas sem ligação com o custo. Era impossível responder se o gasto estava virando resultado sem trabalho manual.</li>
+      <li>Cada frente media CAC com régua própria. Comparar eficiência entre frentes era um exercício de fé.</li>
+      <li>Zero governança. Um erro de digitação numa planilha contaminava a leitura do mês inteiro, sem alerta, sem auditoria, sem backup.</li>
+      <li>O dashboard de BI existente misturava visão estratégica com operacional. A diretora navegava tabelas de campanha pra achar um número de direção.</li>
+    </ul>
+    <p class="reveal">O custo real dessa dor era de 30 a 40 minutos diários de leitura fragmentada, decisões tomadas sobre dados sem confiabilidade verificável, e nenhuma visão comparável de contribuição por frente.</p>
+
+    <h2 class="reveal">O que construí</h2>
+    <p class="reveal">Um produto de dados completo, do pipeline à interface.</p>
+<pre class="reveal"><code>Planilhas Google (custos/metas)        Data Warehouse (indicadores de funil)
+        │                                        │
+        ▼                                        │
+  n8n — extração CRUA (5 workflows, diários)     │
+  + auditoria via Drive API (quem/quando)        │
+        ▼                                        ▼
+┌──────────────────── BigQuery ────────────────────────┐
+│  RAW (append-only, imutável, tudo STRING)            │
+│    → PORTÃO DE VALIDAÇÃO (QA automático)             │
+│        ├─ reprova → QUARENTENA (motivo linha a linha)│
+│        └─ aprova → SILVER (parse SQL versionado)     │
+│    → GOLD (pré-agregado, semáforos e YoY resolvidos) │
+│  + auditoria · snapshots mensais · ajustes manuais   │
+└──────────────────────┬───────────────────────────────┘
+                       ▼
+        Camada de leitura (API/conector)
+                       ▼
+   Dashboard executivo (React) — Cloud Run + IAP
+   ESTRATÉGICO (diretoria) × TÁTICO (coordenações)
+                       +
+   Alertas automáticos no Slack (falha, atraso, desvio)</code></pre>
+    <p class="reveal">Três entregas em um projeto só: o dashboard executivo, o pipeline governado que o alimenta e o modelo de governança (contratos de dados, auditoria, resiliência) que mantém tudo confiável.</p>
+
+    <h2 class="reveal">Descoberta e diagnóstico</h2>
+    <p class="reveal">Antes de desenhar qualquer coisa, auditei as fontes reais.</p>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Fonte</th><th>Estrutura encontrada</th><th>Problema</th></tr>
+        <tr><td>Planilha de orçamento anual</td><td>Matriz P&amp;L: meses em colunas, hierarquia de frentes em linhas</td><td>Não tabular; números em formato local (vírgula decimal); subtotais misturados com detalhe</td></tr>
+        <tr><td>Planilha da frente Influenciadores</td><td>~1 aba por visão; pacing diário em abas mensais</td><td>Cabeçalhos multi-linha; blocos "planejado" e "realizado" lado a lado</td></tr>
+        <tr><td>Planilha da frente Indicação</td><td>1 aba de pacing nova por mês</td><td>Abas proliferam; estrutura muda sutilmente a cada mês</td></tr>
+        <tr><td>Planilha de custos do CRM</td><td>Abas mensais narrativas, por campanha</td><td>Imparseável de forma genérica, a estrutura muda por campanha</td></tr>
+        <tr><td>Warehouse (funil)</td><td>Tabelas de eventos e marcos por usuário</td><td>Confiável, mas desconectado do custo</td></tr>
+      </table>
+    </div>
+    <p class="reveal">O diagnóstico chegou a uma conclusão simples. O problema não era fazer um dashboard bonito. Era arquitetar a ponte entre dois mundos, planilhas vivas e warehouse, sem quebrar a rotina dos times e sem herdar a fragilidade das planilhas.</p>
+
+    <h2 class="reveal">Princípios de arquitetura</h2>
+    <p class="reveal">As decisões que importam, na ordem em que as tomei.</p>
+    <ol class="reveal">
+      <li><b>Modelo híbrido.</b> Defini a planilha como fonte da verdade do gasto e da meta (é onde o financeiro concilia) e o warehouse como fonte da verdade do funil. Não brigo com isso, eu integro as duas pontas.</li>
+      <li><b>Raw-first e ELT.</b> Fiz o extrator (n8n) burro de propósito. Ele fotografa as planilhas como string crua, append-only. Toda a inteligência, parse, tipo, de-para, regra de negócio, vive em SQL versionado. Se a planilha muda, ajusto um arquivo SQL e reprocesso o histórico inteiro a partir do raw. Nada se perde.</li>
+      <li><b>Zero mudança de rotina para os times.</b> Os workflows absorvem o formato existente, com descoberta dinâmica de abas por regex e fingerprint de cabeçalho. A única exigência nova foi uma miniaba de resumo pra única fonte imparseável.</li>
+      <li><b>Erro na origem nunca derruba o painel.</b> Montei um portão de validação com checks técnicos (fórmulas quebradas, datas implausíveis, duplicidades) e de plausibilidade (total contra célula de controle, valor diário maior que 5 vezes a mediana de 60 dias). Carga suspeita vai pra quarentena, com motivo linha a linha. O painel segue no último dado válido (LKG), com um badge transparente de "dados em validação".</li>
+      <li><b>Auditoria de ponta a ponta.</b> Cada carga registra, via Drive API, quem alterou a planilha, quando e qual revisão, exposto na página de metodologia do painel. Meses fechados ficam congelados. Alteração retroativa na origem não entra sozinha, gera alerta e aguarda aprovação.</li>
+      <li><b>Tudo que o front lê é gold pré-agregado.</b> Uma linha por grão, com semáforo e YoY resolvidos no SQL. O front só pinta. Latência baixa, zero lógica duplicada.</li>
+      <li><b>Backup à prova de exclusão.</b> Raw append-only, snapshots mensais congelados e time travel. Se a planilha for apagada ou movida, todo o histórico validado permanece no warehouse.</li>
+    </ol>
+
+    <h2 class="reveal">O modelo de dados (medalhão)</h2>
+    <p class="reveal">Convenção de nomes: <code>&lt;camada&gt;_&lt;fonte&gt;_&lt;domínio&gt;_&lt;grão&gt;</code> (<code>brz_</code> / <code>slv_</code> / <code>gld_</code>), tudo <code>CREATE OR REPLACE</code> idempotente e particionado por data.</p>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Camada</th><th>Tabelas (exemplos)</th><th>Papel</th></tr>
+        <tr><td>Raw/Bronze</td><td><code>brz_raw_plan_mes</code>, <code>brz_raw_custo_pacing_dia</code>, <code>brz_raw_auditoria_planilhas</code>, <code>brz_raw_quarentena</code>, <code>brz_ajustes_manuais</code></td><td>Fotografia crua e imutável, mais trilha de auditoria e correções controladas</td></tr>
+        <tr><td>Silver</td><td><code>slv_revenue_custo_dia</code>, <code>slv_revenue_plan_dia</code> (meta mensal diluída em curva diária por dia da semana), <code>slv_revenue_indicadores_dia</code></td><td>Parse versionado, de-para de nomenclatura, unificação custo e funil</td></tr>
+        <tr><td>Gold</td><td><code>gld_revenue_home_diario</code>, <code>gld_revenue_pacing_dia</code>, <code>gld_revenue_consolidado_mes</code> (com colunas <code>_ly</code> e <code>yoy_pct</code> pré-calculadas), <code>gld_revenue_saude_medicao</code></td><td>Pronto pra leitura: pacing MTD, run-rate, semáforos, shares, saúde por fonte</td></tr>
+      </table>
+    </div>
+
+    <h3 class="reveal">A régua única de 8 indicadores</h3>
+    <p class="reveal">O contrato de métricas que tornou as frentes comparáveis pela primeira vez. Presente em toda página de frente, na mesma ordem.</p>
+    <ol class="reveal">
+      <li>Investimento (R$)</li>
+      <li>Aquisição</li>
+      <li>Ativação</li>
+      <li>Taxa de Ativação (Ativação dividido por Aquisição)</li>
+      <li>Cliente Qualificado</li>
+      <li>Taxa de CQ (CQ dividido por Ativação)</li>
+      <li>CAC (Investimento dividido por Ativação)</li>
+      <li>CAC-CQ (Investimento dividido por CQ)</li>
+    </ol>
+    <p class="reveal">Com duas exceções conscientes. A frente orgânica (Conteúdo e SEO) não exibe indicadores de custo. O CRM é tratado como reativação, não compõe CAC de aquisição. É uma decisão de atribuição documentada e aplicada no modelo, não na interface.</p>
+
+    <h2 class="reveal">O produto: dashboard executivo</h2>
+    <h3 class="reveal">Separação estratégico e tático</h3>
+    <p class="reveal">O erro do dashboard anterior era misturar níveis de decisão. O novo produto separa isso de forma explícita.</p>
+    <ul class="reveal">
+      <li><b>Home, visão estratégica da diretoria.</b> O que a C-Level decide: pacing consolidado do mês com projeção de fechamento (run-rate), metas de investimento e de CQ com percentual de atingimento, tabela de contribuição por frente (percentual do budget × percentual do resultado × CAC-CQ, ordenada por contribuição), shares de investimento, ativação e CQ em donuts, gráfico de onde está o dinheiro contra onde está o resultado, alertas com "decisão requerida" em nível de diretoria (revisar meta, SLA de dados, mix entre frentes, nunca campanha ou canal) e insights do mês.</li>
+      <li><b>Páginas de frente, visão tática da coordenação.</b> A régua de 8 indicadores, pacing diário real contra plano (barras no formato que os times já conheciam), tendência YoY com linha de referência de crescimento da empresa, e blocos operacionais (campanhas, cupons, pacing detalhado) isolados em seções colapsáveis de diagnóstico operacional.</li>
+      <li><b>Pulso diário, página tática de anomalias.</b> Cada indicador por dia contra a mediana e a banda P25 a P75 dos últimos 60 dias. Sazonalidade, campanha ou problema de tracking saltam aos olhos.</li>
+      <li><b>Metodologia.</b> Glossário das réguas, linhagem (de onde vem cada número), saúde de medição por fonte, com última atualização e autor da última alteração.</li>
+    </ul>
+
+    <h3 class="reveal">Princípios de dataviz aplicados</h3>
+    <ul class="reveal">
+      <li><b>Visual primeiro.</b> Toda tabela nasce como gráfico, com alternância entre gráfico e tabela e download em CSV.</li>
+      <li><b>Caixinha "Como ler" sob cada gráfico.</b> Uma ou duas linhas didáticas. Gráfico que precisa de manual não decide nada.</li>
+      <li><b>Tom copiloto, sem julgamento.</b> Nenhum texto usa "pior" ou "melhor". Sempre dado comparativo mais referência (por exemplo, "Taxa de Ativação em 12,4%, mês anterior 13,1%, LY 14,2%") mais decisão sugerida. O painel informa, quem julga é o piloto.</li>
+      <li><b>Semáforos resolvidos no SQL</b>, com faixas numéricas explícitas (90 a 110% é dentro do ritmo), nunca recalculados no front.</li>
+      <li><b>Comparação com o ano anterior em todos os cards</b>, com métricas invertidas tratadas (CAC menor é melhor) e a referência oficial de crescimento anual como linha em todos os gráficos de tendência.</li>
+    </ul>
+
+    <h3 class="reveal">Processo de produto</h3>
+    <p class="reveal">Construí o protótipo numa ferramenta de AI app building (Lovable), com dados mock estruturados exatamente como as tabelas gold. Isso permitiu validar telas, indicadores e leitura com a C-Level antes de investir no pipeline. Foram 5 iterações guiadas por feedback real, incluindo duas correções de rota valiosas.</p>
+    <ol class="reveal">
+      <li>"Realocar budget por canal não é decisão da diretora, é da coordenação." Isso levou a uma reescrita completa dos alertas para o nível de decisão correto e à criação da hierarquia estratégico e tático.</li>
+      <li>"Não diga 'pior' ou 'melhor', traga o dado e a referência. Quem julga sou eu." Isso levou a uma revisão de todo o copy para o tom copiloto.</li>
+    </ol>
+    <p class="reveal">Essas iterações custaram horas no protótipo. Teriam custado semanas se descobertas depois do pipeline pronto.</p>
+
+    <h2 class="reveal">Governança e resiliência</h2>
+    <p class="reveal">O que mantém a confiança no dado, mecanismo por mecanismo.</p>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Risco real</th><th>Mecanismo implementado</th></tr>
+        <tr><td>Aba nova a cada mês</td><td>Descoberta dinâmica por regex a cada execução</td></tr>
+        <tr><td>Coluna renomeada ou layout alterado</td><td>Fingerprint de cabeçalho por carga; drift gera alerta e parser SQL versionado por fingerprint</td></tr>
+        <tr><td>Erro de digitação na origem</td><td>Checks de plausibilidade levam à quarentena, mais LKG (o painel nunca quebra)</td></tr>
+        <tr><td>Planilha apagada ou movida</td><td>Acesso por fileId (imune a rename); histórico já preservado no raw</td></tr>
+        <tr><td>Alteração retroativa em mês fechado</td><td>Congelamento, mais alerta com autor e data, só entra com aprovação</td></tr>
+        <tr><td>Correção sem mexer na planilha</td><td>Tabela de ajustes manuais auditável (chave, valor, motivo, autor, vigência)</td></tr>
+        <tr><td>Falha silenciosa</td><td>Toda anomalia vira alerta no Slack, com fonte, motivo, amostra e autor da última alteração</td></tr>
+        <tr><td>PII nas planilhas</td><td>Extração restrita às colunas do contrato, dados pessoais não entram no raw</td></tr>
+      </table>
+    </div>
+    <p class="reveal">Fechei um contrato de dados de uma página por planilha com cada coordenação: 7 pedidos mínimos (não renomear abas ou colunas chave, números como número, SLA de preenchimento D-1, avisar antes de reestruturar) em troca de um incentivo concreto, a página tática da própria frente, alertas automáticos e o fim da cobrança manual de atualização.</p>
+
+    <h2 class="reveal">Segurança e hospedagem</h2>
+    <ul class="reveal">
+      <li><b>Protótipo.</b> Autenticação Google restrita ao domínio corporativo, mais allowlist gerida em painel admin (papéis viewer e admin, admin fixo), com tela de "solicite acesso" pra quem está fora da lista.</li>
+      <li><b>Produção (arquitetura definida).</b> Código em repositório privado no GitHub (2FA, branch protection, secret scanning, zero credencial no código), deploy contínuo no Cloud Run (<code>--no-allow-unauthenticated</code>, escala a zero), Identity-Aware Proxy na frente (o Google barra contas fora do domínio na infraestrutura, antes de 1 byte do app carregar), allowlist do app como segunda camada de controle fino, dados via service account com escopo mínimo (leitura no dataset), segredos no Secret Manager.</li>
+      <li><b>Racional de custo.</b> A ferramenta de prototipagem cobrava por créditos de edição. A stack final (GitHub, Cloud Run, IAP) roda o mesmo app por cerca de R$ 0 a 15 por mês, com CI/CD e auditabilidade de TI.</li>
+    </ul>
+
+    <h2 class="reveal">Resultados e impacto</h2>
+    <p class="reveal">Números ilustrativos, com ordens de grandeza reais.</p>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><div class="stat-n">&lt; 5 min</div><div class="stat-l">de leitura em uma tela única (era 30 a 40 min em 6+ planilhas)</div></div>
+      <div class="stat-card"><div class="stat-n">1 régua</div><div class="stat-l">8 indicadores, 5 frentes comparáveis pela primeira vez</div></div>
+      <div class="stat-card"><div class="stat-n">~R$0-15</div><div class="stat-l">por mês de custo de infraestrutura (GitHub + Cloud Run + IAP)</div></div>
+      <div class="stat-card"><div class="stat-n">100%</div><div class="stat-l">auditoria: quem alterou, quando e qual carga, sempre rastreável</div></div>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Antes</th><th>Depois</th></tr>
+        <tr><td>30 a 40 min/dia de leitura fragmentada em 6+ planilhas</td><td>Menos de 5 min em uma tela única (desktop e mobile)</td></tr>
+        <tr><td>CAC incomparável entre frentes (régua própria em cada uma)</td><td>1 régua, 8 indicadores, 5 frentes comparáveis</td></tr>
+        <tr><td>Erro de planilha contaminava o mês, sem alerta</td><td>Quarentena automática, painel sempre de pé no último dado válido</td></tr>
+        <tr><td>Dado sem dono, sem trilha</td><td>Auditoria completa: quem alterou, quando, qual carga, qual revisão</td></tr>
+        <tr><td>Histórico refém das planilhas</td><td>Raw imutável e snapshots, histórico preservado independente da origem</td></tr>
+        <tr><td>Cobrança manual de atualização</td><td>O sistema cobra sozinho (alertas de atraso em 24 a 48h no Slack)</td></tr>
+        <tr><td>Decisão de mix "no feeling"</td><td>Contribuição por frente com share de investimento × share de resultado × CAC-CQ, lado a lado</td></tr>
+      </table>
+    </div>
+    <p class="reveal">O ganho estrutural mais importante foi outro: a pergunta da diretora mudou. Antes era "quanto gastamos?", o que exigia caça manual. Hoje é "o gasto está virando cliente qualificado no ritmo da meta, e onde eu realoco?". Essa segunda pergunta é respondida em 30 segundos, com dado auditado.</p>
+
+    <h2 class="reveal">Stack e competências</h2>
+    <p class="reveal">As ferramentas e as competências que sustentaram o projeto de ponta a ponta.</p>
+    <div class="tags reveal">
+      <span class="tag">BigQuery</span>
+      <span class="tag">n8n</span>
+      <span class="tag">SQL avançado</span>
+      <span class="tag">React/TypeScript</span>
+      <span class="tag">Google Cloud Run</span>
+      <span class="tag">IAP</span>
+      <span class="tag">Secret Manager</span>
+      <span class="tag">GitHub</span>
+      <span class="tag">Slack API</span>
+    </div>
+    <p class="reveal">Do lado técnico, apliquei analytics engineering (ELT raw-first, modelagem medalhão) e data governance (auditoria, contratos de dados, LGPD by design). Do lado de produto, usei product thinking (protótipo antes do pipeline, iteração com C-Level) e dataviz estratégico (hierarquia decisória, tom copiloto, visual primeiro). E do lado de infraestrutura, montei uma arquitetura cloud com custo próximo de zero e conduzi a gestão de stakeholders, com contratos com coordenações em troca de disciplina de dado.</p>
+
+    <h2 class="reveal">Lições aprendidas</h2>
+    <p class="reveal"><b>Protótipo com mock estruturado como o modelo final é o atalho mais barato que existe.</b> Consegui 5 iterações de produto antes de escrever uma linha de pipeline.</p>
+    <p class="reveal"><b>A decisão de UX mais valiosa não foi visual.</b> Foi separar o que é decisão de diretoria do que é diagnóstico de coordenação. Dashboard falha mais por hierarquia errada do que por gráfico feio.</p>
+    <p class="reveal"><b>Extrator burro mais SQL inteligente vence parser esperto.</b> Planilha viva muda todo mês. SQL versionado com raw imutável absorve qualquer mudança sem perder histórico.</p>
+    <p class="reveal"><b>Tom importa.</b> Trocar "pior movimento" por "ponto de observação mais referência" mudou a relação da C-Level com o painel, de fonte de ansiedade para copiloto.</p>
+    <p class="reveal"><b>Governança se vende com incentivo, não com imposição.</b> Os times aceitaram o contrato de dados porque ganharam algo visível em troca.</p>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="case-cta reveal">
+      <h2>Sua diretoria também vive de planilha frágil?</h2>
+      <p>30 minutos, de graça. Eu entro nos seus dados e mostro onde está o buraco entre custo e resultado.</p>
+      <a href="https://wa.me/5571982210402?text=Ol%C3%A1%20Jeferson%2C%20vi%20o%20case%20Revenue%20Command%20Center%20e%20quero%20meu%20diagn%C3%B3stico%20gr%C3%A1tis." target="_blank" rel="noopener" class="btn-pri">Quero meu diagnóstico grátis →</a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="container">
+    <span class="slabel reveal">Outros cases</span>
+    <h2 class="stitle reveal" style="margin-bottom:1.5rem">Continue lendo</h2>
+    <div class="related-grid reveal">
+      <a class="related-card" href="atribuicao-multitoque-crm.html">
+        <div class="related-eyebrow">Case study · Atribuição &amp; CRM</div>
+        <div class="related-t">Atribuição multi-toque de CRM: de 2% a 12% de contribuição real</div>
+        <div class="related-d">Como o último clique escondia 6x o valor real de um canal.</div>
+      </a>
+      <a class="related-card" href="signals-downgrade-preditivo.html">
+        <div class="related-eyebrow">Case study · Growth &amp; Predição</div>
+        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
+      </a>
+      <a class="related-card" href="icp-curva-abc.html">
+        <div class="related-eyebrow">Case study · ICP &amp; Growth</div>
+        <div class="related-t">ICP baseado em dados: da carteira ao perfil de cliente ideal</div>
+        <div class="related-d">Curva ABC e lift pra transformar carteira de clientes em critério de priorização.</div>
+      </a>
+      <a class="related-card" href="simulador-orcamento-multicanal.html">
+        <div class="related-eyebrow">Case study · Growth &amp; Simulação</div>
+        <div class="related-t">Simulador de Orçamento Multicanal</div>
+        <div class="related-d">Uma ferramenta que recalcula aquisição por canal na hora, validada contra o oficial.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JJS<em>.</em></div>
+  <p>&copy; 2025 Jeferson J Silva &middot; <a href="../index.html">jefersonjs.github.io/jefersonjs-site</a></p>
+</footer>
+
+<script src="../assets/cases.js"></script>
+</body>
+</html>

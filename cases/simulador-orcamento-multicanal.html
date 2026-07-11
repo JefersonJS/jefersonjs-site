@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Orçamento Multicanal: da atribuição confusa à ferramenta de decisão · Jeferson J Silva</title>
+<meta name="description" content="Case de growth analytics: um simulador de orçamento por canal, validado contra o número oficial da empresa, que virou a base de conversa de planejamento entre Growth, Revenue e liderança.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jefersonjs.github.io/jefersonjs-site/cases/simulador-orcamento-multicanal.html">
+<meta name="theme-color" content="#4676dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a70'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%234676dc' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://jefersonjs.github.io/jefersonjs-site/cases/simulador-orcamento-multicanal.html">
+<meta property="og:site_name" content="Jeferson J Silva">
+<meta property="og:title" content="Simulador de Orçamento Multicanal: da atribuição confusa à ferramenta de decisão">
+<meta property="og:description" content="Um simulador de orçamento por canal, validado contra o número oficial da empresa, que virou a base de conversa de planejamento entre Growth, Revenue e liderança.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simulador de Orçamento Multicanal: da atribuição confusa à ferramenta de decisão">
+<meta name="twitter:description" content="Um simulador de orçamento por canal, validado contra o número oficial da empresa, que virou a base de conversa de planejamento entre Growth, Revenue e liderança.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cases.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Simulador de Orçamento Multicanal: da atribuição confusa à ferramenta de decisão",
+  "description": "Um simulador de orçamento por canal, validado contra o número oficial da empresa, que virou a base de conversa de planejamento entre Growth, Revenue e liderança.",
+  "url": "https://jefersonjs.github.io/jefersonjs-site/cases/simulador-orcamento-multicanal.html",
+  "datePublished": "2026-07-11",
+  "inLanguage": "pt-BR",
+  "author": { "@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.github.io/jefersonjs-site/" },
+  "publisher": { "@type": "Person", "name": "Jeferson J Silva" },
+  "about": ["Simulador de orçamento", "Atribuição multicanal", "Growth analytics", "BigQuery"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.github.io/jefersonjs-site/" },
+    { "@type": "ListItem", "position": 2, "name": "Cases", "item": "https://jefersonjs.github.io/jefersonjs-site/#cases" },
+    { "@type": "ListItem", "position": 3, "name": "Simulador de Orçamento Multicanal", "item": "https://jefersonjs.github.io/jefersonjs-site/cases/simulador-orcamento-multicanal.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">JJS<em>.</em></a>
+  <ul class="nav-r">
+    <li><a href="../index.html#cases">Cases</a></li>
+    <li><a href="../index.html#pilares">Serviços</a></li>
+    <li><a href="../index.html#sobre">Sobre</a></li>
+    <li><a href="../index.html#contato" class="nav-cta">Falar com Jeferson</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="crumb">
+      <a href="../index.html">Início</a><span>/</span>
+      <a href="../index.html#cases">Cases</a><span>/</span>
+      <span class="current">Simulador de Orçamento Multicanal</span>
+    </div>
+
+    <div class="case-eyebrow reveal"><span class="dot"></span>Case study · Growth & Simulação</div>
+    <h1 class="case-title reveal">Quanto eu ativo se investir mais em cada canal? Agora tem uma tela que responde.</h1>
+    <p class="case-dek reveal">Um simulador que parte do mês real, recalcula a composição de aquisição por canal na hora, e fechou entre 94% e 99% do número oficial da empresa.</p>
+    <div class="case-meta reveal">
+      <span>Logtech · self-service</span>
+      <span>Ferramenta interativa</span>
+      <span>BigQuery · Chart.js</span>
+    </div>
+
+    <div class="case-illust reveal">
+      <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="rgba(255,255,255,.3)" stroke-width="3" stroke-linecap="round">
+          <line x1="50" y1="30" x2="50" y2="190"/>
+          <line x1="120" y1="30" x2="120" y2="190"/>
+          <line x1="190" y1="30" x2="190" y2="190"/>
+          <line x1="260" y1="30" x2="260" y2="190"/>
+          <line x1="330" y1="30" x2="330" y2="190"/>
+          <line x1="400" y1="30" x2="400" y2="190"/>
+        </g>
+        <g fill="rgba(255,255,255,.9)">
+          <circle cx="50" cy="95" r="10"/>
+          <circle cx="120" cy="60" r="10"/>
+          <circle cx="190" cy="130" r="10"/>
+          <circle cx="260" cy="150" r="10"/>
+          <circle cx="400" cy="112" r="10"/>
+        </g>
+        <circle cx="330" cy="48" r="12" fill="#d98e2b"/>
+        <text x="330" y="24" text-anchor="middle" fill="#d98e2b" font-size="13" font-family="Poppins,sans-serif" font-weight="700">+18%</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container case-body">
+
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> "Fretely" é uma empresa fictícia usada para descrever este projeto. O segmento é real e comum. Os números são ilustrativos e servem para explicar o método, não representam a operação real de nenhuma companhia. O que está aqui é a estrutura, a metodologia e o raciocínio, não dado proprietário de negócio.</div>
+
+    <h2 class="reveal">Resumo em 30 segundos</h2>
+    <p class="reveal">A liderança de Growth e Revenue queria responder uma pergunta simples. Se colocasse mais investimento em um canal, quantos clientes isso traria, ativaria e reteria, e por qual canal.</p>
+    <p class="reveal">Ninguém conseguia responder com confiança. Os números de cada canal vinham de planilhas de planejamento, não do realizado. E a atribuição contava o mesmo cliente em mais de um canal, inflando tudo.</p>
+    <p class="reveal">Construí um simulador que parte do mês real, deixa a liderança mexer nas alavancas de investimento e recalcula a composição de aquisição por canal na hora. Por trás dele, montei o pipeline de dados, resolvi a lente de atribuição e validei tudo contra o número oficial da empresa.</p>
+    <p class="reveal">O resultado ficou dentro de 94% a 99% do número oficial e virou a base de conversa de planejamento entre Growth, Revenue e a liderança.</p>
+
+    <h2 class="reveal">O contexto</h2>
+    <p class="reveal">A Fretely é uma logtech. O produto ajuda pequenos vendedores de e-commerce a emitir etiquetas de frete com desconto e acompanhar as postagens. O cliente entra no app, calcula um frete, emite a primeira etiqueta e posta. Quanto mais ele posta, mais valor ele gera.</p>
+    <p class="reveal">O funil de crescimento tem quatro degraus.</p>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Etapa</th><th>O que significa</th></tr>
+        <tr><td>Aquisição</td><td>Primeiro cálculo de frete. O sinal de que a pessoa chegou.</td></tr>
+        <tr><td>Ativação</td><td>Primeira etiqueta emitida. A pessoa começou a usar de verdade.</td></tr>
+        <tr><td>Postagem</td><td>Primeira postagem concluída. O pedido saiu.</td></tr>
+        <tr><td>ICP</td><td>Duas emissões em até sete dias. O sinal de que o cliente veio para ficar.</td></tr>
+      </table>
+    </div>
+    <p class="reveal">A aquisição vem de seis frentes: mídia paga, influenciadores, indicação entre clientes (member get member), conteúdo e SEO, parcerias, e um grupo grande de clientes que chega sem canal identificado (orgânico e direto).</p>
+
+    <h2 class="reveal">A dor real da liderança</h2>
+    <p class="reveal">O time de Revenue precisava planejar quanto investir em cada canal para bater a meta de crescimento. A liderança de Growth precisava defender prioridade de investimento com números.</p>
+    <p class="reveal">Três problemas travavam essa conversa.</p>
+    <p class="reveal">O primeiro era de fonte. O volume por canal saía da planilha de orçamento, que só tinha dinheiro planejado, não o volume que cada time entregava de fato. Alguns canais nem apareciam na planilha.</p>
+    <p class="reveal">O segundo era de atribuição. A empresa contava o mesmo cliente em mais de um canal. Se alguém clicava num anúncio pago e também usava um cupom de influenciador, ele entrava nos dois. A soma dos canais ficava maior que o número real de clientes.</p>
+    <p class="reveal">O terceiro era de simulação. Não existia um lugar onde a liderança pudesse mexer numa alavanca, por exemplo subir o investimento em mídia paga, e ver o efeito na aquisição, na ativação e na retenção, canal por canal.</p>
+    <p class="reveal">Sem isso, o planejamento virava achismo. E achismo não sobrevive numa reunião de meta.</p>
+
+    <h2 class="reveal">O que eu construí</h2>
+    <p class="reveal">Uma ferramenta web, leve, que roda no navegador e pode ser embarcada num portal interno.</p>
+    <p class="reveal">Ela tem cinco telas. Um simulador, onde a liderança ajusta investimento e custo por cliente e vê o resultado recalcular. Uma composição por mês, que mostra a participação de cada canal ao longo do tempo. Uma evolução por canal, com volumes, custo por cliente e qualidade. Um glossário que explica cada métrica em linguagem simples. E uma ficha técnica, onde ficam as fórmulas, as consultas e a validação, para quem quiser auditar.</p>
+    <p class="reveal">Por baixo, um pipeline de dados que consolida a atribuição de seis canais numa lente única e reconcilia com o número oficial da empresa.</p>
+
+    <h2 class="reveal">Como cheguei nos números</h2>
+    <p class="reveal">Essa é a parte que deu mais trabalho e é a mais importante do case.</p>
+
+    <h3 class="reveal">Passo 1: definir o funil e a régua de cada métrica</h3>
+    <p class="reveal">Antes de qualquer consulta, fechei com a liderança o que conta como aquisição, ativação, postagem e ICP. Parece óbvio, mas metade dos problemas de dado nasce de gente medindo a mesma palavra de jeito diferente. A régua de postagem, por exemplo, ficou sendo o pedido concluído, com cancelamento nulo e data de conclusão preenchida. Sem essa definição escrita, cada dashboard mostrava um número.</p>
+
+    <h3 class="reveal">Passo 2: montar as bases certas para cada canal</h3>
+    <p class="reveal">Cada canal tem uma origem de dado diferente, e forçar todos na mesma fonte quebra a leitura. Ficou assim.</p>
+    <p class="reveal">Mídia paga, conteúdo e SEO, e o grupo orgânico e direto saem da atribuição de first-touch, cruzando o comportamento de web e app por UID único. É a fonte que diz de onde o cliente veio na primeira vez.</p>
+    <p class="reveal">Influenciadores e indicação (MGM) saem do uso de cupom. Um cliente é de influência quando a primeira postagem dele usou um cupom de influenciador. Um cliente é de MGM quando entrou como convidado por indicação.</p>
+    <p class="reveal">Parcerias entra como um valor médio fixo, porque o rastreamento próprio ainda estava em maturação.</p>
+    <p class="reveal">O orçamento de cada frente vem do plano oficial de Revenue. Retenção (CRM) fica de fora, porque é outra caixa.</p>
+
+    <h3 class="reveal">Passo 3: escolher uma lente de tempo que bata com o oficial</h3>
+    <p class="reveal">Aqui teve uma reviravolta boa. Minha primeira versão contava tudo por coorte de aquisição, ou seja, agrupava o cliente pelo mês em que ele chegou. Faz sentido para calcular custo de aquisição, mas não batia com o dashboard oficial.</p>
+    <p class="reveal">O motivo era simples quando parei para olhar. O dashboard oficial conta por período, pela data em que o evento aconteceu. Clientes que chegaram em abril e ativaram em maio apareciam em maio no oficial e em abril na minha coorte. Nos meses recentes, a diferença explodia, porque uma coorte nova ainda não tinha amadurecido.</p>
+    <p class="reveal">Troquei a lente para base período, contando cada indicador pela data do evento. A distância para o oficial caiu de dois dígitos para menos de 6% no mês fechado.</p>
+
+    <h3 class="reveal">Passo 4: unificar seis canais numa lente única que soma o total real</h3>
+    <p class="reveal">O pedido da liderança era claro. A soma dos canais tinha que fechar com o total oficial do mês. Para isso, cada cliente precisa cair em um único balde.</p>
+    <p class="reveal">Montei uma partição por canal onde cada usuário é atribuído a uma frente só. A soma das seis frentes passou a reproduzir o total oficial de ativações. Isso deu à liderança algo que ela não tinha: um total confiável, quebrado por canal, sem sobra e sem falta.</p>
+
+    <h3 class="reveal">Passo 5: validar contra o número oficial, mês a mês</h3>
+    <p class="reveal">Não adianta construir bonito e não bater. Comparei o total do simulador com o número oficial da empresa, mês a mês. Fechou em torno de 94% a 99% no mês de referência. A pequena diferença que sobra são clientes que emitem por vias fora da atribuição de growth, como integrações e API. Deixei isso explícito na ficha técnica, porque esconder gap é pior que mostrar.</p>
+
+    <h3 class="reveal">Passo 6: medir a dupla contagem entre canais</h3>
+    <p class="reveal">Aqui veio o achado que mudou a conversa. A liderança suspeitava de dupla contagem e queria descontá-la do grupo orgânico. Fui atrás do dado.</p>
+    <p class="reveal">O que os números mostraram: cerca de metade dos clientes de influenciadores e cerca de um terço dos de indicação também eram creditados em mídia paga. A sobreposição com o orgânico era mínima, na casa de poucos por cento.</p>
+    <p class="reveal">Descontar do orgânico não resolveria nada. A dupla contagem morava entre influência, indicação e mídia paga. Levei isso de volta para a liderança com o dado na mão, e a decisão de como tratar virou uma conversa informada, não um palpite.</p>
+
+    <h2 class="reveal">Arquitetura de dados</h2>
+    <p class="reveal">Usei uma arquitetura em camadas, no estilo medallion.</p>
+    <p class="reveal">A camada bronze guarda o dado cru, do jeito que sai da fonte, sem tratamento. A camada silver limpa, padroniza e resolve identidade por UID. A camada gold entrega a visão de negócio, já particionada por canal e por período, pronta para consumo.</p>
+    <p class="reveal">Cada tabela roda de forma idempotente e é reprocessável. Se um mês fecha errado, eu reprocesso sem quebrar histórico. A ferramenta consome só a camada gold, então o front nunca fala direto com dado sujo.</p>
+<pre class="reveal"><code>FONTES                         DATA WAREHOUSE (BigQuery)                 CONSUMO
+────────────────────           ──────────────────────────────           ──────────────
+GA4 / AppsFlyer      ─┐        bronze  (dados crus)                      Simulador (app web)
+(first-touch web/app) │   ─▶    silver  (identidade por UID,              ├─ simulador
+                      │                  canal resolvido)                 ├─ composição por mês
+Cupons (influência,  ─┤   ─▶    gold    (partição por canal,             ├─ evolução por canal
+indicação / MGM)      │                  base período)                    └─ ficha técnica
+                      │        ┌ validação contra dashboard oficial
+Plano de Revenue     ─┘        └ análise de dupla contagem</code></pre>
+
+    <h2 class="reveal">O simulador por dentro</h2>
+    <p class="reveal">O modelo é direto de explicar, o que foi proposital. A liderança precisa entender o caminho.</p>
+    <p class="reveal">Você define o investimento e o custo por cliente ativado de cada canal pago. A ferramenta calcula quantos clientes aquele investimento ativa. A partir da ativação, ela estima quantos chegaram (aquisição) e quantos viraram recorrentes (ICP), usando as taxas de conversão medidas no mês de referência.</p>
+    <p class="reveal">Os canais orgânicos não têm investimento, então entram direto pelo volume de ativação.</p>
+    <p class="reveal">Um detalhe que fez diferença. No estado inicial, sem ninguém mexer, a ferramenta reproduz o mês real com precisão, usando os valores medidos. Só quando alguém edita um campo é que ela recalcula. Isso evita um problema clássico de simulador, que é o número base já sair errado por arredondamento de taxa. O ponto de partida é sempre a realidade.</p>
+    <p class="reveal">A projeção não parte da ideia ingênua de que gastar mais gera vendas na mesma proporção. Na prática, o gasto sozinho explica pouco do volume. Ancorei a projeção em três coisas que se mostraram estáveis mês a mês: a participação de cada canal, o custo por cliente de cada canal, e as taxas de conversão do funil.</p>
+
+    <h2 class="reveal">Decisões difíceis (e por que tomei cada uma)</h2>
+    <p class="reveal"><b>Coorte contra período.</b> Escolhi período para bater com o oficial, mesmo sabendo que coorte é melhor para custo de aquisição puro. Deixei a coorte documentada como visão secundária.</p>
+    <p class="reveal"><b>First-touch contra cupom.</b> Para influência e indicação, o dado dos times vem do cupom, que conta mais gente do que o first-touch. Mantive o cupom nesses dois canais, porque é o número que a operação usa e reconhece, e validei que ele bate com o gráfico oficial dos times.</p>
+    <p class="reveal"><b>Mostrar o gap em vez de esconder.</b> O simulador não fecha 100% com o oficial. Podia ter forçado o encaixe jogando a diferença num canal qualquer. Não fiz isso. Mostrei a cobertura real e expliquei a origem da diferença. Confiança se constrói com transparência, e a liderança precisa confiar na ferramenta para decidir com ela.</p>
+    <p class="reveal"><b>Não inventar dado.</b> Em vários pontos faltava um número. A tentação é derivar por proporção e seguir. Preferi rodar a consulta e trazer o dado medido, mesmo que custasse mais uma rodada. O único lugar onde deixei um valor derivado, marquei como derivado, na cara.</p>
+
+    <h2 class="reveal">Redesenho da comunicação para a liderança</h2>
+    <p class="reveal">A primeira versão era tecnicamente correta e ilegível para quem decide. Cheia de termo de banco de dados, sigla e jargão.</p>
+    <p class="reveal">Reescrevi tudo pensando em quem vai olhar por dois minutos numa reunião. Tirei o jargão das telas principais e joguei o detalhe técnico para uma aba separada, para quem quiser auditar. Renomeei as métricas para linguagem de negócio, com uma glosa curta explicando cada uma. Troquei "não atribuído" por "orgânico e direto", que diz a mesma coisa de um jeito que não soa como erro.</p>
+    <p class="reveal">Cada canal ganhou uma linha explicando de onde vem o número, em uma frase. Cupom para influência e indicação. Valor médio fixo para parcerias. Atribuição de web e app por UID para o resto.</p>
+    <p class="reveal">A régua que usei: se a liderança não entende em dez segundos, o texto está errado. Não a liderança.</p>
+
+    <h2 class="reveal">Resultado e impacto</h2>
+    <p class="reveal">A ferramenta virou a base de conversa de planejamento entre Growth, Revenue e a liderança. A pergunta de quanto investir e o que esperar passou a ter uma tela para responder, com número que bate com o oficial.</p>
+    <p class="reveal">O total por canal ficou reconciliado com o número oficial, entre 94% e 99% no mês fechado, com a diferença explicada.</p>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><div class="stat-n">94%–99%</div><div class="stat-l">de cobertura do simulador frente ao número oficial da empresa, no mês fechado</div></div>
+      <div class="stat-card"><div class="stat-n">6 canais</div><div class="stat-l">consolidados numa lente única, sem sobra e sem falta</div></div>
+      <div class="stat-card"><div class="stat-n">~50%</div><div class="stat-l">dos clientes de influenciadores também creditados em mídia paga</div></div>
+      <div class="stat-card"><div class="stat-n">~33%</div><div class="stat-l">dos clientes de indicação (MGM) também creditados em mídia paga</div></div>
+    </div>
+    <p class="reveal"><i>(números representativos, anonimizados)</i></p>
+    <p class="reveal"><b>O achado de dupla contagem mudou uma decisão.</b> A liderança ia mexer no lugar errado, o orgânico. O dado mostrou que o ajuste certo era entre mídia paga, influência e indicação.</p>
+    <p class="reveal"><b>A leitura ficou acessível.</b> Quem decide passou a usar a ferramenta sem precisar de tradução técnica.</p>
+
+    <h2 class="reveal">Aprendizados</h2>
+    <p class="reveal">Definição de métrica é metade do projeto. Escrever a régua antes de consultar economizou semanas de retrabalho.</p>
+    <p class="reveal">A lente de tempo muda tudo. Coorte e período respondem perguntas diferentes e não são intercambiáveis. Escolher a errada faz o número não bater, e ninguém confia.</p>
+    <p class="reveal">Validar contra a fonte oficial é inegociável. Um simulador bonito que não bate com o dashboard da empresa morre na primeira reunião.</p>
+    <p class="reveal">Comunicação é parte da ferramenta, não enfeite. A versão tecnicamente correta que ninguém entende não gera decisão. A versão clara e auditável gera.</p>
+
+    <h2 class="reveal">Stack de ferramentas</h2>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Camada</th><th>Ferramentas</th></tr>
+        <tr><td>Data warehouse</td><td>BigQuery</td></tr>
+        <tr><td>Modelagem de dados</td><td>SQL, arquitetura medallion (bronze, silver, gold), tabelas idempotentes e particionadas</td></tr>
+        <tr><td>Atribuição e eventos</td><td>GA4, AppsFlyer, Google Tag Manager (server-side), identidade por UID único</td></tr>
+        <tr><td>Front-end da ferramenta</td><td>HTML, CSS, JavaScript puro, Chart.js, tipografia Poppins</td></tr>
+        <tr><td>Validação e QA</td><td>Cross-check contra dashboard oficial de BI, reconciliação mês a mês, QA de renderização automatizada</td></tr>
+        <tr><td>Versionamento</td><td>Git e GitHub</td></tr>
+        <tr><td>Produtividade</td><td>Desenvolvimento assistido por IA (prototipagem, geração e revisão de SQL, documentação)</td></tr>
+      </table>
+    </div>
+
+    <h2 class="reveal">Estrutura do repositório</h2>
+<pre class="reveal"><code>simulador-orcamento-multicanal/
+├── README.md                        # visão geral, print e link da ferramenta
+├── docs/
+│   ├── case-study.md                # este documento
+│   ├── ferramenta.html              # o simulador (standalone, roda no navegador)
+│   └── screenshots/                 # capturas das cinco telas
+├── sql/
+│   ├── 01_particao_periodo_por_canal.sql   # lente única, base período, seis canais
+│   ├── 02_influencia_cupom.sql             # funil de influência por uso de cupom
+│   ├── 03_mgm_convidados.sql               # funil de indicação (convidados)
+│   ├── 04_sobreposicao_canais.sql          # análise de dupla contagem (multi-touch)
+│   └── 05_validacao_oficial.sql            # reconciliação contra o número oficial
+├── data/
+│   └── amostra_anonimizada.csv      # amostra fictícia; dados reais não versionados
+└── LICENSE</code></pre>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="case-cta reveal">
+      <h2>Sua liderança também discute orçamento por canal no achismo?</h2>
+      <p>30 minutos, de graça. Entro nas suas plataformas e mostro se o número que vocês usam pra decidir bate com o real.</p>
+      <a href="https://wa.me/5571982210402?text=Ol%C3%A1%20Jeferson%2C%20vi%20o%20case%20do%20Simulador%20de%20Or%C3%A7amento%20e%20quero%20meu%20diagn%C3%B3stico%20gr%C3%A1tis." target="_blank" rel="noopener" class="btn-pri">Quero meu diagnóstico grátis →</a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="container">
+    <span class="slabel reveal">Outros cases</span>
+    <h2 class="stitle reveal" style="margin-bottom:1.5rem">Continue lendo</h2>
+    <div class="related-grid reveal">
+      <a class="related-card" href="atribuicao-multitoque-crm.html">
+        <div class="related-eyebrow">Case study · Atribuição & CRM</div>
+        <div class="related-t">Atribuição multi-toque de CRM: de 2% a 12% de contribuição real</div>
+        <div class="related-d">Como o último clique escondia 6x o valor real de um canal.</div>
+      </a>
+      <a class="related-card" href="signals-downgrade-preditivo.html">
+        <div class="related-eyebrow">Case study · Growth & Predição</div>
+        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
+      </a>
+      <a class="related-card" href="icp-curva-abc.html">
+        <div class="related-eyebrow">Case study · ICP & Growth</div>
+        <div class="related-t">ICP baseado em dados: da carteira ao perfil de cliente ideal</div>
+        <div class="related-d">Curva ABC e lift pra transformar carteira de clientes em critério de priorização.</div>
+      </a>
+      <a class="related-card" href="revenue-command-center.html">
+        <div class="related-eyebrow">Case study · Analytics Engineering</div>
+        <div class="related-t">Revenue Command Center: do caos de planilhas à decisão em 30 segundos</div>
+        <div class="related-d">Pipeline governado e dashboard executivo pra uma diretoria de Revenue.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JJS<em>.</em></div>
+  <p>&copy; 2025 Jeferson J Silva &middot; <a href="../index.html">jefersonjs.github.io/jefersonjs-site</a></p>
+</footer>
+
+<script src="../assets/cases.js"></script>
+</body>
+</html>

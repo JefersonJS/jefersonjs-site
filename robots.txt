@@ -1,25 +1,33 @@
 User-agent: *
 Allow: /
+Disallow: /cases/*.md
 
 User-agent: GPTBot
 Allow: /
+Disallow: /cases/*.md
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /cases/*.md
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /cases/*.md
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /cases/*.md
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /cases/*.md
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /cases/*.md
 
 User-agent: CCBot
 Allow: /
+Disallow: /cases/*.md
 
 Sitemap: https://jefersonjs.github.io/jefersonjs-site/sitemap.xml

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICP baseado em dados: de carteira a perfil de cliente ideal · Jeferson J Silva</title>
+<meta name="description" content="Case de growth analytics: Curva ABC e lift revelaram o perfil do cliente ideal (ICP) e viraram três critérios de priorização e um score por cliente, prontos para pré-vendas e CRM.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jefersonjs.github.io/jefersonjs-site/cases/icp-curva-abc.html">
+<meta name="theme-color" content="#4676dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a70'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%234676dc' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://jefersonjs.github.io/jefersonjs-site/cases/icp-curva-abc.html">
+<meta property="og:site_name" content="Jeferson J Silva">
+<meta property="og:title" content="ICP baseado em dados: de carteira a perfil de cliente ideal">
+<meta property="og:description" content="Case de growth analytics: Curva ABC e lift revelaram o perfil do cliente ideal (ICP) e viraram três critérios de priorização e um score por cliente, prontos para pré-vendas e CRM.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ICP baseado em dados: de carteira a perfil de cliente ideal">
+<meta name="twitter:description" content="Curva ABC e lift revelaram o perfil do cliente ideal (ICP) e viraram três critérios de priorização e um score por cliente.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cases.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ICP baseado em dados: de carteira a perfil de cliente ideal",
+  "description": "Case de growth analytics: Curva ABC e lift revelaram o perfil do cliente ideal (ICP) e viraram três critérios de priorização e um score por cliente, prontos para pré-vendas e CRM.",
+  "url": "https://jefersonjs.github.io/jefersonjs-site/cases/icp-curva-abc.html",
+  "datePublished": "2026-07-11",
+  "inLanguage": "pt-BR",
+  "author": { "@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.github.io/jefersonjs-site/" },
+  "publisher": { "@type": "Person", "name": "Jeferson J Silva" },
+  "about": ["ICP", "Curva ABC", "Growth analytics", "BigQuery"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.github.io/jefersonjs-site/" },
+    { "@type": "ListItem", "position": 2, "name": "Cases", "item": "https://jefersonjs.github.io/jefersonjs-site/#cases" },
+    { "@type": "ListItem", "position": 3, "name": "ICP com Curva ABC", "item": "https://jefersonjs.github.io/jefersonjs-site/cases/icp-curva-abc.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">JJS<em>.</em></a>
+  <ul class="nav-r">
+    <li><a href="../index.html#cases">Cases</a></li>
+    <li><a href="../index.html#pilares">Serviços</a></li>
+    <li><a href="../index.html#sobre">Sobre</a></li>
+    <li><a href="../index.html#contato" class="nav-cta">Falar com Jeferson</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="crumb">
+      <a href="../index.html">Início</a><span>/</span>
+      <a href="../index.html#cases">Cases</a><span>/</span>
+      <span class="current">ICP com Curva ABC</span>
+    </div>
+
+    <div class="case-eyebrow reveal"><span class="dot"></span>Case study · ICP & Growth</div>
+    <h1 class="case-title reveal">12% dos clientes geravam 79% do faturamento. Ninguém sabia quem eram.</h1>
+    <p class="case-dek reveal">Curva ABC e análise de lift transformaram carteira de clientes num perfil de ICP com três critérios objetivos e um score pronto pra pré-vendas e CRM usarem.</p>
+    <div class="case-meta reveal">
+      <span>Logtech · self-service</span>
+      <span>~3 semanas</span>
+      <span>BigQuery · SQL</span>
+    </div>
+
+    <div class="case-illust reveal">
+      <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <line x1="10" y1="190" x2="450" y2="190" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+        <g fill="rgba(255,255,255,.85)">
+          <rect x="20" y="40" width="28" height="150" rx="3"/>
+          <rect x="56" y="50" width="28" height="140" rx="3"/>
+        </g>
+        <g fill="rgba(255,255,255,.5)">
+          <rect x="92" y="100" width="28" height="90" rx="3"/>
+          <rect x="128" y="110" width="28" height="80" rx="3"/>
+          <rect x="164" y="120" width="28" height="70" rx="3"/>
+        </g>
+        <g fill="rgba(255,255,255,.25)">
+          <rect x="200" y="155" width="28" height="35" rx="3"/>
+          <rect x="236" y="160" width="28" height="30" rx="3"/>
+          <rect x="272" y="165" width="28" height="25" rx="3"/>
+          <rect x="308" y="170" width="28" height="20" rx="3"/>
+          <rect x="344" y="175" width="28" height="15" rx="3"/>
+        </g>
+        <path d="M34 190 C 60 90, 100 55, 150 48 S 260 60 372 60" stroke="#d98e2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <line x1="86" y1="30" x2="86" y2="190" stroke="rgba(255,255,255,.2)" stroke-dasharray="3 4"/>
+        <line x1="192" y1="30" x2="192" y2="190" stroke="rgba(255,255,255,.2)" stroke-dasharray="3 4"/>
+        <text x="52" y="210" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="12" font-family="Poppins,sans-serif" font-weight="700">A</text>
+        <text x="146" y="210" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="12" font-family="Poppins,sans-serif" font-weight="700">B</text>
+        <text x="300" y="210" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="12" font-family="Poppins,sans-serif" font-weight="700">C</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container case-body">
+
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> Este case descreve um projeto real, mas a empresa ("Enviago"), o nome do produto e todos os números são fictícios ou anonimizados. Os valores servem para ilustrar a forma dos achados, não os resultados reais. Nomes de tabelas, campos e pessoas foram trocados por equivalentes genéricos. O objetivo é mostrar o método e a engenharia de análise, preservando qualquer dado sensível.</div>
+
+    <h2 class="reveal">O problema</h2>
+    <p class="reveal">"Quem é o nosso cliente ideal?" Essa pergunta apareceu numa reunião de liderança e ninguém tinha uma resposta baseada em dado. Tinha opinião. Tinha o palpite do time de vendas. Tinha a intuição de quem estava há mais tempo na casa. Cada um puxava para um lado.</p>
+    <p class="reveal">O custo disso é concreto. A empresa gastava a maior parte do orçamento de mídia trazendo volume, sem saber se aquele volume tinha alguma chance de virar cliente de verdade. O time de pré-vendas priorizava contas no feeling. O CRM disparava campanha para todo mundo igual.</p>
+    <p class="reveal">A Enviago já sabia definir "ativação" (quando um cliente faz a primeira emissão de etiqueta). O que faltava era o degrau seguinte. Entre os clientes ativos, quais realmente sustentam o negócio? E o que eles têm em comum que dê para procurar lá na porta de entrada?</p>
+    <p class="reveal">Essa era a dor. Traduzir a carteira num perfil acionável.</p>
+
+    <h2 class="reveal">Contexto: a Enviago</h2>
+    <p class="reveal">A Enviago é uma plataforma self-service de logística para micro e pequenos e-commerces. O vendedor entra pelo app (iOS ou Android) ou pela web, calcula o frete, escolhe a transportadora e emite a etiqueta com desconto. Parte dos clientes conecta a loja via integração com plataformas de e-commerce e marketplaces.</p>
+    <p class="reveal">O modelo de receita é simples. A Enviago ganha uma margem por etiqueta emitida. Quanto mais o vendedor emite, mais a Enviago fatura.</p>
+    <p class="reveal">O funil de referência tem alguns marcos: instalação, primeiro cálculo de frete, primeira emissão (ativação) e recorrência. Existe também um programa de indicação (member-get-member), onde clientes convidam outros clientes.</p>
+    <p class="reveal">Guardando essa mecânica, dá para entender por que o melhor cliente aqui é medido por volume de emissão e receita gerada. Não por número de logins ou tamanho declarado.</p>
+
+    <h2 class="reveal">Meu objetivo</h2>
+    <p class="reveal">Adaptar um método clássico de descoberta de ICP (Curva ABC seguida de análise de padrões) para a realidade self-service da Enviago, e entregar três coisas:</p>
+    <ol class="reveal">
+      <li>Um perfil de ICP descritivo, em linguagem que a liderança usa.</li>
+      <li>Três critérios objetivos de priorização, observáveis cedo no ciclo de vida do cliente.</li>
+      <li>Uma base pronta com score por cliente, para o time comercial e o CRM operarem no dia seguinte.</li>
+    </ol>
+    <p class="reveal">Tudo validado contra a fonte oficial antes de virar conclusão.</p>
+
+    <h2 class="reveal">Stack e ferramentas</h2>
+    <p class="reveal">Google BigQuery como warehouse, com SQL puro para toda a modelagem, uso pesado de CTEs e window functions (soma acumulada para a curva, partição por dimensão para o lift) e arquitetura em camadas no estilo medallion: bronze para dado cru, silver para dado limpo, gold para dado de negócio.</p>
+    <p class="reveal">As fontes foram a base transacional de pedidos (grão pedido), a tabela de perfil de cliente (grão cliente), eventos de app vindos de um mobile measurement partner e web analytics, cada uma com seu papel, sem misturar. Toda query de análise foi reconciliada contra o dashboard oficial de BI da empresa antes de qualquer conclusão seguir.</p>
+    <p class="reveal">Para entrega, gerei o deck executivo em código com PptxGenJS (Node), versionável e reproduzível, e o documento técnico com docx-js. Usei Chart.js para dashboards HTML autocontidos quando precisei. Para QA dos entregáveis, rodei LibreOffice em modo headless mais pdftoppm, renderizando cada slide em imagem pra revisar visualmente antes de entregar, o que pega overflow de texto e desalinhamento que passam batido no código.</p>
+    <div class="tags reveal">
+      <span class="tag">BigQuery</span>
+      <span class="tag">SQL</span>
+      <span class="tag">CTEs / window functions</span>
+      <span class="tag">PptxGenJS</span>
+      <span class="tag">docx-js</span>
+      <span class="tag">Chart.js</span>
+      <span class="tag">LibreOffice headless</span>
+      <span class="tag">Python</span>
+      <span class="tag">Git / GitHub</span>
+    </div>
+
+    <h2 class="reveal">Arquitetura de dado</h2>
+    <p class="reveal">Trabalhei sobre duas tabelas gold, cada uma com um grão claro.</p>
+    <p class="reveal">A primeira é a base transacional de pedidos. Uma linha por pedido, com identificador do cliente, data, valores cobrados, margem da plataforma, transportadora, integração de origem e os carimbos de status (emitiu, postou, cancelou).</p>
+    <p class="reveal">A segunda é a tabela de perfil do cliente. Uma linha por cliente, já consolidada. Tem região, faixa de volume de envio, sistema operacional, integração de loja, papel no programa de indicação, tempo de casa e uma série de marcos de emissão (data da primeira emissão, da segunda, dias até a segunda, e assim por diante).</p>
+    <p class="reveal">Essa separação importa. A tabela de pedidos me dá volume e receita por cliente. A tabela de perfil me dá os atributos descritivos. O ICP nasce do cruzamento das duas.</p>
+
+    <h2 class="reveal">Como eu fiz</h2>
+
+    <h3 class="reveal">Passo 1. Definir o que é "melhor cliente"</h3>
+    <p class="reveal">O método clássico de ICP foi desenhado para venda B2B com carteira e vendedor. A Enviago é self-service. Então a primeira coisa foi traduzir os conceitos.</p>
+    <p class="reveal">Onde o método fala em receita gerada pelo cliente, usei volume de emissões e GMV por cliente. Onde fala em vendedor responsável, usei canal de aquisição. Onde fala em tipo de contrato, usei plataforma e integração. Onde fala em tempo de relacionamento, usei tempo de casa.</p>
+    <p class="reveal">O melhor cliente da Enviago é quem emite muito, com valor e recorrência. Simples assim.</p>
+
+    <h3 class="reveal">Passo 2. Validar antes de confiar</h3>
+    <p class="reveal">Aqui está a parte que separa análise séria de dashboard bonito.</p>
+    <p class="reveal">Antes de rodar qualquer curva, eu precisava ter certeza de que a minha definição de "emissão" batia com a definição oficial da empresa. Tinha uma ambiguidade real: emissão (etiqueta gerada e paga) e postagem (pacote efetivamente postado) são eventos diferentes, e usar um no lugar do outro muda toda a análise.</p>
+    <p class="reveal">Levantei uma hipótese. A métrica oficial de ativação seria a coorte de primeira emissão por mês. Escrevi a query, contei clientes por mês da primeira emissão e comparei com o dashboard de BI da liderança.</p>
+    <p class="reveal">Bateu. Diferença zero em todos os meses fechados, com variação de no máximo um cliente por ruído de snapshot. O único mês com diferença maior era o mês corrente, ainda parcial.</p>
+    <p class="reveal">Depois fiz o mesmo com o gate de emissão na tabela de pedidos, para garantir que o carimbo que eu ia usar reproduzia exatamente a mesma primeira emissão. Bateu de novo.</p>
+    <p class="reveal">Só então segui. Toda a Curva ABC parte de uma régua auditada, não de palpite.</p>
+
+    <h3 class="reveal">Passo 3. Curva ABC</h3>
+    <p class="reveal">Com a régua travada, ordenei os clientes por GMV, calculei o acumulado com window function e classifiquei em três curvas. Curva A até 80% do GMV acumulado, Curva B de 80 a 95%, Curva C o resto.</p>
+    <p class="reveal">Trouxe GMV e margem da plataforma lado a lado na mesma query, de propósito, para decidir o eixo vendo o dado em vez de escolher no escuro. As duas contaram a mesma história, então mantive GMV como eixo.</p>
+
+    <h3 class="reveal">Passo 4. Padrões por lift</h3>
+    <p class="reveal">Curva A isolada, a pergunta vira: o que essa gente tem em comum?</p>
+    <p class="reveal">A técnica é lift. Para cada característica, comparo a participação dela dentro da Curva A com a participação na base inteira. Lift acima de 1 significa sobre-representação, ou seja, aquela característica aparece mais nos melhores clientes do que na média. Lift abaixo de 1 é anti-padrão.</p>
+    <p class="reveal">Empilhei todas as dimensões numa query só (região, porte, plataforma, integração, indicação, tempo de casa, velocidade de ativação) e ordenei por lift dentro de cada dimensão. Um retrato só, direto ao ponto.</p>
+
+    <h3 class="reveal">Passo 5. Estruturar o ICP e os três critérios</h3>
+    <p class="reveal">Com os lifts na mão, o perfil se desenhou quase sozinho. Escrevi o ICP em uma frase e destilei três critérios objetivos, todos observáveis cedo, para o time comercial conseguir agir antes de o cliente virar Curva A.</p>
+
+    <h3 class="reveal">Passo 6. Base pronta</h3>
+    <p class="reveal">Por último, transformei os três critérios num score aditivo por cliente e materializei uma tabela com o score e uma classificação (Alto, Médio, Baixo). Essa é a entrega que o CRM e a pré-vendas usam sem precisar entender de SQL.</p>
+
+    <h2 class="reveal">Os resultados</h2>
+    <p class="reveal"><i>(números ilustrativos e anonimizados: preservam a forma dos achados, não os valores reais)</i></p>
+
+    <h3 class="reveal">O Pareto se confirmou, e com força</h3>
+    <p class="reveal">Uma fatia de 12% dos clientes gerou cerca de 79% do GMV. A concentração ficou até maior que o benchmark de mercado, que costuma falar em 15 a 20%.</p>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><div class="stat-n">12%</div><div class="stat-l">dos clientes (Curva A) geram a maior parte do GMV</div></div>
+      <div class="stat-card"><div class="stat-n">79%</div><div class="stat-l">do GMV concentrado nesses 12% de clientes</div></div>
+      <div class="stat-card"><div class="stat-n">6,2</div><div class="stat-l">de lift para porte de 30+ envios por mês</div></div>
+      <div class="stat-card"><div class="stat-n">100x</div><div class="stat-l">a diferença de receita entre um Curva A e um Curva C</div></div>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Curva</th><th>Clientes</th><th>% Clientes</th><th>Emissões</th><th>% GMV</th><th>Taxa de conclusão</th></tr>
+        <tr><td>A</td><td>33.600</td><td>12,0%</td><td>~3,7 mi</td><td>79,0%</td><td>94%</td></tr>
+        <tr><td>B</td><td>70.000</td><td>25,0%</td><td>~0,9 mi</td><td>15,5%</td><td>92%</td></tr>
+        <tr><td>C</td><td>176.400</td><td>63,0%</td><td>~0,4 mi</td><td>5,5%</td><td>90%</td></tr>
+      </table>
+    </div>
+
+    <h3 class="reveal">A distância entre um Curva A e o resto é brutal</h3>
+    <p class="reveal">Em seis meses, o cliente médio da Curva A emitiu cerca de 110 etiquetas. O da Curva B, 12. O da Curva C, 2.</p>
+    <p class="reveal">Em receita por cliente, um Curva A vale mais de cem vezes um Curva C. A qualidade acompanha o valor: a taxa de conclusão de postagem sobe junto com a curva, e o ticket médio por envio também.</p>
+
+    <h3 class="reveal">O que os Curva A têm em comum</h3>
+    <p class="reveal">Ordenados por poder preditivo:</p>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Sinal</th><th>Lift</th><th>Leitura</th></tr>
+        <tr><td>Porte: 30+ envios por mês</td><td>~6,2</td><td>o divisor de águas, disparado o mais forte</td></tr>
+        <tr><td>Integração de e-commerce ativa</td><td>~3,3</td><td>loja conectada prevê valor</td></tr>
+        <tr><td>Indicação: perfil "convidante"</td><td>~1,9</td><td>quem indica, não quem foi indicado</td></tr>
+        <tr><td>Velocidade: 2ª emissão em até 7 dias</td><td>~1,8</td><td>a régua de ativação se valida como preditora</td></tr>
+        <tr><td>Tempo de casa: 1+ ano</td><td>~1,6</td><td>maturidade e lealdade</td></tr>
+        <tr><td>Plataforma: iOS ou navegador</td><td>~1,3</td><td>Android fica abaixo da média</td></tr>
+      </table>
+    </div>
+    <p class="reveal">Região deu ruído. Nenhum estado passou de lift 1,3. Não vale segmentar por geografia, e isso já economiza esforço de quem ia tentar.</p>
+
+    <h3 class="reveal">Um achado que contraria o senso comum</h3>
+    <p class="reveal">O programa de indicação tinha fama de canal de alta qualidade. Os dados mostraram uma nuance.</p>
+    <p class="reveal">Quem convida outros clientes tem lift alto, perto de 1,9. Quem entrou via indicação tem lift baixo, perto de 0,5. Ou seja, sub-representado na Curva A.</p>
+    <p class="reveal">O valor está nos bons clientes indicarem. Os indicados, em média, não viram bons clientes. Isso muda a leitura de qualidade do canal e virou uma pergunta aberta para o time antes de escalar aquisição por indicação.</p>
+
+    <h2 class="reveal">O ICP, em uma frase</h2>
+    <p class="reveal">Cliente de e-commerce com operação recorrente (30 ou mais envios por mês), que ativa rápido (segunda emissão em até sete dias), tende a ter loja integrada, já tem mais de um ano de casa e opera por iOS ou navegador.</p>
+
+    <h3 class="reveal">Os três critérios de priorização</h3>
+    <p class="reveal"><b>1. Frequência e porte.</b> Faixa de envio a partir de 10 por mês, alvo 30 ou mais. Peso máximo. É o sinal mais forte de todos.</p>
+    <p class="reveal"><b>2. Integração de e-commerce ativa.</b> Loja conectada. Demonstra intenção de escala.</p>
+    <p class="reveal"><b>3. Velocidade de ativação.</b> Cruzou a marca de duas emissões em sete dias. Sinal precoce e barato de observar.</p>
+    <p class="reveal">Boosters secundários: tempo de casa acima de um ano, iOS ou web, e perfil convidante no programa de indicação. Anti-ICP, para despriorizar: zero a um envio, sem segunda emissão em sete dias, Android puro, e menos de 90 dias com volume baixo.</p>
+
+    <h2 class="reveal">Entregáveis</h2>
+    <p class="reveal">O projeto gerou três artefatos, pensados para públicos diferentes.</p>
+    <p class="reveal">Um deck executivo em 16:9, para a liderança. Estrutura de storytelling em cinco atos, do problema ao próximo passo.</p>
+    <p class="reveal">Um documento técnico para o time, com metodologia, definições validadas e todas as queries, para qualquer pessoa replicar.</p>
+    <p class="reveal">Uma tabela de score materializada no warehouse, para pré-vendas e CRM priorizarem por classificação de ICP.</p>
+
+    <h2 class="reveal">Impacto para o negócio</h2>
+    <p class="reveal">A liderança saiu da reunião seguinte com uma definição de cliente ideal baseada em dado. Não em opinião.</p>
+    <p class="reveal">O time de aquisição ganhou um alvo claro para mídia e um anti-alvo para parar de queimar orçamento. A pré-vendas ganhou uma fila priorizada. O CRM ganhou um critério para segmentar disparo em vez de tratar todo mundo igual.</p>
+    <p class="reveal">E a área ganhou uma capacidade nova. O score é recalculável a qualquer momento, então o ICP deixa de ser um slide de uma reunião e vira um processo vivo.</p>
+
+    <h2 class="reveal">Decisões técnicas e aprendizados</h2>
+    <p class="reveal"><b>Validar primeiro, analisar depois.</b> Foi o que deu confiança para a liderança comprar o resultado. Se eu tivesse pulado a reconciliação, a primeira pergunta cética teria derrubado tudo.</p>
+    <p class="reveal"><b>Uma query por vez.</b> Construí a base incrementalmente, validando cada etapa antes de seguir. Menos elegante que um script gigante. Bem mais confiável.</p>
+    <p class="reveal"><b>Escolher o eixo vendo o dado.</b> Trouxe GMV e margem lado a lado antes de decidir por qual ranquear. Evita viés de quem escolhe a métrica que confirma a hipótese.</p>
+    <p class="reveal"><b>Lift em vez de contagem simples.</b> Contar quantos Curva A são de São Paulo enganaria, porque São Paulo é grande em tudo. Lift corrige pelo tamanho da base e revela o que é sinal de verdade.</p>
+    <p class="reveal"><b>Deck e documento em código.</b> Gerar apresentação por PptxGenJS parece overkill até a terceira revisão. Aí o valor aparece. Muda um número, roda o script, tudo se atualiza, e o QA visual pega o que os olhos cansados não pegam.</p>
+
+    <h2 class="reveal">Próximos passos</h2>
+    <p class="reveal">Investigar a fundo a qualidade do canal de indicação, já que os indicados não viram bons clientes na média. Testar o score em produção, comparando a conversão de contas priorizadas contra um grupo de controle. E agendar a recarga mensal do score, para o ICP acompanhar a base em vez de envelhecer num slide.</p>
+
+    <h2 class="reveal">Estrutura do repositório</h2>
+<pre class="reveal"><code>icp-curva-abc/
+├── README.md                        # visão geral do projeto e como navegar
+├── docs/
+│   ├── case-study.md                # este documento
+│   ├── metodologia.md               # detalhe passo a passo
+│   └── deck-executivo.pdf           # versão exportada do deck
+├── sql/
+│   ├── 00_validacao_ativacao.sql    # reconciliação contra o BI oficial
+│   ├── 01_curva_abc_base.sql        # materializa cliente + curva + perfil
+│   ├── 02_padroes_lift.sql          # padrões da Curva A por lift
+│   └── 03_score_icp.sql             # base pronta com score por cliente
+├── build/
+│   ├── build_deck.js                # gera o deck executivo (PptxGenJS)
+│   └── build_doc.js                 # gera o documento técnico (docx-js)
+└── assets/
+    └── charts/                      # imagens e dashboards de apoio</code></pre>
+
+    <h2 class="reveal">Apêndice: queries</h2>
+    <p class="reveal">Nomes de tabela e campo são genéricos. <code>analytics.fct_orders</code> é a base de pedidos (grão pedido), <code>analytics.dim_sellers</code> é o perfil do cliente (grão cliente).</p>
+
+    <h3 class="reveal">00. Validação da ativação contra o BI oficial</h3>
+<pre class="reveal"><code>-- Hipótese: "ativação" = coorte de primeira emissão por mês.
+-- Objetivo: bater com o dashboard oficial antes de confiar na régua.
+WITH emissao AS (
+  SELECT FORMAT_DATE('%Y-%m', first_order_date) AS mes,
+         COUNT(DISTINCT seller_id) AS ativacao_emissao
+  FROM `analytics.dim_sellers`
+  WHERE first_order_date BETWEEN '2026-01-01' AND '2026-06-30'
+  GROUP BY mes
+),
+postagem AS (
+  SELECT FORMAT_DATE('%Y-%m', first_shipment_date) AS mes,
+         COUNT(DISTINCT seller_id) AS ativacao_postagem
+  FROM `analytics.dim_sellers`
+  WHERE first_shipment_date BETWEEN '2026-01-01' AND '2026-06-30'
+  GROUP BY mes
+)
+SELECT COALESCE(e.mes, p.mes) AS mes, e.ativacao_emissao, p.ativacao_postagem
+FROM emissao e
+FULL OUTER JOIN postagem p USING (mes)
+ORDER BY mes;</code></pre>
+
+    <h3 class="reveal">01. Curva ABC (base cliente + curva + perfil)</h3>
+<pre class="reveal"><code>-- Gate de emissão validado: label_ready_at IS NOT NULL.
+-- Postagem = completed_at IS NOT NULL (lente de qualidade).
+CREATE OR REPLACE TABLE `analytics.seller_curva_abc_2026h1` AS
+WITH pedidos AS (
+  SELECT
+    seller_id, order_id,
+    COALESCE(revenue_charged, 0)  AS gmv_pedido,
+    COALESCE(platform_fee, 0)     AS receita_plataforma,
+    (label_ready_at IS NOT NULL)  AS emitiu,
+    (completed_at   IS NOT NULL)  AS postou
+  FROM `analytics.fct_orders`
+  WHERE order_date BETWEEN '2026-01-01' AND '2026-06-30'
+    AND seller_id IS NOT NULL
+),
+por_cliente AS (
+  SELECT seller_id,
+    COUNTIF(emitiu) AS emissoes,
+    COUNTIF(postou) AS postagens,
+    SUM(IF(emitiu, gmv_pedido, 0))        AS gmv,
+    SUM(IF(emitiu, receita_plataforma, 0)) AS receita_plataforma
+  FROM pedidos
+  GROUP BY seller_id
+  HAVING emissoes > 0
+),
+ranked AS (
+  SELECT *,
+    SUM(gmv) OVER () AS gmv_geral,
+    SUM(gmv) OVER (ORDER BY gmv DESC
+      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS gmv_acum
+  FROM por_cliente
+),
+classificado AS (
+  SELECT *,
+    CASE WHEN gmv_acum/gmv_geral <= 0.80 THEN 'A'
+         WHEN gmv_acum/gmv_geral <= 0.95 THEN 'B'
+         ELSE 'C' END AS curva
+  FROM ranked
+)
+SELECT
+  c.seller_id, c.curva, c.emissoes, c.postagens, c.gmv, c.receita_plataforma,
+  SAFE_DIVIDE(c.postagens, c.emissoes) AS taxa_conclusao,
+  SAFE_DIVIDE(c.gmv, c.emissoes)       AS ticket_medio,
+  d.state, d.shipping_tier, d.platform_os, d.store_integration,
+  d.referral_role, d.seller_level, d.signup_date, d.days_to_second_order,
+  DATE_DIFF(DATE '2026-06-30', d.signup_date, DAY) AS tenure_dias,
+  (d.days_to_second_order <= 7) AS icp_2em7
+FROM classificado c
+LEFT JOIN `analytics.dim_sellers` d USING (seller_id);</code></pre>
+
+    <h3 class="reveal">02. Padrões da Curva A por lift</h3>
+<pre class="reveal"><code>WITH base AS (
+  SELECT curva, state, shipping_tier, platform_os, store_integration,
+         referral_role, icp_2em7,
+         CASE WHEN tenure_dias <= 90  THEN '0-90d'
+              WHEN tenure_dias <= 180 THEN '91-180d'
+              WHEN tenure_dias <= 365 THEN '181-365d'
+              WHEN tenure_dias <= 730 THEN '1-2 anos'
+              ELSE '2+ anos' END AS tenure_faixa
+  FROM `analytics.seller_curva_abc_2026h1`
+),
+empilhado AS (
+  SELECT 'regiao'      AS dimensao, IFNULL(state,'(nulo)')             AS valor, curva FROM base
+  UNION ALL SELECT 'porte',        IFNULL(shipping_tier,'(nulo)'),     curva FROM base
+  UNION ALL SELECT 'plataforma',   IFNULL(platform_os,'(nulo)'),       curva FROM base
+  UNION ALL SELECT 'integracao',   IFNULL(store_integration,'(sem)'),  curva FROM base
+  UNION ALL SELECT 'indicacao',    IFNULL(referral_role,'(nenhum)'),   curva FROM base
+  UNION ALL SELECT 'tenure',       tenure_faixa,                       curva FROM base
+  UNION ALL SELECT 'vel_2em7',     CAST(icp_2em7 AS STRING),           curva FROM base
+),
+agg AS (
+  SELECT dimensao, valor,
+    COUNTIF(curva='A') AS clientes_A,
+    COUNT(*)           AS clientes_total
+  FROM empilhado GROUP BY dimensao, valor
+)
+SELECT dimensao, valor, clientes_A, clientes_total,
+  ROUND(clientes_A     / SUM(clientes_A)     OVER (PARTITION BY dimensao)*100, 1) AS pct_dentro_A,
+  ROUND(clientes_total / SUM(clientes_total) OVER (PARTITION BY dimensao)*100, 1) AS pct_base,
+  ROUND(SAFE_DIVIDE(
+          clientes_A     / SUM(clientes_A)     OVER (PARTITION BY dimensao),
+          clientes_total / SUM(clientes_total) OVER (PARTITION BY dimensao)), 2)  AS lift
+FROM agg
+WHERE clientes_total >= 100
+ORDER BY dimensao, lift DESC;</code></pre>
+
+    <h3 class="reveal">03. Base pronta: score de ICP por cliente</h3>
+<pre class="reveal"><code>CREATE OR REPLACE TABLE `analytics.seller_icp_score` AS
+WITH s AS (
+  SELECT seller_id, state, platform_os, shipping_tier, store_integration,
+         referral_role, signup_date, days_to_second_order,
+         DATE_DIFF(CURRENT_DATE(), signup_date, DAY) AS tenure_dias
+  FROM `analytics.dim_sellers`
+),
+scored AS (
+  SELECT *,
+    CASE shipping_tier                         -- Critério 1: porte (0-50)
+      WHEN '100+'   THEN 50 WHEN '30-99' THEN 42
+      WHEN '10-29'  THEN 28 WHEN '7-9'   THEN 12
+      WHEN '2-6'    THEN 5  ELSE 0 END AS pts_porte,
+    CASE WHEN store_integration IS NOT NULL
+              AND LOWER(store_integration) NOT IN ('none','')
+         THEN 25 ELSE 0 END AS pts_integracao,  -- Critério 2: integração (0-25)
+    CASE WHEN days_to_second_order <= 7  THEN 25
+         WHEN days_to_second_order <= 14 THEN 12
+         ELSE 0 END AS pts_velocidade,          -- Critério 3: velocidade (0-25)
+    (CASE WHEN tenure_dias >= 365 THEN 5 ELSE 0 END)
+    + (CASE WHEN platform_os IN ('iOS','browser') THEN 5 ELSE 0 END)
+    + (CASE WHEN referral_role IN ('inviter','both') THEN 5 ELSE 0 END)
+      AS pts_boost                              -- boosters (0-15)
+  FROM s
+)
+SELECT *,
+  pts_porte + pts_integracao + pts_velocidade + pts_boost AS icp_score,
+  CASE WHEN pts_porte + pts_integracao + pts_velocidade + pts_boost >= 70 THEN 'ICP Alto'
+       WHEN pts_porte + pts_integracao + pts_velocidade + pts_boost >= 40 THEN 'ICP Médio'
+       ELSE 'ICP Baixo' END AS icp_tier
+FROM scored;</code></pre>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="case-cta reveal">
+      <h2>Você sabe quem é o seu cliente ideal, com dado?</h2>
+      <p>30 minutos, de graça. Olho sua base e mostro se o seu ICP é opinião ou é dado.</p>
+      <a href="https://wa.me/5571982210402?text=Ol%C3%A1%20Jeferson%2C%20vi%20o%20case%20de%20ICP%20e%20Curva%20ABC%20e%20quero%20meu%20diagn%C3%B3stico%20gr%C3%A1tis." target="_blank" rel="noopener" class="btn-pri">Quero meu diagnóstico grátis →</a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="container">
+    <span class="slabel reveal">Outros cases</span>
+    <h2 class="stitle reveal" style="margin-bottom:1.5rem">Continue lendo</h2>
+    <div class="related-grid reveal">
+      <a class="related-card" href="atribuicao-multitoque-crm.html">
+        <div class="related-eyebrow">Case study · Atribuição & CRM</div>
+        <div class="related-t">Atribuição multi-toque de CRM: de 2% a 12% de contribuição real</div>
+        <div class="related-d">Como o último clique escondia 6x o valor real de um canal.</div>
+      </a>
+      <a class="related-card" href="signals-downgrade-preditivo.html">
+        <div class="related-eyebrow">Case study · Growth & Predição</div>
+        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
+      </a>
+      <a class="related-card" href="revenue-command-center.html">
+        <div class="related-eyebrow">Case study · Analytics Engineering</div>
+        <div class="related-t">Revenue Command Center: do caos de planilhas à decisão em 30 segundos</div>
+        <div class="related-d">Pipeline governado e dashboard executivo pra uma diretoria de Revenue.</div>
+      </a>
+      <a class="related-card" href="simulador-orcamento-multicanal.html">
+        <div class="related-eyebrow">Case study · Growth & Simulação</div>
+        <div class="related-t">Simulador de Orçamento Multicanal</div>
+        <div class="related-d">Uma ferramenta que recalcula aquisição por canal na hora, validada contra o oficial.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JJS<em>.</em></div>
+  <p>&copy; 2025 Jeferson J Silva &middot; <a href="../index.html">jefersonjs.github.io/jefersonjs-site</a></p>
+</footer>
+
+<script src="../assets/cases.js"></script>
+</body>
+</html>

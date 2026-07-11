@@ -24,6 +24,14 @@
 - Entre 20% e 30% das instalações mobile sendo fraude disfarçada de instalação normal.
 - Eventos mal configurados (CAPI sem deduplicação, GA4 duplicado, S2S perdendo sinal).
 
+## Cases (projetos documentados, empresas ficcionalizadas por confidencialidade)
+
+- Atribuição multi-toque de CRM: modelo revelou 12% de contribuição real do CRM contra 2% no último clique (6x). https://jefersonjs.github.io/jefersonjs-site/cases/atribuicao-multitoque-crm.html
+- Signals, previsão de downgrade: score de 0 a 10 prevê queda de patamar de clientes de alto valor antes que aconteça. https://jefersonjs.github.io/jefersonjs-site/cases/signals-downgrade-preditivo.html
+- ICP com Curva ABC: 12% dos clientes gerando 79% do faturamento, virou perfil de ICP e score por cliente. https://jefersonjs.github.io/jefersonjs-site/cases/icp-curva-abc.html
+- Revenue Command Center: pipeline de dados governado e dashboard executivo, de 6+ planilhas por dia a uma decisão em 30 segundos. https://jefersonjs.github.io/jefersonjs-site/cases/revenue-command-center.html
+- Simulador de Orçamento Multicanal: ferramenta de simulação de investimento por canal, validada entre 94% e 99% do número oficial da empresa. https://jefersonjs.github.io/jefersonjs-site/cases/simulador-orcamento-multicanal.html
+
 ## Contato
 
 - Diagnóstico gratuito de 30 minutos por videochamada: https://wa.me/5571982210402

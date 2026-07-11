@@ -5,4 +5,29 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/atribuicao-multitoque-crm.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/signals-downgrade-preditivo.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/icp-curva-abc.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/revenue-command-center.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/simulador-orcamento-multicanal.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signals: prever o downgrade antes que ele aconteça · Jeferson J Silva</title>
+<meta name="description" content="Case de growth analytics: um score preditivo simples encontrou o real vilão da retenção (downgrade, não churn) e virou lista ativa em mídia paga e CRM, com holdout pra medir o efeito real.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jefersonjs.github.io/jefersonjs-site/cases/signals-downgrade-preditivo.html">
+<meta name="theme-color" content="#4676dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a70'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%234676dc' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://jefersonjs.github.io/jefersonjs-site/cases/signals-downgrade-preditivo.html">
+<meta property="og:site_name" content="Jeferson J Silva">
+<meta property="og:title" content="Signals: prever o downgrade antes que ele aconteça">
+<meta property="og:description" content="Um score preditivo simples encontrou o real vilão da retenção (downgrade, não churn) e virou lista ativa em mídia paga e CRM, com holdout pra medir o efeito real.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Signals: prever o downgrade antes que ele aconteça">
+<meta name="twitter:description" content="Um score preditivo simples encontrou o real vilão da retenção (downgrade, não churn) antes que ele acontecesse.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cases.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Signals: prever o downgrade antes que ele aconteça",
+  "description": "Case de growth analytics: um score preditivo simples encontrou o real vilão da retenção (downgrade, não churn) e virou lista ativa em mídia paga e CRM, com holdout pra medir o efeito real.",
+  "url": "https://jefersonjs.github.io/jefersonjs-site/cases/signals-downgrade-preditivo.html",
+  "datePublished": "2026-07-11",
+  "inLanguage": "pt-BR",
+  "author": { "@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.github.io/jefersonjs-site/" },
+  "publisher": { "@type": "Person", "name": "Jeferson J Silva" },
+  "about": ["Predição de churn", "Growth analytics", "Score de risco", "BigQuery"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.github.io/jefersonjs-site/" },
+    { "@type": "ListItem", "position": 2, "name": "Cases", "item": "https://jefersonjs.github.io/jefersonjs-site/#cases" },
+    { "@type": "ListItem", "position": 3, "name": "Signals: previsão de downgrade", "item": "https://jefersonjs.github.io/jefersonjs-site/cases/signals-downgrade-preditivo.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">JJS<em>.</em></a>
+  <ul class="nav-r">
+    <li><a href="../index.html#cases">Cases</a></li>
+    <li><a href="../index.html#pilares">Serviços</a></li>
+    <li><a href="../index.html#sobre">Sobre</a></li>
+    <li><a href="../index.html#contato" class="nav-cta">Falar com Jeferson</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="crumb">
+      <a href="../index.html">Início</a><span>/</span>
+      <a href="../index.html#cases">Cases</a><span>/</span>
+      <span class="current">Signals: previsão de downgrade</span>
+    </div>
+
+    <div class="case-eyebrow reveal"><span class="dot"></span>Case study · Growth & Predição</div>
+    <h1 class="case-title reveal">O churn não era o vilão. O downgrade era, e ninguém via chegar.</h1>
+    <p class="case-dek reveal">Um score simples de 0 a 10 prevê quem vai cair de patamar antes que aconteça, e vira lista viva pra mídia paga e CRM agirem primeiro.</p>
+    <div class="case-meta reveal">
+      <span>Logtech · self-service</span>
+      <span>Growth & Revenue</span>
+      <span>BigQuery · SQL</span>
+    </div>
+
+    <div class="case-illust reveal">
+      <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="190" x2="440" y2="190" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+        <path d="M20 90 L 90 110 L 150 100 L 210 145 L 230 120" stroke="rgba(255,255,255,.55)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M230 120 L 300 95 L 360 78 L 440 55" stroke="#2f9e8f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <g transform="translate(230 120) rotate(45)"><rect x="-10" y="-10" width="20" height="20" rx="4" fill="#d98e2b"/></g>
+        <text x="230" y="205" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="12" font-family="Poppins,sans-serif" font-weight="600">score de risco</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container case-body">
+
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> "ShipLite" é uma empresa fictícia usada pra descrever este projeto. Os números são ilustrativos e arredondados. A metodologia, a arquitetura de dados, os testes e as decisões de produto são reais, construídos por mim. Nenhum dado proprietário de qualquer empresa aparece aqui.</div>
+
+    <h2 class="reveal">O contexto</h2>
+    <p class="reveal">ShipLite é uma plataforma de fretes com desconto pra pequenos e médios lojistas de e-commerce. O lojista sobe um pedido, compara transportadoras, gera a etiqueta e posta. Quanto mais ele posta, mais a ShipLite fatura. O modelo vive de volume.</p>
+    <p class="reveal">O cliente que sustenta o negócio tem nome interno: ICP. É o lojista que faz sete ou mais envios por mês, de forma recorrente. Ele é uma fração da base. Responde pela maior parte do volume.</p>
+    <p class="reveal">Todo mês, cerca de um quarto da base de ICP deixava de bater os sete envios. A liderança de Growth olhava esse número subir e tratava como churn. A resposta padrão era disparar cupom. Não movia o ponteiro.</p>
+
+    <h2 class="reveal">A dor da liderança</h2>
+    <p class="reveal">O time gastava mais de meio milhão por mês em mídia paga sem saber, no clique, se aquele lojista viraria cliente recorrente ou faria um envio e sumiria. Pagava o mesmo CAC pra dois perfis opostos.</p>
+    <p class="reveal">A base de ICP vazava por um ralo que ninguém tinha mapeado direito. A campanha de reativação com cupom trazia de volta justamente quem só voltava pelo cupom, usava uma vez e ia embora. Um ciclo caro, sem fim.</p>
+    <p class="reveal">A liderança sabia que tinha um problema de retenção. Não sabia onde ele morava, quem estava prestes a cair, nem quanto isso custava em volume.</p>
+
+    <h2 class="reveal">Meu papel</h2>
+    <p class="reveal">Peguei o problema do zero. Diagnóstico, arquitetura de dados, modelo, desenho do experimento, apresentação executiva e o plano de operação com o time de mídia e CRM.</p>
+    <p class="reveal">A ideia central era simples de explicar e difícil de fazer bem: transformar comportamento em sinais que preveem quem vai cair, montar uma lista desses clientes e servir essa lista direto pras plataformas de mídia e pro CRM, agindo antes da queda. Chamei o projeto de Signals.</p>
+
+    <h2 class="reveal">Como ataquei o problema</h2>
+    <p class="reveal">Regra número um: dado antes de hipótese. Toda afirmação que chegava ("o problema é preço", "quem usa concorrente churna mais") virava uma pergunta a ser respondida com número, não uma verdade a ser aceita.</p>
+    <p class="reveal">Regra número dois: separar fato de hipótese em cada passo, e resolver contradição em vez de conviver com duas narrativas.</p>
+    <p class="reveal">Regra número três, a mais importante do ponto de vista técnico: nada de vazamento. Todo sinal usado pra prever o evento de um mês é medido só com dado disponível até o momento da decisão. Isso parece óbvio. Quebra a maioria dos modelos que "acertam 85%" olhando pra trás.</p>
+
+    <h2 class="reveal">O diagnóstico que virou a chave</h2>
+    <p class="reveal">Comecei validando a intuição da liderança. Ela estava meio errada, do jeito certo.</p>
+    <p class="reveal">O churn de ICP (o cliente que zera os envios) é estável e baixo. Roda perto de 4% ao mês, com pouca variação, e só tem pico sazonal previsível no começo do ano. Não é o vilão.</p>
+    <p class="reveal">O vilão é o downgrade. É o ICP que continua ativo, mas cai de sete envios pra um, dois, três. Roda perto de 22% ao mês. Seis vezes o churn. Estava num platô alto, sem melhorar sozinho.</p>
+    <p class="reveal">Isso muda a estratégia inteira. O churner já foi, caro e improvável de recuperar. O downgrader ainda está na sua casa, só desacelerou. Dá pra reverter, e é barato. A maior parte da perda de status vinha dele.</p>
+    <p class="reveal">Traduzi o custo pra língua da liderança. O downgrade tirava algo entre 4% e 5% do volume total de envios da empresa. Todo mês. Um número que ninguém tinha na ponta da língua, e que sozinho justificava o projeto.</p>
+
+    <h2 class="reveal">A fundação de dados</h2>
+    <p class="reveal">Antes de qualquer modelo, construí a base. Arquitetura medallion no BigQuery, com uma disciplina: cada tabela validada contra a verdade conhecida antes de seguir pra próxima.</p>
+    <p class="reveal">Duas séries temporais na camada silver, uma de postagens por usuário e dia, outra de emissões por usuário e dia. Aqui apareceu a primeira armadilha. Emissão e postagem são eventos diferentes. A emissão é a etiqueta gerada. A postagem é a etiqueta efetivamente postada. Confundir os dois inflava tudo.</p>
+    <p class="reveal">Descobri a definição certa de cada evento cruzando os campos de data contra uma tabela de referência de usuário. A postagem bateu com um dos campos com precisão quase exata (a base reconstruída dava 30.452 contra 30.454 conhecidos). A emissão bateu 100% com a data oficial de primeira emissão. Só depois desse casamento eu confiei na base.</p>
+    <p class="reveal">Na camada gold, duas peças que servem qualquer modelo futuro, não só este. Um feature store por usuário e mês, com os sinais medidos point-in-time. Uma tabela de labels com os desfechos de cada mês (recorrente, downgrade, churn). O backtest vira um join entre as duas. Trocar de "downgrade" pra "churn" ou "previsão de ativação" é trocar a coluna de label, sem refazer pipeline.</p>
+    <p class="reveal">Essa escolha de arquitetura foi deliberada. O projeto nasceu como o primeiro de vários. A fundação precisava aguentar os próximos sem retrabalho.</p>
+
+    <h2 class="reveal">Dois tipos de ICP, dois problemas distintos</h2>
+    <p class="reveal">Uma sutileza que evitou muita confusão. A empresa tinha duas definições de cliente ideal que pareciam a mesma coisa.</p>
+    <p class="reveal">O ICP de retenção é quem faz sete ou mais postagens no mês. É medido em postagens. É o alvo deste projeto.</p>
+    <p class="reveal">O ICP de ativação é o novo usuário que faz duas emissões em até sete dias. É medido em emissões, olhando a primeira emissão. É um problema de aquisição, com outra população e outro evento.</p>
+    <p class="reveal">Misturar os dois é a receita pra um modelo que não funciona pra nenhum. Mantive separados desde o começo, e a fundação atende os dois.</p>
+
+    <h2 class="reveal">O que prevê o downgrade</h2>
+    <p class="reveal">Aqui está o coração do projeto. Rodei um backtest em quase um ano de meses fechados pra descobrir quais sinais separam de verdade quem cai de quem fica.</p>
+    <p class="reveal">O sinal mais forte e mais acionável é o ritmo da primeira semana. O ICP que não faz nenhuma postagem nos sete primeiros dias do mês tem perto de 47% de chance de dar downgrade. Quem faz cinco ou mais na primeira semana tem menos de 1%. O comportamento da primeira semana entrega o futuro do mês.</p>
+    <p class="reveal">O segundo sinal é a faixa de volume do mês anterior. Quem estava no piso do ICP (sete a catorze envios) cai a 38%. Quem estava no topo (trinta ou mais) cai a 2%. O risco vive na margem.</p>
+    <p class="reveal">Recência e destinos distintos reforçam. O lojista que espalha pra muitos destinos quase não cai. O que concentra em poucos, cai muito.</p>
+    <p class="reveal">Teve um achado estratégico sobre cupom. Quem usou cupom no mês anterior dá mais downgrade e mais churn. Confirmou a tese de que cupom não segura esse cliente. Atrai quem usa e vaza.</p>
+    <p class="reveal">O interessante foi o que caiu. Dois "priors" que a empresa tinha como verdade não se sustentaram no teste. O tipo de e-mail não separava nada. O canal de aquisição não previa retenção de quem já era ICP. Depois que o cliente amadurece, o que manda é o comportamento atual dele, não de onde ele veio. Fato venceu hipótese, duas vezes.</p>
+
+    <h2 class="reveal">O modelo</h2>
+    <p class="reveal">Nada de caixa-preta na primeira versão. Um score aditivo de zero a dez, transparente, que combina os sinais validados. Ritmo da semana, faixa de volume, recência, cupom, destinos.</p>
+    <p class="reveal">A escolha por um score simples foi consciente. Ele é explicável pra liderança e pro time de mídia. E vira o baseline honesto que um modelo de machine learning futuro vai ter que bater. Sem esse baseline, qualquer ML parece bom.</p>
+    <p class="reveal">O backtest do score foi limpo. Cortando no score cinco ou mais, a lista pega cerca de 42% da base, captura perto de 86% dos downgraders e roda a 46% de precisão, contra uma base de 22%. O topo do score (oito a dez) concentra churn. O mesmo modelo ordena a severidade e já entrega o público de churn de brinde.</p>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><div class="stat-n">22%</div><div class="stat-l">downgrade mensal do ICP, 6x o churn (~4%)</div></div>
+      <div class="stat-card"><div class="stat-n">47%</div><div class="stat-l">chance de downgrade sem nenhuma postagem na 1ª semana (vs &lt;1% com 5+)</div></div>
+      <div class="stat-card"><div class="stat-n">42%</div><div class="stat-l">da base capturada pela lista de risco (score ≥ 5)</div></div>
+      <div class="stat-card"><div class="stat-n">86%</div><div class="stat-l">dos downgraders capturados pela lista, a 46% de precisão</div></div>
+    </div>
+    <p class="reveal"><i>(números representativos, anonimizados)</i></p>
+
+    <h2 class="reveal">A lista e a ativação</h2>
+    <p class="reveal">O modelo vira uma lista viva, gerada no BigQuery, com os campos de identidade que o Google e o Meta precisam pra casar o público. Cada usuário recebe um score, um tipo de risco e um grupo.</p>
+    <p class="reveal">A lista alimenta um Google Sheet, que o Google Ads lê como Customer Match. A mesma lista vai pro HubSpot como lista do mês, ligada a um workflow de retenção. A comunicação é de valor, sem cupom, exatamente pra não repetir o erro do passado.</p>
+    <p class="reveal">Um detalhe de operação que fez diferença. A lista serve também pra negativar esses usuários nas outras campanhas. Assim só uma comunicação toca o cliente do teste, e a medição fica limpa.</p>
+
+    <h2 class="reveal">O experimento</h2>
+    <p class="reveal">Sem controle, resultado vira achismo. A lista já nasce sorteada.</p>
+    <p class="reveal">Cerca de 80% dos usuários entram no grupo alvo e recebem a campanha. Cerca de 20% ficam no holdout e não recebem nada. O sorteio é determinístico por usuário, então o mesmo lojista cai sempre no mesmo grupo, todo mês. O holdout nunca contamina.</p>
+    <p class="reveal">A métrica é uma só, definida antes: o percentual que mantém o status de ICP no mês. O lift é a diferença entre a retenção do alvo e a do holdout. Leio no fim do mês, no mesmo calendário que a empresa usa pra medir ICP, pra não descasar as réguas.</p>
+    <p class="reveal">Com o tamanho da lista, dá pra detectar uma redução de dois a três pontos percentuais já no primeiro mês. O ganho compõe. Um cliente mantido no ICP segue postando nos meses seguintes.</p>
+
+    <h2 class="reveal">O potencial de impacto</h2>
+    <p class="reveal">Apresentei em cenários, porque o lift real só vem do holdout. Prometer número fechado antes do teste seria desonesto.</p>
+    <p class="reveal">No cenário base, uma redução de cinco pontos no downgrade do público alvo mantém algo como 535 lojistas no nível ICP por mês e recupera perto de 3.750 postagens mensais. No otimista, quase o dobro. Isso é só a primeira versão, sobre uma fatia da perda total, com o modelo aprendendo a cada ciclo.</p>
+    <p class="reveal">O número que prende a liderança não é a recuperação da v1. É o tamanho do problema que agora dá pra enxergar e atacar. Perto de 5% do volume da empresa estava indo embora por um evento que ninguém via chegar.</p>
+
+    <h2 class="reveal">O achado bônus: aquisição</h2>
+    <p class="reveal">Enquanto validava a atribuição, caiu uma descoberta que virou um projeto separado.</p>
+    <p class="reveal">Pro cliente que já é ICP, o canal de aquisição não prevê retenção. Mas pro novo usuário, o canal prevê tudo. Alguns canais convertem cinco vezes mais em ICP de ativação que outros. O gargalo de qualidade não está na conversão de emissão pra ICP, que é parecida entre canais. Está no passo anterior, fazer o adquirido emitir a primeira vez.</p>
+    <p class="reveal">Um canal de volume gigante trazia muita gente que nunca emitia. Outro, pequeno, trazia gente que emitia e ficava. Esse é exatamente o sinal que faz sentido levar pro Google e o Meta, subir lance em quem vira ICP e cortar quem só traz churn. É o ataque direto ao CAC.</p>
+    <p class="reveal">Retenção e aquisição são dois modelos, duas populações. Separei os dois. O de retenção subiu primeiro.</p>
+
+    <h2 class="reveal">O detalhe de calendário que quase passou batido</h2>
+    <p class="reveal">Perto do go-live, uma pergunta boa do time de mídia. As postagens se concentram em algum dia da semana? Investiguei.</p>
+    <p class="reveal">O motor é o dia útil. Os cinco dias úteis pesam parecido, perto de 18% a 20% cada. O fim de semana é morto, sábado e domingo somam menos de 4%. A primeira postagem do mês puxa pra segunda.</p>
+    <p class="reveal">Isso definiu a data de geração da lista. A janela dos sete primeiros dias sempre contém um de cada dia da semana, então ela é balanceada entre meses. Mas os dias úteis podem cair no fim da janela. Num mês em que a primeira segunda cai no dia seis, gerar a lista antes do dia oito marcaria a base inteira como risco. A regra virou clara: gerar no dia oito, nunca antes.</p>
+
+    <h2 class="reveal">Stack de ferramentas</h2>
+    <div class="table-wrap reveal">
+      <table>
+        <tr><th>Camada</th><th>Ferramentas</th></tr>
+        <tr><td>Data warehouse e modelagem</td><td>Google BigQuery, SQL puro, tabelas particionadas e clusterizadas, arquitetura medallion (bronze / silver / gold), scheduled queries idempotentes com append por partição</td></tr>
+        <tr><td>Métodos analíticos</td><td>Feature engineering point-in-time, backtest em meses fechados, análise de cohort, RFM, score aditivo transparente, desenho de holdout e leitura de incrementalidade (lift)</td></tr>
+        <tr><td>Fontes de comportamento e atribuição</td><td>AppsFlyer (atribuição mobile), Google Analytics 4 e Firebase (comportamento web e app), HubSpot (CRM)</td></tr>
+        <tr><td>Ativação de mídia e CRM</td><td>Google Ads (Customer Match, Demand Gen), Meta Ads (Custom Audiences), Google Sheets (Connected Sheets como ponte), HubSpot (listas e workflows), identificadores hasheados em SHA-256</td></tr>
+        <tr><td>Comunicação executiva</td><td>Deck gerado por código com PptxGenJS, storytelling em cinco atos, QA visual automatizado</td></tr>
+        <tr><td>Método de trabalho</td><td>Desenvolvimento assistido por LLM (modelo como operador de SQL e documentação), estratégia e validação de cada número por mim</td></tr>
+      </table>
+    </div>
+    <div class="tags reveal">
+      <span class="tag">BigQuery</span>
+      <span class="tag">SQL</span>
+      <span class="tag">AppsFlyer</span>
+      <span class="tag">GA4</span>
+      <span class="tag">Firebase</span>
+      <span class="tag">HubSpot</span>
+      <span class="tag">Google Ads Customer Match</span>
+      <span class="tag">Meta Ads Custom Audiences</span>
+      <span class="tag">Google Sheets</span>
+      <span class="tag">PptxGenJS</span>
+    </div>
+
+    <h2 class="reveal">Estrutura do repositório</h2>
+<pre class="reveal"><code>signals-downgrade/
+├── README.md                         visão geral do case
+├── docs/
+│   ├── 01-contexto-e-plano.md        diagnóstico, decisões, arquitetura
+│   ├── 02-runbook-operacional.md     BigQuery, Sheets, Google, HubSpot
+│   ├── 03-experimento-holdout.md     desenho do teste e leitura do lift
+│   └── 04-padroes.md                 convenções e aprendizados
+├── sql/
+│   ├── silver/
+│   │   ├── slv_postagens_uid_dia.sql
+│   │   └── slv_emissoes_uid_dia.sql
+│   ├── gold/
+│   │   ├── gld_features_uid_mes.sql  feature store point-in-time
+│   │   ├── gld_labels_uid_mes.sql    desfechos por mês
+│   │   └── gld_publico.sql           lista viva + score + holdout
+│   └── validacao/
+│       ├── backtest_sinais.sql       poder de separação por sinal
+│       └── leitura_lift.sql          alvo vs holdout no fim do mês
+└── deck/
+    ├── build_deck.js                 geração do deck executivo
+    └── case-deck.pdf</code></pre>
+    <p class="reveal">A convenção de nomes segue o padrão camada, fonte, domínio e grão. Bronze pra dado cru, silver pra dado limpo, gold pra dado de negócio. Tudo idempotente, particionado por data e agendado.</p>
+
+    <h2 class="reveal">O que eu tiraria como aprendizado</h2>
+    <p class="reveal">Validar a intuição da liderança rende mais que confirmá-la. O churn não era o problema. Descobrir isso com número mudou a aposta inteira e economizou meses de esforço no lugar errado.</p>
+    <p class="reveal">Point-in-time não é detalhe. É a diferença entre um modelo que funciona no ar e um que só brilha no retrovisor.</p>
+    <p class="reveal">Um baseline simples e transparente ganha de um modelo complexo que ninguém entende. Principalmente quando você precisa que o time de mídia e a liderança comprem a ideia.</p>
+    <p class="reveal">Holdout desde o primeiro dia. Ele é o que separa "achamos que funcionou" de "provamos que funcionou".</p>
+
+    <h2 class="reveal">Próximos passos</h2>
+    <p class="reveal">A v1 sobe com o modelo de downgrade e o holdout. Na sequência, o modelo de churn de ICP, que os scores altos já entregam quase de graça. Depois, a previsão de ICP de ativação e o modelo de aquisição, atacando o CAC pela qualidade do canal.</p>
+    <p class="reveal">A mesma esteira, eventos diferentes. É pra isso que a fundação foi construída assim.</p>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="case-cta reveal">
+      <h2>Sua retenção também pode ter um vilão escondido</h2>
+      <p>30 minutos, de graça. Entro nas suas plataformas e mostro se o que está corroendo sua base é churn de verdade ou downgrade disfarçado.</p>
+      <a href="https://wa.me/5571982210402?text=Ol%C3%A1%20Jeferson%2C%20vi%20o%20case%20Signals%20e%20quero%20meu%20diagn%C3%B3stico%20gr%C3%A1tis." target="_blank" rel="noopener" class="btn-pri">Quero meu diagnóstico grátis →</a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="container">
+    <span class="slabel reveal">Outros cases</span>
+    <h2 class="stitle reveal" style="margin-bottom:1.5rem">Continue lendo</h2>
+    <div class="related-grid reveal">
+      <a class="related-card" href="atribuicao-multitoque-crm.html">
+        <div class="related-eyebrow">Case study · Atribuição & CRM</div>
+        <div class="related-t">Atribuição multi-toque de CRM: de 2% a 12% de contribuição real</div>
+        <div class="related-d">Como o último clique escondia 6x o valor real de um canal.</div>
+      </a>
+      <a class="related-card" href="icp-curva-abc.html">
+        <div class="related-eyebrow">Case study · ICP & Growth</div>
+        <div class="related-t">ICP baseado em dados: da carteira ao perfil de cliente ideal</div>
+        <div class="related-d">Curva ABC e lift pra transformar carteira de clientes em critério de priorização.</div>
+      </a>
+      <a class="related-card" href="revenue-command-center.html">
+        <div class="related-eyebrow">Case study · Analytics Engineering</div>
+        <div class="related-t">Revenue Command Center: do caos de planilhas à decisão em 30 segundos</div>
+        <div class="related-d">Pipeline governado e dashboard executivo pra uma diretoria de Revenue.</div>
+      </a>
+      <a class="related-card" href="simulador-orcamento-multicanal.html">
+        <div class="related-eyebrow">Case study · Growth & Simulação</div>
+        <div class="related-t">Simulador de Orçamento Multicanal</div>
+        <div class="related-d">Uma ferramenta que recalcula aquisição por canal na hora, validada contra o oficial.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JJS<em>.</em></div>
+  <p>&copy; 2025 Jeferson J Silva &middot; <a href="../index.html">jefersonjs.github.io/jefersonjs-site</a></p>
+</footer>
+
+<script src="../assets/cases.js"></script>
+</body>
+</html>

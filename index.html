@@ -241,6 +241,24 @@
     .tags { display:flex; flex-wrap:wrap; gap:.3rem; }
     .tag { font-size:.65rem; font-weight:600; background:rgba(43,74,112,.07); color:var(--gd); padding:.2rem .55rem; border-radius:100px; border:1px solid rgba(43,74,112,.14); }
 
+    /* CASES */
+    .cases { background:var(--white); }
+    .cases-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; }
+    .case-tile {
+      background:var(--off); border:1px solid var(--border); border-radius:20px; padding:1.9rem;
+      position:relative; overflow:hidden; transition:all .25s; text-decoration:none; display:block;
+    }
+    .case-tile::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gd),var(--ga)); opacity:0; transition:opacity .25s; }
+    .case-tile:hover { border-color:rgba(70,118,220,.3); transform:translateY(-4px); box-shadow:0 12px 36px rgba(70,118,220,.09); }
+    .case-tile:hover::after { opacity:1; }
+    .case-tile-hd { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+    .case-tile-eyebrow { font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ga); }
+    .case-tile-stat { font-size:.72rem; font-weight:800; color:var(--cta); background:rgba(217,142,43,.1); padding:.2rem .55rem; border-radius:100px; }
+    .case-tile-t { font-size:1rem; font-weight:700; color:var(--text); margin-bottom:.55rem; line-height:1.35; }
+    .case-tile-d { font-size:.83rem; color:var(--muted); line-height:1.68; margin-bottom:1.2rem; }
+    .case-tile-link { font-size:.78rem; font-weight:700; color:var(--gd); display:inline-flex; align-items:center; gap:.3rem; }
+    .case-tile:hover .case-tile-link { color:var(--ga); }
+
     /* SERVICES */
     .services { background:var(--off); }
     .svc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(225px,1fr)); background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; gap:1px; }
@@ -273,7 +291,8 @@
     .about { background:var(--white); }
     .about-grid { display:grid; grid-template-columns:260px 1fr; gap:4rem; align-items:start; }
     .about-card { background:var(--off); border:1px solid var(--border); border-radius:18px; padding:1.85rem; position:sticky; top:82px; }
-    .av { width:70px; height:70px; background:linear-gradient(135deg,var(--gd),var(--ga)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; font-weight:800; color:var(--white); margin-bottom:1.1rem; letter-spacing:-.5px; }
+    .about-photo { width:100%; aspect-ratio:1/1; border-radius:16px; margin-bottom:1.1rem; background:linear-gradient(135deg,var(--gd),var(--ga)); display:flex; align-items:center; justify-content:center; overflow:hidden; object-fit:cover; }
+    .about-photo svg { width:34%; height:34%; color:var(--white); opacity:.5; }
     .a-name { font-size:.97rem; font-weight:700; margin-bottom:.2rem; }
     .a-role { font-size:.76rem; color:var(--ga); font-weight:600; margin-bottom:1.4rem; }
     .a-stack { display:flex; flex-wrap:wrap; gap:.3rem; }
@@ -333,6 +352,7 @@
     <li><a href="#problema">O problema</a></li>
     <li><a href="#pilares">Serviços</a></li>
     <li><a href="#clientes">Clientes</a></li>
+    <li><a href="#cases">Cases</a></li>
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contato" class="nav-cta">Falar com Jeferson</a></li>
@@ -553,6 +573,48 @@
   </div>
 </section>
 
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <span class="slabel reveal">Cases</span>
+    <h2 class="stitle reveal">Projetos reais, com número por trás</h2>
+    <p class="ssub reveal">Empresas e nomes ficcionalizados por confidencialidade. A metodologia, a arquitetura de dados e as decisões são reais.</p>
+
+    <div class="cases-grid">
+      <a href="cases/atribuicao-multitoque-crm.html" class="case-tile reveal">
+        <div class="case-tile-hd"><span class="case-tile-eyebrow">Atribuição & CRM</span><span class="case-tile-stat">6x</span></div>
+        <div class="case-tile-t">De 2% a 12%: o valor real do CRM que o último clique escondia</div>
+        <div class="case-tile-d">Modelo de atribuição multi-toque revela seis vezes mais contribuição do que o relatório oficial mostrava.</div>
+        <span class="case-tile-link">Ler case completo →</span>
+      </a>
+      <a href="cases/signals-downgrade-preditivo.html" class="case-tile reveal reveal-d1">
+        <div class="case-tile-hd"><span class="case-tile-eyebrow">Growth & Predição</span><span class="case-tile-stat">22% vs 4%</span></div>
+        <div class="case-tile-t">O verdadeiro vilão da retenção não era o churn</div>
+        <div class="case-tile-d">Um score simples de 0 a 10 prevê downgrade antes que aconteça e vira lista ativa em mídia paga e CRM.</div>
+        <span class="case-tile-link">Ler case completo →</span>
+      </a>
+      <a href="cases/icp-curva-abc.html" class="case-tile reveal reveal-d2">
+        <div class="case-tile-hd"><span class="case-tile-eyebrow">ICP & Growth</span><span class="case-tile-stat">79% do GMV</span></div>
+        <div class="case-tile-t">12% dos clientes geravam 79% do faturamento</div>
+        <div class="case-tile-d">Curva ABC e análise de lift transformaram carteira de clientes num perfil de ICP com score por cliente.</div>
+        <span class="case-tile-link">Ler case completo →</span>
+      </a>
+      <a href="cases/revenue-command-center.html" class="case-tile reveal">
+        <div class="case-tile-hd"><span class="case-tile-eyebrow">Analytics Engineering</span><span class="case-tile-stat">&lt;5 min</span></div>
+        <div class="case-tile-t">De 6 planilhas por dia a uma decisão em 30 segundos</div>
+        <div class="case-tile-d">Pipeline de dados governado e dashboard executivo pra uma diretoria de Revenue confiar no número.</div>
+        <span class="case-tile-link">Ler case completo →</span>
+      </a>
+      <a href="cases/simulador-orcamento-multicanal.html" class="case-tile reveal reveal-d1">
+        <div class="case-tile-hd"><span class="case-tile-eyebrow">Growth & Simulação</span><span class="case-tile-stat">94-99%</span></div>
+        <div class="case-tile-t">Quanto investir em cada canal? Agora tem uma tela que responde</div>
+        <div class="case-tile-d">Simulador de orçamento validado entre 94% e 99% do número oficial da empresa, canal por canal.</div>
+        <span class="case-tile-link">Ler case completo →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section class="about" id="sobre">
   <div class="container">
@@ -560,7 +622,11 @@
     <h2 class="stitle reveal">Quem está por trás</h2>
     <div class="about-grid">
       <div class="about-card reveal">
-        <div class="av">JJS</div>
+        <!-- ESPAÇO RESERVADO PRA FOTO: troque o bloco abaixo por
+             <img class="about-photo" src="assets/jeferson.jpg" alt="Jeferson J Silva"> -->
+        <div class="about-photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
         <div class="a-name">Jeferson J Silva</div>
         <div class="a-role">Analytics & Attribution Specialist</div>
         <div class="a-stack">
