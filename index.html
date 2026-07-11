@@ -216,10 +216,12 @@
 
     /* PLATFORM — signature element: solid color block */
     .platform { background:var(--ga); padding:5.5rem 2.5rem; }
-    .platform-in { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .platform-in { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:.85fr 1.15fr; gap:4rem; align-items:start; }
     .platform .stitle { color:var(--black); }
     .platform .ssub { color:rgba(0,0,0,.6); margin-bottom:0; }
-    .spills { display:flex; flex-wrap:wrap; gap:.55rem; }
+    .spill-groups { display:flex; flex-direction:column; gap:1.3rem; }
+    .spill-group-label { display:block; font-size:.64rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(0,0,0,.4); margin-bottom:.55rem; }
+    .spills { display:flex; flex-wrap:wrap; gap:.5rem; }
     .spill { background:rgba(0,0,0,.1); border:1px solid rgba(0,0,0,.12); color:rgba(0,0,0,.75); font-size:.76rem; font-weight:600; padding:.42rem .88rem; border-radius:100px; transition:all .2s; }
     .spill:hover { background:rgba(0,0,0,.18); color:var(--black); }
 
@@ -428,13 +430,29 @@
       <h2 class="stitle reveal" style="color:var(--black)">Chego com o que você tem.<br>Saio com o que você precisa.</h2>
       <p class="ssub reveal" style="color:rgba(0,0,0,.6);margin-bottom:0">Não importa se é AppsFlyer ou Adjust. Firebase ou GA4. Servidor próprio ou GTM. Não peço para trocar de ferramenta. Só peço que a que você já paga funcione direito.</p>
     </div>
-    <div class="spills reveal">
-      <span class="spill">GA4</span><span class="spill">AppsFlyer</span><span class="spill">Adjust</span>
-      <span class="spill">Branch</span><span class="spill">Firebase</span><span class="spill">Amplitude</span>
-      <span class="spill">Mixpanel</span><span class="spill">Google Ads</span><span class="spill">Meta Ads</span>
-      <span class="spill">GTM</span><span class="spill">BigQuery</span><span class="spill">Looker Studio</span>
-      <span class="spill">Power BI</span><span class="spill">HubSpot</span><span class="spill">Windsor</span>
-      <span class="spill">dbt</span><span class="spill">Python</span><span class="spill">SQL</span>
+    <div class="spill-groups reveal">
+      <div>
+        <span class="spill-group-label">Mensuração & atribuição</span>
+        <div class="spills">
+          <span class="spill">GA4</span><span class="spill">AppsFlyer</span><span class="spill">Adjust</span>
+          <span class="spill">Branch</span><span class="spill">Firebase</span><span class="spill">Amplitude</span>
+          <span class="spill">Mixpanel</span>
+        </div>
+      </div>
+      <div>
+        <span class="spill-group-label">Mídia & tagueamento</span>
+        <div class="spills">
+          <span class="spill">Google Ads</span><span class="spill">Meta Ads</span><span class="spill">GTM</span>
+        </div>
+      </div>
+      <div>
+        <span class="spill-group-label">Dados & BI</span>
+        <div class="spills">
+          <span class="spill">BigQuery</span><span class="spill">Looker Studio</span><span class="spill">Power BI</span>
+          <span class="spill">HubSpot</span><span class="spill">Windsor</span><span class="spill">dbt</span>
+          <span class="spill">Python</span><span class="spill">SQL</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
