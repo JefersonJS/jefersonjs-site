@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeferson J Silva · Analytics & Attribution</title>
+  <meta name="description" content="Auditoria, mensuração e atribuição. Para empresas que precisam confiar no número antes de investir mais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gd: #2b4a70; --ga: #4676dc; --ok: #2f9e8f; --cta: #d98e2b;
+      --black: #14181d;
+      --white: #fff; --off: #f7f5f1; --border: #e8e2d8;
+      --text: #1c2127; --muted: #736f68;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Poppins',sans-serif; color:var(--text); background:var(--white); overflow-x:hidden; line-height:1.6; }
+
+    /* NAV */
+    nav {
+      position:fixed; inset:0 0 auto 0; z-index:300; height:62px;
+      padding:0 2.5rem; display:flex; align-items:center; justify-content:space-between;
+      background:rgba(255,255,255,0.85); backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+    .logo { font-size:.97rem; font-weight:800; color:var(--text); text-decoration:none; letter-spacing:-.3px; }
+    .logo em { color:var(--ga); font-style:normal; }
+    .nav-r { display:flex; align-items:center; gap:2rem; list-style:none; }
+    .nav-r a { font-size:.81rem; font-weight:500; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-r a:hover { color:var(--ga); }
+    .nav-cta { background:var(--cta)!important; color:var(--black)!important; font-weight:700!important; padding:.42rem 1rem!important; border-radius:6px!important; }
+
+    /* HERO */
+    .hero {
+      min-height:100vh; background:var(--white);
+      display:grid; grid-template-columns:1fr 440px; gap:3.5rem;
+      align-items:center; padding:8rem 2.5rem 5.5rem;
+      position:relative; overflow:hidden;
+    }
+    .hero-grid {
+      position:absolute; inset:0;
+      background-image:linear-gradient(rgba(70,118,220,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(70,118,220,.05) 1px,transparent 1px);
+      background-size:54px 54px;
+    }
+    .hero-glow { position:absolute; top:-15%; right:-8%; width:700px; height:700px; background:radial-gradient(circle,rgba(70,118,220,.12) 0%,transparent 65%); pointer-events:none; }
+    .hero-l,.hero-r { position:relative; z-index:1; }
+
+    .badge {
+      display:inline-flex; align-items:center; gap:.45rem;
+      background:rgba(70,118,220,.08); border:1px solid rgba(70,118,220,.24);
+      color:var(--ga); font-size:.68rem; font-weight:700; letter-spacing:.12em;
+      text-transform:uppercase; padding:.36rem .85rem; border-radius:100px; margin-bottom:2rem;
+    }
+    .badge-dot { width:6px; height:6px; background:var(--ga); border-radius:50%; animation:blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    .hero-h1 { font-size:clamp(2.2rem,4vw,3.6rem); font-weight:900; color:var(--text); line-height:1.07; letter-spacing:-1.5px; margin-bottom:1.4rem; }
+    .hero-h1 .line { display:block; opacity:0; transform:translateY(22px); transition:opacity .55s ease,transform .55s ease; }
+    .hero-h1 .line.in { opacity:1; transform:translateY(0); }
+    .hero-h1 .accent { color:var(--ga); }
+
+    .hero-p { font-size:.97rem; color:var(--muted); max-width:490px; line-height:1.78; margin-bottom:2.5rem; opacity:0; transform:translateY(16px); transition:opacity .55s .65s ease,transform .55s .65s ease; }
+    .hero-p.in { opacity:1; transform:translateY(0); }
+
+    .hero-btns { display:flex; gap:.9rem; flex-wrap:wrap; margin-bottom:3.5rem; opacity:0; transform:translateY(14px); transition:opacity .5s .9s ease,transform .5s .9s ease; }
+    .hero-btns.in { opacity:1; transform:translateY(0); }
+
+    .btn-pri {
+      background:var(--cta); color:var(--black); font-family:'Poppins',sans-serif;
+      font-weight:700; font-size:.87rem; padding:.78rem 1.55rem;
+      border-radius:8px; border:none; cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; gap:.3rem; transition:all .2s;
+    }
+    .btn-pri:hover { background:#e6a13e; transform:translateY(-2px); box-shadow:0 8px 28px rgba(217,142,43,.28); }
+    .btn-sec {
+      background:transparent; color:var(--muted); font-family:'Poppins',sans-serif;
+      font-weight:500; font-size:.87rem; padding:.78rem 1.55rem; border-radius:8px;
+      border:1px solid var(--border); cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; gap:.3rem; transition:all .2s;
+    }
+    .btn-sec:hover { border-color:var(--ga); color:var(--ga); }
+
+    .hero-stats { display:flex; opacity:0; transition:opacity .5s 1.1s ease; }
+    .hero-stats.in { opacity:1; }
+    .hs { padding-right:2rem; margin-right:2rem; border-right:1px solid var(--border); }
+    .hs:last-child { border-right:none; padding-right:0; margin-right:0; }
+    .hs-n { font-size:1.65rem; font-weight:800; color:var(--text); line-height:1; letter-spacing:-.5px; }
+    .hs-n em { color:var(--ga); font-style:normal; }
+    .hs-l { font-size:.67rem; color:var(--muted); margin-top:.22rem; line-height:1.4; }
+
+    /* AUDIT CARD */
+    .acard { background:var(--off); border:1px solid var(--border); box-shadow:0 20px 60px rgba(28,33,39,.06); border-radius:20px; padding:1.65rem; min-height:360px; }
+    .ac-hd { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.4rem; padding-bottom:.9rem; border-bottom:1px solid var(--border); }
+    .ac-lbl { font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+    .ac-st { font-size:.63rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ga); display:flex; align-items:center; gap:.3rem; }
+    .ac-st-dot { width:5px; height:5px; background:currentColor; border-radius:50%; animation:blink 1.5s ease-in-out infinite; }
+    .ac-body { display:flex; flex-direction:column; gap:.6rem; }
+    .ai { display:flex; align-items:flex-start; gap:.65rem; padding:.75rem .85rem; border-radius:9px; border:1px solid var(--border); background:var(--white); opacity:0; transform:translateY(7px); transition:opacity .4s ease,transform .4s ease; }
+    .ai.v { opacity:1; transform:translateY(0); }
+    .ai-ico { width:25px; height:25px; border-radius:7px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .ai-ico.bad { background:rgba(220,38,38,.1); color:#dc2626; }
+    .ai-ico.ok  { background:rgba(47,158,143,.15); color:var(--ok); }
+    .ai-main { font-size:.78rem; font-weight:600; color:var(--text); line-height:1.3; }
+    .ai-sub  { font-size:.69rem; color:var(--muted); margin-top:.1rem; }
+    .ac-ft { margin-top:1rem; padding:.85rem .95rem; border-radius:9px; background:rgba(70,118,220,.07); border:1px solid rgba(70,118,220,.18); display:flex; align-items:center; justify-content:space-between; opacity:0; transition:opacity .5s ease; }
+    .ac-ft.v { opacity:1; }
+    .ac-ft-lbl { font-size:.67rem; color:var(--muted); font-weight:500; }
+    .ac-ft-val { font-size:1.05rem; font-weight:800; color:var(--ga); letter-spacing:-.5px; }
+
+    /* DIAGONAL DIVIDER */
+    .diag { display:block; width:100%; height:60px; margin-bottom:-2px; }
+
+    /* SECTIONS */
+    section { padding:5.5rem 2.5rem; }
+    .container { max-width:1100px; margin:0 auto; }
+    .slabel { display:block; font-size:.65rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ga); margin-bottom:.55rem; }
+    .stitle { font-size:clamp(1.9rem,3.5vw,2.7rem); font-weight:800; letter-spacing:-.5px; line-height:1.1; color:var(--text); margin-bottom:.85rem; }
+    .ssub { font-size:.94rem; color:var(--muted); max-width:520px; line-height:1.72; margin-bottom:3.5rem; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    .reveal-d1 { transition-delay:.1s; }
+    .reveal-d2 { transition-delay:.2s; }
+    .reveal-d3 { transition-delay:.3s; }
+
+    /* PROBLEM */
+    .problem { background:var(--off); }
+    .prob-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; margin-bottom:3rem; }
+    .prob-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.9rem; }
+    .prob-n { font-size:2.4rem; font-weight:900; color:var(--border); letter-spacing:-2px; line-height:1; margin-bottom:.9rem; }
+    .prob-t { font-size:.97rem; font-weight:700; margin-bottom:.5rem; }
+    .prob-d { font-size:.84rem; color:var(--muted); line-height:1.72; }
+    .inline-cta { display:flex; align-items:center; justify-content:center; gap:.5rem; padding:1.5rem; background:rgba(70,118,220,.06); border:1px dashed rgba(70,118,220,.3); border-radius:12px; text-decoration:none; font-weight:600; font-size:.9rem; color:var(--gd); transition:all .2s; }
+    .inline-cta:hover { background:rgba(70,118,220,.1); color:var(--ga); }
+    .inline-cta svg { transition:transform .2s; }
+    .inline-cta:hover svg { transform:translateX(4px); }
+
+    /* PLATFORM — signature element: solid color block */
+    .platform { background:var(--ga); padding:5.5rem 2.5rem; }
+    .platform-in { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .platform .stitle { color:var(--black); }
+    .platform .ssub { color:rgba(0,0,0,.6); margin-bottom:0; }
+    .spills { display:flex; flex-wrap:wrap; gap:.55rem; }
+    .spill { background:rgba(0,0,0,.1); border:1px solid rgba(0,0,0,.12); color:rgba(0,0,0,.75); font-size:.76rem; font-weight:600; padding:.42rem .88rem; border-radius:100px; transition:all .2s; }
+    .spill:hover { background:rgba(0,0,0,.18); color:var(--black); }
+
+    /* PILLARS */
+    .pillars { background:var(--white); }
+    .pil-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.25rem; }
+    .pil {
+      background:var(--off); border:1px solid var(--border); border-radius:20px; padding:2.1rem;
+      position:relative; overflow:hidden; transition:all .25s;
+    }
+    .pil::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gd),var(--ga)); opacity:0; transition:opacity .25s; }
+    .pil:hover { border-color:rgba(70,118,220,.3); transform:translateY(-4px); box-shadow:0 12px 36px rgba(70,118,220,.09); }
+    .pil:hover::after { opacity:1; }
+    .pil-ico { width:46px; height:46px; background:rgba(70,118,220,.1); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:1.4rem; color:var(--ga); }
+    .pil-t { font-size:1.07rem; font-weight:700; margin-bottom:.6rem; }
+    .pil-d { font-size:.84rem; color:var(--muted); line-height:1.72; margin-bottom:1.4rem; }
+    .tags { display:flex; flex-wrap:wrap; gap:.3rem; }
+    .tag { font-size:.65rem; font-weight:600; background:rgba(43,74,112,.07); color:var(--gd); padding:.2rem .55rem; border-radius:100px; border:1px solid rgba(43,74,112,.14); }
+
+    /* SERVICES */
+    .services { background:var(--off); }
+    .svc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(225px,1fr)); background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; gap:1px; }
+    .svc { background:var(--white); padding:1.5rem; transition:background .18s; }
+    .svc:hover { background:#eef3fb; }
+    .svc-t { font-size:.86rem; font-weight:700; margin-bottom:.35rem; display:flex; align-items:center; gap:.4rem; }
+    .svc-t::before { content:''; width:4px; height:4px; background:var(--ga); border-radius:50%; flex-shrink:0; }
+    .svc-d { font-size:.76rem; color:var(--muted); line-height:1.55; padding-left:.6rem; }
+
+    /* TRUSTED */
+    .trusted { background:var(--white); }
+    .co-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+    .co { padding:1.85rem 1.25rem; display:flex; align-items:center; justify-content:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border); transition:background .18s; }
+    .co:hover { background:var(--off); }
+    .co-n { font-size:.75rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:rgba(28,33,39,.3); transition:color .2s; }
+    .co:hover .co-n { color:var(--gd); }
+
+    /* RESULTS */
+    .results { background:var(--off); position:relative; overflow:hidden; }
+    .results::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(70,118,220,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(70,118,220,.05) 1px,transparent 1px); background-size:54px 54px; }
+    .results .container { position:relative; z-index:1; }
+    .res-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.25rem; }
+    .rcard { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.85rem; transition:border-color .2s; }
+    .rcard:hover { border-color:rgba(70,118,220,.3); }
+    .rn { font-size:2.2rem; font-weight:800; color:var(--text); line-height:1; letter-spacing:-1px; margin-bottom:.5rem; }
+    .rn em { color:var(--ga); font-style:normal; }
+    .rl { font-size:.78rem; color:var(--muted); line-height:1.55; }
+
+    /* ABOUT */
+    .about { background:var(--white); }
+    .about-grid { display:grid; grid-template-columns:260px 1fr; gap:4rem; align-items:start; }
+    .about-card { background:var(--off); border:1px solid var(--border); border-radius:18px; padding:1.85rem; position:sticky; top:82px; }
+    .av { width:70px; height:70px; background:linear-gradient(135deg,var(--gd),var(--ga)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; font-weight:800; color:var(--white); margin-bottom:1.1rem; letter-spacing:-.5px; }
+    .a-name { font-size:.97rem; font-weight:700; margin-bottom:.2rem; }
+    .a-role { font-size:.76rem; color:var(--ga); font-weight:600; margin-bottom:1.4rem; }
+    .a-stack { display:flex; flex-wrap:wrap; gap:.3rem; }
+    .stag { font-size:.65rem; font-weight:600; background:rgba(43,74,112,.07); color:var(--gd); padding:.22rem .55rem; border-radius:5px; border:1px solid rgba(43,74,112,.14); }
+    .about-body h3 { font-size:.92rem; font-weight:700; margin-top:1.9rem; margin-bottom:.55rem; padding-left:.8rem; border-left:3px solid var(--ga); }
+    .about-body h3:first-child { margin-top:0; }
+    .about-body p { font-size:.89rem; color:var(--muted); line-height:1.8; }
+
+    /* CTA */
+    .cta-sec { background:var(--gd); text-align:center; position:relative; overflow:hidden; }
+    .cta-sec::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size:48px 48px; }
+    .cta-sec .container { position:relative; z-index:1; }
+    .cta-trust { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-top:1.75rem; }
+    .ct-item { display:flex; align-items:center; gap:.4rem; font-size:.77rem; color:rgba(255,255,255,.5); font-weight:500; }
+    .ct-item svg { opacity:.5; }
+
+    /* FOOTER */
+    footer { background:var(--off); border-top:1px solid var(--border); padding:1.65rem 2.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem; }
+    .foot-logo { font-size:.88rem; font-weight:800; color:var(--muted); letter-spacing:-.3px; }
+    .foot-logo em { color:var(--ga); font-style:normal; }
+    footer p { font-size:.7rem; color:var(--muted); }
+    footer a { color:var(--ga); text-decoration:none; }
+
+    /* RESPONSIVE */
+    @media(max-width:980px) {
+      .hero { grid-template-columns:1fr; }
+      .hero-r { display:none; }
+      .platform-in { grid-template-columns:1fr; gap:2.5rem; }
+      .about-grid { grid-template-columns:1fr; gap:2rem; }
+      .about-card { position:static; }
+      .co-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:640px) {
+      nav .nav-r { display:none; }
+      nav { padding:0 1.5rem; }
+      section,.platform { padding:4rem 1.5rem; }
+      .hero { padding:6rem 1.5rem 4rem; }
+      .hero-stats { flex-direction:column; gap:.85rem; }
+      .hs { border-right:none; padding-right:0; margin-right:0; padding-bottom:.85rem; border-bottom:1px solid var(--border); }
+      .hs:last-child { border-bottom:none; padding-bottom:0; }
+      footer { justify-content:center; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">JJS<em>.</em></a>
+  <ul class="nav-r">
+    <li><a href="#problema">O problema</a></li>
+    <li><a href="#pilares">Serviços</a></li>
+    <li><a href="#clientes">Clientes</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contato" class="nav-cta">Falar com Jeferson</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-l">
+    <div class="badge"><span class="badge-dot"></span>Analytics & Attribution Specialist</div>
+
+    <h1 class="hero-h1">
+      <span class="line">Google Ads diz 400 conversões.</span>
+      <span class="line" style="transition-delay:.3s">Meta diz 380. AppsFlyer diz 190.</span>
+      <span class="line accent" style="transition-delay:.6s">Alguém está errado.<br>Provavelmente os três.</span>
+    </h1>
+
+    <p class="hero-p">
+      Sou Jeferson. Entro na sua conta, destrincho cada evento e atribuição. Mostro onde o número está errado. Antes de você escalar em cima do problema.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#contato" class="btn-pri">Quero meu diagnóstico grátis →</a>
+      <a href="#problema" class="btn-sec">Entender o problema</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">+10<em>anos</em></div><div class="hs-l">em analytics<br>& growth</div></div>
+      <div class="hs"><div class="hs-n">R$100k<em>+</em></div><div class="hs-l">economizados em<br>fraude de atribuição</div></div>
+      <div class="hs"><div class="hs-n">8<em>+</em></div><div class="hs-l">empresas<br>atendidas</div></div>
+    </div>
+  </div>
+
+  <div class="hero-r">
+    <div class="acard">
+      <div class="ac-hd">
+        <span class="ac-lbl">Diagnóstico de Atribuição</span>
+        <span class="ac-st"><span class="ac-st-dot"></span><span id="acSt">Analisando</span></span>
+      </div>
+      <div class="ac-body" id="acBody"></div>
+      <div class="ac-ft" id="acFt">
+        <span class="ac-ft-lbl">Economia identificada</span>
+        <span class="ac-ft-val">R$ 84.000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- diagonal -->
+<svg class="diag" viewBox="0 0 1200 60" preserveAspectRatio="none" style="background:var(--white);display:block"><polygon points="0,60 1200,0 1200,60" fill="#f7f5f1"/></svg>
+
+<!-- PROBLEM -->
+<section class="problem" id="problema" style="padding-top:3.5rem">
+  <div class="container">
+    <span class="slabel reveal">O problema real</span>
+    <h2 class="stitle reveal">Isso acontece toda semana em contas<br>que parecem estar indo bem.</h2>
+
+    <div class="prob-grid">
+      <div class="prob-card reveal">
+        <div class="prob-n">01</div>
+        <div class="prob-t">Cada plataforma atribui a mesma venda</div>
+        <div class="prob-d">Google Ads creditou a conversão. Meta também. A venda foi de um anúncio só. Resultado: seu ROAS parece 3× maior que o real. E a decisão de dobrar o budget vem em cima desse número inflado.</div>
+      </div>
+      <div class="prob-card reveal reveal-d1">
+        <div class="prob-n">02</div>
+        <div class="prob-t">Entre 20% e 30% das instalações são fraude</div>
+        <div class="prob-d">Não aparecem como fraude no relatório. Aparecem como instalações normais, com CPI pago. Somem sem deixar rastro. Só saem do orçamento, mês após mês, silenciosamente.</div>
+      </div>
+      <div class="prob-card reveal reveal-d2">
+        <div class="prob-n">03</div>
+        <div class="prob-t">O evento dispara. Mas não quer dizer o que você acha.</div>
+        <div class="prob-d">CAPI sem deduplicação. GA4 com eventos duplicados. S2S perdendo 40% dos sinais desde a última atualização de privacidade. Ninguém percebeu. Ninguém avisou.</div>
+      </div>
+    </div>
+
+    <a href="#contato" class="inline-cta reveal">
+      Isso está acontecendo na sua conta?
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Ver meu diagnóstico grátis
+    </a>
+  </div>
+</section>
+
+<!-- diagonal -->
+<svg class="diag" viewBox="0 0 1200 60" preserveAspectRatio="none" style="background:var(--off);display:block"><polygon points="0,0 1200,60 1200,0" fill="#4676dc"/></svg>
+
+<!-- PLATFORM -->
+<section class="platform">
+  <div class="platform-in">
+    <div>
+      <span class="slabel reveal" style="color:rgba(0,0,0,.45)">Stack agnóstico</span>
+      <h2 class="stitle reveal" style="color:var(--black)">Chego com o que você tem.<br>Saio com o que você precisa.</h2>
+      <p class="ssub reveal" style="color:rgba(0,0,0,.6);margin-bottom:0">Não importa se é AppsFlyer ou Adjust. Firebase ou GA4. Servidor próprio ou GTM. Não peço para trocar de ferramenta. Só peço que a que você já paga funcione direito.</p>
+    </div>
+    <div class="spills reveal">
+      <span class="spill">GA4</span><span class="spill">AppsFlyer</span><span class="spill">Adjust</span>
+      <span class="spill">Branch</span><span class="spill">Firebase</span><span class="spill">Amplitude</span>
+      <span class="spill">Mixpanel</span><span class="spill">Google Ads</span><span class="spill">Meta Ads</span>
+      <span class="spill">GTM</span><span class="spill">BigQuery</span><span class="spill">Looker Studio</span>
+      <span class="spill">Power BI</span><span class="spill">HubSpot</span><span class="spill">Windsor</span>
+      <span class="spill">dbt</span><span class="spill">Python</span><span class="spill">SQL</span>
+    </div>
+  </div>
+</section>
+
+<!-- diagonal -->
+<svg class="diag" viewBox="0 0 1200 60" preserveAspectRatio="none" style="background:var(--ga);display:block"><polygon points="0,60 1200,0 1200,60" fill="#fff"/></svg>
+
+<!-- PILLARS -->
+<section class="pillars" id="pilares" style="padding-top:3.5rem">
+  <div class="container">
+    <span class="slabel reveal">O que faço</span>
+    <h2 class="stitle reveal">Três pilares de atuação</h2>
+    <p class="ssub reveal">Cada pilar resolve um problema real que operações digitais enfrentam na hora de mensurar, confiar e escalar.</p>
+
+    <div class="pil-grid">
+      <div class="pil reveal">
+        <div class="pil-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 6 5 9 14 12 3 15 13 18 8 21 12"/></svg>
+        </div>
+        <h3 class="pil-t">Mensuração & Rastreamento</h3>
+        <p class="pil-d">Implementação e configuração precisa das suas fontes de dados. Nenhum evento perdido, nenhum usuário sem atribuição, nenhuma lacuna entre o que acontece e o que a plataforma registra.</p>
+        <div class="tags"><span class="tag">GA4</span><span class="tag">AppsFlyer</span><span class="tag">Server-to-Server</span><span class="tag">CAPI</span><span class="tag">Tagueamento</span><span class="tag">GTM</span></div>
+      </div>
+      <div class="pil reveal reveal-d1">
+        <div class="pil-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.5-4.5"/><path d="M8.5 11l2 2 3.5-3.5"/></svg>
+        </div>
+        <h3 class="pil-t">Auditoria & Fraude Mobile</h3>
+        <p class="pil-d">Revisão completa de contas e plataformas. Identifico inconsistências, fraudes de atribuição e desperdício de verba antes que você continue investindo com os dados errados.</p>
+        <div class="tags"><span class="tag">Auditoria GA4</span><span class="tag">Auditoria AppsFlyer</span><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Fraude Mobile</span><span class="tag">Protect360</span></div>
+      </div>
+      <div class="pil reveal reveal-d2">
+        <div class="pil-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><line x1="8.5" y1="10.6" x2="15.5" y2="6.4"/><line x1="8.5" y1="13.4" x2="15.5" y2="17.6"/></svg>
+        </div>
+        <h3 class="pil-t">Atribuição & Inteligência</h3>
+        <p class="pil-d">Modelos de atribuição personalizados, forecast e AI aplicada para transformar dados brutos em decisões estratégicas com visão real de CAC, ROAS e CPI.</p>
+        <div class="tags"><span class="tag">Atribuição Custom</span><span class="tag">Forecast</span><span class="tag">Analytics & AI</span><span class="tag">CAC</span><span class="tag">ROAS</span><span class="tag">CPI</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="container">
+    <span class="slabel reveal">Serviços</span>
+    <h2 class="stitle reveal">Tudo que você pode contratar</h2>
+    <p class="ssub reveal">Cada serviço pode ser contratado individualmente ou como parte de uma implementação completa.</p>
+    <div class="svc-grid reveal">
+      <div class="svc"><div class="svc-t">Implementação GA4</div><div class="svc-d">Eventos, conversões, dimensões customizadas e integração com BigQuery.</div></div>
+      <div class="svc"><div class="svc-t">Setup AppsFlyer</div><div class="svc-d">SDK, eventos in-app, parceiros e Protect360 contra fraudes.</div></div>
+      <div class="svc"><div class="svc-t">Server-to-Server (S2S)</div><div class="svc-d">Rastreamento server-side. Máxima confiabilidade, sem bloqueadores.</div></div>
+      <div class="svc"><div class="svc-t">CAPI (Conversions API)</div><div class="svc-d">API de conversões do Meta server-side com deduplicação correta.</div></div>
+      <div class="svc"><div class="svc-t">Tagueamento & GTM</div><div class="svc-d">Plano de tagueamento, dataLayer, GTM e documentação técnica.</div></div>
+      <div class="svc"><div class="svc-t">Auditoria de Plataformas</div><div class="svc-d">GA4, AppsFlyer, Google Ads e Meta Ads com relatório e plano de ação.</div></div>
+      <div class="svc"><div class="svc-t">Detecção de Fraude Mobile</div><div class="svc-d">Click injection, SDK spoofing, instalações sintéticas. Identifico tudo.</div></div>
+      <div class="svc"><div class="svc-t">Modelo de Atribuição Custom</div><div class="svc-d">Modelos alinhados ao funil real e comportamento do seu usuário.</div></div>
+      <div class="svc"><div class="svc-t">Ferramentas de Forecast</div><div class="svc-d">Modelos preditivos de CAC, LTV e crescimento com base real.</div></div>
+      <div class="svc"><div class="svc-t">Analytics com AI</div><div class="svc-d">AI para automatizar análises e acelerar decisões de negócio.</div></div>
+      <div class="svc"><div class="svc-t">Dashboards & BI</div><div class="svc-d">Looker Studio e Power BI com pipelines automatizados via BigQuery.</div></div>
+      <div class="svc"><div class="svc-t">Treinamento de Times</div><div class="svc-d">Capacitação de equipes para operar com autonomia em GA4 e AppsFlyer.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED -->
+<section class="trusted" id="clientes">
+  <div class="container">
+    <span class="slabel reveal">Empresas que confiaram</span>
+    <h2 class="stitle reveal">Quem já tem dados em que confia</h2>
+    <p class="ssub reveal">De fintech a varejo, de startup a grande operação. O denominador comum é sempre o mesmo: dados que alguém precisava confiar antes de escalar.</p>
+    <div class="co-grid reveal">
+      <div class="co"><span class="co-n">Outsmarting</span></div>
+      <div class="co"><span class="co-n">Bloxs</span></div>
+      <div class="co"><span class="co-n">Biz Capital</span></div>
+      <div class="co"><span class="co-n">SuperFrete</span></div>
+      <div class="co"><span class="co-n">Atacadão</span></div>
+      <div class="co"><span class="co-n">NotAgency</span></div>
+      <div class="co"><span class="co-n">Zupper</span></div>
+      <div class="co"><span class="co-n">Kontrip</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results">
+  <div class="container">
+    <span class="slabel reveal">Impacto real</span>
+    <h2 class="stitle reveal">Resultados que aparecem na planilha</h2>
+    <p class="ssub reveal">Mensuração não é relatório. É responsabilidade sobre o que o número está dizendo.</p>
+    <div class="res-grid">
+      <div class="rcard reveal"><div class="rn">R$100k<em>+</em></div><div class="rl">Economizados em fraudes de atribuição identificadas em auditorias</div></div>
+      <div class="rcard reveal reveal-d1"><div class="rn">+10<em>anos</em></div><div class="rl">De experiência em analytics, growth marketing e estratégia de dados</div></div>
+      <div class="rcard reveal reveal-d2"><div class="rn">8<em>+</em></div><div class="rl">Empresas atendidas em diferentes verticais e estágios de maturidade</div></div>
+      <div class="rcard reveal reveal-d3"><div class="rn">MBA<em>·</em>AI</div><div class="rl">Technology for Business (AI, Data Science & Big Data) · PUCRS</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="container">
+    <span class="slabel reveal">Sobre</span>
+    <h2 class="stitle reveal">Quem está por trás</h2>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <div class="av">JJS</div>
+        <div class="a-name">Jeferson J Silva</div>
+        <div class="a-role">Analytics & Attribution Specialist</div>
+        <div class="a-stack">
+          <span class="stag">GA4</span><span class="stag">AppsFlyer</span><span class="stag">BigQuery</span>
+          <span class="stag">Looker Studio</span><span class="stag">Power BI</span><span class="stag">dbt</span>
+          <span class="stag">Python</span><span class="stag">SQL</span><span class="stag">Windsor</span><span class="stag">GTM</span>
+        </div>
+      </div>
+      <div class="about-body">
+        <h3 class="reveal">Como cheguei aqui</h3>
+        <p class="reveal">Comecei em analytics quando o GA ainda era Universal Analytics e o Firebase era coisa de dev. Fui aprendendo que a maioria dos problemas de marketing não são de estratégia. São de dado. A estratégia é boa. O número é que está errado.</p>
+
+        <h3 class="reveal">O que faço na prática</h3>
+        <p class="reveal">Entro na conta, olho o que está sendo medido, e mostro onde o dado está mentindo. Já economizei mais de R$100 mil de um único cliente só identificando fraude de atribuição que ninguém tinha encontrado antes. Não é consultoria de PowerPoint. É mão na conta.</p>
+
+        <h3 class="reveal">Sem agência, sem intermediário</h3>
+        <p class="reveal">Não sou agência. Não tenho equipe de 40 pessoas vendendo projeto de R$200k. Sou eu (especializado nisso) trabalhando direto com o time responsável pela conta. Se você precisa de visibilidade real do que está acontecendo na sua mensuração, faz sentido conversarmos.</p>
+
+        <h3 class="reveal">Formação</h3>
+        <p class="reveal">MBA em Technology for Business com ênfase em AI, Data Science e Big Data pela PUCRS. Professor de Google Ads, desenvolvedor de produtos digitais e criador de playbooks de analytics para times de marketing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contato">
+  <div class="container">
+    <span class="slabel reveal" style="color:rgba(70,118,220,.7)">Vamos conversar</span>
+    <h2 class="stitle reveal" style="color:var(--white);max-width:580px;margin-left:auto;margin-right:auto">30 minutos. Grátis.<br>Sem PowerPoint de vendas.</h2>
+    <p class="reveal" style="font-size:.94rem;color:rgba(255,255,255,.55);max-width:440px;margin:0 auto 2.25rem;line-height:1.72">Me fala o que você está medindo. Entro ao vivo nas suas plataformas, olho o que está acontecendo, e mostro os três problemas mais críticos. Você sai com clareza, não com proposta.</p>
+    <a href="https://wa.me/5571982210402?text=Ol%C3%A1%20Jeferson%2C%20quero%20meu%20diagn%C3%B3stico%20gr%C3%A1tis%20de%20analytics." target="_blank" rel="noopener" class="btn-pri reveal" style="font-size:.93rem">Quero meu diagnóstico grátis →</a>
+    <div class="cta-trust reveal">
+      <span class="ct-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        30 minutos
+      </span>
+      <span class="ct-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Videochamada
+      </span>
+      <span class="ct-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Jeferson na call
+      </span>
+      <span class="ct-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Sem compromisso
+      </span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JJS<em>.</em></div>
+  <p>&copy; 2025 Jeferson J Silva &middot; <a href="https://jefersonjs.com.br">jefersonjs.com.br</a></p>
+</footer>
+
+<script>
+  // Hero kinetic reveal
+  document.querySelectorAll('.hero-h1 .line').forEach(el => setTimeout(() => el.classList.add('in'), 150));
+  setTimeout(() => document.querySelector('.hero-p').classList.add('in'), 150);
+  setTimeout(() => document.querySelector('.hero-btns').classList.add('in'), 150);
+  setTimeout(() => document.querySelector('.hero-stats').classList.add('in'), 150);
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Audit card
+  const ico_x = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>`;
+  const ico_ok = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+  const probs = [
+    {m:'Eventos duplicados detectados', s:'GA4 e AppsFlyer divergindo 38%'},
+    {m:'Fraude mobile identificada', s:'23% das instalações são inválidas'},
+    {m:'CAPI sem deduplicação', s:'Meta inflando conversões em ~40%'},
+    {m:'Last-click distorcendo ROAS', s:'Número real é 3× menor'},
+  ];
+  const fixed = [
+    {m:'Fraude bloqueada via Protect360', s:'Volume inválido zerado'},
+    {m:'Eventos normalizados', s:'GA4 e AppsFlyer alinhados'},
+    {m:'CAPI configurado', s:'Sinal Meta completamente recuperado'},
+    {m:'Atribuição custom ativa', s:'ROAS real calculado'},
+  ];
+
+  function buildCard(items, type) {
+    const b = document.getElementById('acBody');
+    b.innerHTML = '';
+    items.forEach(it => {
+      const d = document.createElement('div');
+      d.className = 'ai';
+      d.innerHTML = `<div class="ai-ico ${type}">${type==='bad'?ico_x:ico_ok}</div><div><div class="ai-main">${it.m}</div><div class="ai-sub">${it.s}</div></div>`;
+      b.appendChild(d);
+    });
+  }
+
+  function revealItems(delay) {
+    document.querySelectorAll('.ai').forEach((el,i) => setTimeout(() => el.classList.add('v'), delay + i*450));
+  }
+
+  function runCard() {
+    const ft = document.getElementById('acFt');
+    const st = document.getElementById('acSt');
+    const S = 450;
+    st.textContent = 'Analisando';
+    buildCard(probs, 'bad');
+    revealItems(250);
+    const end1 = 250 + probs.length*S + 500;
+    setTimeout(() => ft.classList.add('v'), end1);
+    setTimeout(() => {
+      document.querySelectorAll('.ai').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(-6px)'; });
+      ft.style.opacity = '0';
+      setTimeout(() => {
+        ft.classList.remove('v'); ft.style.opacity='';
+        st.textContent = 'Resolvido';
+        buildCard(fixed, 'ok');
+        revealItems(150);
+        const end2 = 150 + fixed.length*S + 500;
+        setTimeout(() => ft.classList.add('v'), end2);
+        setTimeout(() => runCard(), end2 + 3500);
+      }, 500);
+    }, end1 + 3200);
+  }
+
+  setTimeout(runCard, 1000);
+</script>
+</body>
+</html>
