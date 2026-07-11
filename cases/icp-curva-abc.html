@@ -74,7 +74,7 @@
     <h1 class="case-title reveal">12% dos clientes geravam 79% do faturamento. Ninguém sabia quem eram.</h1>
     <p class="case-dek reveal">Curva ABC e análise de lift transformaram carteira de clientes num perfil de ICP com três critérios objetivos e um score pronto pra pré-vendas e CRM usarem.</p>
     <div class="case-meta reveal">
-      <span>Logtech · self-service</span>
+      <span>Edtech · marketplace de cursos</span>
       <span>~3 semanas</span>
       <span>BigQuery · SQL</span>
     </div>
@@ -112,22 +112,22 @@
 <section>
   <div class="container case-body">
 
-    <div class="callout reveal"><b>Aviso de confidencialidade.</b> Este case descreve um projeto real, mas a empresa ("Enviago"), o nome do produto e todos os números são fictícios ou anonimizados. Os valores servem para ilustrar a forma dos achados, não os resultados reais. Nomes de tabelas, campos e pessoas foram trocados por equivalentes genéricos. O objetivo é mostrar o método e a engenharia de análise, preservando qualquer dado sensível.</div>
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> Este case descreve um projeto real, mas a empresa ("Cursora"), o nome do produto e todos os números são fictícios ou anonimizados. Os valores servem para ilustrar a forma dos achados, não os resultados reais. Nomes de tabelas, campos e pessoas foram trocados por equivalentes genéricos. O objetivo é mostrar o método e a engenharia de análise, preservando qualquer dado sensível.</div>
 
     <h2 class="reveal">O problema</h2>
     <p class="reveal">"Quem é o nosso cliente ideal?" Essa pergunta apareceu numa reunião de liderança e ninguém tinha uma resposta baseada em dado. Tinha opinião. Tinha o palpite do time de vendas. Tinha a intuição de quem estava há mais tempo na casa. Cada um puxava para um lado.</p>
     <p class="reveal">O custo disso é concreto. A empresa gastava a maior parte do orçamento de mídia trazendo volume, sem saber se aquele volume tinha alguma chance de virar cliente de verdade. O time de pré-vendas priorizava contas no feeling. O CRM disparava campanha para todo mundo igual.</p>
-    <p class="reveal">A Enviago já sabia definir "ativação" (quando um cliente faz a primeira emissão de etiqueta). O que faltava era o degrau seguinte. Entre os clientes ativos, quais realmente sustentam o negócio? E o que eles têm em comum que dê para procurar lá na porta de entrada?</p>
+    <p class="reveal">A Cursora já sabia definir "ativação" (quando um instrutor faz a primeira venda de curso). O que faltava era o degrau seguinte. Entre os clientes ativos, quais realmente sustentam o negócio? E o que eles têm em comum que dê para procurar lá na porta de entrada?</p>
     <p class="reveal">Essa era a dor. Traduzir a carteira num perfil acionável.</p>
 
-    <h2 class="reveal">Contexto: a Enviago</h2>
-    <p class="reveal">A Enviago é uma plataforma self-service de logística para micro e pequenos e-commerces. O vendedor entra pelo app (iOS ou Android) ou pela web, calcula o frete, escolhe a transportadora e emite a etiqueta com desconto. Parte dos clientes conecta a loja via integração com plataformas de e-commerce e marketplaces.</p>
-    <p class="reveal">O modelo de receita é simples. A Enviago ganha uma margem por etiqueta emitida. Quanto mais o vendedor emite, mais a Enviago fatura.</p>
-    <p class="reveal">O funil de referência tem alguns marcos: instalação, primeiro cálculo de frete, primeira emissão (ativação) e recorrência. Existe também um programa de indicação (member-get-member), onde clientes convidam outros clientes.</p>
-    <p class="reveal">Guardando essa mecânica, dá para entender por que o melhor cliente aqui é medido por volume de emissão e receita gerada. Não por número de logins ou tamanho declarado.</p>
+    <h2 class="reveal">Contexto: a Cursora</h2>
+    <p class="reveal">A Cursora é um marketplace self-service de cursos online, onde instrutores publicam e vendem seus próprios cursos. O instrutor entra pelo app (iOS ou Android) ou pela web, monta o curso, define o preço e publica pra venda. Parte dos instrutores conecta um canal de divulgação próprio via integração com plataformas de anúncio e redes sociais.</p>
+    <p class="reveal">O modelo de receita é simples. A Cursora ganha uma margem por venda de curso. Quanto mais o instrutor vende, mais a Cursora fatura.</p>
+    <p class="reveal">O funil de referência tem alguns marcos: instalação, primeira montagem de curso, primeira venda de curso (ativação) e recorrência. Existe também um programa de indicação (member-get-member), onde clientes convidam outros clientes.</p>
+    <p class="reveal">Guardando essa mecânica, dá para entender por que o melhor cliente aqui é medido por volume de vendas de curso e receita gerada. Não por número de logins ou tamanho declarado.</p>
 
     <h2 class="reveal">Meu objetivo</h2>
-    <p class="reveal">Adaptar um método clássico de descoberta de ICP (Curva ABC seguida de análise de padrões) para a realidade self-service da Enviago, e entregar três coisas:</p>
+    <p class="reveal">Adaptar um método clássico de descoberta de ICP (Curva ABC seguida de análise de padrões) para a realidade self-service da Cursora, e entregar três coisas:</p>
     <ol class="reveal">
       <li>Um perfil de ICP descritivo, em linguagem que a liderança usa.</li>
       <li>Três critérios objetivos de priorização, observáveis cedo no ciclo de vida do cliente.</li>
@@ -153,23 +153,23 @@
 
     <h2 class="reveal">Arquitetura de dado</h2>
     <p class="reveal">Trabalhei sobre duas tabelas gold, cada uma com um grão claro.</p>
-    <p class="reveal">A primeira é a base transacional de pedidos. Uma linha por pedido, com identificador do cliente, data, valores cobrados, margem da plataforma, transportadora, integração de origem e os carimbos de status (emitiu, postou, cancelou).</p>
-    <p class="reveal">A segunda é a tabela de perfil do cliente. Uma linha por cliente, já consolidada. Tem região, faixa de volume de envio, sistema operacional, integração de loja, papel no programa de indicação, tempo de casa e uma série de marcos de emissão (data da primeira emissão, da segunda, dias até a segunda, e assim por diante).</p>
+    <p class="reveal">A primeira é a base transacional de pedidos. Uma linha por pedido, com identificador do cliente, data, valores cobrados, margem da plataforma, canal de venda, integração de origem e os carimbos de status (vendeu, aluno concluiu o curso, cancelou).</p>
+    <p class="reveal">A segunda é a tabela de perfil do cliente. Uma linha por cliente, já consolidada. Tem região, faixa de volume de vendas de curso, sistema operacional, integração de canal de divulgação, papel no programa de indicação, tempo de casa e uma série de marcos de venda (data da primeira venda de curso, da segunda, dias até a segunda, e assim por diante).</p>
     <p class="reveal">Essa separação importa. A tabela de pedidos me dá volume e receita por cliente. A tabela de perfil me dá os atributos descritivos. O ICP nasce do cruzamento das duas.</p>
 
     <h2 class="reveal">Como eu fiz</h2>
 
     <h3 class="reveal">Passo 1. Definir o que é "melhor cliente"</h3>
-    <p class="reveal">O método clássico de ICP foi desenhado para venda B2B com carteira e vendedor. A Enviago é self-service. Então a primeira coisa foi traduzir os conceitos.</p>
-    <p class="reveal">Onde o método fala em receita gerada pelo cliente, usei volume de emissões e GMV por cliente. Onde fala em vendedor responsável, usei canal de aquisição. Onde fala em tipo de contrato, usei plataforma e integração. Onde fala em tempo de relacionamento, usei tempo de casa.</p>
-    <p class="reveal">O melhor cliente da Enviago é quem emite muito, com valor e recorrência. Simples assim.</p>
+    <p class="reveal">O método clássico de ICP foi desenhado para venda B2B com carteira e vendedor. A Cursora é self-service. Então a primeira coisa foi traduzir os conceitos.</p>
+    <p class="reveal">Onde o método fala em receita gerada pelo cliente, usei volume de vendas de curso e GMV por cliente. Onde fala em vendedor responsável, usei canal de aquisição. Onde fala em tipo de contrato, usei plataforma e integração. Onde fala em tempo de relacionamento, usei tempo de casa.</p>
+    <p class="reveal">O melhor cliente da Cursora é quem vende muito curso, com valor e recorrência. Simples assim.</p>
 
     <h3 class="reveal">Passo 2. Validar antes de confiar</h3>
     <p class="reveal">Aqui está a parte que separa análise séria de dashboard bonito.</p>
-    <p class="reveal">Antes de rodar qualquer curva, eu precisava ter certeza de que a minha definição de "emissão" batia com a definição oficial da empresa. Tinha uma ambiguidade real: emissão (etiqueta gerada e paga) e postagem (pacote efetivamente postado) são eventos diferentes, e usar um no lugar do outro muda toda a análise.</p>
-    <p class="reveal">Levantei uma hipótese. A métrica oficial de ativação seria a coorte de primeira emissão por mês. Escrevi a query, contei clientes por mês da primeira emissão e comparei com o dashboard de BI da liderança.</p>
+    <p class="reveal">Antes de rodar qualquer curva, eu precisava ter certeza de que a minha definição de "venda de curso" batia com a definição oficial da empresa. Tinha uma ambiguidade real: venda de curso (curso comprado e pago) e conclusão do curso (aluno efetivamente concluiu o curso) são eventos diferentes, e usar um no lugar do outro muda toda a análise.</p>
+    <p class="reveal">Levantei uma hipótese. A métrica oficial de ativação seria a coorte de primeira venda de curso por mês. Escrevi a query, contei clientes por mês da primeira venda de curso e comparei com o dashboard de BI da liderança.</p>
     <p class="reveal">Bateu. Diferença zero em todos os meses fechados, com variação de no máximo um cliente por ruído de snapshot. O único mês com diferença maior era o mês corrente, ainda parcial.</p>
-    <p class="reveal">Depois fiz o mesmo com o gate de emissão na tabela de pedidos, para garantir que o carimbo que eu ia usar reproduzia exatamente a mesma primeira emissão. Bateu de novo.</p>
+    <p class="reveal">Depois fiz o mesmo com o gate de venda na tabela de pedidos, para garantir que o carimbo que eu ia usar reproduzia exatamente a mesma primeira venda de curso. Bateu de novo.</p>
     <p class="reveal">Só então segui. Toda a Curva ABC parte de uma régua auditada, não de palpite.</p>
 
     <h3 class="reveal">Passo 3. Curva ABC</h3>
@@ -195,12 +195,12 @@
     <div class="stat-grid reveal">
       <div class="stat-card"><div class="stat-n">12%</div><div class="stat-l">dos clientes (Curva A) geram a maior parte do GMV</div></div>
       <div class="stat-card"><div class="stat-n">79%</div><div class="stat-l">do GMV concentrado nesses 12% de clientes</div></div>
-      <div class="stat-card"><div class="stat-n">6,2</div><div class="stat-l">de lift para porte de 30+ envios por mês</div></div>
+      <div class="stat-card"><div class="stat-n">6,2</div><div class="stat-l">de lift para porte de 30+ vendas de curso por mês</div></div>
       <div class="stat-card"><div class="stat-n">100x</div><div class="stat-l">a diferença de receita entre um Curva A e um Curva C</div></div>
     </div>
     <div class="table-wrap reveal">
       <table>
-        <tr><th>Curva</th><th>Clientes</th><th>% Clientes</th><th>Emissões</th><th>% GMV</th><th>Taxa de conclusão</th></tr>
+        <tr><th>Curva</th><th>Clientes</th><th>% Clientes</th><th>Vendas de curso</th><th>% GMV</th><th>Taxa de conclusão</th></tr>
         <tr><td>A</td><td>33.600</td><td>12,0%</td><td>~3,7 mi</td><td>79,0%</td><td>94%</td></tr>
         <tr><td>B</td><td>70.000</td><td>25,0%</td><td>~0,9 mi</td><td>15,5%</td><td>92%</td></tr>
         <tr><td>C</td><td>176.400</td><td>63,0%</td><td>~0,4 mi</td><td>5,5%</td><td>90%</td></tr>
@@ -208,18 +208,18 @@
     </div>
 
     <h3 class="reveal">A distância entre um Curva A e o resto é brutal</h3>
-    <p class="reveal">Em seis meses, o cliente médio da Curva A emitiu cerca de 110 etiquetas. O da Curva B, 12. O da Curva C, 2.</p>
-    <p class="reveal">Em receita por cliente, um Curva A vale mais de cem vezes um Curva C. A qualidade acompanha o valor: a taxa de conclusão de postagem sobe junto com a curva, e o ticket médio por envio também.</p>
+    <p class="reveal">Em seis meses, o cliente médio da Curva A vendeu cerca de 110 cursos. O da Curva B, 12. O da Curva C, 2.</p>
+    <p class="reveal">Em receita por cliente, um Curva A vale mais de cem vezes um Curva C. A qualidade acompanha o valor: a taxa de conclusão do curso sobe junto com a curva, e o ticket médio por venda também.</p>
 
     <h3 class="reveal">O que os Curva A têm em comum</h3>
     <p class="reveal">Ordenados por poder preditivo:</p>
     <div class="table-wrap reveal">
       <table>
         <tr><th>Sinal</th><th>Lift</th><th>Leitura</th></tr>
-        <tr><td>Porte: 30+ envios por mês</td><td>~6,2</td><td>o divisor de águas, disparado o mais forte</td></tr>
-        <tr><td>Integração de e-commerce ativa</td><td>~3,3</td><td>loja conectada prevê valor</td></tr>
+        <tr><td>Porte: 30+ vendas de curso por mês</td><td>~6,2</td><td>o divisor de águas, disparado o mais forte</td></tr>
+        <tr><td>Canal de divulgação próprio ativo</td><td>~3,3</td><td>canal de divulgação conectado prevê valor</td></tr>
         <tr><td>Indicação: perfil "convidante"</td><td>~1,9</td><td>quem indica, não quem foi indicado</td></tr>
-        <tr><td>Velocidade: 2ª emissão em até 7 dias</td><td>~1,8</td><td>a régua de ativação se valida como preditora</td></tr>
+        <tr><td>Velocidade: 2ª venda de curso em até 7 dias</td><td>~1,8</td><td>a régua de ativação se valida como preditora</td></tr>
         <tr><td>Tempo de casa: 1+ ano</td><td>~1,6</td><td>maturidade e lealdade</td></tr>
         <tr><td>Plataforma: iOS ou navegador</td><td>~1,3</td><td>Android fica abaixo da média</td></tr>
       </table>
@@ -232,13 +232,13 @@
     <p class="reveal">O valor está nos bons clientes indicarem. Os indicados, em média, não viram bons clientes. Isso muda a leitura de qualidade do canal e virou uma pergunta aberta para o time antes de escalar aquisição por indicação.</p>
 
     <h2 class="reveal">O ICP, em uma frase</h2>
-    <p class="reveal">Cliente de e-commerce com operação recorrente (30 ou mais envios por mês), que ativa rápido (segunda emissão em até sete dias), tende a ter loja integrada, já tem mais de um ano de casa e opera por iOS ou navegador.</p>
+    <p class="reveal">Instrutor com operação recorrente (30 ou mais vendas de curso por mês), que ativa rápido (segunda venda de curso em até sete dias), tende a ter canal de divulgação próprio integrado, já tem mais de um ano de casa e opera por iOS ou navegador.</p>
 
     <h3 class="reveal">Os três critérios de priorização</h3>
-    <p class="reveal"><b>1. Frequência e porte.</b> Faixa de envio a partir de 10 por mês, alvo 30 ou mais. Peso máximo. É o sinal mais forte de todos.</p>
-    <p class="reveal"><b>2. Integração de e-commerce ativa.</b> Loja conectada. Demonstra intenção de escala.</p>
-    <p class="reveal"><b>3. Velocidade de ativação.</b> Cruzou a marca de duas emissões em sete dias. Sinal precoce e barato de observar.</p>
-    <p class="reveal">Boosters secundários: tempo de casa acima de um ano, iOS ou web, e perfil convidante no programa de indicação. Anti-ICP, para despriorizar: zero a um envio, sem segunda emissão em sete dias, Android puro, e menos de 90 dias com volume baixo.</p>
+    <p class="reveal"><b>1. Frequência e porte.</b> Faixa de vendas de curso a partir de 10 por mês, alvo 30 ou mais. Peso máximo. É o sinal mais forte de todos.</p>
+    <p class="reveal"><b>2. Canal de divulgação próprio ativo.</b> Canal de divulgação conectado. Demonstra intenção de escala.</p>
+    <p class="reveal"><b>3. Velocidade de ativação.</b> Cruzou a marca de duas vendas de curso em sete dias. Sinal precoce e barato de observar.</p>
+    <p class="reveal">Boosters secundários: tempo de casa acima de um ano, iOS ou web, e perfil convidante no programa de indicação. Anti-ICP, para despriorizar: zero a uma venda de curso, sem segunda venda em sete dias, Android puro, e menos de 90 dias com volume baixo.</p>
 
     <h2 class="reveal">Entregáveis</h2>
     <p class="reveal">O projeto gerou três artefatos, pensados para públicos diferentes.</p>
@@ -280,54 +280,54 @@
     └── charts/                      # imagens e dashboards de apoio</code></pre>
 
     <h2 class="reveal">Apêndice: queries</h2>
-    <p class="reveal">Nomes de tabela e campo são genéricos. <code>analytics.fct_orders</code> é a base de pedidos (grão pedido), <code>analytics.dim_sellers</code> é o perfil do cliente (grão cliente).</p>
+    <p class="reveal">Nomes de tabela e campo são genéricos. <code>analytics.fct_orders</code> é a base de pedidos (grão pedido), <code>analytics.dim_sellers</code> é o perfil do cliente (grão cliente, aqui o instrutor).</p>
 
     <h3 class="reveal">00. Validação da ativação contra o BI oficial</h3>
-<pre class="reveal"><code>-- Hipótese: "ativação" = coorte de primeira emissão por mês.
+<pre class="reveal"><code>-- Hipótese: "ativação" = coorte de primeira venda de curso por mês.
 -- Objetivo: bater com o dashboard oficial antes de confiar na régua.
-WITH emissao AS (
+WITH venda AS (
   SELECT FORMAT_DATE('%Y-%m', first_order_date) AS mes,
-         COUNT(DISTINCT seller_id) AS ativacao_emissao
+         COUNT(DISTINCT seller_id) AS ativacao_venda
   FROM `analytics.dim_sellers`
   WHERE first_order_date BETWEEN '2026-01-01' AND '2026-06-30'
   GROUP BY mes
 ),
-postagem AS (
+conclusao AS (
   SELECT FORMAT_DATE('%Y-%m', first_shipment_date) AS mes,
-         COUNT(DISTINCT seller_id) AS ativacao_postagem
+         COUNT(DISTINCT seller_id) AS ativacao_conclusao
   FROM `analytics.dim_sellers`
   WHERE first_shipment_date BETWEEN '2026-01-01' AND '2026-06-30'
   GROUP BY mes
 )
-SELECT COALESCE(e.mes, p.mes) AS mes, e.ativacao_emissao, p.ativacao_postagem
-FROM emissao e
-FULL OUTER JOIN postagem p USING (mes)
+SELECT COALESCE(v.mes, c.mes) AS mes, v.ativacao_venda, c.ativacao_conclusao
+FROM venda v
+FULL OUTER JOIN conclusao c USING (mes)
 ORDER BY mes;</code></pre>
 
     <h3 class="reveal">01. Curva ABC (base cliente + curva + perfil)</h3>
-<pre class="reveal"><code>-- Gate de emissão validado: label_ready_at IS NOT NULL.
--- Postagem = completed_at IS NOT NULL (lente de qualidade).
+<pre class="reveal"><code>-- Gate de venda validado: label_ready_at IS NOT NULL.
+-- Conclusão do curso = completed_at IS NOT NULL (lente de qualidade: aluno concluiu o curso).
 CREATE OR REPLACE TABLE `analytics.seller_curva_abc_2026h1` AS
 WITH pedidos AS (
   SELECT
     seller_id, order_id,
     COALESCE(revenue_charged, 0)  AS gmv_pedido,
     COALESCE(platform_fee, 0)     AS receita_plataforma,
-    (label_ready_at IS NOT NULL)  AS emitiu,
-    (completed_at   IS NOT NULL)  AS postou
+    (label_ready_at IS NOT NULL)  AS vendeu,
+    (completed_at   IS NOT NULL)  AS concluiu
   FROM `analytics.fct_orders`
   WHERE order_date BETWEEN '2026-01-01' AND '2026-06-30'
     AND seller_id IS NOT NULL
 ),
 por_cliente AS (
   SELECT seller_id,
-    COUNTIF(emitiu) AS emissoes,
-    COUNTIF(postou) AS postagens,
-    SUM(IF(emitiu, gmv_pedido, 0))        AS gmv,
-    SUM(IF(emitiu, receita_plataforma, 0)) AS receita_plataforma
+    COUNTIF(vendeu) AS vendas,
+    COUNTIF(concluiu) AS conclusoes,
+    SUM(IF(vendeu, gmv_pedido, 0))        AS gmv,
+    SUM(IF(vendeu, receita_plataforma, 0)) AS receita_plataforma
   FROM pedidos
   GROUP BY seller_id
-  HAVING emissoes > 0
+  HAVING vendas > 0
 ),
 ranked AS (
   SELECT *,
@@ -344,10 +344,10 @@ classificado AS (
   FROM ranked
 )
 SELECT
-  c.seller_id, c.curva, c.emissoes, c.postagens, c.gmv, c.receita_plataforma,
-  SAFE_DIVIDE(c.postagens, c.emissoes) AS taxa_conclusao,
-  SAFE_DIVIDE(c.gmv, c.emissoes)       AS ticket_medio,
-  d.state, d.shipping_tier, d.platform_os, d.store_integration,
+  c.seller_id, c.curva, c.vendas, c.conclusoes, c.gmv, c.receita_plataforma,
+  SAFE_DIVIDE(c.conclusoes, c.vendas) AS taxa_conclusao,
+  SAFE_DIVIDE(c.gmv, c.vendas)       AS ticket_medio,
+  d.state, d.volume_tier, d.platform_os, d.canal_integration,
   d.referral_role, d.seller_level, d.signup_date, d.days_to_second_order,
   DATE_DIFF(DATE '2026-06-30', d.signup_date, DAY) AS tenure_dias,
   (d.days_to_second_order <= 7) AS icp_2em7
@@ -356,7 +356,7 @@ LEFT JOIN `analytics.dim_sellers` d USING (seller_id);</code></pre>
 
     <h3 class="reveal">02. Padrões da Curva A por lift</h3>
 <pre class="reveal"><code>WITH base AS (
-  SELECT curva, state, shipping_tier, platform_os, store_integration,
+  SELECT curva, state, volume_tier, platform_os, canal_integration,
          referral_role, icp_2em7,
          CASE WHEN tenure_dias <= 90  THEN '0-90d'
               WHEN tenure_dias <= 180 THEN '91-180d'
@@ -367,9 +367,9 @@ LEFT JOIN `analytics.dim_sellers` d USING (seller_id);</code></pre>
 ),
 empilhado AS (
   SELECT 'regiao'      AS dimensao, IFNULL(state,'(nulo)')             AS valor, curva FROM base
-  UNION ALL SELECT 'porte',        IFNULL(shipping_tier,'(nulo)'),     curva FROM base
+  UNION ALL SELECT 'porte',        IFNULL(volume_tier,'(nulo)'),      curva FROM base
   UNION ALL SELECT 'plataforma',   IFNULL(platform_os,'(nulo)'),       curva FROM base
-  UNION ALL SELECT 'integracao',   IFNULL(store_integration,'(sem)'),  curva FROM base
+  UNION ALL SELECT 'integracao',   IFNULL(canal_integration,'(sem)'), curva FROM base
   UNION ALL SELECT 'indicacao',    IFNULL(referral_role,'(nenhum)'),   curva FROM base
   UNION ALL SELECT 'tenure',       tenure_faixa,                       curva FROM base
   UNION ALL SELECT 'vel_2em7',     CAST(icp_2em7 AS STRING),           curva FROM base
@@ -393,20 +393,20 @@ ORDER BY dimensao, lift DESC;</code></pre>
     <h3 class="reveal">03. Base pronta: score de ICP por cliente</h3>
 <pre class="reveal"><code>CREATE OR REPLACE TABLE `analytics.seller_icp_score` AS
 WITH s AS (
-  SELECT seller_id, state, platform_os, shipping_tier, store_integration,
+  SELECT seller_id, state, platform_os, volume_tier, canal_integration,
          referral_role, signup_date, days_to_second_order,
          DATE_DIFF(CURRENT_DATE(), signup_date, DAY) AS tenure_dias
   FROM `analytics.dim_sellers`
 ),
 scored AS (
   SELECT *,
-    CASE shipping_tier                         -- Critério 1: porte (0-50)
+    CASE volume_tier                           -- Critério 1: porte (0-50)
       WHEN '100+'   THEN 50 WHEN '30-99' THEN 42
       WHEN '10-29'  THEN 28 WHEN '7-9'   THEN 12
       WHEN '2-6'    THEN 5  ELSE 0 END AS pts_porte,
-    CASE WHEN store_integration IS NOT NULL
-              AND LOWER(store_integration) NOT IN ('none','')
-         THEN 25 ELSE 0 END AS pts_integracao,  -- Critério 2: integração (0-25)
+    CASE WHEN canal_integration IS NOT NULL
+              AND LOWER(canal_integration) NOT IN ('none','')
+         THEN 25 ELSE 0 END AS pts_integracao,  -- Critério 2: canal de divulgação (0-25)
     CASE WHEN days_to_second_order <= 7  THEN 25
          WHEN days_to_second_order <= 14 THEN 12
          ELSE 0 END AS pts_velocidade,          -- Critério 3: velocidade (0-25)

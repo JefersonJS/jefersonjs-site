@@ -74,7 +74,7 @@
     <h1 class="case-title reveal">O CRM que parecia valer 2% das ativações. Na real, valia 12%.</h1>
     <p class="case-dek reveal">Um modelo de atribuição multi-toque revelou que o último clique escondia seis vezes o valor real do CRM. Do primeiro diagnóstico com a liderança até um painel de decisão rodando com dado atualizado todo dia.</p>
     <div class="case-meta reveal">
-      <span>Logtech · self-service</span>
+      <span>E-commerce · D2C</span>
       <span>Ponta a ponta, sozinho</span>
       <span>BigQuery · Python · SQL</span>
     </div>
@@ -108,11 +108,11 @@
 <section>
   <div class="container case-body">
 
-    <div class="callout reveal"><b>Aviso de confidencialidade.</b> "Fretti" é uma empresa fictícia usada pra descrever este projeto. O segmento é real e comum. Todos os números foram anonimizados e aproximados pra proteger dado de negócio. O que está aqui é a estrutura, a metodologia e o raciocínio, não dado proprietário.</div>
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> "Modara" é uma empresa fictícia usada pra descrever este projeto. O segmento é real e comum. Todos os números foram anonimizados e aproximados pra proteger dado de negócio. O que está aqui é a estrutura, a metodologia e o raciocínio, não dado proprietário.</div>
 
     <h2 class="reveal">O contexto</h2>
-    <p class="reveal">Fretti é uma logtech. Uma plataforma onde pequenos e médios e-commerces e vendedores autônomos calculam frete, se cadastram e emitem etiquetas com desconto. O produto é self-serve. O usuário chega, calcula um frete, cria a conta e faz a primeira emissão. Essa primeira emissão é a ativação, o momento que importa.</p>
-    <p class="reveal">O time de CRM trabalha esse funil com quatro canais: e-mail, WhatsApp, notificação no app (push) e banner dentro do produto. O objetivo é levar o cadastro até a primeira emissão.</p>
+    <p class="reveal">Modara é uma loja virtual de moda direto ao consumidor (D2C). Vende as próprias coleções direto pro cliente final, sem intermediário. O produto é self-service. O usuário chega, navega pelo catálogo, cria a conta e finaliza a primeira compra. Essa primeira compra é a ativação, o momento que importa.</p>
+    <p class="reveal">O time de CRM trabalha esse funil com quatro canais: e-mail, WhatsApp, notificação no app (push) e banner dentro do produto. O objetivo é levar o cadastro até a primeira compra.</p>
     <p class="reveal">O problema chegou pela dona do CRM. O indicador de contribuição do canal vinha de um relatório de último clique, tirado do Google Analytics. Esse relatório mostrava o CRM em torno de 2% das ativações. Abaixo da meta. E lateralizado, sem mexer de um mês para o outro.</p>
     <p class="reveal">A dúvida travava qualquer decisão. O CRM tinha piorado de verdade? Ou a conta estava medindo errado? Sem responder isso, não dava para defender investimento nem saber onde apostar.</p>
 
@@ -153,7 +153,7 @@ GA4 / Firebase       ─┤   ─▶    gold    (views de atribuição,         
 Base transacional    ─┘        └ tabelas por uid e por toque
 (cálculo, cadastro,
  emissão)</code></pre>
-    <p class="reveal">A extração roda em Python, num notebook. Puxo os toques de e-mail e WhatsApp pela API de eventos do HubSpot, dia a dia, particionando por data. O push e o banner vêm do export nativo do GA4 para o BigQuery. A base transacional (quem calculou, cadastrou e emitiu, com data e hora) é a fonte da verdade para as conversões.</p>
+    <p class="reveal">A extração roda em Python, num notebook. Puxo os toques de e-mail e WhatsApp pela API de eventos do HubSpot, dia a dia, particionando por data. O push e o banner vêm do export nativo do GA4 para o BigQuery. A base transacional (quem navegou, cadastrou e comprou, com data e hora) é a fonte da verdade para as conversões.</p>
 
     <h2 class="reveal">O modelo de dados</h2>
     <p class="reveal">Cinco objetos principais sustentam o painel e a auditoria. Uma tabela de reporte diária por etapa, com o denominador do dia, os influenciados com e sem transacional, e a quebra por canal. Uma tabela de campanhas (mês, régua, canal, objetivo) para o nível operacional. Uma tabela de segmento defasado, pra mostrar onde o canal mais pesa. E duas tabelas atômicas para o drill-down e a auditoria, uma por toque e outra por usuário e etapa, sempre consistentes entre si.</p>
@@ -179,8 +179,8 @@ Base transacional    ─┘        └ tabelas por uid e por toque
     <p class="reveal"><i>(números representativos, anonimizados)</i></p>
     <p class="reveal"><b>O WhatsApp fecha, o e-mail abre.</b> Nas lentes de último clique, o WhatsApp lidera. Na lente de primeiro clique, o e-mail aparece na frente. O e-mail arma a jogada e o WhatsApp finaliza. Antes do projeto se achava que o e-mail liderava sozinho, o que era um efeito de rastreamento incompleto do WhatsApp.</p>
     <p class="reveal"><b>O push é retenção.</b> Essa foi a maior surpresa. O push aparece em torno de 0,3% na primeira ativação, mas em torno de 2% a 3% quando olho todas as compras. Nove em cada dez aberturas de push vêm de quem já é cliente, porque push exige app instalado e notificação ligada, coisa de quem já entrou.</p>
-    <p class="reveal"><b>O CRM brilha em quem demora a ativar.</b> Quem calcula e emite no mesmo dia costuma fazer sozinho, e ali o CRM pesa perto de 1%. Em quem demora entre o cálculo e a emissão, a participação sobe para perto de 17%. É exatamente aí que o CRM trabalha, recuperando quem esfriou.</p>
-    <p class="reveal"><b>O CRM faz o cliente avançar.</b> A participação cresce ao longo do funil. Pequena no primeiro cálculo, maior no cadastro, máxima na ativação.</p>
+    <p class="reveal"><b>O CRM brilha em quem demora a ativar.</b> Quem navega e compra no mesmo dia costuma fazer isso sozinho, e ali o CRM pesa perto de 1%. Em quem demora entre a primeira visita e a compra, a participação sobe para perto de 17%. É exatamente aí que o CRM trabalha, recuperando quem esfriou.</p>
+    <p class="reveal"><b>O CRM faz o cliente avançar.</b> A participação cresce ao longo do funil. Pequena na primeira visita, maior no cadastro, máxima na compra.</p>
 
     <h2 class="reveal">O rigor por trás do número</h2>
     <p class="reveal">Um número bonito sem validação não vale nada numa mesa de liderança. Duas checagens deram a confiança para defender o resultado.</p>

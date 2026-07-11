@@ -74,7 +74,7 @@
     <h1 class="case-title reveal">Quanto eu ativo se investir mais em cada canal? Agora tem uma tela que responde.</h1>
     <p class="case-dek reveal">Um simulador que parte do mês real, recalcula a composição de aquisição por canal na hora, e fechou entre 94% e 99% do número oficial da empresa.</p>
     <div class="case-meta reveal">
-      <span>Logtech · self-service</span>
+      <span>Foodtech · marketplace de delivery</span>
       <span>Ferramenta interativa</span>
       <span>BigQuery · Chart.js</span>
     </div>
@@ -106,7 +106,7 @@
 <section>
   <div class="container case-body">
 
-    <div class="callout reveal"><b>Aviso de confidencialidade.</b> "Fretely" é uma empresa fictícia usada para descrever este projeto. O segmento é real e comum. Os números são ilustrativos e servem para explicar o método, não representam a operação real de nenhuma companhia. O que está aqui é a estrutura, a metodologia e o raciocínio, não dado proprietário de negócio.</div>
+    <div class="callout reveal"><b>Aviso de confidencialidade.</b> "Fominha" é uma empresa fictícia usada para descrever este projeto. O segmento é real e comum. Os números são ilustrativos e servem para explicar o método, não representam a operação real de nenhuma companhia. O que está aqui é a estrutura, a metodologia e o raciocínio, não dado proprietário de negócio.</div>
 
     <h2 class="reveal">Resumo em 30 segundos</h2>
     <p class="reveal">A liderança de Growth e Revenue queria responder uma pergunta simples. Se colocasse mais investimento em um canal, quantos clientes isso traria, ativaria e reteria, e por qual canal.</p>
@@ -115,15 +115,15 @@
     <p class="reveal">O resultado ficou dentro de 94% a 99% do número oficial e virou a base de conversa de planejamento entre Growth, Revenue e a liderança.</p>
 
     <h2 class="reveal">O contexto</h2>
-    <p class="reveal">A Fretely é uma logtech. O produto ajuda pequenos vendedores de e-commerce a emitir etiquetas de frete com desconto e acompanhar as postagens. O cliente entra no app, calcula um frete, emite a primeira etiqueta e posta. Quanto mais ele posta, mais valor ele gera.</p>
+    <p class="reveal">A Fominha é uma foodtech. O produto é um marketplace de delivery que conecta restaurantes a clientes que pedem comida pelo app. O cliente entra no app, escolhe um restaurante, faz o primeiro pedido e recebe a entrega. Quanto mais ele pede, mais valor ele gera.</p>
     <p class="reveal">O funil de crescimento tem quatro degraus.</p>
     <div class="table-wrap reveal">
       <table>
         <tr><th>Etapa</th><th>O que significa</th></tr>
-        <tr><td>Aquisição</td><td>Primeiro cálculo de frete. O sinal de que a pessoa chegou.</td></tr>
-        <tr><td>Ativação</td><td>Primeira etiqueta emitida. A pessoa começou a usar de verdade.</td></tr>
-        <tr><td>Postagem</td><td>Primeira postagem concluída. O pedido saiu.</td></tr>
-        <tr><td>ICP</td><td>Duas emissões em até sete dias. O sinal de que o cliente veio para ficar.</td></tr>
+        <tr><td>Aquisição</td><td>Primeira busca por um restaurante no app. O sinal de que a pessoa chegou.</td></tr>
+        <tr><td>Ativação</td><td>Primeiro pedido concluído. A pessoa começou a usar de verdade.</td></tr>
+        <tr><td>Entrega</td><td>Primeiro pedido entregue. O pedido chegou.</td></tr>
+        <tr><td>ICP</td><td>Dois pedidos em até sete dias. O sinal de que o cliente veio para ficar.</td></tr>
       </table>
     </div>
     <p class="reveal">A aquisição vem de seis frentes: mídia paga, influenciadores, indicação entre clientes (member get member), conteúdo e SEO, parcerias, e um grupo grande de clientes que chega sem canal identificado (orgânico e direto).</p>
@@ -145,12 +145,12 @@
     <p class="reveal">Essa é a parte que deu mais trabalho e é a mais importante do case.</p>
 
     <h3 class="reveal">Passo 1: definir o funil e a régua de cada métrica</h3>
-    <p class="reveal">Antes de qualquer consulta, fechei com a liderança o que conta como aquisição, ativação, postagem e ICP. Parece óbvio, mas metade dos problemas de dado nasce de gente medindo a mesma palavra de jeito diferente. A régua de postagem, por exemplo, ficou sendo o pedido concluído, com cancelamento nulo e data de conclusão preenchida. Sem essa definição escrita, cada dashboard mostrava um número.</p>
+    <p class="reveal">Antes de qualquer consulta, fechei com a liderança o que conta como aquisição, ativação, entrega e ICP. Parece óbvio, mas metade dos problemas de dado nasce de gente medindo a mesma palavra de jeito diferente. A régua de entrega, por exemplo, ficou sendo o pedido efetivamente entregue ao cliente, com cancelamento nulo e data de entrega preenchida. Sem essa definição escrita, cada dashboard mostrava um número.</p>
 
     <h3 class="reveal">Passo 2: montar as bases certas para cada canal</h3>
     <p class="reveal">Cada canal tem uma origem de dado diferente, e forçar todos na mesma fonte quebra a leitura. Ficou assim.</p>
     <p class="reveal">Mídia paga, conteúdo e SEO, e o grupo orgânico e direto saem da atribuição de first-touch, cruzando o comportamento de web e app por UID único. É a fonte que diz de onde o cliente veio na primeira vez.</p>
-    <p class="reveal">Influenciadores e indicação (MGM) saem do uso de cupom. Um cliente é de influência quando a primeira postagem dele usou um cupom de influenciador. Um cliente é de MGM quando entrou como convidado por indicação.</p>
+    <p class="reveal">Influenciadores e indicação (MGM) saem do uso de cupom. Um cliente é de influência quando a primeira entrega dele usou um cupom de influenciador. Um cliente é de MGM quando entrou como convidado por indicação.</p>
     <p class="reveal">Parcerias entra como um valor médio fixo, porque o rastreamento próprio ainda estava em maturação.</p>
     <p class="reveal">O orçamento de cada frente vem do plano oficial de Revenue. Retenção (CRM) fica de fora, porque é outra caixa.</p>
 
