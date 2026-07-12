@@ -30,4 +30,4 @@ User-agent: CCBot
 Allow: /
 Disallow: /cases/*.md
 
-Sitemap: https://jefersonjs.github.io/jefersonjs-site/sitemap.xml
+Sitemap: https://jefersonjs.com.br/sitemap.xml

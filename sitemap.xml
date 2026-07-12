@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jefersonjs.github.io/jefersonjs-site/</loc>
+    <loc>https://jefersonjs.com.br/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/atribuicao-multitoque-crm.html</loc>
+    <loc>https://jefersonjs.com.br/cases/atribuicao-multitoque-crm/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/signals-downgrade-preditivo.html</loc>
+    <loc>https://jefersonjs.com.br/cases/signals-downgrade-preditivo/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/icp-curva-abc.html</loc>
+    <loc>https://jefersonjs.com.br/cases/icp-curva-abc/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/revenue-command-center.html</loc>
+    <loc>https://jefersonjs.com.br/cases/revenue-command-center/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jefersonjs.github.io/jefersonjs-site/cases/simulador-orcamento-multicanal.html</loc>
+    <loc>https://jefersonjs.com.br/cases/simulador-orcamento-multicanal/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
