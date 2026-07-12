@@ -31,6 +31,7 @@
 - ICP com Curva ABC: 12% dos clientes gerando 79% do faturamento, virou perfil de ICP e score por cliente. https://jefersonjs.com.br/cases/icp-curva-abc/
 - Revenue Command Center: pipeline de dados governado e dashboard executivo, de 6+ planilhas por dia a uma decisão em 30 segundos. https://jefersonjs.com.br/cases/revenue-command-center/
 - Simulador de Orçamento Multicanal: ferramenta de simulação de investimento por canal, validada entre 94% e 99% do número oficial da empresa. https://jefersonjs.com.br/cases/simulador-orcamento-multicanal/
+- Antifraude mobile com AppsFlyer: R$100 mil recuperados de um parceiro de programática que inflava instalação com click flooding, detectado sem contratar o Protect360. https://jefersonjs.com.br/cases/antifraude-programatica-mobile/
 
 ## Contato
 
