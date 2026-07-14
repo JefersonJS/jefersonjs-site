@@ -1,13 +1,13 @@
-# Jeferson J Silva - Analytics & Attribution
+# Jeferson J Silva - Consultoria de Analytics & Atribuição
 
-> Consultor independente de analytics, mensuração e atribuição para marketing digital. Audita GA4, AppsFlyer, Google Ads e Meta Ads, identifica fraude de atribuição e conserta erros de mensuração antes que virem decisão de investimento errada.
+> Consultoria independente de analytics, mensuração e atribuição para marketing digital. Audita GA4, AppsFlyer, Google Ads e Meta Ads, identifica fraude de atribuição e conserta erros de mensuração antes que virem decisão de investimento errada.
 
 ## Sobre
 
 - Mais de 10 anos de experiência em analytics e growth marketing.
 - MBA em Technology for Business (AI, Data Science e Big Data) pela PUCRS.
 - Já economizou mais de R$100 mil para um único cliente identificando fraude de atribuição.
-- Atendeu 8+ empresas de fintech, varejo, startups e grandes operações (Outsmarting, Bloxs, Biz Capital, SuperFrete, Atacadão, NotAgency, Zupper, Kontrip).
+- Mais de R$10 milhões em budget de mídia auditado em empresas de fintech, varejo, startups e grandes operações (Outsmarting, Bloxs, Biz Capital, SuperFrete, Atacadão, NotAgency, Zupper, Kontrip).
 - Profissional independente: trabalha direto com o time responsável pela conta, sem agência e sem intermediário.
 
 ## Serviços
