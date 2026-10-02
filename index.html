@@ -372,6 +372,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .about-grid { grid-template-columns:1fr; gap:2rem; }
       .about-card { position:static; }
       .co-grid { grid-template-columns:repeat(2,1fr); }
+      .nav-r .nav-sec { display:none; }
+      .nav-r { gap:1.5rem; }
     }
     @media(max-width:640px) {
       nav .nav-r { display:none; }
@@ -394,12 +396,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav>
   <a href="#" class="logo">JJS<em>.</em></a>
   <ul class="nav-r">
-    <li><a href="#problema">O problema</a></li>
+    <li class="nav-sec"><a href="#problema">O problema</a></li>
     <li><a href="#pilares">Serviços</a></li>
-    <li><a href="#clientes">Clientes</a></li>
+    <li class="nav-sec"><a href="#clientes">Clientes</a></li>
     <li><a href="#cases">Cases</a></li>
+    <li><a href="materiais/">Materiais</a></li>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li class="nav-sec"><a href="#faq">FAQ</a></li>
     <li><a href="#contato" class="nav-cta">Falar com Jeferson</a></li>
   </ul>
 </nav>
