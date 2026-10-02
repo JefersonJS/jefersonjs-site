@@ -35,4 +35,11 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- conteudos:inicio -->
+  <url>
+    <loc>https://jefersonjs.com.br/conteudos/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- conteudos:fim -->
 </urlset>

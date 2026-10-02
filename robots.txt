@@ -1,33 +1,49 @@
 User-agent: *
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 User-agent: GPTBot
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 User-agent: CCBot
 Allow: /
 Disallow: /cases/*.md
+Disallow: /conteudos/_fonte/
+Disallow: /conteudos/_img/
 
 Sitemap: https://jefersonjs.com.br/sitemap.xml
