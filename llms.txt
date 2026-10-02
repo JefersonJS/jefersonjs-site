@@ -41,5 +41,22 @@
 <!-- conteudos:inicio -->
 ## Conteúdos
 
-- (em breve)
+- Instalação que nunca abre o app: o sinal de fraude que o painel não mostra: 38% contra 92%: como a taxa de instalação para primeira abertura denunciou um parceiro de mídia e levou a mais de R$ 100 mil recuperados. https://jefersonjs.com.br/conteudos/instalacao-que-nunca-abre-o-app/
+- Atribuição por pessoa, não por clique: As chaves de identidade e as quatro lentes de crédito que mostraram o CRM valendo 12% das ativações, e não 2%. https://jefersonjs.com.br/conteudos/atribuicao-por-pessoa-nao-por-clique/
+- O churn não era o vilão: Churn de 4% e downgrade de 22% ao mês: por que validar a premissa antes do modelo mudou a estratégia de retenção. https://jefersonjs.com.br/conteudos/o-churn-nao-era-o-vilao/
+- (not set) no GA4: de 20% para 0,8%: O que é (not set), as causas que eu procuro primeiro e por que ele quase nunca é um erro só. https://jefersonjs.com.br/conteudos/not-set-ga4-de-20-para-0-8/
+- 57,5% do tráfego já não é humano: o que isso faz com o seu GA4: Agentes de IA passaram os humanos na web. Os 5 lugares onde eu procuro bot e agente hoje. https://jefersonjs.com.br/conteudos/trafego-nao-humano-agentes-de-ia/
+- LLM sem camada semântica inventa métrica: O que precisei definir antes de deixar o time perguntar ao data warehouse em português. https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/
+- O Google está construindo o próprio pLTV do seu cliente: Qualified Future Conversions, pLTV via CAPI e a pergunta que importa: de quem é o modelo que decide a sua verba? https://jefersonjs.com.br/conteudos/o-google-esta-construindo-o-pltv-do-seu-cliente/
+- Auditoria de (not set): a ordem de investigação: Como levei uma operação de 20% para 0,8% de (not set), e o guia completo com as consultas no BigQuery. https://jefersonjs.com.br/conteudos/auditoria-de-not-set-ordem-de-investigacao/
+- Vazamento: o modelo que olha para o futuro sem perceber: Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso. https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/
+- Propensão não é uplift: Score de churn aponta quem vai sair, não quem dá para segurar. Persuadíveis, cães adormecidos e grupo de controle. https://jefersonjs.com.br/conteudos/propensao-nao-e-uplift/
+- 3 números novos do Google, 3 perguntas diferentes: Data Strength Uplift, Qualified Future Conversions e Meridian: recuperar, prever e causar conversão não são a mesma coisa. https://jefersonjs.com.br/conteudos/tres-numeros-novos-do-google/
+- Fraude mobile sem ferramenta paga: A régua que encontrou R$ 100 mil em fraude só com o dado bruto da AppsFlyer, e o guia completo com as consultas. https://jefersonjs.com.br/conteudos/fraude-mobile-sem-ferramenta-paga/
+- O funil ganhou uma etapa que o GA4 não vê: Quando a resposta da IA vem pronta, o clique some. O que medir quando a marca é citada sem ninguém chegar ao site. https://jefersonjs.com.br/conteudos/o-funil-ganhou-uma-etapa-que-o-ga4-nao-ve/
+- Acesso não é contexto: Qualidade de resposta de IA é, cada vez mais, um problema de engenharia de dados. https://jefersonjs.com.br/conteudos/acesso-nao-e-contexto/
+- Nunca conte à IA o que você acha que tem: Ancoragem em pergunta de analytics: como escrever pergunta para a IA do mesmo jeito que se escreve pergunta para o dado. https://jefersonjs.com.br/conteudos/nunca-conte-a-ia-o-que-voce-acha-que-tem/
+- A pilha de tarefas: o que a IA faz no meu trabalho de analytics: Um trabalho é uma pilha de tarefas. O que eu já entrego para a IA e o que continua comigo. https://jefersonjs.com.br/conteudos/a-pilha-de-tarefas/
+- Quem confere o agente?: Todo mundo virou gestor de agentes. A habilidade nova é ter, antes de delegar, o critério para dizer se a resposta está certa. https://jefersonjs.com.br/conteudos/quem-confere-o-agente/
+- O melhor uso de IA em analytics é chato: Reconciliar, checar, marcar e rascunhar: as tarefas chatas que eu entregaria hoje para uma automação com IA. https://jefersonjs.com.br/conteudos/o-melhor-uso-de-ia-em-analytics-e-chato/
 <!-- conteudos:fim -->

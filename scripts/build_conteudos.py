@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Gera a seção /conteudos/ a partir de conteudos/_fonte/*.md.
 
-Cada fonte tem um cabeçalho (titulo, data, serie, rotulo, pilar, resumo, imagens, linkedin) e o texto em
+Cada fonte tem um cabeçalho (titulo, data, agenda, serie, rotulo, pilar, resumo, imagens, linkedin). data = publicação
+no site; agenda = data do post no LinkedIn (opcional, só ordena) e o texto em
 markdown simples. Só entra no ar o que tem data menor ou igual a hoje (horário de Salvador). O GitHub Actions
 roda este script todo dia de manhã (.github/workflows/conteudos.yml).
 
@@ -140,6 +141,7 @@ def ler(fonte):
         k, _, v = linha.partition(":")
         meta[k.strip()] = v.strip()
     meta["data"] = dt.date.fromisoformat(meta["data"])
+    meta["agenda"] = dt.date.fromisoformat(meta["agenda"]) if meta.get("agenda") else meta["data"]
     meta["imagens"] = [i.strip() for i in meta.get("imagens", "").split(",") if i.strip()]
     meta["slug"] = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", fonte.stem)
     meta["corpo"] = corpo.strip()
@@ -187,7 +189,7 @@ def pagina(c, todos):
     else:
         visual = f'<img class="ct-capa" src="capa.png" alt="{esc(c["titulo"])}" width="1080" height="1350">'
     outros = [o for o in todos if o["slug"] != c["slug"]]
-    outros.sort(key=lambda o: (o["serie"] != c["serie"], -o["data"].toordinal()))
+    outros.sort(key=lambda o: (o["serie"] != c["serie"], abs((o["agenda"] - c["agenda"]).days)))
     leia = "".join(card(o, raiz) for o in outros[:3])
     linkedin = f'<a class="btn-sec" href="{c["linkedin"]}" target="_blank" rel="noopener">Ver a conversa no LinkedIn →</a>' if c.get("linkedin") else ""
     wa = "https://wa.me/5571982210402?text=" + quote(f"Olá Jeferson, li o conteúdo \"{c['titulo']}\" e quero meu diagnóstico grátis.")
@@ -294,7 +296,9 @@ def main():
     todos = "--todos" in sys.argv
     hoje = dt.datetime.now(TZ).date()
     fontes = [ler(f) for f in sorted(FONTE.glob("*.md"))]
-    publicados = sorted([c for c in fontes if todos or c["data"] <= hoje], key=lambda c: c["data"], reverse=True)
+    publicados = [c for c in fontes if todos or c["data"] <= hoje]
+    # mais recentes primeiro; no mesmo dia, segue a ordem da agenda do LinkedIn
+    publicados.sort(key=lambda c: (-c["data"].toordinal(), c["agenda"]))
     slugs = {c["slug"] for c in publicados}
 
     # remove páginas que saíram do ar (data adiada ou fonte apagada)
