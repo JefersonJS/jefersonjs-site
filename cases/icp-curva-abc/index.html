@@ -183,10 +183,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="reveal">Levantei uma hipótese. A métrica oficial de ativação seria a coorte de primeira venda de curso por mês. Escrevi a query, contei clientes por mês da primeira venda de curso e comparei com o dashboard de BI da liderança.</p>
     <p class="reveal">Bateu. Diferença zero em todos os meses fechados, com variação de no máximo um cliente por ruído de snapshot. O único mês com diferença maior era o mês corrente, ainda parcial.</p>
     <p class="reveal">Depois fiz o mesmo com o gate de venda na tabela de pedidos, para garantir que o carimbo que eu ia usar reproduzia exatamente a mesma primeira venda de curso. Bateu de novo.</p>
-    <p class="reveal">Só então segui. Toda a Curva ABC parte de uma régua auditada, não de palpite.</p>
+    <p class="reveal">Só então segui. Toda a Curva ABC parte de uma definição auditada, não de palpite.</p>
 
     <h3 class="reveal">Passo 3. Curva ABC</h3>
-    <p class="reveal">Com a régua travada, ordenei os clientes por GMV, calculei o acumulado com window function e classifiquei em três curvas. Curva A até 80% do GMV acumulado, Curva B de 80 a 95%, Curva C o resto.</p>
+    <p class="reveal">Com a definição travada, ordenei os clientes por GMV, calculei o acumulado com window function e classifiquei em três curvas. Curva A até 80% do GMV acumulado, Curva B de 80 a 95%, Curva C o resto.</p>
     <p class="reveal">Trouxe GMV e margem da plataforma lado a lado na mesma query, de propósito, para decidir o eixo vendo o dado em vez de escolher no escuro. As duas contaram a mesma história, então mantive GMV como eixo.</p>
 
     <h3 class="reveal">Passo 4. Padrões por lift</h3>
@@ -232,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <tr><td>Porte: 30+ vendas de curso por mês</td><td>~6,2</td><td>o divisor de águas, disparado o mais forte</td></tr>
         <tr><td>Página de vendas própria configurada (fora do checkout padrão da Cursora)</td><td>~3,3</td><td>instrutor que investe em infraestrutura de venda própria tende a ser o melhor cliente</td></tr>
         <tr><td>Indicação: perfil "convidante"</td><td>~1,9</td><td>quem indica, não quem foi indicado</td></tr>
-        <tr><td>Velocidade: 2ª venda de curso em até 7 dias</td><td>~1,8</td><td>a régua de ativação se valida como preditora</td></tr>
+        <tr><td>Velocidade: 2ª venda de curso em até 7 dias</td><td>~1,8</td><td>o critério de ativação se valida como preditor</td></tr>
         <tr><td>Tempo de casa: 1+ ano</td><td>~1,6</td><td>maturidade e lealdade</td></tr>
         <tr><td>Plataforma: iOS ou navegador</td><td>~1,3</td><td>Android fica abaixo da média</td></tr>
       </table>
@@ -272,7 +272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="reveal"><b>Deck e documento em código.</b> Gerar apresentação por PptxGenJS parece overkill até a terceira revisão. Aí o valor aparece. Muda um número, roda o script, tudo se atualiza, e o QA visual pega o que os olhos cansados não pegam.</p>
 
     <h2 class="reveal">Próximos passos</h2>
-    <p class="reveal">Investigar a fundo a qualidade do canal de indicação, já que os indicados não viram bons clientes na média. Testar o score em produção, comparando a conversão de contas priorizadas contra um grupo de controle. E agendar a recarga mensal do score, para o ICP acompanhar a base em vez de envelhecer num slide. É a mesma lógica de score simples e recalculável que usei no case de <a href="../signals-downgrade-preditivo/">Signals</a>, ali pra prever downgrade em vez de priorizar cliente ideal.</p>
+    <p class="reveal">Investigar a fundo a qualidade do canal de indicação, já que os indicados não viram bons clientes na média. Testar o score em produção, comparando a conversão de contas priorizadas contra um grupo de controle. E agendar a recarga mensal do score, para o ICP acompanhar a base em vez de envelhecer num slide. É a mesma lógica de score simples e recalculável que usei no case de <a href="../signals-downgrade-preditivo/">Signals</a>, ali pra prever churn parcial em vez de priorizar cliente ideal.</p>
 
     <h2 class="reveal">Estrutura do repositório</h2>
 <pre class="reveal"><code>icp-curva-abc/
@@ -297,7 +297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <h3 class="reveal">00. Validação da ativação contra o BI oficial</h3>
 <pre class="reveal"><code>-- Hipótese: "ativação" = coorte de primeira venda de curso por mês.
--- Objetivo: bater com o dashboard oficial antes de confiar na régua.
+-- Objetivo: bater com o dashboard oficial antes de confiar na definição.
 WITH venda AS (
   SELECT FORMAT_DATE('%Y-%m', first_order_date) AS mes,
          COUNT(DISTINCT seller_id) AS ativacao_venda
@@ -363,14 +363,14 @@ SELECT
   d.state, d.volume_tier, d.platform_os, d.canal_integration,
   d.referral_role, d.seller_level, d.signup_date, d.days_to_second_order,
   DATE_DIFF(DATE '2026-06-30', d.signup_date, DAY) AS tenure_dias,
-  (d.days_to_second_order <= 7) AS icp_2em7
+  (d.days_to_second_order <= 7) AS recompra_7d
 FROM classificado c
 LEFT JOIN `analytics.dim_sellers` d USING (seller_id);</code></pre>
 
     <h3 class="reveal">02. Padrões da Curva A por lift</h3>
 <pre class="reveal"><code>WITH base AS (
   SELECT curva, state, volume_tier, platform_os, canal_integration,
-         referral_role, icp_2em7,
+         referral_role, recompra_7d,
          CASE WHEN tenure_dias <= 90  THEN '0-90d'
               WHEN tenure_dias <= 180 THEN '91-180d'
               WHEN tenure_dias <= 365 THEN '181-365d'
@@ -385,7 +385,7 @@ empilhado AS (
   UNION ALL SELECT 'integracao',   IFNULL(canal_integration,'(sem)'), curva FROM base
   UNION ALL SELECT 'indicacao',    IFNULL(referral_role,'(nenhum)'),   curva FROM base
   UNION ALL SELECT 'tenure',       tenure_faixa,                       curva FROM base
-  UNION ALL SELECT 'vel_2em7',     CAST(icp_2em7 AS STRING),           curva FROM base
+  UNION ALL SELECT 'vel_recompra_7d',     CAST(recompra_7d AS STRING),           curva FROM base
 ),
 agg AS (
   SELECT dimensao, valor,
@@ -461,7 +461,7 @@ FROM scored;</code></pre>
       </a>
       <a class="related-card" href="../signals-downgrade-preditivo/">
         <div class="related-eyebrow">Case study · Growth & Predição</div>
-        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-t">Signals: prever e reverter a queda de uso de clientes de alto valor</div>
         <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
       </a>
       <a class="related-card" href="../revenue-command-center/">

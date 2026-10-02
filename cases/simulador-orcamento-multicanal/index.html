@@ -139,7 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <tr><td>ICP</td><td>Dois pedidos em até sete dias. Pedir de novo tão rápido, sem cupom de primeira compra pra puxar, é o sinal mais barato de recompra que dá pra medir cedo.</td></tr>
       </table>
     </div>
-    <p class="reveal">A aquisição vem de seis frentes: mídia paga, influenciadores, indicação entre clientes (member get member), conteúdo e SEO, parcerias, e um grupo grande de clientes que chega sem canal identificado (orgânico e direto).</p>
+    <p class="reveal">A aquisição vem de seis canais: mídia paga, influenciadores, indicação entre clientes (member get member), conteúdo e SEO, parcerias, e um grupo grande de clientes que chega sem canal identificado (orgânico e direto).</p>
 
     <h2 class="reveal">A dor real da liderança</h2>
     <p class="reveal">O time de Revenue precisava planejar quanto investir em cada canal para bater a meta de crescimento. A liderança de Growth precisava defender prioridade de investimento com números.</p>
@@ -157,24 +157,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="reveal">Como cheguei nos números</h2>
     <p class="reveal">Essa é a parte que deu mais trabalho e é a mais importante do case.</p>
 
-    <h3 class="reveal">Passo 1: definir o funil e a régua de cada métrica</h3>
-    <p class="reveal">Antes de qualquer consulta, fechei com a liderança o que conta como aquisição, ativação, entrega e ICP. Parece óbvio, mas metade dos problemas de dado nasce de gente medindo a mesma palavra de jeito diferente. A régua de entrega, por exemplo, ficou sendo o pedido efetivamente entregue ao cliente, com cancelamento nulo e data de entrega preenchida. Sem essa definição escrita, cada dashboard mostrava um número.</p>
+    <h3 class="reveal">Passo 1: definir o funil e a regra de cada métrica</h3>
+    <p class="reveal">Antes de qualquer consulta, fechei com a liderança o que conta como aquisição, ativação, entrega e recompra. Parece óbvio, mas metade dos problemas de dado nasce de gente medindo a mesma palavra de jeito diferente. A definição de entrega, por exemplo, ficou sendo o pedido efetivamente entregue ao cliente, com cancelamento nulo e data de entrega preenchida. Sem essa definição escrita, cada dashboard mostrava um número.</p>
 
     <h3 class="reveal">Passo 2: montar as bases certas para cada canal</h3>
     <p class="reveal">Cada canal tem uma origem de dado diferente, e forçar todos na mesma fonte quebra a leitura. Ficou assim.</p>
     <p class="reveal">Mídia paga, conteúdo e SEO, e o grupo orgânico e direto saem da atribuição de first-touch, cruzando o comportamento de web e app por UID único. É a fonte que diz de onde o cliente veio na primeira vez.</p>
     <p class="reveal">Influenciadores e indicação (MGM) saem do uso de cupom. Um cliente é de influência quando a primeira entrega dele usou um cupom de influenciador. Um cliente é de MGM quando entrou como convidado por indicação.</p>
     <p class="reveal">Parcerias entra como um valor médio fixo, porque o rastreamento próprio ainda estava em maturação.</p>
-    <p class="reveal">O orçamento de cada frente vem do plano oficial de Revenue. Retenção (CRM) fica de fora, porque é outra caixa.</p>
+    <p class="reveal">O orçamento de cada canal vem do plano oficial de Revenue. Retenção (CRM) fica de fora, porque é outra caixa.</p>
 
     <h3 class="reveal">Passo 3: escolher uma lente de tempo que bata com o oficial</h3>
     <p class="reveal">Aqui teve uma reviravolta boa. Minha primeira versão contava tudo por coorte de aquisição, ou seja, agrupava o cliente pelo mês em que ele chegou. Faz sentido para calcular custo de aquisição, mas não batia com o dashboard oficial.</p>
     <p class="reveal">O motivo era simples quando parei para olhar. O dashboard oficial conta por período, pela data em que o evento aconteceu. Clientes que chegaram em abril e ativaram em maio apareciam em maio no oficial e em abril na minha coorte. Nos meses recentes, a diferença explodia, porque uma coorte nova ainda não tinha amadurecido.</p>
-    <p class="reveal">Troquei a lente para base período, contando cada indicador pela data do evento. A distância para o oficial caiu de dois dígitos para menos de 6% no mês fechado.</p>
+    <p class="reveal">Troquei a lente para a visão por data do evento (por período), contando cada indicador pela data do evento. A distância para o oficial caiu de dois dígitos para menos de 6% no mês fechado.</p>
 
     <h3 class="reveal">Passo 4: unificar seis canais numa lente única que soma o total real</h3>
     <p class="reveal">O pedido da liderança era claro. A soma dos canais tinha que fechar com o total oficial do mês. Para isso, cada cliente precisa cair em um único balde.</p>
-    <p class="reveal">Montei uma partição por canal onde cada cliente é atribuído a uma frente só. A soma das seis frentes passou a reproduzir o total oficial de ativações. Isso deu à liderança algo que ela não tinha: um total confiável, quebrado por canal, sem sobra e sem falta.</p>
+    <p class="reveal">Montei uma partição por canal onde cada cliente é atribuído a um canal só. A soma dos seis canais passou a reproduzir o total oficial de ativações. Isso deu à liderança algo que ela não tinha: um total confiável, quebrado por canal, sem sobra e sem falta.</p>
 
     <h3 class="reveal">Passo 5: validar contra o número oficial, mês a mês</h3>
     <p class="reveal">Não adianta construir bonito e não bater. Comparei o total do simulador com o número oficial da empresa, mês a mês. Fechou em torno de 94% a 99% no mês de referência. A pequena diferença que sobra são pedidos feitos por vias fora da atribuição de growth, como parceiros com totem ou app white-label integrado via API. Deixei isso explícito na ficha técnica, porque esconder gap é pior que mostrar.</p>
@@ -194,13 +194,13 @@ GA4 / AppsFlyer      ─┐        bronze  (dados crus)                      Sim
 (first-touch web/app) │   ─▶    silver  (identidade por UID,              ├─ simulador
                       │                  canal resolvido)                 ├─ composição por mês
 Cupons (influência,  ─┤   ─▶    gold    (partição por canal,             ├─ evolução por canal
-indicação / MGM)      │                  base período)                    └─ ficha técnica
+indicação / MGM)      │                  por período)                     └─ ficha técnica
                       │        ┌ validação contra dashboard oficial
 Plano de Revenue     ─┘        └ análise de dupla contagem</code></pre>
 
     <h2 class="reveal">O simulador por dentro</h2>
     <p class="reveal">O modelo é direto de explicar, o que foi proposital. A liderança precisa entender o caminho.</p>
-    <p class="reveal">Você define o investimento e o custo por cliente ativado de cada canal pago. A ferramenta calcula quantos clientes aquele investimento ativa. A partir da ativação, ela estima quantos chegaram (aquisição) e quantos viraram recorrentes (ICP), usando as taxas de conversão medidas no mês de referência.</p>
+    <p class="reveal">Você define o investimento e o custo por cliente ativado de cada canal pago. A ferramenta calcula quantos clientes aquele investimento ativa. A partir da ativação, ela estima quantos chegaram (aquisição) e quantos voltaram a comprar (recompra), usando as taxas de conversão medidas no mês de referência.</p>
     <p class="reveal">Os canais orgânicos não têm investimento, então entram direto pelo volume de ativação.</p>
     <p class="reveal">Um detalhe que fez diferença. No estado inicial, sem ninguém mexer, a ferramenta reproduz o mês real com precisão, usando os valores medidos. Só quando alguém edita um campo é que ela recalcula. Isso evita um problema clássico de simulador, que é o número base já sair errado por arredondamento de taxa. O ponto de partida é sempre a realidade.</p>
     <p class="reveal">A projeção não parte da ideia ingênua de que gastar mais gera pedidos na mesma proporção. Na prática, o gasto sozinho explica pouco do volume. Ancorei a projeção em três coisas que se mostraram estáveis mês a mês: a participação de cada canal, o custo por cliente de cada canal, e as taxas de conversão do funil.</p>
@@ -215,7 +215,7 @@ Plano de Revenue     ─┘        └ análise de dupla contagem</code></pre>
     <p class="reveal">A primeira versão era tecnicamente correta e ilegível para quem decide. Cheia de termo de banco de dados, sigla e jargão.</p>
     <p class="reveal">Reescrevi tudo pensando em quem vai olhar por dois minutos numa reunião. Tirei o jargão das telas principais e joguei o detalhe técnico para uma aba separada, para quem quiser auditar. Renomeei as métricas para linguagem de negócio, com uma glosa curta explicando cada uma. Troquei "não atribuído" por "orgânico e direto", que diz a mesma coisa de um jeito que não soa como erro.</p>
     <p class="reveal">Cada canal ganhou uma linha explicando de onde vem o número, em uma frase. Cupom para influência e indicação. Valor médio fixo para parcerias. Atribuição de web e app por UID para o resto.</p>
-    <p class="reveal">A régua que usei: se a liderança não entende em dez segundos, o texto está errado. Não a liderança.</p>
+    <p class="reveal">O critério que usei: se a liderança não entende em dez segundos, o texto está errado. Não a liderança.</p>
 
     <h2 class="reveal">Resultado e impacto</h2>
     <p class="reveal">A ferramenta virou a base de conversa de planejamento entre Growth, Revenue e a liderança. A pergunta de quanto investir e o que esperar passou a ter uma tela para responder, com número que bate com o oficial.</p>
@@ -231,7 +231,7 @@ Plano de Revenue     ─┘        └ análise de dupla contagem</code></pre>
     <p class="reveal"><b>A leitura ficou acessível.</b> Quem decide passou a usar a ferramenta sem precisar de tradução técnica.</p>
 
     <h2 class="reveal">Aprendizados</h2>
-    <p class="reveal">Definição de métrica é metade do projeto. Escrever a régua antes de consultar economizou semanas de retrabalho.</p>
+    <p class="reveal">Definição de métrica é metade do projeto. Escrever a definição antes de consultar economizou semanas de retrabalho.</p>
     <p class="reveal">A lente de tempo muda tudo. Coorte e período respondem perguntas diferentes e não são intercambiáveis. Escolher a errada faz o número não bater, e ninguém confia.</p>
     <p class="reveal">Validar contra a fonte oficial é inegociável. Um simulador bonito que não bate com o dashboard da empresa morre na primeira reunião.</p>
     <p class="reveal">Comunicação é parte da ferramenta, não enfeite. A versão tecnicamente correta que ninguém entende não gera decisão. A versão clara e auditável gera. Vi o mesmo princípio valer numa escala maior no case do <a href="../revenue-command-center/">Revenue Command Center</a>, onde um painel executivo inteiro só ganhou confiança da liderança depois de auditoria e validação de ponta a ponta.</p>
@@ -258,7 +258,7 @@ Plano de Revenue     ─┘        └ análise de dupla contagem</code></pre>
 │   ├── ferramenta.html              # o simulador (standalone, roda no navegador)
 │   └── screenshots/                 # capturas das cinco telas
 ├── sql/
-│   ├── 01_particao_periodo_por_canal.sql   # lente única, base período, seis canais
+│   ├── 01_particao_periodo_por_canal.sql   # lente única, por data do evento, seis canais
 │   ├── 02_influencia_cupom.sql             # funil de influência por uso de cupom
 │   ├── 03_mgm_convidados.sql               # funil de indicação (convidados)
 │   ├── 04_sobreposicao_canais.sql          # análise de dupla contagem (multi-touch)
@@ -292,7 +292,7 @@ Plano de Revenue     ─┘        └ análise de dupla contagem</code></pre>
       </a>
       <a class="related-card" href="../signals-downgrade-preditivo/">
         <div class="related-eyebrow">Case study · Growth & Predição</div>
-        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-t">Signals: prever e reverter a queda de uso de clientes de alto valor</div>
         <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
       </a>
       <a class="related-card" href="../icp-curva-abc/">

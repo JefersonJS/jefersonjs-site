@@ -123,19 +123,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="callout reveal"><b>Aviso de confidencialidade.</b> Este case descreve um projeto real. Nome da empresa, segmento, nomes de pessoas e todos os números foram ficcionalizados pra proteger informação de negócio. "PagLeve" é uma empresa fictícia. Os valores são ilustrativos e preservam só as ordens de grandeza e a natureza dos problemas resolvidos.</div>
 
     <h2 class="reveal">O contexto</h2>
-    <p class="reveal">A PagLeve (fictícia) é uma fintech de meios de pagamento pra pequenos negócios digitais. Microempreendedores que vendem por redes sociais e marketplaces e usam a plataforma pra gerar cobranças, receber vendas e gerir o caixa. O crescimento é operado por uma diretoria de Revenue com cinco frentes de aquisição e engajamento: Mídia Paga, Conteúdo e SEO, Influenciadores, Indicação (member get member) e CRM.</p>
-    <p class="reveal">O funil de crescimento tem uma régua clara. Aquisição é o cadastro com a primeira cobrança gerada. Ativação é a primeira venda recebida. Cliente Qualificado, o "CQ", são duas vendas em até 7 dias contados da primeira venda, proxy de retenção futura. A north star da companhia é 1 milhão de transações por mês.</p>
+    <p class="reveal">A PagLeve (fictícia) é uma fintech de meios de pagamento pra pequenos negócios digitais. Microempreendedores que vendem por redes sociais e marketplaces e usam a plataforma pra gerar cobranças, receber vendas e gerir o caixa. O crescimento é operado por uma diretoria de Revenue com cinco canais de aquisição e engajamento: Mídia Paga, Conteúdo e SEO, Influenciadores, Indicação (member get member) e CRM.</p>
+    <p class="reveal">O funil de crescimento tem definições claras. Aquisição é o cadastro com a primeira cobrança gerada. Ativação é a primeira venda recebida. Cliente Retido são duas vendas em até 7 dias contados da primeira venda, proxy de retenção futura. A north star da companhia é 1 milhão de transações por mês.</p>
 
     <h3 class="reveal">A dor da C-Level</h3>
     <p class="reveal">A Diretora de Revenue começava todo dia com o mesmo ritual. Abria 6 ou mais planilhas e um dashboard de BI com páginas em manutenção pra montar, de cabeça, o diagnóstico do mês. Os sintomas se repetiam todo mês.</p>
     <ul class="reveal">
-      <li>Custos e metas viviam em planilhas, cada frente com um formato próprio: matriz de P&amp;L com meses em colunas, uma aba nova de pacing por mês, abas narrativas por campanha. Nenhum padrão entre elas.</li>
+      <li>Custos e metas viviam em planilhas, cada canal com um formato próprio: matriz de P&amp;L com meses em colunas, uma aba nova de pacing por mês, abas narrativas por campanha. Nenhum padrão entre elas.</li>
       <li>Indicadores viviam no data warehouse, mas sem ligação com o custo. Era impossível responder se o gasto estava virando resultado sem trabalho manual.</li>
-      <li>Cada frente media CAC com régua própria. Comparar eficiência entre frentes era um exercício de fé.</li>
+      <li>Cada canal media CAC do seu jeito. Comparar eficiência entre canais era um exercício de fé.</li>
       <li>Zero governança. Um erro de digitação numa planilha contaminava a leitura do mês inteiro, sem alerta, sem auditoria, sem backup.</li>
       <li>O dashboard de BI existente misturava visão estratégica com operacional. A diretora navegava tabelas de campanha pra achar um número de direção.</li>
     </ul>
-    <p class="reveal">O custo real dessa dor era de 30 a 40 minutos diários de leitura fragmentada, decisões tomadas sobre dados sem confiabilidade verificável, e nenhuma visão comparável de contribuição por frente.</p>
+    <p class="reveal">O custo real dessa dor era de 30 a 40 minutos diários de leitura fragmentada, decisões tomadas sobre dados sem confiabilidade verificável, e nenhuma visão comparável de contribuição por canal.</p>
 
     <h2 class="reveal">O que construí</h2>
     <p class="reveal">Um produto de dados completo, do pipeline à interface.</p>
@@ -167,9 +167,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="table-wrap reveal">
       <table>
         <tr><th>Fonte</th><th>Estrutura encontrada</th><th>Problema</th></tr>
-        <tr><td>Planilha de orçamento anual</td><td>Matriz P&amp;L: meses em colunas, hierarquia de frentes em linhas</td><td>Não tabular; números em formato local (vírgula decimal); subtotais misturados com detalhe</td></tr>
-        <tr><td>Planilha da frente Influenciadores</td><td>~1 aba por visão; pacing diário em abas mensais</td><td>Cabeçalhos multi-linha; blocos "planejado" e "realizado" lado a lado</td></tr>
-        <tr><td>Planilha da frente Indicação</td><td>1 aba de pacing nova por mês</td><td>Abas proliferam; estrutura muda sutilmente a cada mês</td></tr>
+        <tr><td>Planilha de orçamento anual</td><td>Matriz P&amp;L: meses em colunas, hierarquia de canais em linhas</td><td>Não tabular; números em formato local (vírgula decimal); subtotais misturados com detalhe</td></tr>
+        <tr><td>Planilha do canal Influenciadores</td><td>~1 aba por visão; pacing diário em abas mensais</td><td>Cabeçalhos multi-linha; blocos "planejado" e "realizado" lado a lado</td></tr>
+        <tr><td>Planilha do canal Indicação</td><td>1 aba de pacing nova por mês</td><td>Abas proliferam; estrutura muda sutilmente a cada mês</td></tr>
         <tr><td>Planilha de custos do CRM</td><td>Abas mensais narrativas, por campanha</td><td>Imparseável de forma genérica, a estrutura muda por campanha</td></tr>
         <tr><td>Warehouse (funil)</td><td>Tabelas de eventos e marcos por usuário</td><td>Confiável, mas desconectado do custo</td></tr>
       </table>
@@ -182,7 +182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ol class="reveal">
       <li><b>Modelo híbrido.</b> Defini a planilha como fonte da verdade do gasto e da meta (é onde o financeiro concilia) e o warehouse como fonte da verdade do funil. Não brigo com isso, eu integro as duas pontas.</li>
       <li><b>Raw-first e ELT.</b> Fiz o extrator (n8n) burro de propósito. Ele fotografa as planilhas como string crua, append-only. Toda a inteligência, parse, tipo, de-para, regra de negócio, vive em SQL versionado. Se a planilha muda, ajusto um arquivo SQL e reprocesso o histórico inteiro a partir do raw. Nada se perde.</li>
-      <li><b>Rotina quase intocada para os times.</b> Os workflows absorvem o formato existente, com descoberta dinâmica de abas por regex e fingerprint de cabeçalho. A exigência de rotina mais pesada foi uma miniaba de resumo pra única fonte imparseável (o CRM); as demais frentes ganharam só um contrato leve de convenções (não renomear, número como número), detalhado mais abaixo.</li>
+      <li><b>Rotina quase intocada para os times.</b> Os workflows absorvem o formato existente, com descoberta dinâmica de abas por regex e fingerprint de cabeçalho. A exigência de rotina mais pesada foi uma miniaba de resumo pra única fonte imparseável (o CRM); os demais canais ganharam só um contrato leve de convenções (não renomear, número como número), detalhado mais abaixo.</li>
       <li><b>Erro na origem nunca derruba o painel.</b> Montei um portão de validação com checks técnicos (fórmulas quebradas, datas implausíveis, duplicidades) e de plausibilidade (total contra célula de controle, valor diário maior que 5 vezes a mediana de 60 dias). Carga suspeita vai pra quarentena, com motivo linha a linha. O painel segue no último dado válido (LKG), com um badge transparente de "dados em validação".</li>
       <li><b>Auditoria de ponta a ponta.</b> Cada carga registra, via Drive API, quem alterou a planilha, quando e qual revisão, exposto na página de metodologia do painel. Meses fechados ficam congelados. Alteração retroativa na origem não entra sozinha, gera alerta e aguarda aprovação.</li>
       <li><b>Tudo que o front lê é gold pré-agregado.</b> Uma linha por grão, com semáforo e YoY resolvidos no SQL. O front só pinta. Latência baixa, zero lógica duplicada.</li>
@@ -200,28 +200,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </table>
     </div>
 
-    <h3 class="reveal">A régua única de 8 indicadores</h3>
-    <p class="reveal">O contrato de métricas que tornou as frentes comparáveis pela primeira vez. Presente em toda página de frente, na mesma ordem.</p>
+    <h3 class="reveal">O padrão único de 8 indicadores</h3>
+    <p class="reveal">O contrato de métricas que tornou os canais comparáveis pela primeira vez. Presente em toda página de canal, na mesma ordem.</p>
     <ol class="reveal">
       <li>Investimento (R$)</li>
       <li>Aquisição</li>
       <li>Ativação</li>
       <li>Taxa de Ativação (Ativação dividido por Aquisição)</li>
-      <li>Cliente Qualificado</li>
-      <li>Taxa de CQ (CQ dividido por Ativação)</li>
+      <li>Cliente Retido</li>
+      <li>Taxa de Retenção Inicial (Cliente Retido dividido por Ativação)</li>
       <li>CAC-Ativação (Investimento dividido por Ativação)</li>
-      <li>CAC-CQ (Investimento dividido por CQ)</li>
+      <li>CAC-Retido (Investimento dividido por Cliente Retido)</li>
     </ol>
-    <p class="reveal">Com duas exceções conscientes, documentadas no modelo de dados, não escondidas na interface: a frente orgânica (Conteúdo e SEO) não exibe os itens 1, 7 e 8 (não tem investimento a comparar), e o CRM é tratado como reativação, então também fica de fora do CAC-Ativação e do CAC-CQ.</p>
+    <p class="reveal">Com duas exceções conscientes, documentadas no modelo de dados, não escondidas na interface: o canal orgânico (Conteúdo e SEO) não exibe os itens 1, 7 e 8 (não tem investimento a comparar), e o CRM é tratado como reativação, então também fica de fora do CAC-Ativação e do CAC-Retido.</p>
 
     <h2 class="reveal">O produto: dashboard executivo</h2>
     <h3 class="reveal">Separação estratégico e tático</h3>
     <p class="reveal">O erro do dashboard anterior era misturar níveis de decisão. O novo produto separa isso de forma explícita.</p>
     <ul class="reveal">
-      <li><b>Home, visão estratégica da diretoria.</b> O que a C-Level decide: pacing consolidado do mês com projeção de fechamento (run-rate), metas de investimento e de CQ com percentual de atingimento, tabela de contribuição por frente (percentual do budget × percentual do resultado × CAC-CQ, ordenada por contribuição), shares de investimento, ativação e CQ em donuts, gráfico de onde está o dinheiro contra onde está o resultado, alertas com "decisão requerida" em nível de diretoria (revisar meta, SLA de dados, mix entre frentes, nunca campanha ou canal) e insights do mês.</li>
-      <li><b>Páginas de frente, visão tática da coordenação.</b> A régua de 8 indicadores, pacing diário real contra plano (barras no formato que os times já conheciam), tendência YoY com linha de referência de crescimento da empresa, e blocos operacionais (campanhas, cupons, pacing detalhado) isolados em seções colapsáveis de diagnóstico operacional.</li>
+      <li><b>Home, visão estratégica da diretoria.</b> O que a C-Level decide: pacing consolidado do mês com projeção de fechamento (run-rate), metas de investimento e de clientes retidos com percentual de atingimento, tabela de contribuição por canal (percentual do budget × percentual do resultado × CAC-Retido, ordenada por contribuição), shares de investimento, ativação e clientes retidos em donuts, gráfico de onde está o dinheiro contra onde está o resultado, alertas com "decisão requerida" em nível de diretoria (revisar meta, SLA de dados, mix entre canais, nunca campanha ou canal) e insights do mês.</li>
+      <li><b>Páginas por canal, visão tática da coordenação.</b> O padrão de 8 indicadores, pacing diário real contra plano (barras no formato que os times já conheciam), tendência YoY com linha de referência de crescimento da empresa, e blocos operacionais (campanhas, cupons, pacing detalhado) isolados em seções colapsáveis de diagnóstico operacional.</li>
       <li><b>Pulso diário, página tática de anomalias.</b> Cada indicador por dia contra a mediana e a banda P25 a P75 dos últimos 60 dias. Sazonalidade, campanha ou problema de tracking saltam aos olhos.</li>
-      <li><b>Metodologia.</b> Glossário das réguas, linhagem (de onde vem cada número), saúde de medição por fonte, com última atualização e autor da última alteração.</li>
+      <li><b>Metodologia.</b> Glossário das métricas, linhagem (de onde vem cada número), saúde de medição por fonte, com última atualização e autor da última alteração.</li>
     </ul>
 
     <h3 class="reveal">Princípios de dataviz aplicados</h3>
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <tr><td>PII nas planilhas</td><td>Extração restrita às colunas do contrato, dados pessoais não entram no raw</td></tr>
       </table>
     </div>
-    <p class="reveal">Fechei um contrato de dados de uma página por planilha com cada coordenação: 7 pedidos mínimos (não renomear abas, não renomear colunas chave, números como número em vez de formato local com vírgula, não misturar subtotal com detalhe na mesma coluna, cabeçalho em uma linha só, SLA de preenchimento D-1, avisar antes de reestruturar) em troca de um incentivo concreto, a página tática da própria frente, alertas automáticos e o fim da cobrança manual de atualização.</p>
+    <p class="reveal">Fechei um contrato de dados de uma página por planilha com cada coordenação: 7 pedidos mínimos (não renomear abas, não renomear colunas chave, números como número em vez de formato local com vírgula, não misturar subtotal com detalhe na mesma coluna, cabeçalho em uma linha só, SLA de preenchimento D-1, avisar antes de reestruturar) em troca de um incentivo concreto, a página tática do próprio canal, alertas automáticos e o fim da cobrança manual de atualização.</p>
 
     <h2 class="reveal">Segurança e hospedagem</h2>
     <ul class="reveal">
@@ -269,7 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="reveal">Números ilustrativos, com ordens de grandeza reais.</p>
     <div class="stat-grid reveal">
       <div class="stat-card"><div class="stat-n">&lt; 5 min</div><div class="stat-l">de leitura em uma tela única (era 30 a 40 min em 6+ planilhas)</div></div>
-      <div class="stat-card"><div class="stat-n">1 régua</div><div class="stat-l">8 indicadores, 5 frentes comparáveis no funil pela primeira vez</div></div>
+      <div class="stat-card"><div class="stat-n">1 padrão</div><div class="stat-l">8 indicadores, 5 canais comparáveis no funil pela primeira vez</div></div>
       <div class="stat-card"><div class="stat-n">~R$0-15</div><div class="stat-l">por mês de custo de infraestrutura (GitHub + Cloud Run + IAP)</div></div>
       <div class="stat-card"><div class="stat-n">100%</div><div class="stat-l">auditoria: quem alterou, quando e qual carga, sempre rastreável</div></div>
     </div>
@@ -277,15 +277,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <table>
         <tr><th>Antes</th><th>Depois</th></tr>
         <tr><td>30 a 40 min/dia de leitura fragmentada em 6+ planilhas</td><td>Menos de 5 min em uma tela única (desktop e mobile)</td></tr>
-        <tr><td>CAC incomparável entre frentes (régua própria em cada uma)</td><td>1 régua, 8 indicadores, 5 frentes comparáveis no funil (custo com as duas exceções documentadas)</td></tr>
+        <tr><td>CAC incomparável entre canais (cada um com sua própria conta)</td><td>1 padrão, 8 indicadores, 5 canais comparáveis no funil (custo com as duas exceções documentadas)</td></tr>
         <tr><td>Erro de planilha contaminava o mês, sem alerta</td><td>Quarentena automática, painel sempre de pé no último dado válido</td></tr>
         <tr><td>Dado sem dono, sem trilha</td><td>Auditoria completa: quem alterou, quando, qual carga, qual revisão</td></tr>
         <tr><td>Histórico refém das planilhas</td><td>Raw imutável e snapshots, histórico preservado independente da origem</td></tr>
         <tr><td>Cobrança manual de atualização</td><td>O sistema cobra sozinho (alertas de atraso em 24 a 48h no Slack)</td></tr>
-        <tr><td>Decisão de mix "no feeling"</td><td>Contribuição por frente com share de investimento × share de resultado × CAC-CQ, lado a lado</td></tr>
+        <tr><td>Decisão de mix "no feeling"</td><td>Contribuição por canal com share de investimento × share de resultado × CAC-Retido, lado a lado</td></tr>
       </table>
     </div>
-    <p class="reveal">O ganho estrutural mais importante foi outro: a pergunta da diretora mudou. Antes era "quanto gastamos?", o que exigia caça manual. Hoje é "o gasto está virando cliente qualificado no ritmo da meta, e onde eu realoco?". Essa segunda pergunta é respondida em 30 segundos, com dado auditado. Não foi a única vez que precisei transformar planilha e achismo em ferramenta de decisão: no case do <a href="../simulador-orcamento-multicanal/">Simulador de Orçamento Multicanal</a>, o problema era outro (canal de aquisição, não custo consolidado), mas a régua foi a mesma, validar contra o número oficial antes de qualquer decisão.</p>
+    <p class="reveal">O ganho estrutural mais importante foi outro: a pergunta da diretora mudou. Antes era "quanto gastamos?", o que exigia caça manual. Hoje é "o gasto está virando cliente retido no ritmo da meta, e onde eu realoco?". Essa segunda pergunta é respondida em 30 segundos, com dado auditado. Não foi a única vez que precisei transformar planilha e achismo em ferramenta de decisão: no case do <a href="../simulador-orcamento-multicanal/">Simulador de Orçamento Multicanal</a>, o problema era outro (canal de aquisição, não custo consolidado), mas o critério foi o mesmo, validar contra o número oficial antes de qualquer decisão.</p>
 
     <h2 class="reveal">Stack e competências</h2>
     <p class="reveal">As ferramentas e as competências que sustentaram o projeto de ponta a ponta.</p>
@@ -334,7 +334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
       <a class="related-card" href="../signals-downgrade-preditivo/">
         <div class="related-eyebrow">Case study · Growth &amp; Predição</div>
-        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-t">Signals: prever e reverter a queda de uso de clientes de alto valor</div>
         <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
       </a>
       <a class="related-card" href="../icp-curva-abc/">

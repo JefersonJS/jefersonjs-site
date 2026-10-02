@@ -126,7 +126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="reveal">O contexto</h2>
     <p class="reveal">Fretti é uma logtech. Uma plataforma onde pequenos e médios e-commerces e vendedores autônomos calculam frete, se cadastram e emitem etiquetas com desconto, pelo app ou pelo site. O produto é self-service. O usuário chega, calcula um frete, cria a conta e faz a primeira emissão. Essa primeira emissão é a ativação, o momento que importa.</p>
     <p class="reveal">O time de CRM trabalha esse funil com quatro canais: e-mail, WhatsApp, notificação no app (push) e banner dentro do produto. O objetivo é levar o cadastro até a primeira emissão.</p>
-    <p class="reveal">O problema chegou pela dona do CRM. O indicador de contribuição do canal vinha de um relatório de último clique, tirado do Google Analytics. Esse relatório mostrava o CRM em torno de 2% das ativações. Abaixo da meta. E lateralizado, sem mexer de um mês para o outro.</p>
+    <p class="reveal">O problema chegou pela head de CRM. O indicador de contribuição do canal vinha de um relatório de último clique, tirado do Google Analytics. Esse relatório mostrava o CRM em torno de 2% das ativações. Abaixo da meta. E estagnado, sem mexer de um mês para o outro.</p>
     <p class="reveal">A dúvida travava qualquer decisão. O CRM tinha piorado de verdade? Ou a conta estava medindo errado? Sem responder isso, não dava para defender investimento nem saber onde apostar.</p>
 
     <h2 class="reveal">Por que o último clique não servia</h2>
@@ -200,7 +200,7 @@ Base transacional    ─┘        └ tabelas por uid e por toque
     <h3 class="reveal">Reconciliação com a base</h3>
     <p class="reveal">Antes de qualquer conclusão, o volume de ativações do modelo tinha que bater com o relatório oficial da empresa. Bateu, no mês de referência, no número exato. Isso ancorou o resto.</p>
     <h3 class="reveal">O double-check do push</h3>
-    <p class="reveal">Quando mostrei que o push valia só 0,3% na ativação, a liderança estranhou. Push costuma ser um canal forte. Montei um diagnóstico com quatro frentes para testar se era erro ou realidade: se o push era recente demais, se estava perdendo eventos no rastreamento, se a identidade casava com a base, e a sensibilidade da janela esticando pra 30 dias. A conclusão fechou a porta para "é bug". O push tem alcance enorme, mas quase nada dele cai antes da primeira ativação. Ele fala com quem já é cliente, então funciona pra segurar quem já entrou, não pra trazer quem ainda não converteu.</p>
+    <p class="reveal">Quando mostrei que o push valia só 0,3% na ativação, a liderança estranhou. Push costuma ser um canal forte. Montei um diagnóstico com quatro testes para descobrir se era erro ou realidade: se o push era recente demais, se estava perdendo eventos no rastreamento, se a identidade casava com a base, e a sensibilidade da janela esticando pra 30 dias. A conclusão fechou a porta para "é bug". O push tem alcance enorme, mas quase nada dele cai antes da primeira ativação. Ele fala com quem já é cliente, então funciona pra segurar quem já entrou, não pra trazer quem ainda não converteu.</p>
 
     <h2 class="reveal">O painel de decisão</h2>
     <p class="reveal">O modelo virou um painel para a liderança usar sozinha, organizado em três níveis. No macro, o indicador principal contra uma meta, a variação do mês e a projeção de fechamento. No tático, a contribuição por canal ao longo do tempo e a participação por etapa do funil. No operacional, a tabela de campanhas com filtros por canal, objetivo e período. Filtros globais atravessam tudo, e a pessoa navega, acha a resposta e ainda vê uma nota fixa dizendo qual modelo de atribuição está por trás.</p>
@@ -246,7 +246,7 @@ Base transacional    ─┘        └ tabelas por uid e por toque
 │   └── reporte/
 ├── validacoes/
 │   ├── reconciliacao_volume.sql
-│   ├── diagnostico_push.sql          # o double-check de 4 frentes
+│   ├── diagnostico_push.sql          # o double-check de 4 testes
 │   └── calibracao_janela.sql
 ├── painel/                          # app web (React via Lovable)
 └── apresentacoes/                   # decks e material de liderança</code></pre>
@@ -276,7 +276,7 @@ Base transacional    ─┘        └ tabelas por uid e por toque
     <div class="related-grid reveal">
       <a class="related-card" href="../signals-downgrade-preditivo/">
         <div class="related-eyebrow">Growth · Predição</div>
-        <div class="related-t">Signals: prever e reverter o downgrade de clientes de alto valor</div>
+        <div class="related-t">Signals: prever e reverter a queda de uso de clientes de alto valor</div>
         <div class="related-d">Um score simples que prevê queda de volume antes que ela aconteça.</div>
       </a>
       <a class="related-card" href="../icp-curva-abc/">

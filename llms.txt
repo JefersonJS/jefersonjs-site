@@ -27,7 +27,7 @@
 ## Cases (projetos documentados, empresas ficcionalizadas por confidencialidade)
 
 - Atribuição multi-toque de CRM: modelo revelou 12% de contribuição real do CRM contra 2% no último clique (6x). https://jefersonjs.com.br/cases/atribuicao-multitoque-crm/
-- Signals, previsão de downgrade: score de 0 a 10 prevê queda de patamar de clientes de alto valor antes que aconteça. https://jefersonjs.com.br/cases/signals-downgrade-preditivo/
+- Signals, previsão de churn parcial: score de 0 a 10 prevê queda de uso de clientes de alto valor antes que aconteça. https://jefersonjs.com.br/cases/signals-downgrade-preditivo/
 - ICP com Curva ABC: 12% dos clientes gerando 79% do faturamento, virou perfil de ICP e score por cliente. https://jefersonjs.com.br/cases/icp-curva-abc/
 - Revenue Command Center: pipeline de dados governado e dashboard executivo, de 6+ planilhas por dia a uma decisão em 30 segundos. https://jefersonjs.com.br/cases/revenue-command-center/
 - Simulador de Orçamento Multicanal: ferramenta de simulação de investimento por canal, validada entre 94% e 99% do número oficial da empresa. https://jefersonjs.com.br/cases/simulador-orcamento-multicanal/
@@ -44,7 +44,7 @@
 - Radar #01: 4 mudanças que já mexem no seu número: Safari bloqueando ad tech no iOS 27, resposta paga no WhatsApp, filtro de hostname no GA4 e o avanço do AI Max no Google Ads. https://jefersonjs.com.br/conteudos/radar-01/
 - Instalação que nunca abre o app: o sinal de fraude que o painel não mostra: 38% contra 92%: como a taxa de instalação para primeira abertura denunciou um parceiro de mídia e levou a mais de R$ 100 mil recuperados. https://jefersonjs.com.br/conteudos/instalacao-que-nunca-abre-o-app/
 - Atribuição por pessoa, não por clique: As chaves de identidade e as quatro lentes de crédito que mostraram o CRM participando de 12% das ativações, e não de 2%. https://jefersonjs.com.br/conteudos/atribuicao-por-pessoa-nao-por-clique/
-- O churn não era o vilão: Churn de 4% e downgrade de 22% ao mês: por que validar a premissa antes do modelo mudou a estratégia de retenção. https://jefersonjs.com.br/conteudos/o-churn-nao-era-o-vilao/
+- O churn não era o vilão: Churn de 4% e churn parcial de 22% ao mês: por que validar a premissa antes do modelo mudou a estratégia de retenção. https://jefersonjs.com.br/conteudos/o-churn-nao-era-o-vilao/
 - (not set) no GA4: de 20% para 0,8%: O que é (not set), as causas que eu procuro primeiro e por que ele quase nunca é um erro só. https://jefersonjs.com.br/conteudos/not-set-ga4-de-20-para-0-8/
 - 57,5% do tráfego já não é humano: o que isso faz com o seu GA4: O tráfego automatizado passou o humano nas páginas da web. Os 5 lugares onde eu procuro bot e agente hoje. https://jefersonjs.com.br/conteudos/trafego-nao-humano-agentes-de-ia/
 - LLM sem camada semântica inventa métrica: O que precisei definir antes de deixar o time perguntar ao data warehouse em português. https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/
@@ -53,7 +53,7 @@
 - Vazamento: o modelo que olha para o futuro sem perceber: Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso. https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/
 - Propensão não é uplift: Score de churn aponta quem vai sair, não quem dá para segurar. Persuadíveis, cães adormecidos e grupo de controle. https://jefersonjs.com.br/conteudos/propensao-nao-e-uplift/
 - 3 números novos do Google, 3 perguntas diferentes: Data Strength Uplift, Qualified Future Conversions e Meridian: recuperar, prever e causar conversão não são a mesma coisa. https://jefersonjs.com.br/conteudos/tres-numeros-novos-do-google/
-- Fraude mobile sem ferramenta paga: A régua que recuperou mais de R$ 100 mil de um parceiro de mídia só com o dado bruto da AppsFlyer, e o guia completo com as consultas. https://jefersonjs.com.br/conteudos/fraude-mobile-sem-ferramenta-paga/
+- Fraude mobile sem ferramenta paga: O método que recuperou mais de R$ 100 mil de um parceiro de mídia só com o dado bruto da AppsFlyer, e o guia completo com as consultas. https://jefersonjs.com.br/conteudos/fraude-mobile-sem-ferramenta-paga/
 - O funil ganhou uma etapa que o GA4 não vê: Quando a resposta da IA vem pronta, o clique some. O que medir quando a marca é citada sem ninguém chegar ao site. https://jefersonjs.com.br/conteudos/o-funil-ganhou-uma-etapa-que-o-ga4-nao-ve/
 - Acesso não é contexto: Qualidade de resposta de IA é, cada vez mais, um problema de engenharia de dados. https://jefersonjs.com.br/conteudos/acesso-nao-e-contexto/
 - Nunca conte à IA o que você acha que tem: Ancoragem em pergunta de analytics: como escrever pergunta para a IA do mesmo jeito que se escreve pergunta para o dado. https://jefersonjs.com.br/conteudos/nunca-conte-a-ia-o-que-voce-acha-que-tem/

@@ -75,7 +75,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>No Signals, essa foi a regra técnica mais importante: todo sinal usado para prever o mês é medido só com o dado disponível no momento da decisão.</p>
 <p>A arquitetura fez metade do trabalho:</p>
 <ul><li>um feature store por cliente e mês, com os sinais medidos point-in-time</li><li>uma tabela de labels separada, com o que aconteceu em cada mês</li><li>o backtest é um join entre as duas</li></ul>
-<p>De bônus, trocar &quot;prever downgrade&quot; por &quot;prever churn&quot; ou &quot;prever ativação&quot; virou trocar uma coluna, sem refazer pipeline.</p>
+<p>De bônus, trocar &quot;prever churn parcial&quot; por &quot;prever churn&quot; ou &quot;prever ativação&quot; virou trocar uma coluna, sem refazer pipeline.</p>
 <p>E antes de qualquer modelo, a base foi validada contra a verdade conhecida: 30.452 eventos reconstruídos contra 30.454 do número oficial. Só depois disso eu confiei nela.</p>
 <p>Kaufman e coautores escreveram em 2012 um artigo inteiro sobre isso, &quot;Leakage in Data Mining&quot;. Continua atual.</p>
 <p>Acurácia alta no passado não prova nada. Quando foi a última vez que você viu um modelo testado só com o que se sabia no dia?</p>
