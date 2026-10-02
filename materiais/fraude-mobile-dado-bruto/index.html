@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFCRZ5J8');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fraude mobile no dado bruto: a régua que encontrou R$ 100 mil sem ferramenta paga · Jeferson J Silva</title>
+<meta name="description" content="Guia gratuito: como achar fraude mobile no dado bruto da AppsFlyer, sem Protect360. Os três sinais, as consultas SQL, a régua por parceiro e o dossiê para negociar o retroativo.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://jefersonjs.com.br/materiais/fraude-mobile-dado-bruto/">
+<meta name="theme-color" content="#4676dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a70'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%234676dc' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://jefersonjs.com.br/materiais/fraude-mobile-dado-bruto/">
+<meta property="og:site_name" content="Jeferson J Silva">
+<meta property="og:title" content="Fraude mobile no dado bruto: a régua que encontrou R$ 100 mil sem ferramenta paga">
+<meta property="og:description" content="Guia gratuito: como achar fraude mobile no dado bruto da AppsFlyer, sem Protect360. Os três sinais, as consultas SQL, a régua por parceiro e o dossiê para negociar o retroativo.">
+<meta property="og:image" content="https://jefersonjs.com.br/materiais/fraude-mobile-dado-bruto/capa.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fraude mobile no dado bruto: a régua que encontrou R$ 100 mil sem ferramenta paga">
+<meta name="twitter:description" content="Guia gratuito: como achar fraude mobile no dado bruto da AppsFlyer, sem Protect360. Os três sinais, as consultas SQL, a régua por parceiro e o dossiê para negociar o retroativo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cases.css">
+<link rel="stylesheet" href="../../assets/materiais.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Fraude mobile no dado bruto: a régua que encontrou R$ 100 mil sem ferramenta paga",
+  "description": "Guia gratuito: como achar fraude mobile no dado bruto da AppsFlyer, sem Protect360. Os três sinais, as consultas SQL, a régua por parceiro e o dossiê para negociar o retroativo.",
+  "url": "https://jefersonjs.com.br/materiais/fraude-mobile-dado-bruto/",
+  "image": "https://jefersonjs.com.br/materiais/fraude-mobile-dado-bruto/capa.png",
+  "datePublished": "2026-10-01",
+  "inLanguage": "pt-BR",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.com.br/" },
+  "publisher": { "@type": "Person", "name": "Jeferson J Silva" },
+  "about": ["Fraude de atribuição mobile", "AppsFlyer", "Click flooding", "SDK spoofing", "BigQuery"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.com.br/" },
+    { "@type": "ListItem", "position": 2, "name": "Materiais", "item": "https://jefersonjs.com.br/materiais/" },
+    { "@type": "ListItem", "position": 3, "name": "Fraude mobile no dado bruto", "item": "https://jefersonjs.com.br/materiais/fraude-mobile-dado-bruto/" }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFCRZ5J8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <a href="../../" class="logo">JJS<em>.</em></a>
+  <ul class="nav-r">
+    <li><a href="../../#cases">Cases</a></li>
+    <li><a href="../../#pilares">Serviços</a></li>
+    <li><a href="../../#sobre">Sobre</a></li>
+    <li><a href="../../#contato" class="nav-cta">Falar com Jeferson</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="crumb">
+      <a href="../../">Início</a><span>/</span>
+      <a href="../../materiais/">Materiais</a><span>/</span>
+      <span class="current">Fraude mobile no dado bruto</span>
+    </div>
+    <div class="lm-hero-grid">
+      <div>
+        <div class="case-eyebrow reveal"><span class="dot"></span>Guia gratuito · Antifraude mobile</div>
+        <h1 class="case-title reveal">Fraude mobile no dado bruto</h1>
+        <p class="case-dek reveal">A régua que encontrou R$ 100 mil sem ferramenta paga. Os três sinais que eu cruzo para achar fraude num parceiro de mídia (instalação que não vira uso, IP e aparelho repetidos e receita que o backend não confirma), com as consultas SQL prontas para o dado bruto da AppsFlyer.</p>
+        <div class="lm-actions reveal">
+          <a class="btn-pri" href="guia-fraude-mobile-dado-bruto.pdf" download data-lm="fraude-mobile-dado-bruto" data-pos="hero">Baixar o PDF ↓</a>
+          <a class="btn-sec" href="#guia">Ler aqui</a>
+        </div>
+        <div class="case-meta reveal"><span>Versão 1 · outubro de 2026</span><span>~15 min de leitura</span><span>AppsFlyer · BigQuery · SQL</span></div>
+      </div>
+      <a class="lm-cover reveal" href="guia-fraude-mobile-dado-bruto.pdf" download data-lm="fraude-mobile-dado-bruto" data-pos="capa"><img src="capa.png" alt="Capa do guia Fraude mobile no dado bruto" width="560" height="728"></a>
+    </div>
+  </div>
+</section>
+
+<section id="guia">
+  <div class="container case-body">
+    <div class="lm-toc reveal"><span class="slabel">Neste guia</span><ol><li><a href="#s1">Dois tipos de fraude, dois rastros</a></li><li><a href="#s2">O dado que você precisa</a></li><li><a href="#s3">Sinal 1: instalação que não vira uso</a></li><li><a href="#s4">Sinal 2: IP e aparelho repetidos</a></li><li><a href="#s5">Sinal 3: receita que o backend não confirma</a></li><li><a href="#s6">Sinais complementares</a></li><li><a href="#s7">A régua: juntando os sinais</a></li><li><a href="#s8">Do achado ao retroativo</a></li><li><a href="#s9">O que a régua não pega</a></li><li><a href="#s10">Checklist</a></li></ol></div>
+
+<h2 id="s1">1. Dois tipos de fraude, dois rastros</h2>
+<p>Quase toda fraude de mídia mobile cai em um de dois grupos. Separar os dois muda onde você procura.</p>
+<div class="table-wrap"><table>
+  <tr><th>Tipo</th><th>Como funciona</th><th>O rastro que deixa</th></tr>
+  <tr><td><b>Roubo de crédito</b><br><code>click flooding, click injection</code></td><td>O usuário é real e ia instalar de qualquer jeito. O fraudador dispara cliques para ficar com o crédito da instalação.</td><td>Usuário com comportamento normal, mas tempo entre clique e instalação estranho e muitos cliques para cada instalação.</td></tr>
+  <tr><td><b>Usuário falso</b><br><code>bots, device farm, emulador, SDK spoofing</code></td><td>O usuário não existe. A instalação e às vezes até os eventos dentro do app são simulados.</td><td>Instalação que não vira uso, IP e aparelho repetidos, nenhuma receita confirmada.</td></tr>
+</table></div>
+<p>O roubo de crédito desvia verba de um canal para outro. O usuário falso queima verba sem trazer nada. O segundo é o mais caro quando o parceiro é pago por CPA, porque a empresa paga por uma compra que nunca aconteceu.</p>
+<div class="lm-note"><b>Princípio da régua:</b> nenhum sinal sozinho prova fraude. Três sinais independentes apontando para o mesmo parceiro, ao mesmo tempo, já são um caso.</div>
+
+<h2 id="s2">2. O dado que você precisa</h2>
+<div class="table-wrap"><table>
+  <tr><th>Fonte</th><th>O que usar</th></tr>
+  <tr><td>AppsFlyer, dado bruto de instalações (Data Locker ou Pull API)</td><td><code>install_time</code>, <code>attributed_touch_time</code>, <code>attributed_touch_type</code>, <code>media_source</code>, <code>af_prt</code>, <code>af_siteid</code>, <code>campaign</code>, <code>appsflyer_id</code>, <code>customer_user_id</code>, <code>advertising_id</code>, <code>ip</code>, <code>device_model</code>, <code>os_version</code>, <code>platform</code>, <code>country_code</code></td></tr>
+  <tr><td>AppsFlyer, eventos in-app</td><td><code>event_name</code>, <code>event_time</code>, <code>event_revenue</code>, mais as mesmas chaves de usuário</td></tr>
+  <tr><td>AppsFlyer, relatório agregado por parceiro</td><td>Cliques e instalações por <code>media_source</code> e <code>af_siteid</code></td></tr>
+  <tr><td><b>Seu backend</b> (ou Firebase)</td><td>Primeira sessão real do usuário e pedidos pagos, com uma chave que ligue ao MMP</td></tr>
+</table></div>
+<div class="lm-tip"><b>A peça que mais falta:</b> uma chave entre o MMP e o seu sistema. Grave o <code>appsflyer_id</code> (pelo SDK) e o <code>customer_user_id</code> no seu backend desde a primeira abertura. Sem isso, os sinais 1 e 3 ficam pela metade.</div>
+<p>As consultas abaixo assumem as tabelas <code>appsflyer.installs</code>, <code>appsflyer.inapp_events</code>, <code>app.sessoes</code> e <code>backend.pedidos</code> no BigQuery. Ajuste nomes de tabela e coluna ao seu export.</p>
+
+<h2 id="s3">3. Sinal 1: instalação que não vira uso</h2>
+<p>Foi o sinal que abriu o caso dos R$ 100 mil. Em canal saudável, quase toda instalação vira uso real, e quase na hora. No parceiro suspeito, só 38% viravam. Nos outros parceiros, 92%.</p>
+<p>O ponto fino: "uso real" tem que vir do <b>seu</b> sistema, não do SDK do MMP. Fraude por SDK spoofing consegue fabricar a instalação e até eventos dentro do app. O que ela não fabrica é uma sessão no seu backend.</p>
+<pre><code><span class="c">-- Sinal 1: % de instalações com uso real em até 24h, por parceiro e site_id</span>
+WITH inst AS (
+  SELECT appsflyer_id, customer_user_id, media_source, af_siteid, install_time
+  FROM `projeto.appsflyer.installs`
+  WHERE DATE(install_time) BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 32 DAY)
+                               AND DATE_SUB(CURRENT_DATE(), INTERVAL 2 DAY)
+),
+uso AS (  <span class="c">-- primeira sessão registrada pelo SEU sistema</span>
+  SELECT appsflyer_id, MIN(inicio_sessao) AS primeira_sessao
+  FROM `projeto.app.sessoes`
+  GROUP BY 1
+)
+SELECT
+  i.media_source,
+  i.af_siteid,
+  COUNT(*) AS instalacoes,
+  ROUND(100 * COUNTIF(u.primeira_sessao BETWEEN i.install_time
+        AND TIMESTAMP_ADD(i.install_time, INTERVAL 24 HOUR)) / COUNT(*), 1) AS pct_uso_real_24h
+FROM inst i
+LEFT JOIN uso u USING (appsflyer_id)
+GROUP BY ALL
+HAVING instalacoes &gt;= 200
+ORDER BY pct_uso_real_24h;</code></pre>
+<p>Sem dado de sessão própria, use como aproximação o percentual de instalações com qualquer evento in-app em 24 horas. É mais fraco, porque o evento também pode ser fabricado, mas já separa os parceiros fora da curva.</p>
+
+<h2 id="s4">4. Sinal 2: IP e aparelho repetidos</h2>
+<p>Usuário real é disperso: muitos IPs, muitos modelos, versões de sistema variadas. Fazenda de aparelhos e emulador deixam concentração. No caso dos R$ 100 mil, apareceram instalações saindo dos mesmos blocos de IP e o mesmo device ID em "usuários" diferentes.</p>
+<pre><code><span class="c">-- Sinal 2: concentração de IP, device ID e modelo por parceiro</span>
+SELECT
+  media_source,
+  af_siteid,
+  COUNT(*) AS instalacoes,
+  ROUND(COUNT(*) / COUNT(DISTINCT ip), 2) AS instalacoes_por_ip,
+  ROUND(COUNT(*) / NULLIF(COUNT(DISTINCT REGEXP_EXTRACT(ip, r'^(\d+\.\d+\.\d+)\.')), 0), 2) AS instalacoes_por_bloco_24,
+  ROUND(COUNT(*) / NULLIF(COUNT(DISTINCT advertising_id), 0), 2) AS instalacoes_por_device_id,
+  ROUND(100 * APPROX_TOP_COUNT(device_model, 1)[OFFSET(0)].count / COUNT(*), 1) AS pct_modelo_mais_comum,
+  ROUND(100 * APPROX_TOP_COUNT(os_version, 1)[OFFSET(0)].count / COUNT(*), 1) AS pct_versao_so_mais_comum
+FROM `projeto.appsflyer.installs`
+WHERE DATE(install_time) &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+GROUP BY ALL
+HAVING instalacoes &gt;= 200
+ORDER BY instalacoes_por_bloco_24 DESC;</code></pre>
+<p>Leia sempre contra a média dos outros parceiros, nunca em número absoluto. Rede de operadora e Wi-Fi corporativo concentram IP de forma legítima. O que denuncia é um parceiro muito acima dos outros, na mesma campanha e no mesmo período.</p>
+
+<h2 id="s5">5. Sinal 3: receita que o backend não confirma</h2>
+<p>É o sinal que fecha a conta, e o que mais pesa na negociação. No caso dos R$ 100 mil, praticamente nenhuma instalação suspeita virou compra, mesmo com o parceiro sendo pago por CPA em cima da compra.</p>
+<pre><code><span class="c">-- Sinal 3: compra e receita confirmadas no backend em 30 dias, por parceiro</span>
+WITH inst AS (
+  SELECT appsflyer_id, customer_user_id, media_source, af_siteid, install_time
+  FROM `projeto.appsflyer.installs`
+  WHERE DATE(install_time) BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 60 DAY)
+                               AND DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+)
+SELECT
+  i.media_source,
+  i.af_siteid,
+  COUNT(DISTINCT i.appsflyer_id) AS instalacoes,
+  ROUND(100 * COUNT(DISTINCT IF(p.pedido_id IS NOT NULL, i.appsflyer_id, NULL))
+        / COUNT(DISTINCT i.appsflyer_id), 2) AS pct_com_compra,
+  ROUND(SUM(p.valor) / COUNT(DISTINCT i.appsflyer_id), 2) AS receita_por_instalacao
+FROM inst i
+LEFT JOIN `projeto.backend.pedidos` p
+  ON p.customer_user_id = i.customer_user_id
+ AND p.status = 'pago'
+ AND p.criado_em BETWEEN i.install_time AND TIMESTAMP_ADD(i.install_time, INTERVAL 30 DAY)
+GROUP BY ALL
+HAVING instalacoes &gt;= 200
+ORDER BY pct_com_compra;</code></pre>
+<p>Para parceiros pagos por CPA, compare também o que o MMP atribui com o que o backend confirma:</p>
+<pre><code><span class="c">-- Compras que o parceiro cobra x compras que o backend confirma</span>
+SELECT
+  e.media_source,
+  COUNT(*) AS compras_atribuidas_mmp,
+  COUNTIF(p.pedido_id IS NOT NULL) AS compras_confirmadas_backend,
+  ROUND(100 * COUNTIF(p.pedido_id IS NOT NULL) / COUNT(*), 1) AS pct_confirmado
+FROM `projeto.appsflyer.inapp_events` e
+LEFT JOIN `projeto.backend.pedidos` p
+  ON p.customer_user_id = e.customer_user_id
+ AND p.status = 'pago'
+ AND p.criado_em BETWEEN TIMESTAMP_SUB(e.event_time, INTERVAL 1 HOUR) AND TIMESTAMP_ADD(e.event_time, INTERVAL 1 HOUR)
+WHERE e.event_name = 'af_purchase'
+  AND DATE(e.event_time) &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+GROUP BY 1
+ORDER BY pct_confirmado;</code></pre>
+
+<h2 id="s6">6. Sinais complementares</h2>
+<p>Não entraram no caso dos R$ 100 mil, mas pegam o roubo de crédito, que os três sinais principais deixam passar.</p>
+<h3>Tempo entre clique e instalação</h3>
+<p>Instalação poucos segundos depois do clique é rápida demais para alguém baixar um app: é o padrão de click injection. Uma cauda longa de horas e dias, com muitos cliques por instalação, é o padrão de click flooding.</p>
+<pre><code>SELECT
+  media_source,
+  af_siteid,
+  COUNT(*) AS instalacoes,
+  ROUND(100 * COUNTIF(TIMESTAMP_DIFF(install_time, attributed_touch_time, SECOND) &lt; 10) / COUNT(*), 1) AS pct_menos_10s,
+  ROUND(100 * COUNTIF(TIMESTAMP_DIFF(install_time, attributed_touch_time, HOUR) &gt;= 24) / COUNT(*), 1) AS pct_mais_24h,
+  APPROX_QUANTILES(TIMESTAMP_DIFF(install_time, attributed_touch_time, SECOND), 100)[OFFSET(50)] AS mediana_segundos
+FROM `projeto.appsflyer.installs`
+WHERE attributed_touch_type = 'click'
+  AND DATE(install_time) &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+GROUP BY ALL
+HAVING instalacoes &gt;= 200
+ORDER BY pct_mais_24h DESC;</code></pre>
+<h3>Cliques por instalação</h3>
+<p>No relatório agregado por parceiro, divida cliques por instalações. Milhares de cliques para cada instalação é sinal de flooding, ainda mais se a taxa de conversão do clique for muito menor que a dos outros parceiros.</p>
+<h3>Horário e geografia</h3>
+<p>Picos de instalação de madrugada sem pico de uso, e país do IP diferente do idioma do aparelho em volume alto, completam o quadro.</p>
+
+<h2 id="s7">7. A régua: juntando os sinais</h2>
+<p>Cada sinal vira uma razão contra a mediana dos parceiros. Um parceiro é marcado quando dois ou mais sinais estão fora da curva no mesmo período.</p>
+<div class="table-wrap"><table>
+  <tr><th>Sinal</th><th>Métrica</th><th>Ponto de partida para "fora da curva"</th></tr>
+  <tr><td>1. Uso real</td><td>% de instalações com sessão própria em 24h</td><td>Abaixo de 60% da mediana dos parceiros</td></tr>
+  <tr><td>2. Concentração</td><td>Instalações por bloco de IP ou por device ID</td><td>Acima de 2x a mediana</td></tr>
+  <tr><td>3. Receita</td><td>% de instalações com compra confirmada</td><td>Abaixo de 30% da mediana</td></tr>
+  <tr><td>Extra</td><td>% de instalações com mais de 24h desde o clique</td><td>Acima de 2x a mediana</td></tr>
+</table></div>
+<div class="lm-note"><b>Calibre antes de acusar:</b> esses limites são um ponto de partida, não uma regra universal. Rode três meses de histórico, veja onde os parceiros saudáveis ficam e ajuste. Parceiro pequeno (menos de 200 instalações no período) fica fora até ter volume.</div>
+<pre><code><span class="c">-- Régua: cada sinal como razão contra a mediana, e quantos estão fora da curva</span>
+WITH s AS (
+  SELECT media_source, af_siteid, pct_uso_real_24h, instalacoes_por_bloco_24, pct_com_compra
+  FROM `projeto.auditoria.sinais_parceiro`   <span class="c">-- junte aqui o resultado dos sinais 1, 2 e 3</span>
+),
+r AS (
+  SELECT *,
+    pct_uso_real_24h / PERCENTILE_CONT(pct_uso_real_24h, 0.5) OVER () AS r_uso,
+    instalacoes_por_bloco_24 / PERCENTILE_CONT(instalacoes_por_bloco_24, 0.5) OVER () AS r_ip,
+    pct_com_compra / NULLIF(PERCENTILE_CONT(pct_com_compra, 0.5) OVER (), 0) AS r_receita
+  FROM s
+)
+SELECT *,
+  IF(r_uso &lt; 0.6, 1, 0) + IF(r_ip &gt; 2, 1, 0) + IF(r_receita &lt; 0.3, 1, 0) AS sinais_fora
+FROM r
+ORDER BY sinais_fora DESC, r_receita;</code></pre>
+<p>Agende essa consulta para rodar todo mês e mande o resultado para um painel ou alerta. Foi assim que a auditoria do caso virou rotina: uma consulta mensal que avisa quando um parceiro foge do padrão.</p>
+
+<h2 id="s8">8. Do achado ao retroativo</h2>
+<p>Fraude se resolve em negociação, e negociação se ganha com dossiê. O que levar ao parceiro:</p>
+<ul class="lm-check">
+  <li>Período analisado e volume do parceiro no período</li>
+  <li>Os três sinais lado a lado, comparados com a mediana dos outros parceiros na mesma campanha</li>
+  <li>Amostra de IPs e device IDs repetidos, sem dado pessoal além do necessário</li>
+  <li>Compras cobradas contra compras confirmadas pelo backend</li>
+  <li>O valor pago pelas ações que não aconteceram</li>
+</ul>
+<p>No caso dos R$ 100 mil, o desfecho teve três partes: o parceiro foi bloqueado, os valores futuros foram renegociados e a empresa recebeu retroativo do histórico de cobrança. O retroativo só foi possível porque o pagamento era por uma ação de compra que, comprovadamente, não tinha acontecido.</p>
+<div class="lm-tip"><b>Prevenção:</b> no contrato com parceiros de CPA, deixe escrito que a conversão válida é a confirmada pelo seu backend, e que você pode rejeitar volume inválido com base em critérios técnicos.</div>
+
+<h2 id="s9">9. O que a régua não pega</h2>
+<ul>
+  <li><b>Fraude com aparelho real por trás.</b> Emulação refinada e fazendas que imitam comportamento humano passam pelos três sinais. É o tipo de caso que ferramenta dedicada cobre melhor.</li>
+  <li><b>iOS sem consentimento do ATT.</b> Boa parte da atribuição chega agregada (SKAdNetwork e AdAttributionKit), sem dado por aparelho. A régua funciona bem no Android e na parte do iOS com atribuição determinística.</li>
+  <li><b>Fraude no orgânico.</b> O relatório de fraude da AppsFlyer de 2026 aponta o tráfego orgânico como o maior canal de instalações fraudulentas. A régua por parceiro não olha para lá.</li>
+</ul>
+<p><b>Quando vale pagar a ferramenta:</b> quando a verba em parceiros de risco multiplicada pela taxa de fraude que você encontrou passa do custo mensal dela. No caso deste guia, a cotação do Protect360 passava de US$ 5 mil por mês e a verba não justificava. Com o volume crescendo, a conta muda.</p>
+
+<h2 id="s10">10. Checklist</h2>
+<ul class="lm-check">
+  <li>appsflyer_id e customer_user_id gravados no seu backend desde a primeira abertura</li>
+  <li>Dado bruto de instalações e eventos chegando no BigQuery todo dia</li>
+  <li>Sinal 1 (uso real em 24h) por parceiro e site_id</li>
+  <li>Sinal 2 (IP, device ID, modelo) por parceiro e site_id</li>
+  <li>Sinal 3 (compra confirmada no backend) por parceiro e site_id</li>
+  <li>Tempo entre clique e instalação e cliques por instalação para pegar roubo de crédito</li>
+  <li>Régua calibrada com três meses de histórico</li>
+  <li>Consulta mensal agendada, com alerta</li>
+  <li>Cláusula de conversão válida no contrato com parceiros de CPA</li>
+  <li>Dossiê padrão pronto para a primeira negociação</li>
+</ul>
+
+    <div class="lm-download">
+      <p><b>Quer guardar para consultar depois?</b> O guia completo em PDF, com todas as consultas.</p>
+      <a class="btn-pri" href="guia-fraude-mobile-dado-bruto.pdf" download data-lm="fraude-mobile-dado-bruto" data-pos="rodape">Baixar o PDF ↓</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="case-cta reveal">
+      <h2>Quer que eu rode essa régua na sua conta?</h2>
+      <p>30 minutos, de graça. Entro nas suas plataformas e mostro se algum parceiro está fora da curva.</p>
+      <a href="https://wa.me/5571982210402?text=Ol%C3%A1%20Jeferson%2C%20li%20o%20guia%20de%20fraude%20mobile%20e%20quero%20meu%20diagn%C3%B3stico%20gr%C3%A1tis." target="_blank" rel="noopener" class="btn-pri">Quero meu diagnóstico grátis →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JJS<em>.</em></div>
+  <p>&copy; 2026 Jeferson J Silva &middot; <a href="../../">jefersonjs.com.br</a></p>
+</footer>
+
+<script src="../../assets/cases.js"></script>
+<script>
+document.querySelectorAll('[data-lm]').forEach(function(a){
+  a.addEventListener('click', function(){
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'lead_magnet_download', lead_magnet:a.dataset.lm, link_location:a.dataset.pos||''});
+  });
+});
+</script>
+</body>
+</html>

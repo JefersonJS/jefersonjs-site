@@ -1,0 +1,42 @@
+/* Páginas de materiais (guias gratuitos). Usa os tokens de cases.css */
+.lm-hero-grid { display:grid; grid-template-columns:1fr 250px; gap:2.2rem; align-items:start; }
+.lm-cover { display:block; border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:0 18px 40px rgba(20,24,29,.12); transform:rotate(1.5deg); transition:transform .2s; }
+.lm-cover:hover { transform:rotate(0) translateY(-3px); }
+.lm-cover img { width:100%; height:auto; display:block; }
+.lm-actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:1.4rem; }
+.lm-toc { background:var(--off); border:1px solid var(--border); border-radius:12px; padding:1.2rem 1.4rem; margin:0 0 2.6rem; }
+.lm-toc ol { margin:.4rem 0 0 1.2rem; font-size:.86rem; color:var(--muted); line-height:1.9; }
+.lm-toc a { color:var(--gd); text-decoration:none; }
+.lm-toc a:hover { color:var(--ga); }
+
+.case-body .lm-cause { background:var(--off); border:1px solid var(--border); border-left:3px solid var(--ga); border-radius:0 12px 12px 0; padding:1.2rem 1.4rem; margin:1.4rem 0; }
+.case-body .lm-cause h3 { border:0; padding:0; margin:0 0 .8rem; }
+.case-body .lm-cause dl { display:grid; grid-template-columns:96px 1fr; gap:.45rem 1rem; margin:0; font-size:.88rem; }
+.case-body .lm-cause dt { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ga); padding-top:.3rem; }
+.case-body .lm-cause dd { margin:0; color:var(--muted); line-height:1.7; }
+.case-body .lm-cause code { background:rgba(70,118,220,.1); color:var(--gd); padding:.1rem .35rem; border-radius:4px; font-size:.82em; }
+
+.case-body .lm-note { background:rgba(217,142,43,.07); border:1px solid rgba(217,142,43,.24); border-left:3px solid var(--cta); border-radius:0 10px 10px 0; padding:1rem 1.25rem; font-size:.86rem; color:var(--gd); line-height:1.7; margin:1.2rem 0 1.8rem; }
+.case-body .lm-tip { background:rgba(47,158,143,.07); border:1px solid rgba(47,158,143,.24); border-left:3px solid var(--ok); border-radius:0 10px 10px 0; padding:1rem 1.25rem; font-size:.86rem; color:var(--gd); line-height:1.7; margin:1.2rem 0 1.8rem; }
+.case-body .lm-note b, .case-body .lm-tip b { color:var(--text); }
+.case-body .lm-note code, .case-body .lm-tip code, .case-body td code { background:rgba(70,118,220,.1); color:var(--gd); padding:.1rem .35rem; border-radius:4px; font-size:.82em; }
+.case-body pre .c { color:#8c95a3; }
+
+.case-body .lm-check { list-style:none; margin:.6rem 0 1.6rem; padding:0; }
+.case-body .lm-check li { position:relative; padding:.55rem 0 .55rem 2rem; border-bottom:1px solid var(--border); margin:0; }
+.case-body .lm-check li::before { content:""; position:absolute; left:.1rem; top:.85rem; width:14px; height:14px; border:2px solid var(--ga); border-radius:4px; }
+
+.lm-download { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; background:var(--off); border:1px solid var(--border); border-radius:14px; padding:1.2rem 1.4rem; margin:2.6rem 0 0; }
+.lm-download p { margin:0!important; font-size:.88rem; }
+
+.lm-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:1.6rem; }
+.lm-card { background:var(--white); border:1px solid var(--border); border-radius:16px; overflow:hidden; text-decoration:none; display:flex; flex-direction:column; transition:all .2s; }
+.lm-card:hover { border-color:rgba(70,118,220,.3); transform:translateY(-3px); box-shadow:0 12px 28px rgba(70,118,220,.08); }
+.lm-card img { width:100%; height:250px; object-fit:cover; object-position:top; border-bottom:1px solid var(--border); }
+.lm-card .in-c { padding:1.2rem 1.3rem 1.4rem; }
+
+@media(max-width:720px) {
+  .lm-hero-grid { grid-template-columns:1fr; }
+  .lm-cover { max-width:220px; }
+  .case-body .lm-cause dl { grid-template-columns:1fr; }
+}
