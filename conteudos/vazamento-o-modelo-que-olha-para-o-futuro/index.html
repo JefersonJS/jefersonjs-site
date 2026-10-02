@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vazamento: o modelo que olha para o futuro sem perceber</title>
-<meta name="description" content="Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso.">
+<meta name="description" content="Modelo que acerta 85% no teste e desaba em produção costuma ter o mesmo defeito: usou um dado que ainda não existia no dia da decisão.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/">
 <meta name="theme-color" content="#4676dc">
@@ -21,17 +21,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/">
 <meta property="og:site_name" content="Jeferson J Silva">
 <meta property="og:title" content="Vazamento: o modelo que olha para o futuro sem perceber">
-<meta property="og:description" content="Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso.">
+<meta property="og:description" content="Modelo que acerta 85% no teste e desaba em produção costuma ter o mesmo defeito: usou um dado que ainda não existia no dia da decisão.">
 <meta property="og:image" content="https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/capa.png">
 <meta name="twitter:image" content="https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/capa.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vazamento: o modelo que olha para o futuro sem perceber">
-<meta name="twitter:description" content="Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso.">
+<meta name="twitter:description" content="Modelo que acerta 85% no teste e desaba em produção costuma ter o mesmo defeito: usou um dado que ainda não existia no dia da decisão.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/cases.css">
 <link rel="stylesheet" href="../../assets/conteudos.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Vazamento: o modelo que olha para o futuro sem perceber", "description": "Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso.", "url": "https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/", "image": "https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/capa.png", "datePublished": "2026-10-01", "inLanguage": "pt-BR", "author": {"@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.com.br/"}, "publisher": {"@type": "Person", "name": "Jeferson J Silva"}, "articleSection": "Laudo"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Vazamento: o modelo que olha para o futuro sem perceber", "description": "Modelo que acerta 85% no teste e desaba em produção costuma ter o mesmo defeito: usou um dado que ainda não existia no dia da decisão.", "url": "https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/", "image": "https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/capa.png", "datePublished": "2026-10-01", "inLanguage": "pt-BR", "author": {"@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.com.br/"}, "publisher": {"@type": "Person", "name": "Jeferson J Silva"}, "articleSection": "Laudo"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Conteúdos", "item": "https://jefersonjs.com.br/conteudos/"}, {"@type": "ListItem", "position": 3, "name": "Vazamento: o modelo que olha para o futuro sem perceber", "item": "https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/"}]}</script>
 </head>
 <body>
@@ -61,7 +61,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="case-eyebrow reveal"><span class="dot"></span>Laudo · Preditivo</div>
     <h1 class="case-title reveal">Vazamento: o modelo que olha para o futuro sem perceber</h1>
-    <p class="case-dek reveal">Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso.</p>
+    <p class="case-dek reveal">Modelo que acerta 85% no teste e desaba em produção costuma ter o mesmo defeito: usou um dado que ainda não existia no dia da decisão.</p>
     <div class="case-meta reveal"><span>1 de outubro de 2026</span><span>2 min de leitura</span><span>BASTIDORES</span></div>
   </div>
 </section>
@@ -70,15 +70,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container ct-artigo">
     <div class="ct-visual reveal"><img class="ct-capa" src="capa.png" alt="Vazamento: o modelo que olha para o futuro sem perceber" width="1080" height="1350"></div>
     <div class="case-body ct-texto">
-<p>Quase todo modelo de churn que &quot;acerta 85%&quot; tem o mesmo problema: está olhando para o futuro sem perceber.</p>
-<p>Isso tem nome: vazamento. É quando o modelo usa, para prever um evento, uma informação que só existiria depois dele. No teste parece genial. Em produção, desaba.</p>
-<p>No Signals, essa foi a regra técnica mais importante: todo sinal usado para prever o mês é medido só com o dado disponível no momento da decisão.</p>
-<p>A arquitetura fez metade do trabalho:</p>
-<ul><li>um feature store por cliente e mês, com os sinais medidos point-in-time</li><li>uma tabela de labels separada, com o que aconteceu em cada mês</li><li>o backtest é um join entre as duas</li></ul>
-<p>De bônus, trocar &quot;prever churn parcial&quot; por &quot;prever churn&quot; ou &quot;prever ativação&quot; virou trocar uma coluna, sem refazer pipeline.</p>
-<p>E antes de qualquer modelo, a base foi validada contra a verdade conhecida: 30.452 eventos reconstruídos contra 30.454 do número oficial. Só depois disso eu confiei nela.</p>
-<p>Kaufman e coautores escreveram em 2012 um artigo inteiro sobre isso, &quot;Leakage in Data Mining&quot;. Continua atual.</p>
-<p>Acurácia alta no passado não prova nada. Quando foi a última vez que você viu um modelo testado só com o que se sabia no dia?</p>
+<p>Quando alguém me mostra um modelo de churn que &quot;acerta 85%&quot;, a primeira pergunta que eu faço não é sobre o algoritmo. É sobre o calendário: o que o modelo sabia, e quando.</p>
+<p>A maior parte dos modelos que brilham no teste e desabam em produção tem o mesmo defeito, o vazamento. Para prever um evento, o modelo usa uma informação que só existiria depois dele. No teste parece genial porque, sem perceber, está olhando a resposta.</p>
+<p>No Signals, um modelo para prever churn parcial num SaaS de agendamento, essa foi a regra técnica mais importante: todo sinal usado para prever um mês é medido só com o que se sabia no dia da decisão.</p>
+<p>Na prática, a regra virou arquitetura. Os sinais ficaram numa tabela por cliente e mês, medidos point-in-time. O que aconteceu em cada mês ficou numa tabela separada de desfechos. O backtest é o cruzamento das duas, e fica muito mais difícil um dado do futuro entrar por engano. De quebra, trocar o evento previsto, de churn parcial para churn ou ativação, virou trocar uma coluna.</p>
+<p>A regra também apareceu onde eu não esperava: na data de gerar a lista. O sinal mais forte era o ritmo da primeira semana do mês. Num mês em que a primeira segunda-feira cai no dia seis, uma lista gerada antes do dia oito marcaria a base inteira como risco, só porque a semana ainda não tinha acontecido. A regra virou gerar no dia oito, nunca antes.</p>
+<p>Kaufman, Rosset, Perlich e Stitelman descreveram esse problema em 2012, no artigo &quot;Leakage in Data Mining&quot;, com casos reais, vários deles de competições de data mining. A conclusão continua valendo: acurácia alta no passado não prova nada se o modelo teve acesso a algo que ainda não existia.</p>
+<p>Se você tem um modelo em produção, faça a conferência mais barata que existe. Para cada variável, pergunte em que dia aquele valor estaria disponível. Se a resposta for &quot;depois do evento&quot;, o acerto está inflado.</p>
+<p>Qual foi o vazamento mais difícil de enxergar que você já encontrou num modelo?</p>
 <h2>Referências</h2>
 <ul><li>Shachar Kaufman, Saharon Rosset, Claudia Perlich e Ori Stitelman, &quot;Leakage in Data Mining: Formulation, Detection, and Avoidance&quot;, <em>ACM TKDD</em> (2012)</li><li>Foster Provost e Tom Fawcett, <em>Data Science for Business</em> (O&#x27;Reilly, 2013), trechos sobre avaliação e vazamento</li><li>Case: <a href="https://jefersonjs.com.br/cases/signals-downgrade-preditivo/">Signals</a></li></ul>
       <div class="ct-acoes"></div>
@@ -105,23 +104,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Mensuração</div>
     <div class="related-t">Auditoria de (not set): a ordem de investigação</div>
-    <div class="related-d">Como levei uma operação de 20% para 0,8% de (not set), e o guia completo com as consultas no BigQuery.</div>
-    <div class="ct-meta">1 de outubro de 2026 · 1 min</div>
+    <div class="related-d">Conhecer as causas de (not set) não basta. O que funciona é investigar numa ordem. Organizei essa ordem num guia gratuito.</div>
+    <div class="ct-meta">1 de outubro de 2026 · 2 min</div>
   </div>
 </a><a class="ct-card" data-serie="Laudo" href="../../conteudos/o-google-esta-construindo-o-pltv-do-seu-cliente/">
   <img src="../../conteudos/o-google-esta-construindo-o-pltv-do-seu-cliente/capa.png" alt="Imagem do conteúdo: O Google está construindo o próprio pLTV do seu cliente" loading="lazy" width="1080" height="1350">
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Preditivo</div>
     <div class="related-t">O Google está construindo o próprio pLTV do seu cliente</div>
-    <div class="related-d">Qualified Future Conversions, pLTV via CAPI e a pergunta que importa: de quem é o modelo que decide a sua verba?</div>
-    <div class="ct-meta">1 de outubro de 2026 · 2 min</div>
+    <div class="related-d">As Qualified Future Conversions colocam o Gemini para prever o valor do seu cliente. Com o dado do Google, não com o seu, e isso tem custo.</div>
+    <div class="ct-meta">1 de outubro de 2026 · 3 min</div>
   </div>
 </a><a class="ct-card" data-serie="Laudo" href="../../conteudos/propensao-nao-e-uplift/">
   <img src="../../conteudos/propensao-nao-e-uplift/capa.png" alt="Imagem do conteúdo: Propensão não é uplift" loading="lazy" width="1080" height="1350">
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Preditivo</div>
     <div class="related-t">Propensão não é uplift</div>
-    <div class="related-d">Score de churn aponta quem vai sair, não quem dá para segurar. Persuadíveis, cães adormecidos e grupo de controle.</div>
+    <div class="related-d">Score de churn diz quem vai sair. A campanha de retenção precisa saber quem fica se a empresa agir. São perguntas diferentes, e confundir as duas custa dinheiro.</div>
     <div class="ct-meta">1 de outubro de 2026 · 2 min</div>
   </div>
 </a></div>

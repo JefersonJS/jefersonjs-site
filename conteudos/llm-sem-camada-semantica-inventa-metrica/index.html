@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM sem camada semântica inventa métrica · Jeferson J Silva</title>
-<meta name="description" content="O que precisei definir antes de deixar o time perguntar ao data warehouse em português.">
+<meta name="description" content="Um warehouse unificado com LLM devolveu mais de 2 dias por semana a dois times. O ganho veio da definição das métricas, não do modelo.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/">
 <meta name="theme-color" content="#4676dc">
@@ -21,17 +21,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/">
 <meta property="og:site_name" content="Jeferson J Silva">
 <meta property="og:title" content="LLM sem camada semântica inventa métrica">
-<meta property="og:description" content="O que precisei definir antes de deixar o time perguntar ao data warehouse em português.">
+<meta property="og:description" content="Um warehouse unificado com LLM devolveu mais de 2 dias por semana a dois times. O ganho veio da definição das métricas, não do modelo.">
 <meta property="og:image" content="https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/capa.png">
 <meta name="twitter:image" content="https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/capa.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LLM sem camada semântica inventa métrica">
-<meta name="twitter:description" content="O que precisei definir antes de deixar o time perguntar ao data warehouse em português.">
+<meta name="twitter:description" content="Um warehouse unificado com LLM devolveu mais de 2 dias por semana a dois times. O ganho veio da definição das métricas, não do modelo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/cases.css">
 <link rel="stylesheet" href="../../assets/conteudos.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "LLM sem camada semântica inventa métrica", "description": "O que precisei definir antes de deixar o time perguntar ao data warehouse em português.", "url": "https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/", "image": "https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/capa.png", "datePublished": "2026-10-01", "inLanguage": "pt-BR", "author": {"@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.com.br/"}, "publisher": {"@type": "Person", "name": "Jeferson J Silva"}, "articleSection": "Laudo"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "LLM sem camada semântica inventa métrica", "description": "Um warehouse unificado com LLM devolveu mais de 2 dias por semana a dois times. O ganho veio da definição das métricas, não do modelo.", "url": "https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/", "image": "https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/capa.png", "datePublished": "2026-10-01", "inLanguage": "pt-BR", "author": {"@type": "Person", "name": "Jeferson J Silva", "url": "https://jefersonjs.com.br/"}, "publisher": {"@type": "Person", "name": "Jeferson J Silva"}, "articleSection": "Laudo"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://jefersonjs.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Conteúdos", "item": "https://jefersonjs.com.br/conteudos/"}, {"@type": "ListItem", "position": 3, "name": "LLM sem camada semântica inventa métrica", "item": "https://jefersonjs.com.br/conteudos/llm-sem-camada-semantica-inventa-metrica/"}]}</script>
 </head>
 <body>
@@ -61,7 +61,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="case-eyebrow reveal"><span class="dot"></span>Laudo · Dados e IA</div>
     <h1 class="case-title reveal">LLM sem camada semântica inventa métrica</h1>
-    <p class="case-dek reveal">O que precisei definir antes de deixar o time perguntar ao data warehouse em português.</p>
+    <p class="case-dek reveal">Um warehouse unificado com LLM devolveu mais de 2 dias por semana a dois times. O ganho veio da definição das métricas, não do modelo.</p>
     <div class="case-meta reveal"><span>1 de outubro de 2026</span><span>2 min de leitura</span><span>BASTIDORES</span></div>
   </div>
 </section>
@@ -70,14 +70,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container ct-artigo">
     <div class="ct-visual reveal"><img class="ct-capa" src="capa.png" alt="LLM sem camada semântica inventa métrica" width="1080" height="1350"></div>
     <div class="case-body ct-texto">
-<p>Liguei um LLM no data warehouse para os times de mídia e de conteúdo perguntarem em português. A primeira lição veio antes de liberar: sem definição, ele inventa.</p>
-<p>Você pergunta &quot;qual foi o CAC de ontem?&quot; e o modelo escolhe sozinho uma tabela, uma janela e um conceito de cliente. Responde com confiança. E responde errado.</p>
-<p>O que eu precisei ter antes de abrir para o time:</p>
-<ul><li>um data warehouse único, com mídia, tracking e indicador de negócio no mesmo lugar</li><li>cada métrica com uma definição escrita, a mesma no painel e na resposta</li><li>o LLM consultando essas métricas definidas, não a tabela crua</li></ul>
-<p>Os times ganharam mais de 2 dias de trabalho por semana. A IA não fez mágica: a pergunta passou a ter uma resposta só.</p>
-<p>O Kimball já falava em dimensões conformadas nos anos 90: uma definição, usada em todo lugar. Hoje a ideia atende por camada semântica, e o LLM só aumentou o custo de não ter uma.</p>
-<p>Text-to-SQL sem camada semântica dá acesso ao dado sem dar entendimento.</p>
-<p>Seu time já pergunta para uma IA sobre os números da empresa? Quem garante que a resposta bate com o painel?</p>
+<p>Os times de Mídia Paga e de Conteúdo/SEO gastavam boa parte da semana juntando dado de plataforma com indicador de negócio. Construí um data warehouse que reunia os dados das plataformas e os ligava aos indicadores da empresa, com painel atualizado em D-1 e um LLM para consultas em linguagem natural. Os dois times ganharam mais de dois dias de trabalho por semana.</p>
+<p>É tentador dar o crédito ao LLM. Mas ele foi a última camada, não a principal.</p>
+<p>Pense na pergunta mais comum de um time de mídia: &quot;qual foi o CAC de ontem?&quot;. Para responder, alguém precisa decidir qual custo usar, qual janela de conversão e o que conta como cliente. Se essas decisões não estiverem escritas em algum lugar, o modelo decide sozinho. Responde com confiança, e pode responder diferente a cada vez.</p>
+<p>Esse risco tem nome há décadas. O Ralph Kimball chamava de dimensões e fatos conformados: uma definição de cliente, de receita e de canal, usada igual em todos os relatórios. Hoje a mesma ideia aparece como camada semântica, e as ferramentas de text-to-SQL chegaram a ela pelo caminho difícil, descobrindo que o modelo precisa consultar métricas definidas, não tabelas cruas.</p>
+<p>A lição que eu levo é que IA sobre dados não diminui a necessidade de modelagem. Aumenta. Uma métrica mal definida num painel gera um gráfico errado que alguém acaba percebendo. Num LLM, gera uma resposta errada, bem escrita, para cada pessoa que pergunta.</p>
+<p>Se o seu time quer colocar uma IA para responder sobre os números, comece por um teste simples: faça a mesma pergunta para a IA e para o painel oficial. Se as respostas não baterem, o problema está na definição, não no modelo.</p>
+<p>Você já fez esse teste? As respostas bateram?</p>
 <h2>Referências</h2>
 <ul><li>Ralph Kimball e Margy Ross, <em>The Data Warehouse Toolkit</em> (Wiley, 3ª ed., 2013), dimensões e fatos conformados</li><li><a href="https://docs.getdbt.com/blog/semantic-layer-vs-text-to-sql-2026" target="_blank" rel="noopener">dbt, Semantic layer vs text-to-SQL (2026)</a></li><li><a href="https://cube.dev/articles/semantic-layer-for-ai-agents-2026" target="_blank" rel="noopener">Cube, Semantic layer for AI agents (2026)</a></li></ul>
       <div class="ct-acoes"></div>
@@ -104,7 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Fraude</div>
     <div class="related-t">57,5% do tráfego já não é humano: o que isso faz com o seu GA4</div>
-    <div class="related-d">O tráfego automatizado passou o humano nas páginas da web. Os 5 lugares onde eu procuro bot e agente hoje.</div>
+    <div class="related-d">O tráfego automatizado passou o humano na rede da Cloudflare. Para o analytics, isso quebra a premissa de que existe uma pessoa do outro lado do painel.</div>
     <div class="ct-meta">1 de outubro de 2026 · 2 min</div>
   </div>
 </a><a class="ct-card" data-serie="Laudo" href="../../conteudos/not-set-ga4-de-20-para-0-8/">
@@ -112,7 +111,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Mensuração</div>
     <div class="related-t">(not set) no GA4: de 20% para 0,8%</div>
-    <div class="related-d">O que é (not set), as causas que eu procuro primeiro e por que ele quase nunca é um erro só.</div>
+    <div class="related-d">(not set) quase nunca tem uma causa só. É a soma de perdas pequenas, cada uma de um time. Foi assim que 20% do tráfego sem origem caiu para 0,8%.</div>
     <div class="ct-meta">1 de outubro de 2026 · 2 min</div>
   </div>
 </a><a class="ct-card" data-serie="Laudo" href="../../conteudos/o-google-esta-construindo-o-pltv-do-seu-cliente/">
@@ -120,8 +119,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Preditivo</div>
     <div class="related-t">O Google está construindo o próprio pLTV do seu cliente</div>
-    <div class="related-d">Qualified Future Conversions, pLTV via CAPI e a pergunta que importa: de quem é o modelo que decide a sua verba?</div>
-    <div class="ct-meta">1 de outubro de 2026 · 2 min</div>
+    <div class="related-d">As Qualified Future Conversions colocam o Gemini para prever o valor do seu cliente. Com o dado do Google, não com o seu, e isso tem custo.</div>
+    <div class="ct-meta">1 de outubro de 2026 · 3 min</div>
   </div>
 </a></div>
   </div>
