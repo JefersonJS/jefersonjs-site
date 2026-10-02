@@ -74,7 +74,7 @@ def head(titulo, descricao, url, imagem=None, tipo="website", extra=""):
 {GTM_HEAD}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{esc(titulo)} · Jeferson J Silva</title>
+<title>{esc(titulo if len(titulo) > 42 else titulo + " · Jeferson J Silva")}</title>
 <meta name="description" content="{esc(descricao)}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{url}">
@@ -156,7 +156,7 @@ def data_br(d):
 
 def card(c, raiz):
     return f"""<a class="ct-card" data-serie="{esc(c['serie'])}" href="{raiz}conteudos/{c['slug']}/">
-  <img src="{raiz}conteudos/{c['slug']}/capa.png" alt="" loading="lazy" width="1080" height="1350">
+  <img src="{raiz}conteudos/{c['slug']}/capa.png" alt="Imagem do conteúdo: {esc(c['titulo'])}" loading="lazy" width="1080" height="1350">
   <div class="in-c">
     <div class="related-eyebrow">{esc(c['serie'])} · {esc(c['pilar'])}</div>
     <div class="related-t">{esc(c['titulo'])}</div>
@@ -184,7 +184,8 @@ def pagina(c, todos):
              f'<script type="application/ld+json">{json.dumps(bc, ensure_ascii=False)}</script>')
     imgs = c["imagens"]
     if len(imgs) > 1:
-        galeria = "".join(f'<img src="{i + 1:02d}.png" alt="Slide {i + 1}" loading="lazy" width="1080" height="1350">' for i in range(len(imgs)))
+        alts = [a.strip() for a in c.get("alts", "").split("|")] if c.get("alts") else []
+        galeria = "".join(f'<img src="{i + 1:02d}.png" alt="{esc(alts[i]) if i < len(alts) else f"Slide {i + 1} de {len(imgs)}"}" loading="lazy" width="1080" height="1350">' for i in range(len(imgs)))
         visual = f'<div class="ct-galeria">{galeria}</div>'
     else:
         visual = f'<img class="ct-capa" src="capa.png" alt="{esc(c["titulo"])}" width="1080" height="1350">'

@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vazamento: o modelo que olha para o futuro sem perceber · Jeferson J Silva</title>
+<title>Vazamento: o modelo que olha para o futuro sem perceber</title>
 <meta name="description" content="Por que o modelo de churn que acerta 85% no passado falha no mês seguinte, e a arquitetura que evita isso.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://jefersonjs.com.br/conteudos/vazamento-o-modelo-que-olha-para-o-futuro/">
@@ -72,15 +72,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="case-body ct-texto">
 <p>Quase todo modelo de churn que &quot;acerta 85%&quot; tem o mesmo problema: está olhando para o futuro sem perceber.</p>
 <p>Isso tem nome: vazamento. É quando o modelo usa, para prever um evento, uma informação que só existiria depois dele. No teste parece genial. Em produção, desaba.</p>
-<p>No Signals, essa foi a regra número um: todo sinal usado para prever o mês é medido só com o dado disponível no momento da decisão.</p>
+<p>No Signals, essa foi a regra técnica mais importante: todo sinal usado para prever o mês é medido só com o dado disponível no momento da decisão.</p>
 <p>A arquitetura fez metade do trabalho:</p>
 <ul><li>um feature store por cliente e mês, com os sinais medidos point-in-time</li><li>uma tabela de labels separada, com o que aconteceu em cada mês</li><li>o backtest é um join entre as duas</li></ul>
 <p>De bônus, trocar &quot;prever downgrade&quot; por &quot;prever churn&quot; ou &quot;prever ativação&quot; virou trocar uma coluna, sem refazer pipeline.</p>
-<p>E antes de qualquer modelo, a base foi validada contra a verdade conhecida: 30.452 atendimentos reconstruídos contra 30.454 do número oficial. Só depois disso eu confiei nela.</p>
+<p>E antes de qualquer modelo, a base foi validada contra a verdade conhecida: 30.452 eventos reconstruídos contra 30.454 do número oficial. Só depois disso eu confiei nela.</p>
 <p>Kaufman e coautores escreveram em 2012 um artigo inteiro sobre isso, &quot;Leakage in Data Mining&quot;. Continua atual.</p>
 <p>Acurácia alta no passado não prova nada. Quando foi a última vez que você viu um modelo testado só com o que se sabia no dia?</p>
 <h2>Referências</h2>
-<ul><li>Shachar Kaufman, Saharon Rosset, Claudia Perlich e Ori Stitelman, &quot;Leakage in Data Mining: Formulation, Detection, and Avoidance&quot;, <em>ACM TKDD</em> (2012)</li><li>Foster Provost e Tom Fawcett, <em>Data Science for Business</em> (O&#x27;Reilly, 2013), capítulos sobre avaliação e vazamento</li><li>Case: <a href="https://jefersonjs.com.br/cases/signals-downgrade-preditivo/">Signals</a></li></ul>
+<ul><li>Shachar Kaufman, Saharon Rosset, Claudia Perlich e Ori Stitelman, &quot;Leakage in Data Mining: Formulation, Detection, and Avoidance&quot;, <em>ACM TKDD</em> (2012)</li><li>Foster Provost e Tom Fawcett, <em>Data Science for Business</em> (O&#x27;Reilly, 2013), trechos sobre avaliação e vazamento</li><li>Case: <a href="https://jefersonjs.com.br/cases/signals-downgrade-preditivo/">Signals</a></li></ul>
       <div class="ct-acoes"></div>
     </div>
   </div>
@@ -101,7 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="slabel reveal">Conteúdos</span>
     <h2 class="stitle reveal" style="margin-bottom:1.5rem">Continue lendo</h2>
     <div class="ct-grid reveal"><a class="ct-card" data-serie="Laudo" href="../../conteudos/auditoria-de-not-set-ordem-de-investigacao/">
-  <img src="../../conteudos/auditoria-de-not-set-ordem-de-investigacao/capa.png" alt="" loading="lazy" width="1080" height="1350">
+  <img src="../../conteudos/auditoria-de-not-set-ordem-de-investigacao/capa.png" alt="Imagem do conteúdo: Auditoria de (not set): a ordem de investigação" loading="lazy" width="1080" height="1350">
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Mensuração</div>
     <div class="related-t">Auditoria de (not set): a ordem de investigação</div>
@@ -109,7 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="ct-meta">1 de outubro de 2026 · 1 min</div>
   </div>
 </a><a class="ct-card" data-serie="Laudo" href="../../conteudos/o-google-esta-construindo-o-pltv-do-seu-cliente/">
-  <img src="../../conteudos/o-google-esta-construindo-o-pltv-do-seu-cliente/capa.png" alt="" loading="lazy" width="1080" height="1350">
+  <img src="../../conteudos/o-google-esta-construindo-o-pltv-do-seu-cliente/capa.png" alt="Imagem do conteúdo: O Google está construindo o próprio pLTV do seu cliente" loading="lazy" width="1080" height="1350">
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Preditivo</div>
     <div class="related-t">O Google está construindo o próprio pLTV do seu cliente</div>
@@ -117,7 +117,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="ct-meta">1 de outubro de 2026 · 2 min</div>
   </div>
 </a><a class="ct-card" data-serie="Laudo" href="../../conteudos/propensao-nao-e-uplift/">
-  <img src="../../conteudos/propensao-nao-e-uplift/capa.png" alt="" loading="lazy" width="1080" height="1350">
+  <img src="../../conteudos/propensao-nao-e-uplift/capa.png" alt="Imagem do conteúdo: Propensão não é uplift" loading="lazy" width="1080" height="1350">
   <div class="in-c">
     <div class="related-eyebrow">Laudo · Preditivo</div>
     <div class="related-t">Propensão não é uplift</div>
