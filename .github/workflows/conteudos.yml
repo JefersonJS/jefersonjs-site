@@ -1,0 +1,47 @@
+name: Publicar conteúdos agendados
+
+# Roda todo dia às 07:30 de Salvador (10:30 UTC), antes do post das 8h no LinkedIn.
+# Publica os conteúdos de conteudos/_fonte cuja data já chegou e atualiza sitemap e llms.txt.
+on:
+  schedule:
+    - cron: "30 10 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "conteudos/_fonte/**"
+      - "conteudos/_img/**"
+      - "scripts/build_conteudos.py"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: conteudos
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Gerar páginas
+        run: python scripts/build_conteudos.py
+      - name: Commit e novo build do Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A conteudos sitemap.xml llms.txt
+            git commit -m "conteudos: publicação agendada de $(TZ=America/Bahia date +%F)"
+            git push
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+          else
+            echo "Nada novo para publicar hoje."
+          fi
