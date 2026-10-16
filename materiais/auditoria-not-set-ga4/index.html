@@ -30,6 +30,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/cases.css">
 <link rel="stylesheet" href="../../assets/materiais.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Azeret+Mono:wght@400;500;700;800&family=Caveat:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/guia2.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -92,7 +94,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="btn-pri" href="guia-auditoria-not-set-ga4.pdf" download data-lm="auditoria-not-set-ga4" data-pos="hero">Baixar o PDF ↓</a>
           <a class="btn-sec" href="#guia">Ler aqui</a>
         </div>
-        <div class="case-meta reveal"><span>Versão 1 · outubro de 2026</span><span>~15 min de leitura</span><span>GA4 · BigQuery · SQL</span></div>
+        <div class="case-meta reveal"><span>Versão 2 · outubro de 2026</span><span>9 páginas + consultas</span><span>GA4 · BigQuery · SQL</span></div>
       </div>
       <a class="lm-cover reveal" href="guia-auditoria-not-set-ga4.pdf" download data-lm="auditoria-not-set-ga4" data-pos="capa"><img src="capa.png" alt="Capa do guia Auditoria de (not set) no GA4" width="560" height="728"></a>
     </div>
@@ -101,25 +103,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section id="guia">
   <div class="container case-body">
-    <div class="lm-toc reveal"><span class="slabel">Neste guia</span><ol><li><a href="#s1">O que (not set) é, e o que não é</a></li><li><a href="#s2">Meça do jeito certo</a></li><li><a href="#s3">As 7 famílias de causa</a></li><li><a href="#s4">As consultas de diagnóstico</a></li><li><a href="#s5">Priorize pelo dinheiro</a></li><li><a href="#s6">Prove que melhorou</a></li><li><a href="#s7">Checklist de auditoria</a></li></ol></div>
+    <div class="lm-toc reveal"><span class="slabel">Neste guia</span><ol><li><a href="#s1">(not set) não é canal.É buraco no dado.</a></li><li><a href="#s2">Meça em dinheiro, não em sessão</a></li><li><a href="#s3">As 7 famílias, no caminho do usuário</a></li><li><a href="#s4">Família por família (1/2)</a></li><li><a href="#s5">Família por família (2/2)</a></li><li><a href="#s6">Priorize pelo dinheiro</a></li><li><a href="#s7">Prove que melhorou</a></li><li><a href="#s8">Checklist de auditoria</a></li><li><a href="#s9">Bancada · as consultas</a></li><li><a href="#s10">Quer que eu olhe a sua conta?</a></li></ol></div>
 
-<h2 id="s1">1. O que (not set) é, e o que não é</h2>
-<p>(not set) é o valor que o GA4 usa quando não recebeu informação nenhuma para aquela dimensão. Não é uma fonte de tráfego, nem um canal. É um buraco no dado com nome de categoria.</p>
-<p>Três valores parecidos costumam ser confundidos com ele, e cada um pede uma investigação diferente:</p>
-<div class="table-wrap"><table>
-  <tr><th>Valor</th><th>O que significa</th><th>É problema?</th></tr>
-  <tr><td><code>(not set)</code></td><td>O GA4 não recebeu o dado para a dimensão</td><td>Sim. É o objeto deste guia</td></tr>
-  <tr><td><code>(direct) / (none)</code></td><td>O GA4 recebeu a sessão, mas sem referência nem parâmetro de campanha</td><td>Às vezes. Direto alto demais costuma esconder UTM perdida</td></tr>
-  <tr><td><code>(other)</code></td><td>O relatório agrupou valores por limite de linhas (cardinalidade)</td><td>Não é perda de dado. No BigQuery o valor real aparece</td></tr>
-  <tr><td><code>(data not available)</code></td><td>O dado não está disponível para aquele período ou combinação</td><td>Depende. Leia a documentação antes de investigar</td></tr>
-</table></div>
-<p>O segundo cuidado é o escopo. "(not set)" na origem da sessão, na origem do primeiro usuário, na página de entrada e na campanha do Google Ads são quatro problemas diferentes. Comece pela origem e mídia da sessão, que é a que pesa nas decisões de canal.</p>
-<div class="lm-note"><b>Regra do guia:</b> trabalhe no BigQuery, não na interface. A interface aplica limiares, amostragem e agrupamentos que escondem justamente o padrão que você está procurando.</div>
-
-<h2 id="s2">2. Meça do jeito certo</h2>
-<p>Antes de corrigir qualquer coisa, tire três números: o percentual de sessões, de conversões e de receita em (not set). O segundo e o terceiro importam mais que o primeiro. Uma operação com 15% das sessões em (not set) e 2% da receita tem outro problema, e outra urgência, do que uma com 5% das sessões e 30% da receita.</p>
-<p>A consulta abaixo monta uma tabela de sessões a partir do export do GA4 e já marca os sinais que vamos usar nas próximas seções. Troque o dataset pelo seu.</p>
-<pre><code><span class="c">-- Base de sessões com os sinais de diagnóstico (export do GA4 no BigQuery)</span>
+<div class="g2"><section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 02</span><span>O QUE É</span></div>
+<h2 id="s1">(not set) não é canal.<br>É <em>buraco no dado</em>.</h2>
+<p class="kicker">Quatro valores parecidos, quatro investigações diferentes.</p>
+<div class="cards">
+ <div class="card"><div class="sem"><i style="background:#FF4F1A"></i>PROBLEMA</div><h3><code>(not set)</code></h3><p>O GA4 não recebeu o dado para aquela dimensão. É o assunto deste guia.</p></div>
+ <div class="card"><div class="sem"><i style="background:#C98A12"></i>ÀS VEZES</div><h3><code>(direct) / (none)</code></h3><p>Recebeu a sessão sem referência nem campanha. Direto alto demais costuma esconder UTM perdida.</p></div>
+ <div class="card"><div class="sem"><i style="background:#1F8A5B"></i>NÃO É PERDA</div><h3><code>(other)</code></h3><p>O relatório agrupou valores por limite de linhas. No BigQuery o valor real aparece.</p></div>
+ <div class="card"><div class="sem"><i style="background:#7B818C"></i>DEPENDE</div><h3><code>(data not available)</code></h3><p>O dado não está disponível para aquele período ou combinação.</p></div>
+</div>
+<div class="row"><div class="txt"><p>Escopo importa: origem da sessão, origem do primeiro usuário, página de entrada e campanha do Ads são quatro problemas. Comece pela origem da sessão, que é a que decide verba.</p></div>
+<div><span class="hand">trabalhe no BigQuery,<br>não na interface.</span></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>02</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 03</span><span>MEÇA CERTO</span></div>
+<h2 id="s2">Meça em <em>dinheiro</em>, não em sessão</h2>
+<p class="kicker">Antes de corrigir qualquer coisa, tire três números: % de sessões, de compras e de receita em (not set).</p>
+<figure><svg viewBox="0 0 560 376" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" style="font-family:Azeret Mono,monospace;font-size:12px;letter-spacing:.12em" fill="#7B818C">EXEMPLO · % EM (NOT SET)</text><text x="0" y="48" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">OPERAÇÃO A · SESSÕES</text><rect x="0" y="56" width="410" height="38" fill="none" stroke="rgba(18,22,28,.16)" stroke-width="1.5"/><rect x="0" y="56" width="176" height="38" fill="#12161C"/><text x="188" y="88" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:40px" fill="#12161C">15%</text><text x="0" y="132" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">OPERAÇÃO A · RECEITA</text><rect x="0" y="140" width="410" height="38" fill="none" stroke="rgba(18,22,28,.16)" stroke-width="1.5"/><rect x="0" y="140" width="23" height="38" fill="#12161C"/><text x="35" y="172" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:40px" fill="#12161C">2%</text><text x="0" y="216" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">OPERAÇÃO B · SESSÕES</text><rect x="0" y="224" width="410" height="38" fill="none" stroke="rgba(18,22,28,.16)" stroke-width="1.5"/><rect x="0" y="224" width="59" height="38" fill="#FF4F1A"/><text x="71" y="256" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:40px" fill="#FF4F1A">5%</text><text x="0" y="300" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">OPERAÇÃO B · RECEITA</text><rect x="0" y="308" width="410" height="38" fill="none" stroke="rgba(18,22,28,.16)" stroke-width="1.5"/><rect x="0" y="308" width="351" height="38" fill="#FF4F1A"/><text x="363" y="340" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:40px" fill="#FF4F1A">30%</text><text x="558" y="340" text-anchor="end" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#7B818C">a urgente</text></svg></figure>
+<div class="row"><div class="txt"><p>A operação A parece pior olhando sessão. A B é a que está perdendo dinheiro de verdade.</p></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Monte a tabela de sessões a partir do export do GA4 e tire o ponto de partida. Guarde com a data: é a sua linha de base.</p><span class="ref">Bancada · N1 e N2</span></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>03</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 04</span><span>AS 7 FAMÍLIAS</span></div>
+<h2 id="s3">As 7 famílias, <em>no caminho</em> do usuário</h2>
+<p class="kicker">(not set) quase nunca é um erro só. É a soma de perdas pequenas, cada uma num ponto da jornada e com um dono diferente.</p>
+<figure><svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="720" height="34" fill="#FF4F1A" opacity=".12"/><text x="12" y="28" style="font-family:Azeret Mono,monospace;font-size:11.5px;font-weight:700" fill="#FF4F1A">E · CONSENTIMENTO: VALE PARA A JORNADA INTEIRA</text><line x1="40" y1="130" x2="680" y2="130" stroke="#12161C" stroke-width="3"/><circle cx="40" cy="130" r="10" fill="#fff" stroke="#12161C" stroke-width="3"/><text x="40" y="164" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">ANÚNCIO</text><path d="M40 114 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="40" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">A</text><circle cx="168" cy="130" r="10" fill="#fff" stroke="#12161C" stroke-width="3"/><text x="168" y="164" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">REDIRECT</text><path d="M151 114 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="151" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">A</text><path d="M185 114 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="185" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">B</text><circle cx="296" cy="130" r="10" fill="#fff" stroke="#12161C" stroke-width="3"/><text x="296" y="164" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">PÁGINA</text><path d="M296 114 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="296" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">C</text><circle cx="424" cy="130" r="10" fill="#fff" stroke="#12161C" stroke-width="3"/><text x="424" y="164" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">EVENTOS</text><path d="M424 114 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="424" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">C</text><circle cx="552" cy="130" r="10" fill="#fff" stroke="#12161C" stroke-width="3"/><text x="552" y="164" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">CHECKOUT</text><path d="M552 114 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="552" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">F</text><circle cx="680" cy="130" r="10" fill="#fff" stroke="#12161C" stroke-width="3"/><text x="680" y="164" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">SERVIDOR</text><path d="M680 114 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="680" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">D</text><path d="M296 176 q 0 60 70 66 l 150 0" fill="none" stroke="#12161C" stroke-width="2.5" stroke-dasharray="7 5"/><text x="526" y="247" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">APP (instalação mora no MMP)</text><path d="M416 226 l -13 -24 a 15 15 0 1 1 26 0 z" fill="#FF4F1A"/><text x="416" y="198" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:20px" fill="#fff">G</text></svg></figure>
+<div class="cards c3">
+ <div class="card"><p><b>A</b>Google Ads sem vínculo ou gclid perdido</p><p><b>B</b>UTM incompleta</p></div>
+ <div class="card"><p><b>C</b>Sessão que começa sem page_view</p><p><b>D</b>Evento de servidor sem a sessão</p></div>
+ <div class="card"><p><b>E</b>Consentimento</p><p><b>F</b>Domínios e checkout</p><p><b>G</b>App e site misturados</p></div>
+</div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>04</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 05</span><span>FAMÍLIA POR FAMÍLIA</span></div><h2 id="s4">Família por família <em>(1/2)</em></h2><div class="cards"><div class="card"><div class="lt">A</div><h3>Google Ads e gclid</h3><p><b>Sintoma</b>Campanha do Ads aparece como (not set); concentra em sessão com gclid.</p><p><b>Confirme</b>N3, linha tem_gclid. E teste o redirect: <code>curl -sIL "https://seusite.com.br/lp?gclid=teste123" | grep -i location</code></p><p><b>Corrija</b>Vincule todas as contas, ligue o auto-tagging, preserve a query string nos redirects.</p></div><div class="card"><div class="lt">B</div><h3>UTM</h3><p><b>Sintoma</b>utm_source sem utm_medium; "Instagram", "instagram" e "ig" como fontes diferentes.</p><p><b>Confirme</b>N3, linha utm_incompleta, e a lista de source e medium dos últimos 90 dias.</p><p><b>Corrija</b>Taxonomia escrita, gerador de links e um dono.</p></div><div class="card"><div class="lt">C</div><h3>Sessão sem page_view</h3><p><b>Sintoma</b>Primeiro evento é scroll, vídeo ou evento próprio.</p><p><b>Confirme</b>N3, coluna primeiro_evento, e N4.</p><p><b>Corrija</b>Tag do Google no acionador de inicialização; eventos dependentes dela.</p></div><div class="card"><div class="lt">D</div><h3>Evento de servidor</h3><p><b>Sintoma</b>% de (not set) nas compras bem maior que nas sessões.</p><p><b>Confirme</b>N5.</p><p><b>Corrija</b>Guarde client_id e session_id no pedido e mande os dois no evento de servidor.</p></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>05</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 06</span><span>FAMÍLIA POR FAMÍLIA</span></div><h2 id="s5">Família por família <em>(2/2)</em></h2><div class="cards"><div class="card"><div class="lt">E</div><h3>Consentimento</h3><p><b>Sintoma</b>Buraco em analytics_storage = 'No'; queda junto com mudança no banner.</p><p><b>Confirme</b>N6. Teste o banner aceitando, negando e ignorando.</p><p><b>Corrija</b>Estado padrão antes de qualquer tag; ad_storage, ad_user_data e ad_personalization mapeados.</p></div><div class="card"><div class="lt">F</div><h3>Domínios e checkout</h3><p><b>Sintoma</b>(not set) ou referral do gateway num host específico.</p><p><b>Confirme</b>N3, coluna host.</p><p><b>Corrija</b>Vários domínios na tag, gateway em referências indesejadas, user_id no login.</p></div><div class="card"><div class="lt">G</div><h3>App e site</h3><p><b>Sintoma</b>(not set) concentrado em ANDROID ou IOS.</p><p><b>Confirme</b>N3 separada por stream_id.</p><p><b>Corrija</b>App e site separados. Instalação vem do MMP; reengajamento, de deep link com campanha.</p></div></div><p style="margin-top:14px"><span class="hand">(not set) volta quando ninguém responde por ele.</span></p><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>06</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 07</span><span>PRIORIZE</span></div>
+<h2 id="s6">Priorize pelo <em>dinheiro</em></h2>
+<p class="kicker">A tentação é corrigir a mais fácil. A ordem certa é a família que concentra mais receita em (not set), mesmo que dê mais trabalho.</p>
+<figure><svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg"><rect x="70" y="20" width="265.0" height="165.0" fill="#FF4F1A" opacity=".10"/><text x="80" y="42" style="font-family:Azeret Mono,monospace;font-size:11px;font-weight:700" fill="#FF4F1A">COMECE AQUI</text><line x1="70" y1="350" x2="600" y2="350" stroke="#12161C" stroke-width="2"/><line x1="70" y1="20" x2="70" y2="350" stroke="#12161C" stroke-width="2"/><line x1="335.0" y1="20" x2="335.0" y2="350" stroke="rgba(18,22,28,.16)" stroke-width="1.5" stroke-dasharray="4 4"/><line x1="70" y1="185.0" x2="600" y2="185.0" stroke="rgba(18,22,28,.16)" stroke-width="1.5" stroke-dasharray="4 4"/><text x="335.0" y="384" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#7B818C">esforço para corrigir →</text><text x="18" y="185.0" transform="rotate(-90 18 185.0)" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#7B818C">peso na receita →</text><circle cx="165" cy="70" r="17" fill="#FF4F1A"/><text x="165" y="76" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:21px" fill="#fff">A</text><text x="189" y="74" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#12161C">Google Ads e gclid</text><circle cx="218" cy="119" r="17" fill="#FF4F1A"/><text x="218" y="126" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:21px" fill="#fff">F</text><text x="242" y="124" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#12161C">domínios e checkout</text><circle cx="362" cy="79" r="17" fill="#12161C"/><text x="362" y="86" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:21px" fill="#fff">D</text><text x="386" y="84" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#12161C">evento de servidor</text><circle cx="409" cy="145" r="17" fill="#12161C"/><text x="409" y="152" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:21px" fill="#fff">G</text><text x="433" y="150" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#12161C">app e site</text><circle cx="176" cy="185" r="17" fill="#12161C"/><text x="176" y="192" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:21px" fill="#fff">B</text><text x="200" y="190" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#12161C">UTM</text><circle cx="346" cy="192" r="17" fill="#12161C"/><text x="346" y="199" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:21px" fill="#fff">C</text><text x="370" y="197" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#12161C">sessão sem page_view</text><line x1="362" y1="268" x2="362" y2="102" stroke="#7B818C" stroke-width="2" stroke-dasharray="3 4"/><circle cx="362" cy="268" r="15" fill="#7B818C"/><text x="362" y="274" text-anchor="middle" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:19px" fill="#fff">E</text><text x="384" y="272" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#12161C">consentimento (varia muito)</text></svg><div class="cap">POSIÇÕES TÍPICAS · na sua operação, use o peso real que a Bancada mostrar</div></figure>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Escreva um dono e uma data para cada família antes de começar.</p></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>07</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 08</span><span>PROVE</span></div>
+<h2 id="s7">Prove que <em>melhorou</em></h2>
+<p class="kicker">A melhoria tem que aparecer numa série, não numa captura de tela. Anote no gráfico a data de cada correção.</p>
+<figure><svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg"><line x1="40" y1="244" x2="580" y2="244" stroke="#12161C" stroke-width="2"/><path d="M40 40 L89 45 L138 51 L187 101 L236 106 L285 152 L335 156 L384 193 L433 197 L482 223 L531 232 L580 236" fill="none" stroke="#FF4F1A" stroke-width="3.5"/><line x1="187" y1="20" x2="187" y2="244" stroke="#7B818C" stroke-width="1.2" stroke-dasharray="3 4"/><text x="192" y="32" style="font-family:Azeret Mono,monospace;font-size:10px" fill="#12161C">corrigiu A</text><line x1="285" y1="20" x2="285" y2="244" stroke="#7B818C" stroke-width="1.2" stroke-dasharray="3 4"/><text x="290" y="32" style="font-family:Azeret Mono,monospace;font-size:10px" fill="#12161C">corrigiu D</text><line x1="384" y1="20" x2="384" y2="244" stroke="#7B818C" stroke-width="1.2" stroke-dasharray="3 4"/><text x="389" y="32" style="font-family:Azeret Mono,monospace;font-size:10px" fill="#12161C">corrigiu F</text><line x1="482" y1="20" x2="482" y2="244" stroke="#7B818C" stroke-width="1.2" stroke-dasharray="3 4"/><text x="487" y="32" style="font-family:Azeret Mono,monospace;font-size:10px" fill="#12161C">corrigiu B e C</text><text x="40" y="32" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:24px" fill="#FF4F1A">20%</text><text x="576" y="226" text-anchor="end" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:24px" fill="#FF4F1A">0,8%</text><text x="580" y="272" text-anchor="end" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">% de sessões em (not set), semana a semana →</text></svg><div class="cap">ILUSTRATIVO · formato esperado da série, não o registro semanal do caso</div></figure>
+<div class="cards">
+ <div class="card"><h3>O total não pode cair junto</h3><p>(not set) que some porque o dado sumiu não é correção, é perda.</p></div>
+ <div class="card"><h3>O GA4 tem que se aproximar do backend</h3><p>Se o (not set) caiu e a distância para o backend não mudou, você só trocou o rótulo do buraco.</p></div>
+</div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Rode a série toda semana e compare as compras do GA4 com as do backend todo mês.</p><span class="ref">Bancada · N7</span></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>08</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 09</span><span>CHECKLIST</span></div>
+<h2 id="s8">Checklist de auditoria</h2>
+<ul class="check">
+ <li>Linha de base com data</li>
+ <li>Todas as contas do Ads vinculadas</li>
+ <li>Auto-tagging ligado</li>
+ <li>gclid e UTM sobrevivem aos redirects</li>
+ <li>Taxonomia de UTM com dono</li>
+ <li>Tag do Google antes de qualquer evento</li>
+ <li>Evento de servidor com client_id e session_id</li>
+ <li>Consent Mode testado nas 3 situações</li>
+ <li>Checkout e login configurados</li>
+ <li>App e site analisados separados</li>
+ <li>Série semanal com as correções anotadas</li>
+ <li>GA4 x backend, todo mês</li>
+</ul><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>09</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 10</span><span>BANCADA</span></div><h2 id="s9">Bancada · <em>as consultas</em></h2><p class="kicker">Troque <code>projeto.analytics_123456789</code> pelo dataset da sua propriedade. O campo <code>session_traffic_source_last_click</code> entrou no export em 2024; em exports antigos, reconstrua a origem com <code>collected_traffic_source</code>.</p><div class="q"><div class="h"><span class="id">N1</span><span class="d">Tabela de sessões com os sinais de diagnóstico</span></div><pre><code><span class="c">-- Base de sessões com os sinais de diagnóstico (export do GA4 no BigQuery)</span>
 <span class="c">-- Troque `projeto.analytics_123456789` pelo dataset da sua propriedade</span>
 CREATE OR REPLACE TABLE `projeto.auditoria.sessoes_notset` AS
 WITH eventos AS (
@@ -165,95 +209,14 @@ SELECT
   SUM(IF(event_name = 'purchase', receita, 0))             AS receita
 FROM eventos
 WHERE user_pseudo_id IS NOT NULL AND session_id IS NOT NULL
-GROUP BY 1, 2;</code></pre>
-<div class="lm-note"><b>Confira no seu schema:</b> o campo <code>session_traffic_source_last_click</code> entrou no export em 2024. Em exports mais antigos, ou se ele vier vazio, reconstrua a origem da sessão com <code>collected_traffic_source</code> e o parâmetro <code>page_referrer</code> do primeiro evento.</div>
-<p>Com a tabela pronta, o número de partida:</p>
-<pre><code><span class="c">-- Ponto de partida: quanto do dado está sem origem</span>
+GROUP BY 1, 2;</code></pre></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>10</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 11</span><span>BANCADA</span></div><div class="q"><div class="h"><span class="id">N2</span><span class="d">Ponto de partida: sessões, compras e receita em (not set)</span></div><pre><code><span class="c">-- Ponto de partida: quanto do dado está sem origem</span>
 SELECT
   COUNT(*) AS sessoes,
   ROUND(100 * COUNTIF(IFNULL(sessao_source, '(not set)') = '(not set)') / COUNT(*), 1) AS pct_sessoes_not_set,
   ROUND(100 * SUM(IF(IFNULL(sessao_source, '(not set)') = '(not set)', compras, 0)) / NULLIF(SUM(compras), 0), 1) AS pct_compras_not_set,
   ROUND(100 * SUM(IF(IFNULL(sessao_source, '(not set)') = '(not set)', receita, 0)) / NULLIF(SUM(receita), 0), 1) AS pct_receita_not_set
-FROM `projeto.auditoria.sessoes_notset`;</code></pre>
-<p>Guarde esse resultado com a data. Ele é a linha de base da seção 6.</p>
-
-<h2 id="s3">3. As 7 famílias de causa</h2>
-<p>(not set) quase nunca vem de um erro só. Ele é a soma de pequenas perdas, cada uma com um dono diferente: mídia, desenvolvimento, CRM, jurídico, produto. Por isso a investigação vai por família, da mais comum para a mais trabalhosa.</p>
-
-<div class="lm-cause">
-  <h3>A. Google Ads sem vínculo ou gclid perdido</h3>
-  <dl>
-    <dt>Sintoma</dt><dd>(not set) concentrado em sessões que têm gclid. A campanha do Google Ads aparece como (not set).</dd>
-    <dt>Por quê</dt><dd>Conta do Ads não vinculada à propriedade, outra conta anunciando o mesmo site sem vínculo, auto-tagging desligado, ou um redirect que derruba o parâmetro gclid no caminho.</dd>
-    <dt>Confirme</dt><dd>Consulta 4.1, linha <code>tem_gclid = true</code>. Teste a URL final com o parâmetro e veja se ele sobrevive ao redirect: <code>curl -sIL "https://seusite.com.br/lp?gclid=teste123" | grep -i location</code></dd>
-    <dt>Corrija</dt><dd>Vincule todas as contas que anunciam o site, ligue o auto-tagging e ajuste os redirects (servidor, plugin, encurtador, app de links) para preservar a query string.</dd>
-  </dl>
-</div>
-
-<div class="lm-cause">
-  <h3>B. UTM incompleta ou fora do padrão</h3>
-  <dl>
-    <dt>Sintoma</dt><dd>Sessões com <code>utm_source</code> e sem <code>utm_medium</code>. Fontes duplicadas por grafia: "Instagram", "instagram", "ig".</dd>
-    <dt>Por quê</dt><dd>Links de e-mail, WhatsApp, CRM e influenciador montados à mão, sem taxonomia.</dd>
-    <dt>Confirme</dt><dd>Consulta 4.1, linha <code>utm_incompleta = true</code>, e a lista de valores distintos de source e medium dos últimos 90 dias.</dd>
-    <dt>Corrija</dt><dd>Uma taxonomia escrita (source, medium e campaign obrigatórios, minúsculas, sem acento), um gerador de links que só aceita valores da lista e um dono para ela.</dd>
-  </dl>
-</div>
-
-<div class="lm-cause">
-  <h3>C. Sessão que começa sem page_view</h3>
-  <dl>
-    <dt>Sintoma</dt><dd>O primeiro evento da sessão não é <code>page_view</code> nem <code>session_start</code>. Aparecem <code>user_engagement</code>, <code>scroll</code>, eventos de vídeo ou eventos próprios.</dd>
-    <dt>Por quê</dt><dd>Eventos disparando antes da tag do Google carregar, ou uma aba que fica aberta mais de 30 minutos e "acorda" a sessão com um evento que não carrega página nem referência.</dd>
-    <dt>Confirme</dt><dd>Consulta 4.1, coluna <code>primeiro_evento</code>, e a consulta 4.2.</dd>
-    <dt>Corrija</dt><dd>No GTM, a tag do Google no acionador de inicialização e os eventos dependentes dela. Revise eventos automáticos que disparam sem interação real.</dd>
-  </dl>
-</div>
-
-<div class="lm-cause">
-  <h3>D. Evento de servidor sem a sessão junto</h3>
-  <dl>
-    <dt>Sintoma</dt><dd>O percentual de (not set) nas compras é bem maior que nas sessões. Compras em sessões com um evento só.</dd>
-    <dt>Por quê</dt><dd>A compra é confirmada pelo backend e enviada pelo Measurement Protocol, ou por um server-side mal configurado, sem o <code>client_id</code> e o <code>session_id</code> do navegador. O GA4 recebe a venda, mas não sabe de qual sessão ela veio.</dd>
-    <dt>Confirme</dt><dd>Consulta 4.3.</dd>
-    <dt>Corrija</dt><dd>Capture o <code>client_id</code> (cookie <code>_ga</code>) e o <code>session_id</code> (cookie <code>_ga_&lt;ID&gt;</code>) no checkout, guarde junto do pedido e envie os dois no evento de servidor.</dd>
-  </dl>
-</div>
-
-<div class="lm-cause">
-  <h3>E. Consentimento</h3>
-  <dl>
-    <dt>Sintoma</dt><dd>Buracos concentrados em <code>analytics_storage = 'No'</code>, eventos sem <code>user_pseudo_id</code>, quedas que coincidem com mudanças no banner de cookies.</dd>
-    <dt>Por quê</dt><dd>Com o Consent Mode, quem nega cookies gera pings sem identificador. Desde 15/06/2026, o <code>ad_storage</code> virou o único portão do dado entre GA4 e Google Ads. Banner que não envia o sinal certo apaga conversão sem avisar.</dd>
-    <dt>Confirme</dt><dd>Consulta 4.4. Teste o banner nas três situações: aceita, nega e ignora.</dd>
-    <dt>Corrija</dt><dd>Estado padrão definido antes de qualquer tag, atualização no clique do banner, sinais <code>ad_storage</code>, <code>ad_user_data</code> e <code>ad_personalization</code> mapeados. Valide com o jurídico, não só com o time de mídia.</dd>
-  </dl>
-</div>
-
-<div class="lm-cause">
-  <h3>F. Domínios e checkout fora do site</h3>
-  <dl>
-    <dt>Sintoma</dt><dd>(not set) ou referral do próprio gateway concentrados em um host específico, normalmente o de pagamento, login ou um subdomínio.</dd>
-    <dt>Por quê</dt><dd>A sessão quebra quando o usuário passa para outro domínio e volta. A origem real fica para trás.</dd>
-    <dt>Confirme</dt><dd>Consulta 4.1, coluna <code>host</code>.</dd>
-    <dt>Corrija</dt><dd>Configuração de vários domínios na tag, gateway na lista de referências indesejadas e, quando houver login, <code>user_id</code> para costurar a jornada.</dd>
-  </dl>
-</div>
-
-<div class="lm-cause">
-  <h3>G. App e site misturados</h3>
-  <dl>
-    <dt>Sintoma</dt><dd>(not set) concentrado em <code>platform = 'ANDROID'</code> ou <code>'IOS'</code>.</dd>
-    <dt>Por quê</dt><dd>No app, a sessão costuma chegar sem dado de campanha quando a abertura não veio de um link com parâmetro. E a atribuição de instalação mora no MMP (AppsFlyer, Adjust), não no GA4.</dd>
-    <dt>Confirme</dt><dd>Consulta 4.1 separada por <code>stream_id</code>.</dd>
-    <dt>Corrija</dt><dd>Analise app e site separados. Para instalação, a fonte da verdade é o MMP. Para reengajamento, deep links com parâmetros de campanha.</dd>
-  </dl>
-</div>
-
-<h2 id="s4">4. As consultas de diagnóstico</h2>
-<h3>4.1 Onde o (not set) se concentra</h3>
-<p>A consulta que mais rende. Ela cruza os sinais da tabela de sessões e mostra as combinações com mais sessões sem origem. Em geral, duas ou três linhas explicam a maior parte do problema.</p>
-<pre><code>SELECT
+FROM `projeto.auditoria.sessoes_notset`;</code></pre></div><div class="q"><div class="h"><span class="id">N3</span><span class="d">Onde o (not set) se concentra</span></div><pre><code>SELECT
   primeiro_evento, tem_session_start, tem_pageview, tem_gclid, utm_incompleta,
   platform, analytics_storage, host,
   COUNT(*) AS sessoes,
@@ -264,20 +227,14 @@ FROM `projeto.auditoria.sessoes_notset`
 GROUP BY ALL
 HAVING sessoes &gt;= 50
 ORDER BY sessoes_not_set DESC
-LIMIT 30;</code></pre>
-
-<h3>4.2 Com que evento a sessão começa</h3>
-<pre><code>SELECT
+LIMIT 30;</code></pre></div><div class="q"><div class="h"><span class="id">N4</span><span class="d">Com que evento a sessão começa</span></div><pre><code>SELECT
   primeiro_evento,
   COUNT(*) AS sessoes,
   ROUND(100 * COUNTIF(IFNULL(sessao_source, '(not set)') = '(not set)') / COUNT(*), 1) AS pct_not_set
 FROM `projeto.auditoria.sessoes_notset`
 GROUP BY 1
-ORDER BY sessoes DESC;</code></pre>
-<p>Se <code>page_view</code> e <code>session_start</code> não dominarem o topo, a família C está pesando.</p>
-
-<h3>4.3 Compras que chegam sem sessão</h3>
-<pre><code><span class="c">-- Compras sem session_id e compras em sessões de um evento só</span>
+ORDER BY sessoes DESC;</code></pre></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>11</span></div></section>
+<section class="pg "><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 12</span><span>BANCADA</span></div><div class="q"><div class="h"><span class="id">N5</span><span class="d">Compras que chegam sem sessão</span></div><pre><code><span class="c">-- Compras sem session_id e compras em sessões de um evento só</span>
 WITH compras AS (
   SELECT
     user_pseudo_id,
@@ -293,10 +250,7 @@ SELECT
   COUNTIF(s.n_eventos = 1) AS compras_em_sessao_de_1_evento
 FROM compras c
 LEFT JOIN `projeto.auditoria.sessoes_notset` s
-  ON s.user_pseudo_id = c.user_pseudo_id AND s.session_id = c.session_id;</code></pre>
-
-<h3>4.4 Peso do consentimento</h3>
-<pre><code>SELECT
+  ON s.user_pseudo_id = c.user_pseudo_id AND s.session_id = c.session_id;</code></pre></div><div class="q"><div class="h"><span class="id">N6</span><span class="d">Peso do consentimento por dia</span></div><pre><code>SELECT
   PARSE_DATE('%Y%m%d', event_date) AS dia,
   COUNT(*) AS eventos,
   ROUND(100 * COUNTIF(privacy_info.analytics_storage = 'No') / COUNT(*), 1) AS pct_analytics_negado,
@@ -305,56 +259,22 @@ FROM `projeto.analytics_123456789.events_*`
 WHERE _TABLE_SUFFIX BETWEEN FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY))
                         AND FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))
 GROUP BY 1
-ORDER BY 1;</code></pre>
-<p>Uma mudança brusca nessa série quase sempre tem uma data de publicação do banner por trás.</p>
-
-<h2 id="s5">5. Priorize pelo dinheiro</h2>
-<p>Com as causas na mesa, a tentação é corrigir a mais fácil. A ordem certa é outra: a família que concentra mais receita em (not set) vem primeiro, mesmo que dê mais trabalho.</p>
-<div class="table-wrap"><table>
-  <tr><th>Família</th><th>Peso típico</th><th>Esforço</th><th>Quem resolve</th></tr>
-  <tr><td>A. Google Ads e gclid</td><td>Alto em operação com muita mídia de busca</td><td>Baixo</td><td>Mídia + desenvolvimento</td></tr>
-  <tr><td>B. UTM</td><td>Médio, cresce com CRM e influência</td><td>Baixo, mas contínuo</td><td>CRM, mídia e conteúdo</td></tr>
-  <tr><td>C. Sessão sem page_view</td><td>Médio</td><td>Médio</td><td>Analytics + desenvolvimento</td></tr>
-  <tr><td>D. Evento de servidor</td><td>Alto nas conversões</td><td>Médio</td><td>Desenvolvimento backend</td></tr>
-  <tr><td>E. Consentimento</td><td>Varia muito</td><td>Médio</td><td>Analytics + jurídico</td></tr>
-  <tr><td>F. Domínios e checkout</td><td>Alto em e-commerce com gateway externo</td><td>Baixo a médio</td><td>Analytics</td></tr>
-  <tr><td>G. App e site</td><td>Alto em operação com app</td><td>Médio</td><td>Analytics + produto</td></tr>
-</table></div>
-<div class="lm-tip">Escreva um dono e uma data para cada família antes de começar. (not set) volta quando ninguém responde por ele.</div>
-
-<h2 id="s6">6. Prove que melhorou</h2>
-<p>A melhoria tem que aparecer numa série, não numa captura de tela. Rode a consulta abaixo toda semana e anote no gráfico a data de cada correção.</p>
-<pre><code>SELECT
+ORDER BY 1;</code></pre></div><div class="q"><div class="h"><span class="id">N7</span><span class="d">Série semanal para provar a melhoria</span></div><pre><code>SELECT
   dia,
   COUNT(*) AS sessoes,
   ROUND(100 * COUNTIF(IFNULL(sessao_source, '(not set)') = '(not set)') / COUNT(*), 1) AS pct_not_set,
   ROUND(100 * SUM(IF(IFNULL(sessao_source, '(not set)') = '(not set)', compras, 0)) / NULLIF(SUM(compras), 0), 1) AS pct_compras_not_set
 FROM `projeto.auditoria.sessoes_notset`
 GROUP BY 1
-ORDER BY 1;</code></pre>
-<p>Duas checagens evitam a melhoria falsa:</p>
-<ul>
-  <li><b>O total de sessões e de compras não pode cair junto.</b> (not set) que some porque o dado sumiu não é correção, é perda.</li>
-  <li><b>As compras do GA4 têm que se aproximar das compras do backend.</b> Se o (not set) caiu e a distância para o backend continua a mesma, você só trocou o rótulo do buraco.</li>
-</ul>
-
-<h2 id="s7">7. Checklist de auditoria</h2>
-<ul class="lm-check">
-  <li>Linha de base registrada: % de sessões, compras e receita em (not set), com data</li>
-  <li>Todas as contas do Google Ads que anunciam o site estão vinculadas, com auto-tagging ligado</li>
-  <li>O gclid e as UTMs sobrevivem a todos os redirects (testado com curl)</li>
-  <li>Existe taxonomia de UTM escrita, com gerador de links e um dono</li>
-  <li>A tag do Google carrega antes de qualquer evento, no acionador de inicialização</li>
-  <li>Eventos de servidor levam client_id e session_id do navegador</li>
-  <li>Consent Mode testado nas três situações: aceita, nega e ignora</li>
-  <li>Domínios de checkout e login configurados, gateway em referências indesejadas</li>
-  <li>App e site analisados separados; instalação vem do MMP</li>
-  <li>Série semanal de % (not set) com as datas das correções anotadas</li>
-  <li>Compras do GA4 comparadas com as do backend, todo mês</li>
-</ul>
+ORDER BY 1;</code></pre></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>12</span></div></section>
+<section class="pg end"><div class="top"><span>AUDITORIA DE (NOT SET) NO GA4 · 13</span><span>FIM</span></div>
+<h2 id="s10">Quer que eu olhe <em>a sua conta</em>?</h2>
+<p class="kicker">30 minutos, ao vivo, nas suas plataformas. Você sai com os três problemas mais críticos de mensuração da sua operação. Sem compromisso.</p>
+<p class="mono" style="margin-top:26px;font-size:15px">jefersonjs.com.br · contato@jefersonjs.com.br</p>
+<p class="mono" style="margin-top:40px;font-size:11px;color:#9AA3AE">Fontes: ajuda do Google Analytics sobre (not set) e Consent Mode. Números do caso anonimizados.</p><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>13</span></div></section></div>
 
     <div class="lm-download">
-      <p><b>Quer guardar para consultar depois?</b> O guia completo em PDF, com todas as consultas.</p>
+      <p><b>Quer guardar para consultar depois?</b> O guia completo em PDF, página por página, com todas as consultas.</p>
       <a class="btn-pri" href="guia-auditoria-not-set-ga4.pdf" download data-lm="auditoria-not-set-ga4" data-pos="rodape">Baixar o PDF ↓</a>
     </div>
   </div>

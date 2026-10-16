@@ -30,6 +30,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/cases.css">
 <link rel="stylesheet" href="../../assets/materiais.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Azeret+Mono:wght@400;500;700;800&family=Caveat:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/guia2.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -92,7 +94,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="btn-pri" href="guia-fraude-mobile-dado-bruto.pdf" download data-lm="fraude-mobile-dado-bruto" data-pos="hero">Baixar o PDF ↓</a>
           <a class="btn-sec" href="#guia">Ler aqui</a>
         </div>
-        <div class="case-meta reveal"><span>Versão 1 · outubro de 2026</span><span>~15 min de leitura</span><span>AppsFlyer · BigQuery · SQL</span></div>
+        <div class="case-meta reveal"><span>Versão 2 · outubro de 2026</span><span>11 páginas + consultas</span><span>AppsFlyer · BigQuery · SQL</span></div>
       </div>
       <a class="lm-cover reveal" href="guia-fraude-mobile-dado-bruto.pdf" download data-lm="fraude-mobile-dado-bruto" data-pos="capa"><img src="capa.png" alt="Capa do guia Fraude mobile no dado bruto" width="560" height="728"></a>
     </div>
@@ -101,33 +103,114 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section id="guia">
   <div class="container case-body">
-    <div class="lm-toc reveal"><span class="slabel">Neste guia</span><ol><li><a href="#s1">Dois tipos de fraude, dois rastros</a></li><li><a href="#s2">O dado que você precisa</a></li><li><a href="#s3">Sinal 1: instalação que não vira uso</a></li><li><a href="#s4">Sinal 2: IP e aparelho repetidos</a></li><li><a href="#s5">Sinal 3: receita que o backend não confirma</a></li><li><a href="#s6">Sinais complementares</a></li><li><a href="#s7">O score: juntando os sinais</a></li><li><a href="#s8">Do achado ao retroativo</a></li><li><a href="#s9">O que o método não pega</a></li><li><a href="#s10">Checklist</a></li></ol></div>
+    <div class="lm-toc reveal"><span class="slabel">Neste guia</span><ol><li><a href="#s1">Dois tipos de fraude.Dois rastros diferentes.</a></li><li><a href="#s2">Antes de qualquer consulta: a chave</a></li><li><a href="#s3">Sinal 1 · Instalação que não vira uso</a></li><li><a href="#s4">Sinal 2 · IP e aparelho repetidos</a></li><li><a href="#s5">Sinal 3 · Receita que o backend não confirma</a></li><li><a href="#s6">Para pegar roubo de crédito: o relógio</a></li><li><a href="#s7">Quando vira caso: o score</a></li><li><a href="#s8">Do achado ao retroativo</a></li><li><a href="#s9">O que o método não pega</a></li><li><a href="#s10">Checklist</a></li><li><a href="#s11">Bancada · as consultas</a></li><li><a href="#s12">Quer que eu rode isso na sua conta?</a></li></ol></div>
 
-<h2 id="s1">1. Dois tipos de fraude, dois rastros</h2>
-<p>Quase toda fraude de mídia mobile cai em um de dois grupos. Separar os dois muda onde você procura.</p>
-<div class="table-wrap"><table>
-  <tr><th>Tipo</th><th>Como funciona</th><th>O rastro que deixa</th></tr>
-  <tr><td><b>Roubo de crédito</b><br><code>click flooding, click injection</code></td><td>O usuário é real e ia instalar de qualquer jeito. O fraudador dispara cliques para ficar com o crédito da instalação.</td><td>Usuário com comportamento normal, mas tempo entre clique e instalação estranho e muitos cliques para cada instalação.</td></tr>
-  <tr><td><b>Usuário falso</b><br><code>bots, device farm, emulador, SDK spoofing</code></td><td>O usuário não existe. A instalação e às vezes até os eventos dentro do app são simulados.</td><td>Instalação que não vira uso, IP e aparelho repetidos, nenhuma receita confirmada.</td></tr>
-</table></div>
-<p>O roubo de crédito desvia verba de um canal para outro. O usuário falso queima verba sem trazer nada. O segundo é o mais caro quando o parceiro é pago por CPA, porque a empresa paga por uma compra que nunca aconteceu.</p>
-<div class="lm-note"><b>Princípio do score:</b> nenhum sinal sozinho prova fraude. Três sinais independentes apontando para o mesmo parceiro, ao mesmo tempo, já são um caso.</div>
-
-<h2 id="s2">2. O dado que você precisa</h2>
-<div class="table-wrap"><table>
-  <tr><th>Fonte</th><th>O que usar</th></tr>
-  <tr><td>AppsFlyer, dado bruto de instalações (Data Locker ou Pull API)</td><td><code>install_time</code>, <code>attributed_touch_time</code>, <code>attributed_touch_type</code>, <code>media_source</code>, <code>af_prt</code>, <code>af_siteid</code>, <code>campaign</code>, <code>appsflyer_id</code>, <code>customer_user_id</code>, <code>advertising_id</code>, <code>ip</code>, <code>device_model</code>, <code>os_version</code>, <code>platform</code>, <code>country_code</code></td></tr>
-  <tr><td>AppsFlyer, eventos in-app</td><td><code>event_name</code>, <code>event_time</code>, <code>event_revenue</code>, mais as mesmas chaves de usuário</td></tr>
-  <tr><td>AppsFlyer, relatório agregado por parceiro</td><td>Cliques e instalações por <code>media_source</code> e <code>af_siteid</code></td></tr>
-  <tr><td><b>Seu backend</b> (ou Firebase)</td><td>Primeira sessão real do usuário e pedidos pagos, com uma chave que ligue ao MMP</td></tr>
-</table></div>
-<div class="lm-tip"><b>A peça que mais falta:</b> uma chave entre o MMP e o seu sistema. Grave o <code>appsflyer_id</code> (pelo SDK) e o <code>customer_user_id</code> no seu backend desde a primeira abertura. Sem isso, os sinais 1 e 3 ficam pela metade.</div>
-<p>As consultas abaixo assumem as tabelas <code>appsflyer.installs</code>, <code>appsflyer.inapp_events</code>, <code>app.sessoes</code> e <code>backend.pedidos</code> no BigQuery. Ajuste nomes de tabela e coluna ao seu export.</p>
-
-<h2 id="s3">3. Sinal 1: instalação que não vira uso</h2>
-<p>Foi o sinal que abriu o caso dos R$ 100 mil. Em canal saudável, quase toda instalação vira uso real, e quase na hora. No parceiro suspeito, só 38% viravam. Nos outros parceiros, 92%.</p>
-<p>O ponto fino: "uso real" tem que vir do <b>seu</b> sistema, não do SDK do MMP. Fraude por SDK spoofing consegue fabricar a instalação e até eventos dentro do app. O que ela não fabrica é uma sessão no seu backend.</p>
-<pre><code><span class="c">-- Sinal 1: % de instalações com uso real em até 24h, por parceiro e site_id</span>
+<div class="g2"><section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 02</span><span>OS DOIS TIPOS</span></div>
+<h2 id="s1">Dois tipos de fraude.<br>Dois rastros <em>diferentes</em>.</h2>
+<div class="cards">
+ <div class="card"><div class="sem"><i style="background:#12161C"></i>ROUBO DE CRÉDITO</div><h3>O usuário existe</h3>
+  <p>Ele ia instalar de qualquer jeito. O fraudador dispara cliques para ficar com o crédito.</p>
+  <p><b>Rastro</b>tempo estranho entre clique e instalação, muitos cliques por instalação.</p>
+  <p><b>Custo</b>desvia verba de um canal para outro.</p></div>
+ <div class="card"><div class="sem"><i style="background:#FF4F1A"></i>USUÁRIO FALSO</div><h3>O usuário não existe</h3>
+  <p>Bot, device farm, emulador, SDK spoofing. A instalação, e às vezes os eventos, são simulados.</p>
+  <p><b>Rastro</b>não vira uso, IP e aparelho repetidos, nenhuma receita.</p>
+  <p><b>Custo</b>queima verba. Pago por compra, é o mais caro.</p></div>
+</div>
+<p class="kicker">Separar os dois muda onde você procura. Este guia começa pelo usuário falso, que foi o caso dos R$ 100 mil.</p>
+<p style="margin-top:18px"><span class="hand">nenhum sinal sozinho prova nada.<br>três juntos viram caso.</span></p><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>02</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 03</span><span>ANTES DE TUDO</span></div>
+<h2 id="s2">Antes de qualquer consulta: <em>a chave</em></h2>
+<p class="kicker">Sem uma chave ligando o MMP ao seu sistema, dois dos três sinais ficam pela metade.</p>
+<figure><svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="20" width="220" height="190" fill="#fff" stroke="#12161C" stroke-width="2.5"/><text x="14" y="48" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:22px" fill="#12161C">APPSFLYER</text><text x="14" y="76" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#12161C">instalações (dado bruto)</text><text x="14" y="98" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#12161C">eventos in-app</text><text x="14" y="120" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#12161C">cliques por parceiro</text><rect x="380" y="20" width="220" height="190" fill="#fff" stroke="#12161C" stroke-width="2.5"/><text x="394" y="48" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:22px" fill="#12161C">SEU BACKEND</text><text x="394" y="76" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#12161C">primeira sessão real</text><text x="394" y="98" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#12161C">pedidos pagos</text><text x="394" y="120" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#12161C">customer_user_id</text><line x1="222" y1="115.0" x2="378" y2="115.0" stroke="#FF4F1A" stroke-width="3" stroke-dasharray="9 6"/><rect x="224.0" y="81.0" width="152" height="68" fill="#FF4F1A"/><text x="300.0" y="107.0" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:800" fill="#fff">appsflyer_id</text><text x="300.0" y="131.0" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:800" fill="#fff">customer_user_id</text><text x="300.0" y="171.0" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#FF4F1A">A CHAVE QUE MAIS FALTA</text></svg></figure>
+<div class="row"><div class="txt"><p>Do lado da AppsFlyer você usa o dado bruto: instalações e eventos com <code>media_source</code>, <code>af_siteid</code>, <code>ip</code>, <code>advertising_id</code>, <code>device_model</code> e os horários de clique e instalação.</p>
+<p>Do seu lado, só duas coisas: quando a pessoa usou o app de verdade e se ela pagou.</p></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Grave o <code>appsflyer_id</code> e o <code>customer_user_id</code> no backend desde a primeira abertura do app.</p></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>03</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 04</span><span>SINAL 1</span></div>
+<h2 id="s3">Sinal 1 · Instalação que <em>não vira uso</em></h2>
+<p class="kicker">Em canal saudável, quase toda instalação vira uso real, e quase na hora.</p>
+<figure><svg viewBox="0 0 560 208" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" style="font-family:Azeret Mono,monospace;font-size:12px;letter-spacing:.12em" fill="#7B818C">% DE INSTALAÇÕES COM USO REAL EM 24H</text><text x="0" y="48" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">OUTROS PARCEIROS</text><rect x="0" y="56" width="410" height="38" fill="none" stroke="rgba(18,22,28,.16)" stroke-width="1.5"/><rect x="0" y="56" width="377" height="38" fill="#12161C"/><text x="389" y="88" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:40px" fill="#12161C">92%</text><text x="558" y="88" text-anchor="end" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#7B818C">mediana</text><text x="0" y="132" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">PARCEIRO SUSPEITO</text><rect x="0" y="140" width="410" height="38" fill="none" stroke="rgba(18,22,28,.16)" stroke-width="1.5"/><rect x="0" y="140" width="156" height="38" fill="#FF4F1A"/><text x="168" y="172" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:40px" fill="#FF4F1A">38%</text><text x="558" y="172" text-anchor="end" style="font-family:Azeret Mono,monospace;font-size:11px" fill="#7B818C">o caso</text></svg><p style="text-align:right;margin:4px 0 0"><span class="hand">foi aqui que o caso abriu</span></p></figure>
+<div class="row"><div class="txt"><p>Uso real tem que vir do <b>seu</b> sistema, não do SDK do MMP. SDK spoofing fabrica a instalação e até evento dentro do app. Não fabrica sessão no seu backend.</p>
+<p>Sem sessão própria, use evento in-app em 24h como aproximação. É mais fraco, mas já separa quem está fora da curva.</p></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Tire a taxa por parceiro e site_id e ordene do menor para o maior. Olhe quem está muito abaixo da mediana.</p><span class="ref">Bancada · B1</span></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>04</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 05</span><span>SINAL 2</span></div>
+<h2 id="s4">Sinal 2 · IP e aparelho <em>repetidos</em></h2>
+<p class="kicker">Usuário real é espalhado. Device farm e emulador deixam concentração.</p>
+<figure><svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg"><rect x="0.0" y="26" width="270.0" height="270" fill="#fff" stroke="#12161C" stroke-width="2"/><text x="0.0" y="16" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">PARCEIRO SAUDÁVEL</text><circle cx="92" cy="77" r="4.2" fill="#12161C" opacity=".8"/><circle cx="172" cy="58" r="4.2" fill="#12161C" opacity=".8"/><circle cx="144" cy="128" r="4.2" fill="#12161C" opacity=".8"/><circle cx="28" cy="163" r="4.2" fill="#12161C" opacity=".8"/><circle cx="23" cy="145" r="4.2" fill="#12161C" opacity=".8"/><circle cx="31" cy="62" r="4.2" fill="#12161C" opacity=".8"/><circle cx="117" cy="240" r="4.2" fill="#12161C" opacity=".8"/><circle cx="44" cy="94" r="4.2" fill="#12161C" opacity=".8"/><circle cx="166" cy="269" r="4.2" fill="#12161C" opacity=".8"/><circle cx="154" cy="136" r="4.2" fill="#12161C" opacity=".8"/><circle cx="250" cy="51" r="4.2" fill="#12161C" opacity=".8"/><circle cx="222" cy="110" r="4.2" fill="#12161C" opacity=".8"/><circle cx="49" cy="69" r="4.2" fill="#12161C" opacity=".8"/><circle cx="89" cy="238" r="4.2" fill="#12161C" opacity=".8"/><circle cx="58" cy="181" r="4.2" fill="#12161C" opacity=".8"/><circle cx="169" cy="130" r="4.2" fill="#12161C" opacity=".8"/><circle cx="147" cy="55" r="4.2" fill="#12161C" opacity=".8"/><circle cx="28" cy="90" r="4.2" fill="#12161C" opacity=".8"/><circle cx="179" cy="143" r="4.2" fill="#12161C" opacity=".8"/><circle cx="90" cy="182" r="4.2" fill="#12161C" opacity=".8"/><circle cx="124" cy="113" r="4.2" fill="#12161C" opacity=".8"/><circle cx="206" cy="209" r="4.2" fill="#12161C" opacity=".8"/><circle cx="73" cy="179" r="4.2" fill="#12161C" opacity=".8"/><circle cx="141" cy="252" r="4.2" fill="#12161C" opacity=".8"/><circle cx="191" cy="110" r="4.2" fill="#12161C" opacity=".8"/><circle cx="251" cy="69" r="4.2" fill="#12161C" opacity=".8"/><circle cx="115" cy="223" r="4.2" fill="#12161C" opacity=".8"/><circle cx="51" cy="158" r="4.2" fill="#12161C" opacity=".8"/><circle cx="23" cy="202" r="4.2" fill="#12161C" opacity=".8"/><circle cx="199" cy="179" r="4.2" fill="#12161C" opacity=".8"/><circle cx="226" cy="116" r="4.2" fill="#12161C" opacity=".8"/><circle cx="182" cy="184" r="4.2" fill="#12161C" opacity=".8"/><circle cx="154" cy="150" r="4.2" fill="#12161C" opacity=".8"/><circle cx="217" cy="269" r="4.2" fill="#12161C" opacity=".8"/><circle cx="129" cy="201" r="4.2" fill="#12161C" opacity=".8"/><circle cx="29" cy="210" r="4.2" fill="#12161C" opacity=".8"/><circle cx="171" cy="280" r="4.2" fill="#12161C" opacity=".8"/><circle cx="213" cy="109" r="4.2" fill="#12161C" opacity=".8"/><circle cx="107" cy="202" r="4.2" fill="#12161C" opacity=".8"/><circle cx="19" cy="152" r="4.2" fill="#12161C" opacity=".8"/><circle cx="55" cy="68" r="4.2" fill="#12161C" opacity=".8"/><circle cx="28" cy="226" r="4.2" fill="#12161C" opacity=".8"/><circle cx="45" cy="100" r="4.2" fill="#12161C" opacity=".8"/><circle cx="109" cy="251" r="4.2" fill="#12161C" opacity=".8"/><circle cx="34" cy="149" r="4.2" fill="#12161C" opacity=".8"/><circle cx="147" cy="254" r="4.2" fill="#12161C" opacity=".8"/><circle cx="212" cy="249" r="4.2" fill="#12161C" opacity=".8"/><circle cx="81" cy="141" r="4.2" fill="#12161C" opacity=".8"/><circle cx="101" cy="254" r="4.2" fill="#12161C" opacity=".8"/><circle cx="246" cy="77" r="4.2" fill="#12161C" opacity=".8"/><circle cx="57" cy="96" r="4.2" fill="#12161C" opacity=".8"/><circle cx="70" cy="157" r="4.2" fill="#12161C" opacity=".8"/><circle cx="157" cy="104" r="4.2" fill="#12161C" opacity=".8"/><circle cx="15" cy="141" r="4.2" fill="#12161C" opacity=".8"/><circle cx="103" cy="177" r="4.2" fill="#12161C" opacity=".8"/><circle cx="245" cy="207" r="4.2" fill="#12161C" opacity=".8"/><circle cx="139" cy="189" r="4.2" fill="#12161C" opacity=".8"/><circle cx="178" cy="53" r="4.2" fill="#12161C" opacity=".8"/><circle cx="232" cy="229" r="4.2" fill="#12161C" opacity=".8"/><circle cx="226" cy="233" r="4.2" fill="#12161C" opacity=".8"/><circle cx="109" cy="137" r="4.2" fill="#12161C" opacity=".8"/><circle cx="39" cy="193" r="4.2" fill="#12161C" opacity=".8"/><circle cx="29" cy="56" r="4.2" fill="#12161C" opacity=".8"/><circle cx="65" cy="79" r="4.2" fill="#12161C" opacity=".8"/><circle cx="96" cy="53" r="4.2" fill="#12161C" opacity=".8"/><circle cx="14" cy="77" r="4.2" fill="#12161C" opacity=".8"/><circle cx="39" cy="128" r="4.2" fill="#12161C" opacity=".8"/><circle cx="20" cy="252" r="4.2" fill="#12161C" opacity=".8"/><circle cx="163" cy="76" r="4.2" fill="#12161C" opacity=".8"/><circle cx="75" cy="124" r="4.2" fill="#12161C" opacity=".8"/><rect x="290.0" y="26" width="270.0" height="270" fill="#fff" stroke="#12161C" stroke-width="2"/><text x="290.0" y="16" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#FF4F1A">PARCEIRO SUSPEITO</text><circle cx="368" cy="123" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="490" cy="182" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="415" cy="92" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="375" cy="122" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="470" cy="205" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="428" cy="86" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="393" cy="122" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="469" cy="199" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="423" cy="90" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="346" cy="117" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="483" cy="192" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="424" cy="97" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="379" cy="130" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="458" cy="198" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="422" cy="94" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="381" cy="101" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="483" cy="190" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="431" cy="80" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="373" cy="128" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="472" cy="201" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="432" cy="91" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="370" cy="131" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="483" cy="198" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="450" cy="82" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="379" cy="118" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="475" cy="205" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="427" cy="94" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="357" cy="109" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="479" cy="193" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="416" cy="80" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="382" cy="125" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="487" cy="193" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="425" cy="82" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="378" cy="131" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="466" cy="211" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="434" cy="89" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="353" cy="130" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="473" cy="196" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="429" cy="93" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="384" cy="113" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="484" cy="210" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="438" cy="89" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="364" cy="127" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="475" cy="201" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="438" cy="88" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="350" cy="117" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="457" cy="206" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="428" cy="86" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="371" cy="126" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="474" cy="209" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="424" cy="97" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="384" cy="131" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="468" cy="206" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="408" cy="82" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="353" cy="127" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="463" cy="200" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="431" cy="45" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="411" cy="84" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="305" cy="233" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="346" cy="155" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="479" cy="175" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="383" cy="165" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="438" cy="230" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="330" cy="176" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="364" cy="107" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="491" cy="163" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="440" cy="224" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="525" cy="147" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="452" cy="162" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="428" cy="208" r="4.2" fill="#FF4F1A" opacity=".8"/><circle cx="371" cy="120" r="30" fill="none" stroke="#FF4F1A" stroke-width="2" stroke-dasharray="5 4"/><circle cx="474" cy="200" r="30" fill="none" stroke="#FF4F1A" stroke-width="2" stroke-dasharray="5 4"/><circle cx="425" cy="90" r="30" fill="none" stroke="#FF4F1A" stroke-width="2" stroke-dasharray="5 4"/></svg><div class="cap">ILUSTRATIVO · cada ponto é uma instalação no espaço de IP e aparelho</div></figure>
+<div class="row"><div class="txt"><p>No caso, apareceram instalações saindo dos mesmos blocos de IP e o mesmo device ID em "usuários" diferentes.</p>
+<p>Compare sempre com os outros parceiros, nunca em número absoluto. Rede de operadora e Wi-Fi de empresa também concentram IP.</p></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Calcule instalações por bloco de IP, por device ID e o peso do modelo mais comum, por parceiro.</p><span class="ref">Bancada · B2</span></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>05</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 06</span><span>SINAL 3</span></div>
+<h2 id="s5">Sinal 3 · Receita que o backend <em>não confirma</em></h2>
+<p class="kicker">É o sinal que fecha a conta e o que mais pesa na negociação.</p>
+<figure><svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg"><text x="0.0" y="16" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">CANAL SAUDÁVEL</text><rect x="0" y="30" width="270" height="46" fill="#12161C" opacity="1.00"/><text x="135" y="94" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">INSTALAÇÃO</text><rect x="14" y="102" width="243" height="46" fill="#12161C" opacity="0.82"/><text x="135" y="166" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">USO REAL</text><rect x="92" y="174" width="86" height="46" fill="#12161C" opacity="0.64"/><text x="135" y="238" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">COMPRA CONFIRMADA</text><text x="290.0" y="16" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#FF4F1A">PARCEIRO SUSPEITO</text><rect x="290" y="30" width="270" height="46" fill="#FF4F1A" opacity="1.00"/><text x="425" y="94" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">INSTALAÇÃO</text><rect x="374" y="102" width="103" height="46" fill="#FF4F1A" opacity="0.82"/><text x="425" y="166" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">USO REAL</text><rect x="422" y="174" width="5" height="46" fill="#FF4F1A" opacity="0.64"/><text x="425" y="238" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">COMPRA CONFIRMADA</text></svg><div class="cap">ILUSTRATIVO · forma dos funis, não números do caso</div></figure>
+<div class="row"><div class="txt"><p>No caso, quase nenhuma instalação suspeita virou compra, mesmo com o parceiro sendo pago por compra.</p>
+<p>Para parceiro pago por CPA, compare a compra que o MMP atribui com a compra que o seu backend confirma.</p></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Rode as duas consultas: compra confirmada por parceiro e compra cobrada contra compra confirmada.</p><span class="ref">Bancada · B3 e B4</span></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>06</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 07</span><span>SINAIS EXTRAS</span></div>
+<h2 id="s6">Para pegar <em>roubo de crédito</em>: o relógio</h2>
+<p class="kicker">Os três sinais pegam usuário falso. Roubo de crédito aparece no tempo entre o clique e a instalação.</p>
+<figure><svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg"><line x1="20" y1="200" x2="710" y2="200" stroke="#12161C" stroke-width="2"/><path d="M20 200 C 60 200 70 40 95 40 C 120 40 120 160 150 150 C 230 50 300 40 360 90 C 420 140 480 160 560 164 C 620 168 680 172 710 174" fill="none" stroke="#12161C" stroke-width="3"/><rect x="20" y="30" width="110" height="170" fill="#FF4F1A" opacity=".10"/><rect x="520" y="30" width="190" height="170" fill="#FF4F1A" opacity=".10"/><text x="26" y="24" style="font-family:Azeret Mono,monospace;font-size:11px;font-weight:700" fill="#FF4F1A">CLICK INJECTION</text><text x="26" y="218" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">&lt; 10 segundos</text><text x="250" y="30" style="font-family:Azeret Mono,monospace;font-size:11px;font-weight:700" fill="#12161C">USUÁRIO NORMAL</text><text x="528" y="24" style="font-family:Azeret Mono,monospace;font-size:11px;font-weight:700" fill="#FF4F1A">CLICK FLOODING</text><text x="528" y="218" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">cauda longa, &gt; 24 horas</text><text x="710" y="238" text-anchor="end" style="font-family:Azeret Mono,monospace;font-size:10.5px" fill="#7B818C">tempo entre o clique e a instalação →</text></svg><div class="cap">ILUSTRATIVO · formato típico da distribuição</div></figure>
+<div class="row"><div class="txt"><p>Instalação poucos segundos depois do clique é rápida demais para alguém baixar um app. Uma cauda de horas e dias, com milhares de cliques por instalação, é flooding.</p>
+<p>Pico de madrugada sem pico de uso e país do IP diferente do idioma do aparelho completam o quadro.</p></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Veja por parceiro o % de instalações com menos de 10 segundos e com mais de 24 horas desde o clique.</p><span class="ref">Bancada · B5</span></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>07</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 08</span><span>O SCORE</span></div>
+<h2 id="s7">Quando vira <em>caso</em>: o score</h2>
+<p class="kicker">Cada sinal vira uma razão contra a mediana dos parceiros. Dois ou mais fora da curva no mesmo período: abra o caso.</p>
+<figure><svg viewBox="0 0 660 310" xmlns="http://www.w3.org/2000/svg"><text x="177.5" y="22" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">USO REAL</text><text x="282.5" y="22" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">IP / APARELHO</text><text x="387.5" y="22" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">RECEITA</text><text x="492.5" y="22" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">EXTRA: TEMPO</text><text x="561" y="22" style="font-family:Azeret Mono,monospace;font-size:10.5px;font-weight:700" fill="#12161C">SINAIS FORA</text><text x="0" y="66" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">Parceiro A</text><rect x="129" y="38" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="234" y="38" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="339" y="38" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="444" y="38" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><text x="561" y="68" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:26px" fill="#7B818C">0</text><text x="0" y="118" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">Parceiro B</text><rect x="129" y="90" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="234" y="90" width="97" height="44" fill="#FF4F1A" stroke="#12161C" stroke-width="1.5"/><rect x="339" y="90" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="444" y="90" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><text x="561" y="120" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:26px" fill="#7B818C">1</text><text x="0" y="170" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">Parceiro C</text><rect x="129" y="142" width="97" height="44" fill="#FF4F1A" stroke="#12161C" stroke-width="1.5"/><rect x="234" y="142" width="97" height="44" fill="#FF4F1A" stroke="#12161C" stroke-width="1.5"/><rect x="339" y="142" width="97" height="44" fill="#FF4F1A" stroke="#12161C" stroke-width="1.5"/><rect x="444" y="142" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><text x="561" y="172" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:26px" fill="#FF4F1A">3 · CASO</text><text x="0" y="222" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">Parceiro D</text><rect x="129" y="194" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="234" y="194" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="339" y="194" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="444" y="194" width="97" height="44" fill="#FF4F1A" stroke="#12161C" stroke-width="1.5"/><text x="561" y="224" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:26px" fill="#7B818C">1</text><text x="0" y="274" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">Parceiro E</text><rect x="129" y="246" width="97" height="44" fill="#FF4F1A" stroke="#12161C" stroke-width="1.5"/><rect x="234" y="246" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><rect x="339" y="246" width="97" height="44" fill="#FF4F1A" stroke="#12161C" stroke-width="1.5"/><rect x="444" y="246" width="97" height="44" fill="#fff" stroke="#12161C" stroke-width="1.5"/><text x="561" y="276" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:26px" fill="#FF4F1A">2 · CASO</text></svg><div class="cap">ILUSTRATIVO · laranja = fora da curva</div></figure>
+<div class="cards c3">
+ <div class="card"><p><b>Uso real</b></p><h3>&lt; 0,6 × mediana</h3></div>
+ <div class="card"><p><b>IP / aparelho</b></p><h3>&gt; 2 × mediana</h3></div>
+ <div class="card"><p><b>Receita</b></p><h3>&lt; 0,3 × mediana</h3></div>
+</div>
+<div class="row"><div class="txt"><p>Esses limites são ponto de partida. Calibre com três meses de histórico antes de acusar alguém, e deixe de fora parceiro com menos de 200 instalações.</p></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>Agende o score para rodar todo mês, com alerta. Foi assim que a auditoria virou rotina.</p><span class="ref">Bancada · B6</span></div></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>08</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 09</span><span>NEGOCIAÇÃO</span></div>
+<h2 id="s8">Do achado ao <em>retroativo</em></h2>
+<p class="kicker">Fraude se resolve em negociação, e negociação se ganha com dossiê.</p>
+<ul class="check">
+ <li>Período e volume do parceiro</li>
+ <li>Os três sinais lado a lado, contra a mediana</li>
+ <li>Amostra de IPs e device IDs repetidos</li>
+ <li>Compras cobradas x compras confirmadas</li>
+ <li>Valor pago por ações que não aconteceram</li>
+ <li>Nada de dado pessoal além do necessário</li>
+</ul>
+<h3 style="margin-top:22px">Como o caso terminou</h3>
+<div class="chips"><span class="chip">1 · parceiro bloqueado</span><span class="chip">2 · valores futuros renegociados</span><span class="chip ok">3 · retroativo do histórico</span></div>
+<div class="acao"><span class="t">FAÇA AMANHÃ</span><p>No contrato de CPA, escreva que conversão válida é a confirmada pelo seu backend, e que você pode rejeitar volume inválido por critério técnico.</p></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>09</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 10</span><span>LIMITES</span></div>
+<h2 id="s9">O que o método <em>não pega</em></h2>
+<div class="cards c3">
+ <div class="card"><h3>Aparelho real</h3><p>Emulação refinada e fazendas que imitam gente passam pelos três sinais.</p></div>
+ <div class="card"><h3>iOS sem ATT</h3><p>A atribuição chega agregada, sem dado por aparelho. Funciona no Android e no iOS determinístico.</p></div>
+ <div class="card"><h3>Orgânico</h3><p>A AppsFlyer (2026) aponta o orgânico como origem de 52% das instalações fraudulentas. O score por parceiro não olha para lá.</p></div>
+</div>
+<h3 style="margin-top:18px">Quando vale pagar a ferramenta</h3>
+<figure><svg viewBox="0 0 720 110" xmlns="http://www.w3.org/2000/svg">
+ <rect x="0" y="10" width="230" height="80" fill="#fff" stroke="#12161C" stroke-width="2"/><text x="115" y="46" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">VERBA EM PARCEIROS</text><text x="115" y="66" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">DE RISCO</text>
+ <text x="248" y="62" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:34px" fill="#12161C">×</text>
+ <rect x="275" y="10" width="190" height="80" fill="#fff" stroke="#12161C" stroke-width="2"/><text x="370" y="46" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">TAXA DE FRAUDE</text><text x="370" y="66" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:700" fill="#12161C">QUE VOCÊ ACHOU</text>
+ <text x="480" y="62" style="font-family:Barlow Condensed,sans-serif;font-weight:800;font-size:34px" fill="#FF4F1A">&gt;</text>
+ <rect x="510" y="10" width="210" height="80" fill="#FF4F1A"/><text x="615" y="46" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:800" fill="#fff">CUSTO MENSAL</text><text x="615" y="66" text-anchor="middle" style="font-family:Azeret Mono,monospace;font-size:12px;font-weight:800" fill="#fff">DA FERRAMENTA</text>
+</svg></figure>
+<p class="kicker">No caso deste guia, a cotação passava de US$ 5 mil por mês e a verba não justificava. Com o volume crescendo, a conta muda.</p><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>10</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 11</span><span>CHECKLIST</span></div>
+<h2 id="s10">Checklist</h2>
+<ul class="check">
+ <li>appsflyer_id e customer_user_id no backend</li>
+ <li>Dado bruto chegando no BigQuery todo dia</li>
+ <li>Sinal 1 por parceiro e site_id</li>
+ <li>Sinal 2 por parceiro e site_id</li>
+ <li>Sinal 3 por parceiro e site_id</li>
+ <li>Tempo entre clique e instalação</li>
+ <li>Score calibrado com 3 meses</li>
+ <li>Consulta mensal com alerta</li>
+ <li>Cláusula de conversão válida no contrato</li>
+ <li>Dossiê padrão pronto</li>
+</ul>
+<p style="margin-top:20px"><span class="hand">o trabalho não acaba quando a fraude é provada.<br>acaba quando vira rotina.</span></p><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>11</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 12</span><span>BANCADA</span></div><h2 id="s11">Bancada · <em>as consultas</em></h2><p class="kicker">Tabelas assumidas: <code>appsflyer.installs</code>, <code>appsflyer.inapp_events</code>, <code>app.sessoes</code> e <code>backend.pedidos</code> no BigQuery. Ajuste os nomes ao seu export.</p><div class="q"><div class="h"><span class="id">B1</span><span class="d">Sinal 1: % de instalações com uso real em 24h</span></div><pre><code><span class="c">-- Sinal 1: % de instalações com uso real em até 24h, por parceiro e site_id</span>
 WITH inst AS (
   SELECT appsflyer_id, customer_user_id, media_source, af_siteid, install_time
   FROM `projeto.appsflyer.installs`
@@ -149,12 +232,7 @@ FROM inst i
 LEFT JOIN uso u USING (appsflyer_id)
 GROUP BY ALL
 HAVING instalacoes &gt;= 200
-ORDER BY pct_uso_real_24h;</code></pre>
-<p>Sem dado de sessão própria, use como aproximação o percentual de instalações com qualquer evento in-app em 24 horas. É mais fraco, porque o evento também pode ser fabricado, mas já separa os parceiros fora da curva.</p>
-
-<h2 id="s4">4. Sinal 2: IP e aparelho repetidos</h2>
-<p>Usuário real é disperso: muitos IPs, muitos modelos, versões de sistema variadas. Fazenda de aparelhos e emulador deixam concentração. No caso dos R$ 100 mil, apareceram instalações saindo dos mesmos blocos de IP e o mesmo device ID em "usuários" diferentes.</p>
-<pre><code><span class="c">-- Sinal 2: concentração de IP, device ID e modelo por parceiro</span>
+ORDER BY pct_uso_real_24h;</code></pre></div><div class="q"><div class="h"><span class="id">B2</span><span class="d">Sinal 2: concentração de IP, device ID e modelo</span></div><pre><code><span class="c">-- Sinal 2: concentração de IP, device ID e modelo por parceiro</span>
 SELECT
   media_source,
   af_siteid,
@@ -168,12 +246,8 @@ FROM `projeto.appsflyer.installs`
 WHERE DATE(install_time) &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
 GROUP BY ALL
 HAVING instalacoes &gt;= 200
-ORDER BY instalacoes_por_bloco_24 DESC;</code></pre>
-<p>Leia sempre contra a média dos outros parceiros, nunca em número absoluto. Rede de operadora e Wi-Fi corporativo concentram IP de forma legítima. O que denuncia é um parceiro muito acima dos outros, na mesma campanha e no mesmo período.</p>
-
-<h2 id="s5">5. Sinal 3: receita que o backend não confirma</h2>
-<p>É o sinal que fecha a conta, e o que mais pesa na negociação. No caso dos R$ 100 mil, praticamente nenhuma instalação suspeita virou compra, mesmo com o parceiro sendo pago por CPA em cima da compra.</p>
-<pre><code><span class="c">-- Sinal 3: compra e receita confirmadas no backend em 30 dias, por parceiro</span>
+ORDER BY instalacoes_por_bloco_24 DESC;</code></pre></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>12</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 13</span><span>BANCADA</span></div><div class="q"><div class="h"><span class="id">B3</span><span class="d">Sinal 3: compra confirmada no backend em 30 dias</span></div><pre><code><span class="c">-- Sinal 3: compra e receita confirmadas no backend em 30 dias, por parceiro</span>
 WITH inst AS (
   SELECT appsflyer_id, customer_user_id, media_source, af_siteid, install_time
   FROM `projeto.appsflyer.installs`
@@ -194,9 +268,7 @@ LEFT JOIN `projeto.backend.pedidos` p
  AND p.criado_em BETWEEN i.install_time AND TIMESTAMP_ADD(i.install_time, INTERVAL 30 DAY)
 GROUP BY ALL
 HAVING instalacoes &gt;= 200
-ORDER BY pct_com_compra;</code></pre>
-<p>Para parceiros pagos por CPA, compare também o que o MMP atribui com o que o backend confirma:</p>
-<pre><code><span class="c">-- Compras que o parceiro cobra x compras que o backend confirma</span>
+ORDER BY pct_com_compra;</code></pre></div><div class="q"><div class="h"><span class="id">B4</span><span class="d">Compras cobradas x compras confirmadas</span></div><pre><code><span class="c">-- Compras que o parceiro cobra x compras que o backend confirma</span>
 SELECT
   e.media_source,
   COUNT(*) AS compras_atribuidas_mmp,
@@ -210,13 +282,8 @@ LEFT JOIN `projeto.backend.pedidos` p
 WHERE e.event_name = 'af_purchase'
   AND DATE(e.event_time) &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
 GROUP BY 1
-ORDER BY pct_confirmado;</code></pre>
-
-<h2 id="s6">6. Sinais complementares</h2>
-<p>Não entraram no caso dos R$ 100 mil, mas pegam o roubo de crédito, que os três sinais principais deixam passar.</p>
-<h3>Tempo entre clique e instalação</h3>
-<p>Instalação poucos segundos depois do clique é rápida demais para alguém baixar um app: é o padrão de click injection. Uma cauda longa de horas e dias, com muitos cliques por instalação, é o padrão de click flooding.</p>
-<pre><code>SELECT
+ORDER BY pct_confirmado;</code></pre></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>13</span></div></section>
+<section class="pg "><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 14</span><span>BANCADA</span></div><div class="q"><div class="h"><span class="id">B5</span><span class="d">Tempo entre clique e instalação</span></div><pre><code>SELECT
   media_source,
   af_siteid,
   COUNT(*) AS instalacoes,
@@ -228,23 +295,7 @@ WHERE attributed_touch_type = 'click'
   AND DATE(install_time) &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
 GROUP BY ALL
 HAVING instalacoes &gt;= 200
-ORDER BY pct_mais_24h DESC;</code></pre>
-<h3>Cliques por instalação</h3>
-<p>No relatório agregado por parceiro, divida cliques por instalações. Milhares de cliques para cada instalação é sinal de flooding, ainda mais se a taxa de conversão do clique for muito menor que a dos outros parceiros.</p>
-<h3>Horário e geografia</h3>
-<p>Picos de instalação de madrugada sem pico de uso, e país do IP diferente do idioma do aparelho em volume alto, completam o quadro.</p>
-
-<h2 id="s7">7. O score: juntando os sinais</h2>
-<p>Cada sinal vira uma razão contra a mediana dos parceiros. Um parceiro é marcado quando dois ou mais sinais estão fora da curva no mesmo período.</p>
-<div class="table-wrap"><table>
-  <tr><th>Sinal</th><th>Métrica</th><th>Ponto de partida para "fora da curva"</th></tr>
-  <tr><td>1. Uso real</td><td>% de instalações com sessão própria em 24h</td><td>Abaixo de 60% da mediana dos parceiros</td></tr>
-  <tr><td>2. Concentração</td><td>Instalações por bloco de IP ou por device ID</td><td>Acima de 2x a mediana</td></tr>
-  <tr><td>3. Receita</td><td>% de instalações com compra confirmada</td><td>Abaixo de 30% da mediana</td></tr>
-  <tr><td>Extra</td><td>% de instalações com mais de 24h desde o clique</td><td>Acima de 2x a mediana</td></tr>
-</table></div>
-<div class="lm-note"><b>Calibre antes de acusar:</b> esses limites são um ponto de partida, não uma regra universal. Rode três meses de histórico, veja onde os parceiros saudáveis ficam e ajuste. Parceiro pequeno (menos de 200 instalações no período) fica fora até ter volume.</div>
-<pre><code><span class="c">-- Score: cada sinal como razão contra a mediana, e quantos estão fora da curva</span>
+ORDER BY pct_mais_24h DESC;</code></pre></div><div class="q"><div class="h"><span class="id">B6</span><span class="d">Score: cada sinal contra a mediana</span></div><pre><code><span class="c">-- Score: cada sinal como razão contra a mediana, e quantos estão fora da curva</span>
 WITH s AS (
   SELECT media_source, af_siteid, pct_uso_real_24h, instalacoes_por_bloco_24, pct_com_compra
   FROM `projeto.auditoria.sinais_parceiro`   <span class="c">-- junte aqui o resultado dos sinais 1, 2 e 3</span>
@@ -259,45 +310,15 @@ r AS (
 SELECT *,
   IF(r_uso &lt; 0.6, 1, 0) + IF(r_ip &gt; 2, 1, 0) + IF(r_receita &lt; 0.3, 1, 0) AS sinais_fora
 FROM r
-ORDER BY sinais_fora DESC, r_receita;</code></pre>
-<p>Agende essa consulta para rodar todo mês e mande o resultado para um painel ou alerta. Foi assim que a auditoria do caso virou rotina: uma consulta mensal que avisa quando um parceiro foge do padrão.</p>
-
-<h2 id="s8">8. Do achado ao retroativo</h2>
-<p>Fraude se resolve em negociação, e negociação se ganha com dossiê. O que levar ao parceiro:</p>
-<ul class="lm-check">
-  <li>Período analisado e volume do parceiro no período</li>
-  <li>Os três sinais lado a lado, comparados com a mediana dos outros parceiros na mesma campanha</li>
-  <li>Amostra de IPs e device IDs repetidos, sem dado pessoal além do necessário</li>
-  <li>Compras cobradas contra compras confirmadas pelo backend</li>
-  <li>O valor pago pelas ações que não aconteceram</li>
-</ul>
-<p>No caso dos R$ 100 mil, o desfecho teve três partes: o parceiro foi bloqueado, os valores futuros foram renegociados e a empresa recebeu retroativo do histórico de cobrança. O retroativo só foi possível porque o pagamento era por uma ação de compra que, comprovadamente, não tinha acontecido.</p>
-<div class="lm-tip"><b>Prevenção:</b> no contrato com parceiros de CPA, deixe escrito que a conversão válida é a confirmada pelo seu backend, e que você pode rejeitar volume inválido com base em critérios técnicos.</div>
-
-<h2 id="s9">9. O que o método não pega</h2>
-<ul>
-  <li><b>Fraude com aparelho real por trás.</b> Emulação refinada e fazendas que imitam comportamento humano passam pelos três sinais. É o tipo de caso que ferramenta dedicada cobre melhor.</li>
-  <li><b>iOS sem consentimento do ATT.</b> Boa parte da atribuição chega agregada (SKAdNetwork e AdAttributionKit), sem dado por aparelho. O método funciona bem no Android e na parte do iOS com atribuição determinística.</li>
-  <li><b>Fraude no orgânico.</b> O relatório de fraude da AppsFlyer de 2026 aponta o tráfego orgânico como o maior canal de instalações fraudulentas. O score por parceiro não olha para lá.</li>
-</ul>
-<p><b>Quando vale pagar a ferramenta:</b> quando a verba em parceiros de risco multiplicada pela taxa de fraude que você encontrou passa do custo mensal dela. No caso deste guia, a cotação do Protect360 passava de US$ 5 mil por mês e a verba não justificava. Com o volume crescendo, a conta muda.</p>
-
-<h2 id="s10">10. Checklist</h2>
-<ul class="lm-check">
-  <li>appsflyer_id e customer_user_id gravados no seu backend desde a primeira abertura</li>
-  <li>Dado bruto de instalações e eventos chegando no BigQuery todo dia</li>
-  <li>Sinal 1 (uso real em 24h) por parceiro e site_id</li>
-  <li>Sinal 2 (IP, device ID, modelo) por parceiro e site_id</li>
-  <li>Sinal 3 (compra confirmada no backend) por parceiro e site_id</li>
-  <li>Tempo entre clique e instalação e cliques por instalação para pegar roubo de crédito</li>
-  <li>Score calibrado com três meses de histórico</li>
-  <li>Consulta mensal agendada, com alerta</li>
-  <li>Cláusula de conversão válida no contrato com parceiros de CPA</li>
-  <li>Dossiê padrão pronto para a primeira negociação</li>
-</ul>
+ORDER BY sinais_fora DESC, r_receita;</code></pre></div><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>14</span></div></section>
+<section class="pg end"><div class="top"><span>FRAUDE MOBILE NO DADO BRUTO · 15</span><span>FIM</span></div>
+<h2 id="s12">Quer que eu rode isso <em>na sua conta</em>?</h2>
+<p class="kicker">30 minutos, ao vivo, nas suas plataformas. Você sai sabendo se algum parceiro está fora da curva. Sem compromisso.</p>
+<p class="mono" style="margin-top:26px;font-size:15px">jefersonjs.com.br · contato@jefersonjs.com.br</p>
+<p class="mono" style="margin-top:40px;font-size:11px;color:#9AA3AE">Fontes: AppsFlyer, The State of Fraud for Marketers 2026 e o guia de campo de fraude mobile da AppsFlyer. Números do caso anonimizados.</p><div class="pnum"><span>Jeferson J. Silva · Analytics &amp; Atribuição</span><span>15</span></div></section></div>
 
     <div class="lm-download">
-      <p><b>Quer guardar para consultar depois?</b> O guia completo em PDF, com todas as consultas.</p>
+      <p><b>Quer guardar para consultar depois?</b> O guia completo em PDF, página por página, com todas as consultas.</p>
       <a class="btn-pri" href="guia-fraude-mobile-dado-bruto.pdf" download data-lm="fraude-mobile-dado-bruto" data-pos="rodape">Baixar o PDF ↓</a>
     </div>
   </div>
