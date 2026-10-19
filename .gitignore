@@ -1,3 +1,5 @@
 .DS_Store
 *.md
+# As fontes dos conteúdos precisam ir para o repo: o GitHub Actions gera as páginas a partir delas.
+!conteudos/_fonte/*.md
 gtm/
