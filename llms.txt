@@ -41,6 +41,7 @@
 <!-- conteudos:inicio -->
 ## Conteúdos
 
+- Radar #05: 3 mudanças no dado que vai para o Google: Data Manager deixando de exigir hash a partir de 16/11, o +20% que o Google atribui ao Tag Gateway na Demand Gen e as métricas de Search Lift na v26 do Google Ads API. https://jefersonjs.com.br/conteudos/radar-05/
 - Radar #03: 4 mudanças que chegam sem aviso: A lista de bloqueio do Safari cresce enquanto a Apple testa liberar a Trade Desk, promoções automáticas e tROAS pela margem no Google Ads e o fim da v24 da Marketing API da Meta. https://jefersonjs.com.br/conteudos/radar-03/
 - Radar #01: 4 mudanças que já mexem no seu número: Safari bloqueando ad tech no iOS 27, resposta paga no WhatsApp, filtro de hostname no GA4 e o avanço do AI Max no Google Ads. https://jefersonjs.com.br/conteudos/radar-01/
 - Radar #02: 4 mudanças no dado que você envia: IP no Customer Match do Google Ads, conversões fora da meta no ChatGPT Ads, hash e janela de 180 dias na CAPI do LinkedIn e a lei da Califórnia que limita processos por pixel. https://jefersonjs.com.br/conteudos/radar-02/
