@@ -18,6 +18,15 @@
 - Modelos de atribuição customizados, forecast de CAC/LTV e dashboards (Looker Studio, Power BI, BigQuery).
 - Treinamento de times para operar GA4 e AppsFlyer com autonomia.
 
+## Consultoria de IA
+
+Página: https://jefersonjs.com.br/consultoria-ia/
+
+- Proposta de valor: horas de volta para o time e o ganho mostrado em reais. O custo de cada rotina é medido antes, o retorno é estimado antes de investir e o resultado é medido depois, num relatório de ganho.
+- Ganhos típicos: horas liberadas em tarefas repetitivas, vendas que se perdiam por demora na resposta, verba de mídia realocada, decisão com dado do dia, crescimento sem aumentar a equipe de apoio no mesmo ritmo, e soluções sob medida.
+- Regras: aprovação humana antes de qualquer ação externa, teto de gasto diário da IA, APIs oficiais, respostas a partir da base aprovada do cliente.
+- Formatos: diagnóstico (1 a 2 semanas), projeto de implantação (2 a 6 semanas por frente) e acompanhamento mensal, cotados por escopo.
+
 ## Problemas que resolve
 
 - Mais de uma plataforma de anúncio atribuindo a mesma venda, inflando o ROAS reportado.
